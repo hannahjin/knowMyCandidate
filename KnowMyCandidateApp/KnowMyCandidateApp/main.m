@@ -1,11 +1,3 @@
-//
-//  main.m
-//  KnowMyCandidateApp
-//
-//  Created by Samir Choudhary on 10/13/15.
-//  Copyright © 2015 Samir Choudhary. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
