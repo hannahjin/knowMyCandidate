@@ -9,9 +9,21 @@
 /* Begin PBXBuildFile section */
 		CB60A3791BCD8F8C001690BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A3781BCD8F8C001690BE /* main.m */; };
 		CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37B1BCD8F8C001690BE /* AppDelegate.m */; };
-		CB60A37F1BCD8F8C001690BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37E1BCD8F8C001690BE /* ViewController.m */; };
+		CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */; };
 		CB60A3841BCD8F8C001690BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB60A3831BCD8F8C001690BE /* Assets.xcassets */; };
 		CB60A3871BCD8F8C001690BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */; };
+		CB60A38F1BCD906D001690BE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A38E1BCD906D001690BE /* AudioToolbox.framework */; };
+		CB60A3971BCD9092001690BE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3901BCD9092001690BE /* CFNetwork.framework */; };
+		CB60A3981BCD9092001690BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3911BCD9092001690BE /* CoreGraphics.framework */; };
+		CB60A3991BCD9092001690BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3921BCD9092001690BE /* CoreLocation.framework */; };
+		CB60A39A1BCD9092001690BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3931BCD9092001690BE /* QuartzCore.framework */; };
+		CB60A39B1BCD9092001690BE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3941BCD9092001690BE /* Security.framework */; };
+		CB60A39C1BCD9092001690BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3951BCD9092001690BE /* StoreKit.framework */; };
+		CB60A39D1BCD9092001690BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3961BCD9092001690BE /* SystemConfiguration.framework */; };
+		CB60A39F1BCD90A2001690BE /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A39E1BCD90A2001690BE /* libz.1.dylib */; };
+		CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */; };
+		CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A31BCD90F8001690BE /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A51BCD9100001690BE /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +31,23 @@
 		CB60A3781BCD8F8C001690BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB60A37A1BCD8F8C001690BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB60A37B1BCD8F8C001690BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CB60A37D1BCD8F8C001690BE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CB60A37E1BCD8F8C001690BE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMCSignInViewController.h; sourceTree = "<group>"; };
+		CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMCSignInViewController.m; sourceTree = "<group>"; };
 		CB60A3831BCD8F8C001690BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB60A3861BCD8F8C001690BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB60A3881BCD8F8C001690BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB60A38E1BCD906D001690BE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CB60A3901BCD9092001690BE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CB60A3911BCD9092001690BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CB60A3921BCD9092001690BE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CB60A3931BCD9092001690BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB60A3941BCD9092001690BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CB60A3951BCD9092001690BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CB60A3961BCD9092001690BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CB60A39E1BCD90A2001690BE /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
+		CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
+		CB60A3A31BCD90F8001690BE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = KnowMyCandidateApp/Frameworks/Bolts.framework; sourceTree = "<group>"; };
+		CB60A3A51BCD9100001690BE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = KnowMyCandidateApp/Frameworks/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +55,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */,
+				CB60A39F1BCD90A2001690BE /* libz.1.dylib in Frameworks */,
+				CB60A3971BCD9092001690BE /* CFNetwork.framework in Frameworks */,
+				CB60A3981BCD9092001690BE /* CoreGraphics.framework in Frameworks */,
+				CB60A3991BCD9092001690BE /* CoreLocation.framework in Frameworks */,
+				CB60A39A1BCD9092001690BE /* QuartzCore.framework in Frameworks */,
+				CB60A39B1BCD9092001690BE /* Security.framework in Frameworks */,
+				CB60A39C1BCD9092001690BE /* StoreKit.framework in Frameworks */,
+				CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */,
+				CB60A39D1BCD9092001690BE /* SystemConfiguration.framework in Frameworks */,
+				CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */,
+				CB60A38F1BCD906D001690BE /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,11 +94,12 @@
 			children = (
 				CB60A37A1BCD8F8C001690BE /* AppDelegate.h */,
 				CB60A37B1BCD8F8C001690BE /* AppDelegate.m */,
-				CB60A37D1BCD8F8C001690BE /* ViewController.h */,
-				CB60A37E1BCD8F8C001690BE /* ViewController.m */,
+				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
+				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
 				CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */,
 				CB60A3881BCD8F8C001690BE /* Info.plist */,
+				CB60A3A21BCD90BF001690BE /* Frameworks */,
 				CB60A3771BCD8F8C001690BE /* Supporting Files */,
 			);
 			path = KnowMyCandidateApp;
@@ -74,6 +111,26 @@
 				CB60A3781BCD8F8C001690BE /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB60A3A21BCD90BF001690BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB60A3A51BCD9100001690BE /* Parse.framework */,
+				CB60A3A31BCD90F8001690BE /* Bolts.framework */,
+				CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */,
+				CB60A39E1BCD90A2001690BE /* libz.1.dylib */,
+				CB60A3901BCD9092001690BE /* CFNetwork.framework */,
+				CB60A3911BCD9092001690BE /* CoreGraphics.framework */,
+				CB60A3921BCD9092001690BE /* CoreLocation.framework */,
+				CB60A3931BCD9092001690BE /* QuartzCore.framework */,
+				CB60A3941BCD9092001690BE /* Security.framework */,
+				CB60A3951BCD9092001690BE /* StoreKit.framework */,
+				CB60A3961BCD9092001690BE /* SystemConfiguration.framework */,
+				CB60A38E1BCD906D001690BE /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB60A37F1BCD8F8C001690BE /* ViewController.m in Sources */,
+				CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */,
 				CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */,
 				CB60A3791BCD8F8C001690BE /* main.m in Sources */,
 			);
@@ -249,6 +306,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KnowMyCandidateApp/Frameworks",
+				);
 				INFOPLIST_FILE = KnowMyCandidateApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucla.KnowMyCandidateApp;
@@ -260,6 +321,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KnowMyCandidateApp/Frameworks",
+				);
 				INFOPLIST_FILE = KnowMyCandidateApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucla.KnowMyCandidateApp;
