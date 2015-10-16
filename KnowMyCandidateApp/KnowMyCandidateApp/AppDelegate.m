@@ -10,6 +10,9 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Initialize Parse.
+  [Parse setApplicationId:@"K1OX77eW0lBtAm8TSc8HYHzvfe7KkM4qi9vwtCBF"
+                clientKey:@"QjT0RO6xMAadjULNT1lwrQnHyIHNMhdEvJV7po3n"];
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   KMCSignInViewController *signInVC =
       [[KMCSignInViewController alloc] initWithNibName:nil bundle:nil];
