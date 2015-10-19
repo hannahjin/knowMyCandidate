@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 
-@interface KMCSignInViewController : UIViewController
+#import "ParseUI/ParseUI.h"
+
+@interface KMCSignInViewController : PFLogInViewController
 
 @end
 
