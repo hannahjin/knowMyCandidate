@@ -1,2 +1,2 @@
 # knowMyCandidate
-CS 130 Team Project - Fall 2015
+CS 130 Team Project Fall 2015
