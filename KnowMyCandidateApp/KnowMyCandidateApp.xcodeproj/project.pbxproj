@@ -24,6 +24,12 @@
 		CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */; };
 		CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A31BCD90F8001690BE /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A51BCD9100001690BE /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA6520F1BD30B27000EFAEC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652101BD30B27000EFAEC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652111BD30B27000EFAEC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652131BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652151BD3137E000EFAEC /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA652141BD3137E000EFAEC /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,13 @@
 		CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		CB60A3A31BCD90F8001690BE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = KnowMyCandidateApp/Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		CB60A3A51BCD9100001690BE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = KnowMyCandidateApp/Frameworks/Parse.framework; sourceTree = "<group>"; };
+		CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = KnowMyCandidateApp/Frameworks/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		CBA652141BD3137E000EFAEC /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = KnowMyCandidateApp/Frameworks/ParseUI.framework; sourceTree = "<group>"; };
+		CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCUserProfileViewController.h; sourceTree = "<group>"; };
+		CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCUserProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +70,17 @@
 			files = (
 				CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */,
 				CB60A39F1BCD90A2001690BE /* libz.1.dylib in Frameworks */,
+				CBA652111BD30B27000EFAEC /* FBSDKShareKit.framework in Frameworks */,
 				CB60A3971BCD9092001690BE /* CFNetwork.framework in Frameworks */,
 				CB60A3981BCD9092001690BE /* CoreGraphics.framework in Frameworks */,
+				CBA652101BD30B27000EFAEC /* FBSDKLoginKit.framework in Frameworks */,
 				CB60A3991BCD9092001690BE /* CoreLocation.framework in Frameworks */,
 				CB60A39A1BCD9092001690BE /* QuartzCore.framework in Frameworks */,
 				CB60A39B1BCD9092001690BE /* Security.framework in Frameworks */,
+				CBA652151BD3137E000EFAEC /* ParseUI.framework in Frameworks */,
 				CB60A39C1BCD9092001690BE /* StoreKit.framework in Frameworks */,
+				CBA652131BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework in Frameworks */,
+				CBA6520F1BD30B27000EFAEC /* FBSDKCoreKit.framework in Frameworks */,
 				CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */,
 				CB60A39D1BCD9092001690BE /* SystemConfiguration.framework in Frameworks */,
 				CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */,
@@ -96,6 +114,8 @@
 				CB60A37B1BCD8F8C001690BE /* AppDelegate.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
 				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
+				CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */,
+				CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
 				CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */,
 				CB60A3881BCD8F8C001690BE /* Info.plist */,
@@ -116,6 +136,11 @@
 		CB60A3A21BCD90BF001690BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBA652141BD3137E000EFAEC /* ParseUI.framework */,
+				CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */,
+				CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */,
+				CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */,
+				CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */,
 				CB60A3A51BCD9100001690BE /* Parse.framework */,
 				CB60A3A31BCD90F8001690BE /* Bolts.framework */,
 				CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */,
@@ -205,6 +230,7 @@
 				CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */,
 				CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */,
 				CB60A3791BCD8F8C001690BE /* main.m in Sources */,
+				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +377,7 @@
 				CB60A38D1BCD8F8C001690BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
