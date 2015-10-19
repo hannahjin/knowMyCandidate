@@ -4,6 +4,9 @@ Backend for knowMyCandidate app. Handles NewsFeed generation, web scraping, and 
 
 Hosted on Heroku and uses Spark web framework.
 
+Temporary URL:
+https://thawing-hamlet-6449.herokuapp.com/
+
 ## Deployment
 
 We want to deploy only the HerokuBackend folder, not the entire project.
