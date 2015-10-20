@@ -15,6 +15,7 @@ public class WebConfig {
     private void setupRoutes() {
         get("/", (req, res) -> "Main Page");
         get("/hello", (req, res) -> "Hello World");
+        get("/bye", (req, res) -> "Bye World");
     }
     
 }
