@@ -1,0 +1,1 @@
+web: java -cp target/knowMyCandidateBackend-1.0-SNAPSHOT.jar:target/dependency/* com.CS130.app.Main
