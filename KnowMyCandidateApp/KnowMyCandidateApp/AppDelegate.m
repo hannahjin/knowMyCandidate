@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
 
-#import "KMCSignInViewController.h"
+#import "KMCRootViewController.h"
 #import "FBSDKCoreKit/FBSDKCoreKit.h"
 #import "Parse/Parse.h"
 #import "ParseFacebookUtilsV4/PFFacebookUtils.h"
@@ -17,9 +17,8 @@
   [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  KMCSignInViewController *signInVC =
-      [[KMCSignInViewController alloc] initWithNibName:nil bundle:nil];
-  self.window.rootViewController = signInVC;
+  KMCRootViewController *rootVC = [[KMCRootViewController alloc] initWithNibName:nil bundle:nil];
+  self.window.rootViewController = rootVC;
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
 

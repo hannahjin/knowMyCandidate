@@ -1,15 +1,15 @@
-#import "KMCUserProfileViewController.h"
+#import "KMCPollsViewController.h"
 
-@interface KMCUserProfileViewController ()
+@interface KMCPollsViewController ()
 @end
 
-@implementation KMCUserProfileViewController
+@implementation KMCPollsViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     UITabBarItem *item = [self tabBarItem];
-    item.title = @"User";
+    item.title = @"Polls";
   }
   return self;
 }
