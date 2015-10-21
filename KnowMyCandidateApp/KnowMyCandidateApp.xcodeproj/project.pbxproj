@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB3D4A191BD60A7400A907F1 /* KMCPollsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCPollsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB60A3791BCD8F8C001690BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A3781BCD8F8C001690BE /* main.m */; };
 		CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37B1BCD8F8C001690BE /* AppDelegate.m */; };
 		CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */; };
@@ -33,6 +36,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
+		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
+		CB3D4A171BD60A7400A907F1 /* KMCPollsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCPollsViewController.h; sourceTree = "<group>"; };
+		CB3D4A181BD60A7400A907F1 /* KMCPollsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCPollsViewController.m; sourceTree = "<group>"; };
+		CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCRootViewController.h; sourceTree = "<group>"; };
+		CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCRootViewController.m; sourceTree = "<group>"; };
 		CB60A3741BCD8F8C001690BE /* KnowMyCandidateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowMyCandidateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB60A3781BCD8F8C001690BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB60A37A1BCD8F8C001690BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,8 +121,14 @@
 			children = (
 				CB60A37A1BCD8F8C001690BE /* AppDelegate.h */,
 				CB60A37B1BCD8F8C001690BE /* AppDelegate.m */,
+				CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */,
+				CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */,
+				CB3D4A171BD60A7400A907F1 /* KMCPollsViewController.h */,
+				CB3D4A181BD60A7400A907F1 /* KMCPollsViewController.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
 				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
+				CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */,
+				CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */,
 				CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */,
 				CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
@@ -227,10 +242,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */,
 				CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */,
 				CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */,
 				CB60A3791BCD8F8C001690BE /* main.m in Sources */,
 				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
+				CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */,
+				CB3D4A191BD60A7400A907F1 /* KMCPollsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
