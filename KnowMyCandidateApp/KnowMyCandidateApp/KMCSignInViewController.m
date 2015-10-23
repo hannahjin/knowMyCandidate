@@ -13,10 +13,35 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.fields = PFLogInFieldsFacebook | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton;
+  self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+  self.fields = PFLogInFieldsSignUpButton |
+                PFLogInFieldsFacebook |
+                PFLogInFieldsUsernameAndPassword |
+                PFLogInFieldsLogInButton;
   [self.logInView.facebookButton addTarget:self
                                     action:@selector(didTapFbLoginButton)
                           forControlEvents:UIControlEventTouchUpInside];
+  [self.logInView.logInButton addTarget:self
+                                 action:@selector(didTapLoginButton)
+                       forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)didTapLoginButton {
+  NSString *username = self.logInView.usernameField.text ?: @"";
+  NSString *password = self.logInView.passwordField.text ?: @"";
+
+  [PFUser logInWithUsernameInBackground:username
+                               password:password
+                                  block:^(PFUser *user, NSError *error) {
+    if (!user) {
+      NSLog(@"Uh oh. The user cancelled the login.");
+    } else if (user.isNew) {
+      NSLog(@"User signed up and logged in!");
+    } else {
+      NSLog(@"User logged in!");
+    }
+  }];
 }
 
 - (void)didTapFbLoginButton {
@@ -30,8 +55,10 @@
       NSLog(@"Uh oh. The user cancelled the Facebook login.");
     } else if (user.isNew) {
       NSLog(@"User signed up and logged in through Facebook!");
+      [self.delegate logInViewController:self didLogInUser:user];
     } else {
       NSLog(@"User logged in through Facebook!");
+      [self.delegate logInViewController:self didLogInUser:user];
     }
   }];
 }
