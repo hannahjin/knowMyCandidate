@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4827A1B1BD9BD0800BC98B6 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4827A1A1BD9BD0800BC98B6 /* Twitter.framework */; };
 		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB3D4A191BD60A7400A907F1 /* KMCPollsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCPollsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B4827A1A1BD9BD0800BC98B6 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
 		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
 		CB3D4A171BD60A7400A907F1 /* KMCPollsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCPollsViewController.h; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4827A1B1BD9BD0800BC98B6 /* Twitter.framework in Frameworks */,
 				CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */,
 				CB60A39F1BCD90A2001690BE /* libz.1.dylib in Frameworks */,
 				CBA652111BD30B27000EFAEC /* FBSDKShareKit.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		CB60A36B1BCD8F8C001690BE = {
 			isa = PBXGroup;
 			children = (
+				B4827A1A1BD9BD0800BC98B6 /* Twitter.framework */,
 				CB60A3761BCD8F8C001690BE /* KnowMyCandidateApp */,
 				CB60A3751BCD8F8C001690BE /* Products */,
 			);
