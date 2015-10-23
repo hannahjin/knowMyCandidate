@@ -4,6 +4,7 @@
 #import "FBSDKLoginKit/FBSDKLoginKit.h"
 #import "Parse/Parse.h"
 #import "ParseFacebookUtilsV4/PFFacebookUtils.h"
+//#import "PFTwitterUtils.h"
 
 @interface KMCSignInViewController ()
 @end
@@ -17,10 +18,14 @@
 
   self.fields = PFLogInFieldsSignUpButton |
                 PFLogInFieldsFacebook |
+                PFLogInFieldsTwitter |
                 PFLogInFieldsUsernameAndPassword |
                 PFLogInFieldsLogInButton;
   [self.logInView.facebookButton addTarget:self
                                     action:@selector(didTapFbLoginButton)
+                          forControlEvents:UIControlEventTouchUpInside];
+  [self.logInView.facebookButton addTarget:self
+                                    action:@selector(didTapTwtrLoginButton)
                           forControlEvents:UIControlEventTouchUpInside];
   [self.logInView.logInButton addTarget:self
                                  action:@selector(didTapLoginButton)
@@ -63,4 +68,17 @@
   }];
 }
 
+//- (void)didTapTwtrLoginButton {
+//  // Login PFUser using Twitter
+//  [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+//    if (!user) {
+//      NSLog(@"Uh oh. The user cancelled the Twitter login.");
+//      return;
+//    } else if (user.isNew) {
+//      NSLog(@"User signed up and logged in with Twitter!");
+//    } else {
+//      NSLog(@"User logged in with Twitter!");
+//    }
+//  }];
+//}
 @end

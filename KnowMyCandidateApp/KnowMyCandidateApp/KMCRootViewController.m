@@ -18,6 +18,7 @@
     if (![PFUser currentUser]) {
       _signInVC = [[KMCSignInViewController alloc] initWithNibName:nil bundle:nil];
       _signInVC.delegate = self;
+      _signInVC.signUpController.delegate = self;
     }
     _mainVC = [[KMCMainViewController alloc] initWithNibName:nil bundle:nil];
   }
@@ -55,6 +56,26 @@
                           completion:^(BOOL finished) {
     [_mainVC didMoveToParentViewController:self];
     [_signInVC removeFromParentViewController];
+  }];
+}
+
+#pragma mark - PFSignUpViewControllerDelegate
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController
+               didSignUpUser:(PFUser *)user {
+  [self dismissViewControllerAnimated:YES completion:NULL];
+  [PFUser logInWithUsernameInBackground:user.username
+                               password:user.password
+                                  block:^(PFUser *user, NSError *error) {
+    [self transitionFromViewController:_signInVC
+                      toViewController:_mainVC
+                              duration:0.2
+                               options:UIViewAnimationOptionTransitionFlipFromLeft
+                            animations:nil
+                            completion:^(BOOL finished) {
+                              [_mainVC didMoveToParentViewController:self];
+                              [_signInVC removeFromParentViewController];
+                            }];
   }];
 }
 

@@ -4,6 +4,7 @@
 #import "FBSDKCoreKit/FBSDKCoreKit.h"
 #import "Parse/Parse.h"
 #import "ParseFacebookUtilsV4/PFFacebookUtils.h"
+// #import "PFTwitterUtils.h"
 
 @interface AppDelegate ()
 @end
@@ -15,6 +16,9 @@
   [Parse setApplicationId:@"K1OX77eW0lBtAm8TSc8HYHzvfe7KkM4qi9vwtCBF"
                 clientKey:@"QjT0RO6xMAadjULNT1lwrQnHyIHNMhdEvJV7po3n"];
   [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+//  [PFTwitterUtils initializeWithConsumerKey:@"YOUR CONSUMER KEY"
+//                             consumerSecret:@"YOUR CONSUMER SECRET"];
+  [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   KMCRootViewController *rootVC = [[KMCRootViewController alloc] initWithNibName:nil bundle:nil];
