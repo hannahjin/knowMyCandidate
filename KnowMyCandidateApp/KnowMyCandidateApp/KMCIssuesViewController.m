@@ -1,9 +1,9 @@
-#import "KMCPollsViewController.h"
+#import "KMCIssuesViewController.h"
 
-@interface KMCPollsViewController ()
+@interface KMCIssuesViewController ()
 @end
 
-@implementation KMCPollsViewController
+@implementation KMCIssuesViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
