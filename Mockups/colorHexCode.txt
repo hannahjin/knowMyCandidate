@@ -1,0 +1,20 @@
+
+Our app color (ex. purple status bar, navigation bar): 5856D6
+
+Candidate Profile:
+	Democratic
+		Background: 244D7D
+		Star: 4A90E2
+		Profile Pic Border : 4A90E2
+	Republican
+ 		Background: BB1126
+		Star: F88C99 
+		Profile Pic Border: F88C99       
+
+Tab Icons:
+ grey : 9B9B9B
+ purple: 5856D6
+
+All Text in Open Sans
+
+Iphone 6 size: 375*667
