@@ -3,6 +3,9 @@ package com.CS130.app.web;
 import org.parse4j.ParseObject;
 import org.parse4j.ParseClassName;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 
 @ParseClassName("Candidate")
 public class Candidate extends ParseObject {
@@ -47,6 +50,14 @@ public class Candidate extends ParseObject {
 	
 	public void setCurrentPosition(String value) {
 		put("currentPosition", value);
+	}
+
+	public void setAnyField(String field, String value) {
+		put(field, value);
+	}
+
+	public void setIssues(ArrayList<Map<String, String>> issues) {
+		put("Issues", issues);
 	}
 	
 	// TODO: add rest of getters and setters
