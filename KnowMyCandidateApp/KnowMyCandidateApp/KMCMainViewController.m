@@ -1,6 +1,7 @@
 #import "KMCMainViewController.h"
 
-#import "KMCPollsViewController.h"
+#import "KMCAssets.h"
+#import "KMCIssuesViewController.h"
 #import "KMCUserProfileViewController.h"
 
 @interface KMCMainViewController ()
@@ -11,11 +12,13 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    KMCPollsViewController *pollsVC =
-        [[KMCPollsViewController alloc] initWithNibName:nil bundle:nil];
+    KMCIssuesViewController *pollsVC =
+        [[KMCIssuesViewController alloc] initWithNibName:nil bundle:nil];
     KMCUserProfileViewController *userVC =
         [[KMCUserProfileViewController alloc] initWithNibName:nil bundle:nil];
-    self.viewControllers = @[ pollsVC, userVC ];
+    UINavigationController *userNavVC =
+        [[UINavigationController alloc] initWithRootViewController:userVC];
+    self.viewControllers = @[ pollsVC, userNavVC ];
     self.selectedViewController = pollsVC;
   }
   return self;
@@ -25,8 +28,7 @@
   [super viewDidLoad];
 
   self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  self.tabBar.tintColor =
-      [UIColor colorWithRed:88.0/255.0 green:86.0/255.0 blue:214.0/255.0 alpha:1.0];
+  self.tabBar.tintColor = [KMCAssets mainPurpleColor];
 }
 
 @end
