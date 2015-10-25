@@ -1,13 +1,16 @@
-//
-//  KMCAssets.h
-//  KnowMyCandidateApp
-//
-//  Created by Samir Choudhary on 10/24/15.
-//  Copyright © 2015 Samir Choudhary. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface KMCAssets : NSObject
+
++ (UIImage *)backArrowIcon;
++ (UIImage *)candidatesTabIcon;
++ (UIImage *)eventsTabIcon;
++ (UIImage *)homeTabIcon;
++ (UIImage *)issuesTabIcon;
++ (UIImage *)signInBackground;
++ (UIImage *)userTabIcon;
+
++ (UIColor *)mainPurpleColor;
 
 @end

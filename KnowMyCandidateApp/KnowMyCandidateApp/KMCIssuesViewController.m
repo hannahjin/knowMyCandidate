@@ -1,5 +1,7 @@
 #import "KMCIssuesViewController.h"
 
+#import "KMCAssets.h"
+
 @interface KMCIssuesViewController ()
 @end
 
@@ -9,7 +11,8 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     UITabBarItem *item = [self tabBarItem];
-    item.title = @"Polls";
+    item.title = @"Issues";
+    item.image = [KMCAssets issuesTabIcon];
   }
   return self;
 }

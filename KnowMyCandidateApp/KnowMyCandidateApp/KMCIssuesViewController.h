@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface KMCPollsViewController : UIViewController
+@interface KMCIssuesViewController : UIViewController
 
 @end
