@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "KnowMyCandidate": {
+      "applicationId": "K1OX77eW0lBtAm8TSc8HYHzvfe7KkM4qi9vwtCBF"
+    },
+    "_default": {
+      "link": "KnowMyCandidate"
+    }
+  }
+}
