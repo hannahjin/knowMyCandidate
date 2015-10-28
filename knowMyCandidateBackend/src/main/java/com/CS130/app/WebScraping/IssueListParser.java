@@ -1,5 +1,7 @@
 package com.CS130.app.WebScraping;
 
+import java.io.File;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -22,14 +24,29 @@ import org.parse4j.util.ParseRegistry;
  */
 public class IssueListParser implements ParserStrategy {
     @Override
-    public void parse() {
+    public void parse(boolean scrapeLocalFile) {
         try {
-            String urlStr = "http://presidential-candidates.insidegov.com/l/40";
-            URL url = new URL(urlStr);
-            URLConnection connection = url.openConnection();
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-            String content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
+            String content;
+            if (!scrapeLocalFile) {
+                String urlStr = "http://presidential-candidates.insidegov.com/l/40";
+                URL url = new URL(urlStr);
+                URLConnection connection = url.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+                if (connection instanceof HttpURLConnection) {
+                    HttpURLConnection httpConnection = (HttpURLConnection) connection;
+                    int code = httpConnection.getResponseCode();
+                    if (code != 200) {
+                        System.out.println("Error code " + code);
+                        return;
+                    }
+                }
+                content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
+            } else {
+                String filename = "CandidateSourceFiles/HillaryClinton.html";
+                content = new Scanner(new File(filename)).useDelimiter("\\Z").next();
+            }
 
             String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - <font color=.*<i>(.*)<\\/i>";
             Pattern pattern = Pattern.compile(regex);

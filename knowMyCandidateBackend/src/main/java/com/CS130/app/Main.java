@@ -31,10 +31,11 @@ public class Main {
         String restAPIKey = "QCArbvRm6jUYwEEcSNNUT2G4nTTex4qV5KbrJHlS";
         Parse.initialize(applicationId, restAPIKey);
 
-        boolean scrapeData = false;
+        boolean scrapeData = true;
+        boolean scrapeLocalFile = true;
         if (scrapeData) {
             WebParser webParser = new WebParser();
-            webParser.parse();
+            webParser.parse(scrapeLocalFile);
         }
         
         /*
