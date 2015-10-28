@@ -1,0 +1,6 @@
+{
+  "name": "knowMyCandidate Backend",
+  "description": "Backend for knowMyCandidate app. Handles NewsFeed generation, web scraping, and etc.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}

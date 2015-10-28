@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB3D4A191BD60A7400A907F1 /* KMCIssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCIssuesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB60A3791BCD8F8C001690BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A3781BCD8F8C001690BE /* main.m */; };
 		CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37B1BCD8F8C001690BE /* AppDelegate.m */; };
 		CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */; };
@@ -24,9 +27,35 @@
 		CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */; };
 		CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A31BCD90F8001690BE /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB60A3A51BCD9100001690BE /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA6520F1BD30B27000EFAEC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652101BD30B27000EFAEC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652111BD30B27000EFAEC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652131BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652151BD3137E000EFAEC /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA652141BD3137E000EFAEC /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
+		CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CBC10A741BDBFBD900FABAF4 /* UserTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A731BDBFBD900FABAF4 /* UserTabIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A7D1BDBFCA700FABAF4 /* CandidatesTabIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A761BDBFCA700FABAF4 /* CandidatesTabIcon@1x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A7E1BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A771BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A7F1BDBFCA700FABAF4 /* HomeTabIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A781BDBFCA700FABAF4 /* HomeTabIcon@1x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A801BDBFCA700FABAF4 /* HomeTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A791BDBFCA700FABAF4 /* HomeTabIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A811BDBFCA700FABAF4 /* IssuesTabIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A7A1BDBFCA700FABAF4 /* IssuesTabIcon@1x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A821BDBFCA700FABAF4 /* IssuesTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A7B1BDBFCA700FABAF4 /* IssuesTabIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A831BDBFCA700FABAF4 /* UserTabIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A7C1BDBFCA700FABAF4 /* UserTabIcon@1x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A861BDBFCD800FABAF4 /* KMCAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC10A851BDBFCD800FABAF4 /* KMCAssets.m */; settings = {ASSET_TAGS = (); }; };
+		CBC10A891BDBFE1200FABAF4 /* EventsTabIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A871BDBFE1200FABAF4 /* EventsTabIcon@1x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A8A1BDBFE1200FABAF4 /* EventsTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A881BDBFE1200FABAF4 /* EventsTabIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A961BDC4A7700FABAF4 /* SignInBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A951BDC4A7700FABAF4 /* SignInBackground.png */; settings = {ASSET_TAGS = (); }; };
+		CBC10A991BDCCDBA00FABAF4 /* KMCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
+		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
+		CB3D4A171BD60A7400A907F1 /* KMCIssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssuesViewController.h; sourceTree = "<group>"; };
+		CB3D4A181BD60A7400A907F1 /* KMCIssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCIssuesViewController.m; sourceTree = "<group>"; };
+		CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCRootViewController.h; sourceTree = "<group>"; };
+		CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCRootViewController.m; sourceTree = "<group>"; };
 		CB60A3741BCD8F8C001690BE /* KnowMyCandidateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowMyCandidateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB60A3781BCD8F8C001690BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB60A37A1BCD8F8C001690BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,6 +77,29 @@
 		CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		CB60A3A31BCD90F8001690BE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = KnowMyCandidateApp/Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		CB60A3A51BCD9100001690BE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = KnowMyCandidateApp/Frameworks/Parse.framework; sourceTree = "<group>"; };
+		CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = KnowMyCandidateApp/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = KnowMyCandidateApp/Frameworks/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		CBA652141BD3137E000EFAEC /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = KnowMyCandidateApp/Frameworks/ParseUI.framework; sourceTree = "<group>"; };
+		CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCUserProfileViewController.h; sourceTree = "<group>"; };
+		CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCUserProfileViewController.m; sourceTree = "<group>"; };
+		CBC10A731BDBFBD900FABAF4 /* UserTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserTabIcon@2x.png"; path = "Images/UserTabIcon@2x.png"; sourceTree = "<group>"; };
+		CBC10A761BDBFCA700FABAF4 /* CandidatesTabIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CandidatesTabIcon@1x.png"; path = "Images/CandidatesTabIcon@1x.png"; sourceTree = "<group>"; };
+		CBC10A771BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CandidatesTabIcon@2x.png"; path = "Images/CandidatesTabIcon@2x.png"; sourceTree = "<group>"; };
+		CBC10A781BDBFCA700FABAF4 /* HomeTabIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HomeTabIcon@1x.png"; path = "Images/HomeTabIcon@1x.png"; sourceTree = "<group>"; };
+		CBC10A791BDBFCA700FABAF4 /* HomeTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HomeTabIcon@2x.png"; path = "Images/HomeTabIcon@2x.png"; sourceTree = "<group>"; };
+		CBC10A7A1BDBFCA700FABAF4 /* IssuesTabIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IssuesTabIcon@1x.png"; path = "Images/IssuesTabIcon@1x.png"; sourceTree = "<group>"; };
+		CBC10A7B1BDBFCA700FABAF4 /* IssuesTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IssuesTabIcon@2x.png"; path = "Images/IssuesTabIcon@2x.png"; sourceTree = "<group>"; };
+		CBC10A7C1BDBFCA700FABAF4 /* UserTabIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserTabIcon@1x.png"; path = "Images/UserTabIcon@1x.png"; sourceTree = "<group>"; };
+		CBC10A841BDBFCD800FABAF4 /* KMCAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCAssets.h; sourceTree = "<group>"; };
+		CBC10A851BDBFCD800FABAF4 /* KMCAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCAssets.m; sourceTree = "<group>"; };
+		CBC10A871BDBFE1200FABAF4 /* EventsTabIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "EventsTabIcon@1x.png"; path = "Images/EventsTabIcon@1x.png"; sourceTree = "<group>"; };
+		CBC10A881BDBFE1200FABAF4 /* EventsTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "EventsTabIcon@2x.png"; path = "Images/EventsTabIcon@2x.png"; sourceTree = "<group>"; };
+		CBC10A951BDC4A7700FABAF4 /* SignInBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignInBackground.png; path = Images/SignInBackground.png; sourceTree = "<group>"; };
+		CBC10A971BDCCDBA00FABAF4 /* KMCSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSignUpViewController.h; sourceTree = "<group>"; };
+		CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSignUpViewController.m; sourceTree = "<group>"; };
+		CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackArrow.png; path = Images/BackArrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +109,17 @@
 			files = (
 				CB60A3A11BCD90B1001690BE /* libsqlite3.dylib in Frameworks */,
 				CB60A39F1BCD90A2001690BE /* libz.1.dylib in Frameworks */,
+				CBA652111BD30B27000EFAEC /* FBSDKShareKit.framework in Frameworks */,
 				CB60A3971BCD9092001690BE /* CFNetwork.framework in Frameworks */,
 				CB60A3981BCD9092001690BE /* CoreGraphics.framework in Frameworks */,
+				CBA652101BD30B27000EFAEC /* FBSDKLoginKit.framework in Frameworks */,
 				CB60A3991BCD9092001690BE /* CoreLocation.framework in Frameworks */,
 				CB60A39A1BCD9092001690BE /* QuartzCore.framework in Frameworks */,
 				CB60A39B1BCD9092001690BE /* Security.framework in Frameworks */,
+				CBA652151BD3137E000EFAEC /* ParseUI.framework in Frameworks */,
 				CB60A39C1BCD9092001690BE /* StoreKit.framework in Frameworks */,
+				CBA652131BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework in Frameworks */,
+				CBA6520F1BD30B27000EFAEC /* FBSDKCoreKit.framework in Frameworks */,
 				CB60A3A41BCD90F8001690BE /* Bolts.framework in Frameworks */,
 				CB60A39D1BCD9092001690BE /* SystemConfiguration.framework in Frameworks */,
 				CB60A3A61BCD9100001690BE /* Parse.framework in Frameworks */,
@@ -94,11 +151,24 @@
 			children = (
 				CB60A37A1BCD8F8C001690BE /* AppDelegate.h */,
 				CB60A37B1BCD8F8C001690BE /* AppDelegate.m */,
+				CBC10A841BDBFCD800FABAF4 /* KMCAssets.h */,
+				CBC10A851BDBFCD800FABAF4 /* KMCAssets.m */,
+				CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */,
+				CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */,
+				CB3D4A171BD60A7400A907F1 /* KMCIssuesViewController.h */,
+				CB3D4A181BD60A7400A907F1 /* KMCIssuesViewController.m */,
+				CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */,
+				CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
 				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
+				CBC10A971BDCCDBA00FABAF4 /* KMCSignUpViewController.h */,
+				CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */,
+				CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */,
+				CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
 				CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */,
 				CB60A3881BCD8F8C001690BE /* Info.plist */,
+				CBC10A751BDBFBDD00FABAF4 /* Icons */,
 				CB60A3A21BCD90BF001690BE /* Frameworks */,
 				CB60A3771BCD8F8C001690BE /* Supporting Files */,
 			);
@@ -116,6 +186,11 @@
 		CB60A3A21BCD90BF001690BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBA652141BD3137E000EFAEC /* ParseUI.framework */,
+				CBA652121BD30C2D000EFAEC /* ParseFacebookUtilsV4.framework */,
+				CBA6520C1BD30B27000EFAEC /* FBSDKCoreKit.framework */,
+				CBA6520D1BD30B27000EFAEC /* FBSDKLoginKit.framework */,
+				CBA6520E1BD30B27000EFAEC /* FBSDKShareKit.framework */,
 				CB60A3A51BCD9100001690BE /* Parse.framework */,
 				CB60A3A31BCD90F8001690BE /* Bolts.framework */,
 				CB60A3A01BCD90B1001690BE /* libsqlite3.dylib */,
@@ -131,6 +206,25 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CBC10A751BDBFBDD00FABAF4 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */,
+				CBC10A761BDBFCA700FABAF4 /* CandidatesTabIcon@1x.png */,
+				CBC10A771BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png */,
+				CBC10A871BDBFE1200FABAF4 /* EventsTabIcon@1x.png */,
+				CBC10A881BDBFE1200FABAF4 /* EventsTabIcon@2x.png */,
+				CBC10A781BDBFCA700FABAF4 /* HomeTabIcon@1x.png */,
+				CBC10A791BDBFCA700FABAF4 /* HomeTabIcon@2x.png */,
+				CBC10A7A1BDBFCA700FABAF4 /* IssuesTabIcon@1x.png */,
+				CBC10A7B1BDBFCA700FABAF4 /* IssuesTabIcon@2x.png */,
+				CBC10A7C1BDBFCA700FABAF4 /* UserTabIcon@1x.png */,
+				CBC10A731BDBFBD900FABAF4 /* UserTabIcon@2x.png */,
+				CBC10A951BDC4A7700FABAF4 /* SignInBackground.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +284,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC10A7D1BDBFCA700FABAF4 /* CandidatesTabIcon@1x.png in Resources */,
+				CBC10A801BDBFCA700FABAF4 /* HomeTabIcon@2x.png in Resources */,
+				CBC10A821BDBFCA700FABAF4 /* IssuesTabIcon@2x.png in Resources */,
+				CBC10A831BDBFCA700FABAF4 /* UserTabIcon@1x.png in Resources */,
 				CB60A3871BCD8F8C001690BE /* LaunchScreen.storyboard in Resources */,
+				CBC10A741BDBFBD900FABAF4 /* UserTabIcon@2x.png in Resources */,
+				CBC10A7F1BDBFCA700FABAF4 /* HomeTabIcon@1x.png in Resources */,
+				CBC10A811BDBFCA700FABAF4 /* IssuesTabIcon@1x.png in Resources */,
 				CB60A3841BCD8F8C001690BE /* Assets.xcassets in Resources */,
+				CBC10A7E1BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png in Resources */,
+				CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */,
+				CBC10A8A1BDBFE1200FABAF4 /* EventsTabIcon@2x.png in Resources */,
+				CBC10A961BDC4A7700FABAF4 /* SignInBackground.png in Resources */,
+				CBC10A891BDBFE1200FABAF4 /* EventsTabIcon@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */,
 				CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */,
 				CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */,
+				CBC10A991BDCCDBA00FABAF4 /* KMCSignUpViewController.m in Sources */,
 				CB60A3791BCD8F8C001690BE /* main.m in Sources */,
+				CBC10A861BDBFCD800FABAF4 /* KMCAssets.m in Sources */,
+				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
+				CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */,
+				CB3D4A191BD60A7400A907F1 /* KMCIssuesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +463,7 @@
 				CB60A38D1BCD8F8C001690BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
