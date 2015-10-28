@@ -7,6 +7,7 @@ import com.CS130.app.web.IssueFactory;
 import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
 
+import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -21,27 +22,31 @@ import java.util.regex.Pattern;
  */
 public class CandidateProfileParser implements ParserStrategy {
     @Override
-    public void parse() {
+    public void parse(boolean scrapeLocalFile) {
         try {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                //http://webcache.googleusercontent.com/search?q=cache:
-                String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
-                URL url = new URL(urlStr);
-                URLConnection connection = url.openConnection();
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                String content;
+                if (!scrapeLocalFile) {
+                    String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
+                    URL url = new URL(urlStr);
+                    URLConnection connection = url.openConnection();
+                    connection.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-                if (connection instanceof HttpURLConnection) {
-                    HttpURLConnection httpConnection = (HttpURLConnection) connection;
-                    int code = httpConnection.getResponseCode();
-                    if (code != 200) {
-                        System.out.println("Error code " + code);
-                        continue;
+                    if (connection instanceof HttpURLConnection) {
+                        HttpURLConnection httpConnection = (HttpURLConnection) connection;
+                        int code = httpConnection.getResponseCode();
+                        if (code != 200) {
+                            System.out.println("Error code " + code);
+                            continue;
+                        }
                     }
+                    content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
+                } else {
+                    String filename = "CandidateSourceFiles/" + candidateId.firstName + candidateId.lastName + ".html";
+                    content = new Scanner(new File(filename)).useDelimiter("\\Z").next();
                 }
-
-                String content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
 
                 ArrayList<String> regexStrings = new ArrayList<String>();
 

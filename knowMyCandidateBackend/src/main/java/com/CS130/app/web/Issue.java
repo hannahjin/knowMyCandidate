@@ -17,7 +17,7 @@ public class Issue extends ParseObject {
 	}
 
 	public int getCandidatesFor() {
-		return getInt("candidatesFor")
+		return getInt("candidatesFor");
 	}
 
 	public int getCandidatesAgainst() {

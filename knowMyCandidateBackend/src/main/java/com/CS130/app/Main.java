@@ -17,8 +17,8 @@ public class Main {
 
     	// For Heroku, app must bind to port that Heroku provides with $PORT environment variable
     	// If you want to run locally without heroku (e.g. in Eclipse), set port() to a hard-coded value
-//    	 port(5000);
-        port(Integer.valueOf(System.getenv("PORT")));
+    	 port(5000);
+//        port(Integer.valueOf(System.getenv("PORT")));
         
     	// setup Spark and basic routes
         new WebConfig();
@@ -31,10 +31,11 @@ public class Main {
         String restAPIKey = "QCArbvRm6jUYwEEcSNNUT2G4nTTex4qV5KbrJHlS";
         Parse.initialize(applicationId, restAPIKey);
 
-        boolean scrapeData = false;
+        boolean scrapeData = true;
+        boolean scrapeLocalFile = true;
         if (scrapeData) {
             WebParser webParser = new WebParser();
-            webParser.parse();
+            webParser.parse(scrapeLocalFile);
         }
         
         /*

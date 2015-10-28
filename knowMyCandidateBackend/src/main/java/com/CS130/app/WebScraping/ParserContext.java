@@ -10,7 +10,7 @@ public class ParserContext {
         this.parserStrategy = strategy;
     }
 
-    public void executeStrategy(){
-        parserStrategy.parse();
+    public void executeStrategy(boolean scrapeLocalFile){
+        parserStrategy.parse(scrapeLocalFile);
     }
 }

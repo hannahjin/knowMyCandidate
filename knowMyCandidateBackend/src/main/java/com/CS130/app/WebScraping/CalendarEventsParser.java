@@ -5,7 +5,7 @@ package com.CS130.app.WebScraping;
  */
 public class CalendarEventsParser implements ParserStrategy {
     @Override
-    public void parse() {
+    public void parse(boolean scrapeLocalFile) {
 
     }
 }
