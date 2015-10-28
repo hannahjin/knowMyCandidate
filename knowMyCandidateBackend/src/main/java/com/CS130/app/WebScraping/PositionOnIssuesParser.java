@@ -24,6 +24,9 @@ public class PositionOnIssuesParser implements ParserStrategy {
         try {
             boolean addToIssuesPoll = true;
 
+            if (addToIssuesPoll)
+                resetPolls();
+
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
@@ -49,7 +52,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     content = new Scanner(new File(filename)).useDelimiter("\\Z").next();
                 }
 
-                String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - <font color=.*<i>(.*)<\\/i>";
+                String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - .*<i>(.*)<\\/i>";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher m = pattern.matcher(content);
 
@@ -92,6 +95,22 @@ public class PositionOnIssuesParser implements ParserStrategy {
             }
         } catch (Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    private void resetPolls() {
+        try {
+            ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
+            List<Issue> issueList = query.find();
+            for (Issue issue : issueList) {
+                issue.setCandidatesFor(0);
+                issue.setCandidatesAgainst(0);
+                issue.setCandidatesNeutral(0);
+                issue.save();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Failed to reset polls count");
         }
     }
 
