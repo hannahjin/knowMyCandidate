@@ -18,7 +18,7 @@ public class Main {
 
     	// For Heroku, app must bind to port that Heroku provides with $PORT environment variable
     	// If you want to run locally without heroku (e.g. in Eclipse), set port() to a hard-coded value
-//    	 port(5000);
+        //port(5000);
         port(Integer.valueOf(System.getenv("PORT")));
 
     	// setup Spark and basic routes
@@ -40,7 +40,7 @@ public class Main {
             webParser.parse(scrapeFromLocalFile);
         }
 
-        boolean fetchTweets = true;
+        boolean fetchTweets = false;
         if (fetchTweets) {
             TwitterClient twitterClient = new TwitterClient();
             twitterClient.fetchCandidateTweets();
