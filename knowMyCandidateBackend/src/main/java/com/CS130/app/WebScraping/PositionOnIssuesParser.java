@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 public class PositionOnIssuesParser implements ParserStrategy {
     @Override
     public void parse() {
+        bool addToIssuesPoll = true;
         try {
             addCandidatesToProcess();
 
@@ -38,7 +39,6 @@ public class PositionOnIssuesParser implements ParserStrategy {
                         continue;
                     }
                 }
-
                 String content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
 
                 String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - <font color=.*<i>(.*)<\\/i>";
@@ -69,7 +69,9 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     Map<String, String> map = new HashMap<>();
                     map.put(issue, position);
                     issues.add(map);
-                    //System.out.println(issue + ", " + position);
+
+                    if (addToIssuesPoll)
+                        addToIssuesPoll(issue, position);
                 }
                 candidate.setIssues(issues);
 
@@ -80,9 +82,35 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     System.out.println("Failed to save candidate issues for: " + candidateId.firstName + " " + candidateId.lastName);
                 }
             }
-        }
-        catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    private void addToIssuesPoll(String issueStr, String position) {
+        ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
+        query.whereEqualTo("topic", issueStr);
+        query.limit(1);
+        List<Issue> issueList = query.find();
+        Issue issue;
+
+        if (issueList != null)
+            issue = issueList.get(0);
+        else
+            System.out.println("Issue " + issue + "not found in parse db");
+
+        if (position.equals("Strongly Agrees") || position.equals("Agrees"))
+            issue.setCandidatesFor(issue.getCandidatesFor() + 1);
+        else if (position.equals("Strongly Disagrees") || position.equals("Disagrees"))
+            issue.setCandidatesAgainst(issue.getCandidatesAgainst() + 1);
+        else
+            issue.setCandidatesNeutral(issue.getCandidatesNeutral() + 1);
+
+        try {
+            issue.save();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Failed to save issue poll count for: " + issueStr);
         }
     }
 
