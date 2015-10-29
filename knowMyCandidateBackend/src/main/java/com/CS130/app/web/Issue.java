@@ -7,7 +7,7 @@ import org.parse4j.ParseClassName;
 @ParseClassName("Issue")
 public class Issue extends ParseObject {
 	public Issue() { }
-	
+
 	public String getTopic() {
 		return getString("topic");
 	}
