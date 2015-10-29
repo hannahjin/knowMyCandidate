@@ -83,8 +83,10 @@ public class TwitterClient {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
             List<Newsfeed> newsfeedList = parseQuery.find();
-            for (Newsfeed newsfeed : newsfeedList) {
-                newsfeed.delete();
+            if (newsfeedList != null) {
+                for (Newsfeed newsfeed : newsfeedList) {
+                    newsfeed.delete();
+                }
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -93,7 +95,7 @@ public class TwitterClient {
     }
 
     private void addCandidatesToProcess() {
-        addCandidate("MartinOMalley", "MartinO");
+        addCandidate("MartinOMalley", "MartinO'Malley");
         addCandidate("HillaryClinton", "HillaryClinton");
         addCandidate("realDonaldTrump", "DonaldTrump");
         addCandidate("BernieSanders", "BernieSanders");
