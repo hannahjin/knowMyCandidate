@@ -22,15 +22,12 @@ public class PositionOnIssuesParser implements ParserStrategy {
     @Override
     public void parse(boolean scrapeLocalFile) {
         try {
-            boolean addToIssuesPoll = true;
-
-            if (addToIssuesPoll)
-                resetPolls();
-
+            resetPolls();
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                //http://webcache.googleusercontent.com/search?q=cache:
+                System.out.println("Processing candidate positions for: " + candidateId.firstName + " " + candidateId.lastName);
+
                 String content;
                 if (!scrapeLocalFile) {
                     String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
@@ -77,12 +74,15 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     String issue = m.group(1);
                     String position = m.group(2);
 
-                    Map<String, String> map = new HashMap<>();
-                    map.put(issue, position);
-                    issues.add(map);
+                    String issueId = addToIssuesPoll(issue, position);
+                    if (issueId == null || issueId.equals("")) {
+                        System.out.println("Issue " + issue + " not found");
+                        continue;
+                    }
 
-                    if (addToIssuesPoll)
-                        addToIssuesPoll(issue, position);
+                    Map<String, String> map = new HashMap<>();
+                    map.put(issueId, position);
+                    issues.add(map);
                 }
                 candidate.setIssues(issues);
 
@@ -114,7 +114,8 @@ public class PositionOnIssuesParser implements ParserStrategy {
         }
     }
 
-    private void addToIssuesPoll(String issueStr, String position) {
+    private String addToIssuesPoll(String issueStr, String position) {
+        String issueId = "";
         try {
             ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
             query.whereEqualTo("topic", issueStr);
@@ -123,6 +124,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
 
             if (issueList != null) {
                 Issue issue = issueList.get(0);
+                issueId = issue.getObjectId();
 
                 if (position.equals("Strongly Agrees") || position.equals("Agrees"))
                     issue.setCandidatesFor(issue.getCandidatesFor() + 1);
@@ -135,11 +137,11 @@ public class PositionOnIssuesParser implements ParserStrategy {
             } else {
                 System.out.println("Issue " + issueStr + "not found in parse db");
             }
-
         } catch (ParseException e) {
             e.printStackTrace();
             System.out.println("Failed to save issue poll count for: " + issueStr);
         }
+        return issueId;
     }
 
     private void addCandidatesToProcess() {
