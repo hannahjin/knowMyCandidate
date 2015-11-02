@@ -31,7 +31,6 @@ static const CGFloat kSpacing = 10.f;
                                         target:self
                                         action:@selector(didTapLogOut)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-    [[UINavigationBar appearance] setBarTintColor:[KMCAssets mainPurpleColor]];
 
     _logOutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_logOutButton setTitle:@"Log out" forState:UIControlStateNormal];
@@ -47,6 +46,8 @@ static const CGFloat kSpacing = 10.f;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  self.navigationController.navigationBar.barTintColor = [KMCAssets mainPurpleColor];
 
   _profilePictureView.layer.cornerRadius = kProfilePictureSize / 2.f;
   _profilePictureView.layer.masksToBounds = YES;

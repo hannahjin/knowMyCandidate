@@ -71,11 +71,6 @@
       [[KMCSurveyViewController alloc] initWithCollectionViewLayout:layout];
   surveyVC.delegate = self;
   _surveyNavVC = [[UINavigationController alloc] initWithRootViewController:surveyVC];
-  _surveyNavVC.navigationBar.topItem.title = @"How do you feel about...";
-  [[UINavigationBar appearance] setTitleTextAttributes:@{
-    NSForegroundColorAttributeName : [UIColor whiteColor]
-  }];
-  [[UINavigationBar appearance] setTranslucent:NO];
 }
 
 - (void)didLogOutUser {

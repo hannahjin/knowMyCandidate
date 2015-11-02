@@ -65,6 +65,12 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
+  UINavigationBar *navigationBar = self.navigationController.navigationBar;
+  navigationBar.topItem.title = @"How do you feel about...";
+  navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
+  navigationBar.translucent = NO;
+  navigationBar.barTintColor = [KMCAssets mainPurpleColor];
+
   CGRect frame = self.collectionView.frame;
   frame.size.height -= kButtonHeight;
   self.collectionView.frame = frame;
@@ -82,7 +88,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     for (PFObject *object in objects) {
       temp[object.objectId] = [object objectForKey:@"topic"];
-      _sliderValues[object.objectId] = @(1.f);
+      _sliderValues[object.objectId] = @(3.f);
     }
     _requestInFlight = NO;
     _surveyDictionary = [NSDictionary dictionaryWithDictionary:[temp copy]];

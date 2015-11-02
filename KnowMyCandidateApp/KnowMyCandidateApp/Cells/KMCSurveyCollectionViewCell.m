@@ -5,6 +5,19 @@ static const CGFloat kLabelWidth = 60.f;
 static const CGFloat kSliderPadding = 20.f;
 static const CGFloat kVerticalPadding = 25.f;
 
+@interface KMCSlider : UISlider
+@end
+
+@implementation KMCSlider
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+  CGRect bounds = self.bounds;
+  bounds = CGRectInset(bounds, -10, -10);
+  return CGRectContainsPoint(bounds, point);
+}
+
+@end
+
 @implementation KMCSurveyCollectionViewCell {
   UILabel *_questionLabel;
   UILabel *_stronglyDisagreeLabel;
@@ -12,7 +25,7 @@ static const CGFloat kVerticalPadding = 25.f;
   UILabel *_neutralLabel;
   UILabel *_agreeLabel;
   UILabel *_stronglyAgreeLabel;
-  UISlider *_slider;
+  KMCSlider *_slider;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -27,9 +40,10 @@ static const CGFloat kVerticalPadding = 25.f;
     _questionLabel.textAlignment = NSTextAlignmentCenter;
     [contentView addSubview:_questionLabel];
 
-    _slider = [[UISlider alloc] init];
+    _slider = [[KMCSlider alloc] init];
     _slider.minimumValue = 1.f;
     _slider.maximumValue = 5.f;
+    _slider.value = 3.f;
     [contentView addSubview:_slider];
     _slider.bounds = CGRectMake(0.f,
                                 0.f,
@@ -44,7 +58,7 @@ static const CGFloat kVerticalPadding = 25.f;
                 action:@selector(didSlide)
       forControlEvents:UIControlEventTouchDragInside];
 
-    _sliderValue = _slider.minimumValue;
+    _sliderValue = _slider.value;
     [self setUpLabels];
   }
   return self;
