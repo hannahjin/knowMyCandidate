@@ -1,16 +1,24 @@
 #import "KMCRootViewController.h"
 
+#import "KMCAssets.h"
 #import "KMCMainViewController.h"
+#import "KMCNewUserDetailsViewController.h"
 #import "KMCSignInViewController.h"
 #import "KMCSignUpViewController.h"
+#import "KMCSurveyViewController.h"
 #import "Parse/Parse.h"
 
-@interface KMCRootViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface KMCRootViewController () <
+    KMCSurveyViewControllerDelegate,
+    PFLogInViewControllerDelegate,
+    PFSignUpViewControllerDelegate
+>
 @end
 
 @implementation KMCRootViewController {
   KMCSignInViewController *_signInVC;
   KMCMainViewController *_mainVC;
+  UINavigationController *_surveyNavVC;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -47,6 +55,23 @@
   }
 }
 
+- (void)setUpMainVC {
+  _mainVC = [[KMCMainViewController alloc] initWithNibName:nil bundle:nil];
+}
+
+- (void)setUpSignInVC {
+  _signInVC = [[KMCSignInViewController alloc] initWithNibName:nil bundle:nil];
+  _signInVC.delegate = self;
+  _signInVC.signUpController = [[KMCSignUpViewController alloc] initWithNibName:nil bundle:nil];
+  _signInVC.signUpController.delegate = self;
+}
+
+- (void)setUpSurveyVC {
+  KMCNewUserDetailsViewController *detailsVC =
+      [[KMCNewUserDetailsViewController alloc] initWithNibName:nil bundle:nil];
+  _surveyNavVC = [[UINavigationController alloc] initWithRootViewController:detailsVC];
+}
+
 - (void)didLogOutUser {
   [self setUpSignInVC];
   [self addChildViewController:_signInVC];
@@ -63,30 +88,29 @@
   }];
 }
 
-- (void)setUpMainVC {
-  _mainVC = [[KMCMainViewController alloc] initWithNibName:nil bundle:nil];
-}
-
-- (void)setUpSignInVC {
-  _signInVC = [[KMCSignInViewController alloc] initWithNibName:nil bundle:nil];
-  _signInVC.delegate = self;
-  _signInVC.signUpController = [[KMCSignUpViewController alloc] initWithNibName:nil bundle:nil];
-  _signInVC.signUpController.delegate = self;
-}
-
 #pragma mark - PFLogInViewControllerDelegate
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-  [self setUpMainVC];
-  [self addChildViewController:_mainVC];
+  BOOL hasSurvey = [[PFUser currentUser] objectForKey:kSurveyAnswersKey];
+  if (!hasSurvey) {
+    [self setUpSurveyVC];
+    [self addChildViewController:_surveyNavVC];
+  } else {
+    [self setUpMainVC];
+    [self addChildViewController:_mainVC];
+  }
   [_signInVC willMoveToParentViewController:nil];
   [self transitionFromViewController:_signInVC
-                    toViewController:_mainVC
+                    toViewController:hasSurvey ? _mainVC : _surveyNavVC
                             duration:0.2
                              options:UIViewAnimationOptionTransitionFlipFromLeft
                           animations:nil
                           completion:^(BOOL finished) {
-    [_mainVC didMoveToParentViewController:self];
+    if (hasSurvey) {
+      [_mainVC didMoveToParentViewController:self];
+    } else {
+      [_surveyNavVC didMoveToParentViewController:self];
+    }
     [_signInVC removeFromParentViewController];
     _signInVC = nil;
   }];
@@ -96,23 +120,42 @@
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController
                didSignUpUser:(PFUser *)user {
-  [self setUpMainVC];
+  [self setUpSurveyVC];
   [self dismissViewControllerAnimated:YES completion:nil];
   [PFUser logInWithUsernameInBackground:user.username
                                password:user.password
                                   block:^(PFUser *user, NSError *error) {
-    [self addChildViewController:_mainVC];
+    [self addChildViewController:_surveyNavVC];
     [_signInVC willMoveToParentViewController:nil];
     [self transitionFromViewController:_signInVC
-                      toViewController:_mainVC
+                      toViewController:_surveyNavVC
                               duration:0.2
                                options:UIViewAnimationOptionTransitionFlipFromLeft
                             animations:nil
                             completion:^(BOOL finished) {
-      [_mainVC didMoveToParentViewController:self];
+      [_surveyNavVC didMoveToParentViewController:self];
       [_signInVC removeFromParentViewController];
       _signInVC = nil;
     }];
+  }];
+}
+
+#pragma mark - KMCSurveyViewControllerDelegate
+
+- (void)didCompleteSurvey {
+  [self setUpMainVC];
+  [self dismissViewControllerAnimated:YES completion:nil];
+  [self addChildViewController:_mainVC];
+  [_surveyNavVC willMoveToParentViewController:nil];
+  [self transitionFromViewController:_surveyNavVC
+                    toViewController:_mainVC
+                            duration:0.2
+                             options:UIViewAnimationOptionTransitionFlipFromLeft
+                          animations:nil
+                          completion:^(BOOL finished) {
+    [_mainVC didMoveToParentViewController:self];
+    [_surveyNavVC removeFromParentViewController];
+    _surveyNavVC = nil;
   }];
 }
 

@@ -2,17 +2,17 @@ package com.CS130.app.WebScraping;
 
 public class WebParser {
 
-    public void parse() {
+    public void parse(boolean scrapeLocalFile) {
         ParserContext parserContext;
-
-        parserContext = new ParserContext(new IssueListParser());
-        parserContext.executeStrategy();
-
-        parserContext = new ParserContext(new CandidateProfileParser());
-        parserContext.executeStrategy();
+//
+//        parserContext = new ParserContext(new IssueListParser());
+//        parserContext.executeStrategy(scrapeLocalFile);
+//
+//        parserContext = new ParserContext(new CandidateProfileParser());
+//        parserContext.executeStrategy(scrapeLocalFile);
 
         parserContext = new ParserContext(new PositionOnIssuesParser());
-        parserContext.executeStrategy();
+        parserContext.executeStrategy(scrapeLocalFile);
     }
 }
 

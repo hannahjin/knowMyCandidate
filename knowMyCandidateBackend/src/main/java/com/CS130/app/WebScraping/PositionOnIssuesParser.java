@@ -7,6 +7,7 @@ import org.parse4j.ParseException;
 import org.parse4j.ParseObject;
 import org.parse4j.ParseQuery;
 
+import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -19,29 +20,36 @@ import java.util.regex.Pattern;
  */
 public class PositionOnIssuesParser implements ParserStrategy {
     @Override
-    public void parse() {
+    public void parse(boolean scrapeLocalFile) {
         try {
+            resetPolls();
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                //http://webcache.googleusercontent.com/search?q=cache:
-                String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
-                URL url = new URL(urlStr);
-                URLConnection connection = url.openConnection();
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                System.out.println("Processing candidate positions for: " + candidateId.firstName + " " + candidateId.lastName);
 
-                if (connection instanceof HttpURLConnection) {
-                    HttpURLConnection httpConnection = (HttpURLConnection) connection;
-                    int code = httpConnection.getResponseCode();
-                    if (code != 200) {
-                        System.out.println("Error code " + code);
-                        continue;
+                String content;
+                if (!scrapeLocalFile) {
+                    String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
+                    URL url = new URL(urlStr);
+                    URLConnection connection = url.openConnection();
+                    connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+                    if (connection instanceof HttpURLConnection) {
+                        HttpURLConnection httpConnection = (HttpURLConnection) connection;
+                        int code = httpConnection.getResponseCode();
+                        if (code != 200) {
+                            System.out.println("Error code " + code);
+                            continue;
+                        }
                     }
+                    content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
+                } else {
+                    String filename = "CandidateSourceFiles/" + candidateId.firstName + candidateId.lastName + ".html";
+                    content = new Scanner(new File(filename)).useDelimiter("\\Z").next();
                 }
 
-                String content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
-
-                String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - <font color=.*<i>(.*)<\\/i>";
+                String regex = "<td colspan='2' class='fullrow fdata'><font size=\"3\"><b>(.*)<\\/b><\\/font> - .*<i>(.*)<\\/i>";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher m = pattern.matcher(content);
 
@@ -56,8 +64,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     candidate = candidateFactory.getNewCandidate();
                     candidate.setFirstName(candidateId.firstName);
                     candidate.setLastName(candidateId.lastName);
-                }
-                else {
+                } else {
                     candidate = candidateList.get(0);
                 }
 
@@ -66,10 +73,16 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 while (m.find()) {
                     String issue = m.group(1);
                     String position = m.group(2);
+
+                    String issueId = addToIssuesPoll(issue, position);
+                    if (issueId == null || issueId.equals("")) {
+                        System.out.println("Issue " + issue + " not found");
+                        continue;
+                    }
+
                     Map<String, String> map = new HashMap<>();
-                    map.put(issue, position);
+                    map.put(issueId, position);
                     issues.add(map);
-                    //System.out.println(issue + ", " + position);
                 }
                 candidate.setIssues(issues);
 
@@ -80,10 +93,55 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     System.out.println("Failed to save candidate issues for: " + candidateId.firstName + " " + candidateId.lastName);
                 }
             }
-        }
-        catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    private void resetPolls() {
+        try {
+            ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
+            List<Issue> issueList = query.find();
+            for (Issue issue : issueList) {
+                issue.setCandidatesFor(0);
+                issue.setCandidatesAgainst(0);
+                issue.setCandidatesNeutral(0);
+                issue.save();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Failed to reset polls count");
+        }
+    }
+
+    private String addToIssuesPoll(String issueStr, String position) {
+        String issueId = "";
+        try {
+            ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
+            query.whereEqualTo("topic", issueStr);
+            query.limit(1);
+            List<Issue> issueList = query.find();
+
+            if (issueList != null) {
+                Issue issue = issueList.get(0);
+                issueId = issue.getObjectId();
+
+                if (position.equals("Strongly Agrees") || position.equals("Agrees"))
+                    issue.setCandidatesFor(issue.getCandidatesFor() + 1);
+                else if (position.equals("Strongly Disagrees") || position.equals("Disagrees"))
+                    issue.setCandidatesAgainst(issue.getCandidatesAgainst() + 1);
+                else
+                    issue.setCandidatesNeutral(issue.getCandidatesNeutral() + 1);
+
+                issue.save();
+            } else {
+                System.out.println("Issue " + issueStr + "not found in parse db");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Failed to save issue poll count for: " + issueStr);
+        }
+        return issueId;
     }
 
     private void addCandidatesToProcess() {

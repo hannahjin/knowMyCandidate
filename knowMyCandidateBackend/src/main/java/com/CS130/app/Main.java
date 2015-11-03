@@ -2,6 +2,7 @@ package com.CS130.app;
 
 import static spark.Spark.port;
 
+import com.CS130.app.TwitterClient.TwitterClient;
 import com.CS130.app.WebScraping.WebParser;
 import com.CS130.app.web.*;
 
@@ -17,24 +18,32 @@ public class Main {
 
     	// For Heroku, app must bind to port that Heroku provides with $PORT environment variable
     	// If you want to run locally without heroku (e.g. in Eclipse), set port() to a hard-coded value
-//    	 port(5000);
+        //port(5000);
         port(Integer.valueOf(System.getenv("PORT")));
-        
+
     	// setup Spark and basic routes
         new WebConfig();
-        
+
         // subclasses need to be initialized before calling Parse.initialize()
         ParseRegistry.registerSubclass(Candidate.class);
         ParseRegistry.registerSubclass(Issue.class);
+        ParseRegistry.registerSubclass(Newsfeed.class);
 
         String applicationId = "K1OX77eW0lBtAm8TSc8HYHzvfe7KkM4qi9vwtCBF";
         String restAPIKey = "QCArbvRm6jUYwEEcSNNUT2G4nTTex4qV5KbrJHlS";
         Parse.initialize(applicationId, restAPIKey);
 
         boolean scrapeData = false;
+        boolean scrapeFromLocalFile = true;
         if (scrapeData) {
             WebParser webParser = new WebParser();
-            webParser.parse();
+            webParser.parse(scrapeFromLocalFile);
+        }
+
+        boolean fetchTweets = false;
+        if (fetchTweets) {
+            TwitterClient twitterClient = new TwitterClient();
+            twitterClient.fetchCandidateTweets();
         }
         
         /*
