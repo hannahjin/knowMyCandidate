@@ -2,6 +2,7 @@
 
 #import "KMCAssets.h"
 #import "KMCMainViewController.h"
+#import "KMCNewUserDetailsViewController.h"
 #import "KMCSignInViewController.h"
 #import "KMCSignUpViewController.h"
 #import "KMCSurveyViewController.h"
@@ -66,11 +67,9 @@
 }
 
 - (void)setUpSurveyVC {
-  UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-  KMCSurveyViewController *surveyVC =
-      [[KMCSurveyViewController alloc] initWithCollectionViewLayout:layout];
-  surveyVC.delegate = self;
-  _surveyNavVC = [[UINavigationController alloc] initWithRootViewController:surveyVC];
+  KMCNewUserDetailsViewController *detailsVC =
+      [[KMCNewUserDetailsViewController alloc] initWithNibName:nil bundle:nil];
+  _surveyNavVC = [[UINavigationController alloc] initWithRootViewController:detailsVC];
 }
 
 - (void)didLogOutUser {

@@ -10,6 +10,6 @@ extern NSString *const kSurveyAnswersKey;
 
 @interface KMCSurveyViewController : UICollectionViewController
 
-@property (nonatomic, weak) id<KMCSurveyViewControllerDelegate> delegate;
+@property (nonatomic, weak) id delegate;
 
 @end

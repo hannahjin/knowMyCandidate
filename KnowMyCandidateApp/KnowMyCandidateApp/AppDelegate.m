@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 
+#import "KMCAssets.h"
 #import "KMCRootViewController.h"
 #import "FBSDKCoreKit/FBSDKCoreKit.h"
 #import "Parse/Parse.h"
@@ -21,6 +22,13 @@
   self.window.rootViewController = rootVC;
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
+
+  [[UINavigationBar appearance] setBarTintColor:[KMCAssets mainPurpleColor]];
+  [[UINavigationBar appearance] setTitleTextAttributes:@{
+    NSForegroundColorAttributeName : [UIColor whiteColor]
+  }];
+  [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+  [[UINavigationBar appearance] setTranslucent:NO];
 
   return [[FBSDKApplicationDelegate sharedInstance] application:application
                                   didFinishLaunchingWithOptions:launchOptions];
