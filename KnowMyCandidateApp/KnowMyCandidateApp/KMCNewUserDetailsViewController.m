@@ -17,11 +17,27 @@ static const CGFloat kVerticalPadding = 20.f;
 static const NSInteger kMinimumAge = 18;
 
 @interface KMCTextField : UITextField
+
+- (instancetype)initWithCaret:(BOOL)caret;
+
 @end
 
-@implementation KMCTextField
+@implementation KMCTextField {
+  BOOL _showCaret;
+}
+
+- (instancetype)initWithCaret:(BOOL)caret {
+  self = [super init];
+  if (self) {
+    _showCaret = caret;
+  }
+  return self;
+}
 
 - (CGRect)caretRectForPosition:(UITextPosition *)position {
+  if (_showCaret) {
+    return [super caretRectForPosition:position];
+  }
   return CGRectZero;
 }
 
@@ -78,7 +94,7 @@ static const NSInteger kMinimumAge = 18;
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    _nameField = [[KMCTextField alloc] init];
+    _nameField = [[KMCTextField alloc] initWithCaret:YES];
     _nameField.placeholder = @"Enter name";
     _nameField.backgroundColor = [UIColor whiteColor];
     _nameField.borderStyle = UITextBorderStyleNone;
