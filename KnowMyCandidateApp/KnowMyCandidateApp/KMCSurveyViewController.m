@@ -131,11 +131,10 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 
   cell.delegate = self;
   NSArray *keys = [_surveyDictionary allKeys];
-  NSArray *values = [_surveyDictionary allValues];
-  NSArray *sliderKeys = [_sliderValues allValues];
-  cell.text = values[indexPath.item];
-  cell.cellID = keys[indexPath.item];
-  NSNumber *number = sliderKeys[indexPath.item];
+  NSString *issueID = keys[indexPath.item];
+  cell.text = _surveyDictionary[issueID];
+  cell.cellID = issueID;
+  NSNumber *number = _sliderValues[issueID];
   cell.sliderValue = [number doubleValue];
 
   return cell;
