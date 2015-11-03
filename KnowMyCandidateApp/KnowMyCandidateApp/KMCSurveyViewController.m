@@ -14,6 +14,7 @@ static const CGFloat kCellHeight = 150.f;
 @end
 
 @implementation KMCSurveyViewController {
+  BOOL _boundsChanged;
   BOOL _requestInFlight;
   NSDictionary *_surveyDictionary;
   UIButton *_submitButton;
@@ -26,7 +27,6 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   self = [super initWithCollectionViewLayout:layout];
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.collectionView.backgroundColor = [KMCAssets mainPurpleColor];
 
     _sliderValues = [[NSMutableDictionary alloc] init];
     [self getSurveyQuestions];
@@ -37,6 +37,9 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  self.collectionView.backgroundColor = [KMCAssets mainPurpleColor];
+  self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+                                         UIViewAutoresizingFlexibleWidth;
   [self.collectionView registerClass:[KMCSurveyCollectionViewCell class]
           forCellWithReuseIdentifier:reuseIdentifier];
 
@@ -45,6 +48,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
       (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
   layout.itemSize = CGSizeMake(self.view.bounds.size.width - 2 * kCellPadding, kCellHeight);
   layout.sectionInset = UIEdgeInsetsMake(kCellPadding, kCellPadding, kCellPadding, kCellPadding);
+
+  self.navigationItem.title = @"How do you feel about...";
 
   // Defining submit button attributes.
   CGFloat width = self.collectionView.frame.size.width;
@@ -62,14 +67,13 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   [self.view addSubview:_submitButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
+- (void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
 
-  UINavigationBar *navigationBar = self.navigationController.navigationBar;
-  navigationBar.topItem.title = @"How do you feel about...";
-  navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
-  navigationBar.translucent = NO;
-  navigationBar.barTintColor = [KMCAssets mainPurpleColor];
+  if (_boundsChanged) {
+    return;
+  }
+  _boundsChanged = YES;
 
   CGRect frame = self.collectionView.frame;
   frame.size.height -= kButtonHeight;
@@ -84,6 +88,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   PFQuery *query = [PFQuery queryWithClassName:@"Issue"];
   NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
   _requestInFlight = YES;
+  _submitButton.hidden = YES;
 
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     for (PFObject *object in objects) {
@@ -91,6 +96,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
       _sliderValues[object.objectId] = @(3.f);
     }
     _requestInFlight = NO;
+    _submitButton.hidden = NO;
     _surveyDictionary = [NSDictionary dictionaryWithDictionary:[temp copy]];
 
     [self.collectionView reloadData];

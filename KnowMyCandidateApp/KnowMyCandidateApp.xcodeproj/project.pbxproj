@@ -12,6 +12,7 @@
 		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; };
 		CB5B2B841BE2B9E90088B32E /* KMCSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */; };
 		CB5B2B881BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B871BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m */; };
+		CB5B2B8B1BE876080088B32E /* KMCNewUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */; };
 		CB60A3791BCD8F8C001690BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A3781BCD8F8C001690BE /* main.m */; };
 		CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37B1BCD8F8C001690BE /* AppDelegate.m */; };
 		CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */; };
@@ -62,6 +63,8 @@
 		CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyViewController.m; sourceTree = "<group>"; };
 		CB5B2B861BE53F6E0088B32E /* KMCSurveyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCSurveyCollectionViewCell.h; path = Cells/KMCSurveyCollectionViewCell.h; sourceTree = "<group>"; };
 		CB5B2B871BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCSurveyCollectionViewCell.m; path = Cells/KMCSurveyCollectionViewCell.m; sourceTree = "<group>"; };
+		CB5B2B891BE876080088B32E /* KMCNewUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCNewUserDetailsViewController.h; sourceTree = "<group>"; };
+		CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCNewUserDetailsViewController.m; sourceTree = "<group>"; };
 		CB60A3741BCD8F8C001690BE /* KnowMyCandidateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowMyCandidateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB60A3781BCD8F8C001690BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB60A37A1BCD8F8C001690BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */,
 				CB3D4A171BD60A7400A907F1 /* KMCIssuesViewController.h */,
 				CB3D4A181BD60A7400A907F1 /* KMCIssuesViewController.m */,
+				CB5B2B891BE876080088B32E /* KMCNewUserDetailsViewController.h */,
+				CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */,
 				CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */,
 				CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
@@ -337,6 +342,7 @@
 				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
 				CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */,
 				CB3D4A191BD60A7400A907F1 /* KMCIssuesViewController.m in Sources */,
+				CB5B2B8B1BE876080088B32E /* KMCNewUserDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
