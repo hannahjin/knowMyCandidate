@@ -18,7 +18,7 @@ def bing_search(query):
     # create credential for authentication
     credentials = (':%s' % API_KEY).encode('base64')[:-1]
     auth = 'Basic %s' % credentials
-    url = 'https://api.datamarket.azure.com/Bing/Search/v1/News'+'?Query=%27'+ escaped_query+'%27&$top=5&$format=json'
+    url = 'https://api.datamarket.azure.com/Bing/Search/v1/News'+'?Query=%27'+ escaped_query+'%27&$top=20&$format=json'
     request = urllib2.Request(url)
     request.add_header('Authorization', auth)
     request_opener = urllib2.build_opener()
