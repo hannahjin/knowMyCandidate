@@ -1,11 +1,14 @@
 # knowMyCandidate Backend
 
-Backend for knowMyCandidate app. Handles NewsFeed generation, web scraping, and other things.
+Backend for knowMyCandidate app. Handles web scraping, Twitter feed updating, and other things.
 
 Hosted on Heroku and uses Spark web framework.
 
-Temporary URL:
-https://sleepy-dusk-2960.herokuapp.com
+URL:
+https://kmc-backend.herokuapp.com/
+
+Config Settings:
+https://kmc-backend.herokuapp.com/status
 
 ## Useful Maven commands
 
