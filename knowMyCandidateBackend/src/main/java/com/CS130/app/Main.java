@@ -3,8 +3,11 @@ package com.CS130.app;
 import static spark.Spark.port;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,6 +25,7 @@ public class Main {
 
 	private static Properties prop;
 	private static InputStream config_file;
+	private static OutputStream config_out;
 	private static boolean scrapeData;
 	private static boolean fetchTweets;
 	
@@ -57,8 +61,8 @@ public class Main {
             WebParser webParser = new WebParser();
             webParser.parse(scrapeFromLocalFile);
         }
- 
-        //scheduleTweetFetcher();
+        
+        scheduleTweetFetcher();
     }
     
     public static boolean getScrapeData() {
@@ -93,6 +97,28 @@ public class Main {
 			}
 		}
     }
+    
+    // TODO: Fix, needs to update settings, not override
+    /*
+    public static void disableFetchTweets() {
+    	try {
+			config_out = new FileOutputStream("backend.properties");
+			prop = new Properties();
+			prop.setProperty("fetchTweets", "false");
+			prop.store(config_out, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (config_out != null) {
+				try {
+					config_out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+    }*/
     
     private static void scheduleTweetFetcher() {
     	TwitterClient twitterClient = new TwitterClient();

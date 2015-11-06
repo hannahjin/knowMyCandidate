@@ -33,6 +33,8 @@ public class WebConfig {
         	status += "scrapeData=" + Main.getScrapeData() + "</p>";
         	return status;
         });
+        
+        // TODO: add enable/disable fetchtweets functions
     }
     
 }
