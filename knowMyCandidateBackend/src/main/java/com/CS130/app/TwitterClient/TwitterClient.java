@@ -86,11 +86,13 @@ public class TwitterClient {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
             List<Newsfeed> newsfeedList = parseQuery.find();
+            int num_tweets = newsfeedList.size();
             if (newsfeedList != null) {
                 for (Newsfeed newsfeed : newsfeedList) {
                     newsfeed.delete();
                 }
             }
+            System.out.println("Deleted " + num_tweets + " old tweets.");
         } catch (ParseException e) {
             e.printStackTrace();
             System.out.println("Failed to delete old candidate tweets from parse");
