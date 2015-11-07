@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  */
 public class CandidateProfileParser implements ParserStrategy {
     @Override
-    public void parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile) {
         try {
             addCandidatesToProcess();
 
@@ -90,24 +90,21 @@ public class CandidateProfileParser implements ParserStrategy {
 
                 try {
                     candidate.save();
+                    return true;
                 } catch (ParseException e) {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate: " + candidateId.firstName + " " + candidateId.lastName);
                 }
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ie) {
-                    //Handle exception
-                }
             }
+            return true;
         }
         catch (Exception ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
-    private void addCandidatesToProcess() {
+    protected void addCandidatesToProcess() {
         addCandidate(40, "Hillary", "Clinton");
         addCandidate(70, "Donald", "Trump");
         addCandidate(35, "Bernie", "Sanders");
@@ -129,7 +126,7 @@ public class CandidateProfileParser implements ParserStrategy {
         addCandidate(44, "Jill", "Stein");
     }
 
-    private void addCandidate(int id, String firstName, String lastName) {
+    protected void addCandidate(int id, String firstName, String lastName) {
         CandidateID candidate = new CandidateID();
         candidate.id = id;
         candidate.firstName = firstName;
@@ -143,5 +140,5 @@ public class CandidateProfileParser implements ParserStrategy {
         String lastName;
     }
 
-    private ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
+    protected ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
 }
