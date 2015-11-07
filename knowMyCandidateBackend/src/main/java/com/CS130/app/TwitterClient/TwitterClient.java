@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class TwitterClient {
-    int TWEETS_PER_CANDIDATE = 5;
+    int TWEETS_PER_CANDIDATE = 20;
 
     public void fetchCandidateTweets() {
         Properties properties = new Properties();
@@ -62,11 +62,13 @@ public class TwitterClient {
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
 
+                    // TODO: batch save newsfeed items
                     newsfeed.save();
                 }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            System.out.println("Failed to fetch candidate tweets.");
         } finally {
             if (input != null) {
                 try {
@@ -76,6 +78,7 @@ public class TwitterClient {
                 }
             }
         }
+        System.out.println("Finished updating tweets.");
     }
 
     private void deleteAllOldTweets() {
