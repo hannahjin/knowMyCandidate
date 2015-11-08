@@ -86,8 +86,9 @@ public class TwitterClient {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
             List<Newsfeed> newsfeedList = parseQuery.find();
-            int num_tweets = newsfeedList.size();
+            int num_tweets = 0;
             if (newsfeedList != null) {
+            	num_tweets = newsfeedList.size();
                 for (Newsfeed newsfeed : newsfeedList) {
                     newsfeed.delete();
                 }
