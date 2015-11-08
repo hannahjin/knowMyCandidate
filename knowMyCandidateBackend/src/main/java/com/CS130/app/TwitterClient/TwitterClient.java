@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class TwitterClient {
-    int TWEETS_PER_CANDIDATE = 20;
+    int TWEETS_PER_CANDIDATE = 5;
 
     public void fetchCandidateTweets() {
         Properties properties = new Properties();
