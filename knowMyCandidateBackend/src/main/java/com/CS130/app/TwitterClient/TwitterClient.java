@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class TwitterClient {
-    int TWEETS_PER_CANDIDATE = 20;
+    int TWEETS_PER_CANDIDATE = 5;
 
     public void fetchCandidateTweets() {
         Properties properties = new Properties();
@@ -86,11 +86,14 @@ public class TwitterClient {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
             List<Newsfeed> newsfeedList = parseQuery.find();
+            int num_tweets = 0;
             if (newsfeedList != null) {
+            	num_tweets = newsfeedList.size();
                 for (Newsfeed newsfeed : newsfeedList) {
                     newsfeed.delete();
                 }
             }
+            System.out.println("Deleted " + num_tweets + " old tweets.");
         } catch (ParseException e) {
             e.printStackTrace();
             System.out.println("Failed to delete old candidate tweets from parse");
