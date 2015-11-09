@@ -1,13 +1,13 @@
-#import "KMCIssuesViewController.h"
+#import "KMCCandidatesCollectionViewController.h"
 
 #import "KMCAssets.h"
 
-static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
+static NSString *const reuseIdentifier = @"kCandidatesCollectionViewCell";
 
-@interface KMCIssuesViewController ()
+@interface KMCCandidatesCollectionViewController ()
 @end
 
-@implementation KMCIssuesViewController
+@implementation KMCCandidatesCollectionViewController
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
   self = [super initWithCollectionViewLayout:layout];
@@ -15,8 +15,8 @@ static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     UITabBarItem *item = [self tabBarItem];
-    item.title = @"Issues";
-    item.image = [KMCAssets issuesTabIcon];
+    item.title = @"Candidates";
+    item.image = [KMCAssets candidatesTabIcon];
   }
   return self;
 }
@@ -25,7 +25,7 @@ static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
   [super viewDidLoad];
 
   self.collectionView.backgroundColor = [UIColor whiteColor];
-  self.navigationItem.title = @"Issues";
+  self.navigationItem.title = @"Candidates";
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -49,3 +49,4 @@ static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
 }
 
 @end
+

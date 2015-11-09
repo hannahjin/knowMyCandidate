@@ -47,7 +47,7 @@ static const CGFloat kSpacing = 10.f;
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.navigationController.navigationBar.barTintColor = [KMCAssets mainPurpleColor];
+  self.navigationItem.title = @"User";
 
   _profilePictureView.layer.cornerRadius = kProfilePictureSize / 2.f;
   _profilePictureView.layer.masksToBounds = YES;
@@ -71,6 +71,12 @@ static const CGFloat kSpacing = 10.f;
 }
 
 - (void)didTapLogOut {
+  UIActivityIndicatorView *indicator =
+      [[UIActivityIndicatorView alloc]
+          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+  UIBarButtonItem *itemIndicator = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+  self.navigationItem.rightBarButtonItem = itemIndicator;
+  [indicator startAnimating];
   [PFUser logOut];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"kPFUserLogOut" object:nil];
 }
