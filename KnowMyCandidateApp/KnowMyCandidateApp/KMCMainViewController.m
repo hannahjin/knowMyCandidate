@@ -1,7 +1,9 @@
 #import "KMCMainViewController.h"
 
 #import "KMCAssets.h"
+#import "KMCCandidatesCollectionViewController.h"
 #import "KMCIssuesViewController.h"
+#import "KMCNewsfeedViewController.h"
 #import "KMCUserProfileViewController.h"
 
 @interface KMCMainViewController ()
@@ -12,14 +14,32 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    KMCIssuesViewController *pollsVC =
-        [[KMCIssuesViewController alloc] initWithNibName:nil bundle:nil];
+    UICollectionViewFlowLayout *newsfeedLayout = [[UICollectionViewFlowLayout alloc] init];
+    KMCNewsfeedViewController *newsfeedVC =
+        [[KMCNewsfeedViewController alloc] initWithCollectionViewLayout:newsfeedLayout];
+    UINavigationController *newsfeedNavVC =
+        [[UINavigationController alloc] initWithRootViewController:newsfeedVC];
+
+    UICollectionViewFlowLayout *issuesLayout = [[UICollectionViewFlowLayout alloc] init];
+    KMCIssuesViewController *issuesVC =
+        [[KMCIssuesViewController alloc] initWithCollectionViewLayout:issuesLayout];
+    UINavigationController *issuesNavVC =
+        [[UINavigationController alloc] initWithRootViewController:issuesVC];
+
+    UICollectionViewFlowLayout *candidatesLayout = [[UICollectionViewFlowLayout alloc] init];
+    KMCCandidatesCollectionViewController *candidatesVC =
+        [[KMCCandidatesCollectionViewController alloc]
+            initWithCollectionViewLayout:candidatesLayout];
+    UINavigationController *candidatesNavVC =
+        [[UINavigationController alloc] initWithRootViewController:candidatesVC];
+
     KMCUserProfileViewController *userVC =
         [[KMCUserProfileViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *userNavVC =
         [[UINavigationController alloc] initWithRootViewController:userVC];
-    self.viewControllers = @[ pollsVC, userNavVC ];
-    self.selectedViewController = pollsVC;
+
+    self.viewControllers = @[ newsfeedNavVC, issuesNavVC, candidatesNavVC, userNavVC ];
+    self.selectedViewController = newsfeedNavVC;
   }
   return self;
 }

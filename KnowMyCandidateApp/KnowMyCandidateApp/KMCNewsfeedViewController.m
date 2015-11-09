@@ -1,22 +1,21 @@
-#import "KMCIssuesViewController.h"
+#import "KMCNewsfeedViewController.h"
 
 #import "KMCAssets.h"
 
-static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
-
-@interface KMCIssuesViewController ()
+@interface KMCNewsfeedViewController ()
 @end
 
-@implementation KMCIssuesViewController
+@implementation KMCNewsfeedViewController
+
+static NSString *const reuseIdentifier = @"Cell";
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
   self = [super initWithCollectionViewLayout:layout];
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
-
     UITabBarItem *item = [self tabBarItem];
-    item.title = @"Issues";
-    item.image = [KMCAssets issuesTabIcon];
+    item.title = @"Newsfeed";
+    item.image = [KMCAssets homeTabIcon];
   }
   return self;
 }
@@ -24,8 +23,11 @@ static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self.collectionView registerClass:[UICollectionViewCell class]
+          forCellWithReuseIdentifier:reuseIdentifier];
+
   self.collectionView.backgroundColor = [UIColor whiteColor];
-  self.navigationItem.title = @"Issues";
+  self.navigationItem.title = @"Newsfeed";
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -33,6 +35,7 @@ static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
   return 0;
 }
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
