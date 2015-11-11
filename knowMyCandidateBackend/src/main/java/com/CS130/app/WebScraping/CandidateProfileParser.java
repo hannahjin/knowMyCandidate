@@ -22,11 +22,12 @@ import java.util.regex.Pattern;
  */
 public class CandidateProfileParser implements ParserStrategy {
     @Override
-    public void parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile) {
         try {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
+                System.out.println("processing candidate " + candidateId.firstName + " " + candidateId.lastName);
                 String content;
                 if (!scrapeLocalFile) {
                     String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
@@ -79,12 +80,14 @@ public class CandidateProfileParser implements ParserStrategy {
                 for (String regex : regexStrings) {
                     Pattern pattern = Pattern.compile(regex);
                     Matcher m = pattern.matcher(content);
+
                     while (m.find()) {
                         String attribute = m.group(1);
                         String field = attribute.replaceAll("\\s","");
                         String value = m.group(2);
+                        if (value.charAt(0) == ' ')
+                            value = value.replaceFirst("\\s", "");
                         candidate.setAnyField(field, value);
-                        //System.out.println(field+ ": " + value);
                     }
                 }
 
@@ -94,20 +97,16 @@ public class CandidateProfileParser implements ParserStrategy {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate: " + candidateId.firstName + " " + candidateId.lastName);
                 }
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ie) {
-                    //Handle exception
-                }
             }
+            return true;
         }
         catch (Exception ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
-    private void addCandidatesToProcess() {
+    protected void addCandidatesToProcess() {
         addCandidate(40, "Hillary", "Clinton");
         addCandidate(70, "Donald", "Trump");
         addCandidate(35, "Bernie", "Sanders");
@@ -129,7 +128,7 @@ public class CandidateProfileParser implements ParserStrategy {
         addCandidate(44, "Jill", "Stein");
     }
 
-    private void addCandidate(int id, String firstName, String lastName) {
+    protected void addCandidate(int id, String firstName, String lastName) {
         CandidateID candidate = new CandidateID();
         candidate.id = id;
         candidate.firstName = firstName;
@@ -143,5 +142,5 @@ public class CandidateProfileParser implements ParserStrategy {
         String lastName;
     }
 
-    private ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
+    protected ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
 }

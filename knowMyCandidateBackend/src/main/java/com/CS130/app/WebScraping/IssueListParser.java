@@ -24,9 +24,8 @@ import org.parse4j.util.ParseRegistry;
  */
 public class IssueListParser implements ParserStrategy {
     @Override
-    public void parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile) {
         try {
-
             String content;
             if (!scrapeLocalFile) {
                 String urlStr = "http://presidential-candidates.insidegov.com/l/40";
@@ -39,7 +38,7 @@ public class IssueListParser implements ParserStrategy {
                     int code = httpConnection.getResponseCode();
                     if (code != 200) {
                         System.out.println("Error code " + code);
-                        return;
+                        return false;
                     }
                 }
                 content = new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next();
@@ -72,9 +71,10 @@ public class IssueListParser implements ParserStrategy {
                     }
                 }
             }
-        }
-        catch (Exception ex) {
+            return true;
+        } catch (Exception ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 }

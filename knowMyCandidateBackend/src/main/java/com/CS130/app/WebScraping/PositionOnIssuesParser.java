@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  */
 public class PositionOnIssuesParser implements ParserStrategy {
     @Override
-    public void parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile) {
         try {
             resetPolls();
             addCandidatesToProcess();
@@ -59,7 +59,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 List<Candidate> candidateList = query.find();
                 Candidate candidate;
 
-                if (candidateList == null) {
+                if (candidateList == null || candidateList.size() == 0) {
                     CandidateFactory candidateFactory = new CandidateFactory();
                     candidate = candidateFactory.getNewCandidate();
                     candidate.setFirstName(candidateId.firstName);
@@ -93,8 +93,11 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     System.out.println("Failed to save candidate issues for: " + candidateId.firstName + " " + candidateId.lastName);
                 }
             }
-        } catch (Exception ex){
+            return true;
+        }
+        catch (Exception ex){
             ex.printStackTrace();
+            return false;
         }
     }
 
@@ -114,7 +117,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
         }
     }
 
-    private String addToIssuesPoll(String issueStr, String position) {
+    protected String addToIssuesPoll(String issueStr, String position) {
         String issueId = "";
         try {
             ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
@@ -122,7 +125,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
             query.limit(1);
             List<Issue> issueList = query.find();
 
-            if (issueList != null) {
+            if (issueList != null && issueList.size() != 0) {
                 Issue issue = issueList.get(0);
                 issueId = issue.getObjectId();
 
@@ -144,7 +147,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
         return issueId;
     }
 
-    private void addCandidatesToProcess() {
+    protected void addCandidatesToProcess() {
         addCandidate(40, "Hillary", "Clinton");
         addCandidate(70, "Donald", "Trump");
         addCandidate(35, "Bernie", "Sanders");
@@ -166,7 +169,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
         addCandidate(44, "Jill", "Stein");
     }
 
-    private void addCandidate(int id, String firstName, String lastName) {
+    protected void addCandidate(int id, String firstName, String lastName) {
         CandidateID candidate = new CandidateID();
         candidate.id = id;
         candidate.firstName = firstName;
@@ -180,5 +183,5 @@ public class PositionOnIssuesParser implements ParserStrategy {
         String lastName;
     }
 
-    private ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
+    protected ArrayList<CandidateID> candidateIds = new ArrayList<CandidateID>();
 }

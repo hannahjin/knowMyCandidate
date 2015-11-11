@@ -14,10 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+
 public class TwitterClient {
+
     int TWEETS_PER_CANDIDATE = 5;
 
-    public void fetchCandidateTweets() {
+    public boolean fetchCandidateTweets() {
         Properties properties = new Properties();
         InputStream input = null;
         try {
@@ -40,7 +42,6 @@ public class TwitterClient {
 
             deleteAllOldTweets();
             addCandidatesToProcess();
-
             for (CandidateDetails candidate : candidateDetails) {
                 System.out.println("Processing candidate: " + candidate.parseId);
 
@@ -66,10 +67,7 @@ public class TwitterClient {
                     newsfeed.save();
                 }
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Failed to fetch candidate tweets.");
-        } finally {
+
             if (input != null) {
                 try {
                     input.close();
@@ -77,19 +75,28 @@ public class TwitterClient {
                     e.printStackTrace();
                 }
             }
+
+            System.out.println("Finished updating tweets.");
+            return true;
         }
-        System.out.println("Finished updating tweets.");
+        catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Failed to fetch candidate tweets.");
+            return false;
+        }
     }
 
-    private void deleteAllOldTweets() {
+    protected void deleteAllOldTweets() {
         try {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
+            parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
             List<Newsfeed> newsfeedList = parseQuery.find();
             int num_tweets = 0;
             if (newsfeedList != null) {
             	num_tweets = newsfeedList.size();
                 for (Newsfeed newsfeed : newsfeedList) {
+                    System.out.println("deleting tweets for " + newsfeed.getCandidateID() + " created at" + newsfeed.getCreatedAt());
                     newsfeed.delete();
                 }
             }
@@ -100,7 +107,7 @@ public class TwitterClient {
         }
     }
 
-    private void addCandidatesToProcess() {
+    protected void addCandidatesToProcess() {
         addCandidate("MartinOMalley", "MartinO'Malley");
         addCandidate("HillaryClinton", "HillaryClinton");
         addCandidate("realDonaldTrump", "DonaldTrump");
@@ -122,7 +129,7 @@ public class TwitterClient {
         //addCandidate("", "JillStein"); (does not have a twitter account)
     }
 
-    private void addCandidate(String twitterUsername, String parseId) {
+    protected void addCandidate(String twitterUsername, String parseId) {
         CandidateDetails candidate = new CandidateDetails();
         candidate.parseId = parseId;
         candidate.twitterUsername = twitterUsername;
@@ -134,5 +141,5 @@ public class TwitterClient {
         String twitterUsername;
     }
 
-    private ArrayList<CandidateDetails> candidateDetails = new ArrayList<CandidateDetails>();
+    protected ArrayList<CandidateDetails> candidateDetails = new ArrayList<CandidateDetails>();
 }
