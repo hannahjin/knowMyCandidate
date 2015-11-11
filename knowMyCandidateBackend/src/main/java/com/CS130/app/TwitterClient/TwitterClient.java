@@ -16,7 +16,7 @@ import java.util.Properties;
 
 
 public class TwitterClient {
-    int TWEETS_PER_CANDIDATE = 20;
+    int TWEETS_PER_CANDIDATE = 10;
 
     public boolean fetchCandidateTweets() {
         Properties properties = new Properties();
@@ -41,7 +41,6 @@ public class TwitterClient {
 
             deleteAllOldTweets();
             addCandidatesToProcess();
-
             for (CandidateDetails candidate : candidateDetails) {
                 System.out.println("Processing candidate: " + candidate.parseId);
 
@@ -90,9 +89,12 @@ public class TwitterClient {
         try {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
+            parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
             List<Newsfeed> newsfeedList = parseQuery.find();
             if (newsfeedList != null) {
+                System.out.println("deleting " + newsfeedList.size() + " tweets");
                 for (Newsfeed newsfeed : newsfeedList) {
+                    System.out.println("deleting tweets for " + newsfeed.getCandidateID() + " created at" + newsfeed.getCreatedAt());
                     newsfeed.delete();
                 }
             }

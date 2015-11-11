@@ -1,12 +1,26 @@
 package com.CS130.app.WebScraping;
 
+import com.CS130.app.web.Candidate;
+import com.CS130.app.web.CandidateFactory;
+import com.CS130.app.web.Issue;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.parse4j.ParseObject;
+import org.parse4j.ParseQuery;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.Mock;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  * Unit test for Twitter client.
  */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ParseQuery.class, ParseObject.class, Candidate.class, CandidateFactory.class})
+@PowerMockIgnore("javax.net.ssl.*")
 public class CandidateProfileParserTest extends TestCase
 {
     /**
@@ -46,8 +60,18 @@ public class CandidateProfileParserTest extends TestCase
         assertEquals(candidateIdSize + 1, candidateProfileParser.candidateIds.size());
     }
 
+    @Mock
+    public ParseQuery<Candidate> mockedCandidate;
+
     public void testCandidateProfileParsingSuccess() {
-        assertTrue(candidateProfileParser.parse(true));
+        try {
+            PowerMockito.mockStatic(ParseQuery.class);
+            PowerMockito.when(ParseQuery.getQuery(Candidate.class)).thenReturn(mockedCandidate);
+            //TODO: finish mocking parse
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

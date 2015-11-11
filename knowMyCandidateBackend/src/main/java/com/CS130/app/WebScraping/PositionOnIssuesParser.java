@@ -59,7 +59,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 List<Candidate> candidateList = query.find();
                 Candidate candidate;
 
-                if (candidateList == null) {
+                if (candidateList == null || candidateList.size() == 0) {
                     CandidateFactory candidateFactory = new CandidateFactory();
                     candidate = candidateFactory.getNewCandidate();
                     candidate.setFirstName(candidateId.firstName);
@@ -125,7 +125,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
             query.limit(1);
             List<Issue> issueList = query.find();
 
-            if (issueList != null) {
+            if (issueList != null && issueList.size() != 0) {
                 Issue issue = issueList.get(0);
                 issueId = issue.getObjectId();
 
