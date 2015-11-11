@@ -1,4 +1,6 @@
 require("cloud/candidate_matching_algorithm.js")
+require("cloud/survey_to_polls.js")
+
 
 // Bing Search API key and authentication
 API_KEY = "Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4";
