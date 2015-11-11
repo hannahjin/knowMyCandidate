@@ -27,6 +27,7 @@ public class CandidateProfileParser implements ParserStrategy {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
+                System.out.println("processing candidate " + candidateId.firstName + " " + candidateId.lastName);
                 String content;
                 if (!scrapeLocalFile) {
                     String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
@@ -79,18 +80,19 @@ public class CandidateProfileParser implements ParserStrategy {
                 for (String regex : regexStrings) {
                     Pattern pattern = Pattern.compile(regex);
                     Matcher m = pattern.matcher(content);
+
                     while (m.find()) {
                         String attribute = m.group(1);
                         String field = attribute.replaceAll("\\s","");
                         String value = m.group(2);
+                        if (value.charAt(0) == ' ')
+                            value = value.replaceFirst("\\s", "");
                         candidate.setAnyField(field, value);
-                        //System.out.println(field+ ": " + value);
                     }
                 }
 
                 try {
                     candidate.save();
-                    return true;
                 } catch (ParseException e) {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate: " + candidateId.firstName + " " + candidateId.lastName);
