@@ -27,14 +27,21 @@ public class WebConfig {
         get("/bye1", (req, res) -> "Bye World");
         
         get("/status", (req, res) -> {
-        	Main.loadConfiguration();
-        	String status = "<p>Warning: do not refresh page too quickly<p>\n";
+        	String status = "<p>Know My Candidate Heroku Backend Current Settings<p>\n";
         	status += "<p>fetchTweets=" + Main.getFetchTweets() + "<br>";
         	status += "scrapeData=" + Main.getScrapeData() + "</p>";
         	return status;
         });
         
-        // TODO: add enable/disable fetchtweets functions
+        get("/enablefetchtweets", (req, res) -> {
+        	Main.setFetchTweets(true);
+        	return "Enabled fetchTweets";
+        });
+        
+        get("/disablefetchtweets", (req, res) -> {
+        	Main.setFetchTweets(false);
+        	return "Disabled fetchTweets";
+        });
     }
     
 }

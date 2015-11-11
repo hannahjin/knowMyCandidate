@@ -10,6 +10,8 @@ static const CGFloat kButtonHeight = 60.f;
 static const CGFloat kCellPadding = 10.f;
 static const CGFloat kCellHeight = 150.f;
 
+static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
+
 @interface KMCSurveyViewController () <KMCSurveyCollectionViewCellDelegate>
 @end
 
@@ -20,8 +22,6 @@ static const CGFloat kCellHeight = 150.f;
   UIButton *_submitButton;
   NSMutableDictionary *_sliderValues;
 }
-
-static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
   self = [super initWithCollectionViewLayout:layout];

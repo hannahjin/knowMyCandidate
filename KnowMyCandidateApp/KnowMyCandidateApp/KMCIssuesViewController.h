@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface KMCIssuesViewController : UIViewController
+@interface KMCIssuesViewController : UICollectionViewController
 
 @end

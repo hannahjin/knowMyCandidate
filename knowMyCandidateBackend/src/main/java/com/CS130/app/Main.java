@@ -42,7 +42,8 @@ public class Main {
     	// setup Spark and basic routes
         new WebConfig();
         
-        // load settings from backend.properties
+        // load default settings from backend.properties. This is only done once at start of program.
+        // Changes to the settings are done to member variables scrapeData and fetchTweets and are not saved into backend.properties
         loadConfiguration();
 
         // subclasses need to be initialized before calling Parse.initialize()
@@ -69,8 +70,16 @@ public class Main {
     	return scrapeData;
     }
     
+    public static void setScrapeData(boolean setting) {
+    	scrapeData = setting;
+    }
+    
     public static boolean getFetchTweets() {
     	return fetchTweets;
+    }
+    
+    public static void setFetchTweets(boolean setting) {
+    	fetchTweets = setting;
     }
     
     public static void loadConfiguration() {
@@ -98,35 +107,11 @@ public class Main {
 		}
     }
     
-    // TODO: Fix, needs to update settings, not override
-    /*
-    public static void disableFetchTweets() {
-    	try {
-			config_out = new FileOutputStream("backend.properties");
-			prop = new Properties();
-			prop.setProperty("fetchTweets", "false");
-			prop.store(config_out, null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			if (config_out != null) {
-				try {
-					config_out.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-    }*/
-    
     private static void scheduleTweetFetcher() {
     	TwitterClient twitterClient = new TwitterClient();
     	
     	final Runnable tweetFetcher = new Runnable() {
     		public void run() {
-    			// refresh configuration settings
-    			loadConfiguration();
     			if (fetchTweets)
     				twitterClient.fetchCandidateTweets();
 			}
