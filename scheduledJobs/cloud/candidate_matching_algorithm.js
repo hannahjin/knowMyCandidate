@@ -2,11 +2,11 @@
 * Get a sorted list of candidates with the most similar viewpoints to the user,
 * with most compatible candidate first and least compatible candidate last. 
 *
-* Input: String, user's objectID
+* Input: String, user's objectId
 *   Ex) {"user": "pcEbh8GpHi"} 
 * Output: JSON with a sorted list of candidate object with most compatible candidate first
 *   Each candidate object contains
-*     candidateID: candidate's first and last name
+*     candidate: candidate's objectId
 *     issues: a sorted list of issue objects with the issue most compatible to the user first
         Each issue object contains:
           compatibility: String 
@@ -26,7 +26,7 @@
 * {
     "result": [
         {
-            "candidateID": "DonaldTrump",
+            "candidate": "HDqZciBULT",
             "issues": [
                 {
                     "compatibility": "Compatible",
@@ -56,7 +56,8 @@ var Compatibility = {
     STRONG_INCOMPATIBLE: 'Strongly incompatible'
 };
 
-var SurveyCandidate = function(first, last) {
+var SurveyCandidate = function(id, first, last) {
+    this.id = id;
     this.first = first;
     this.last = last;
     this.score = 0;
@@ -236,7 +237,7 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                         alert("Successfully retrieved " + results.length);
                         for (var i = 0; i < results.length; i++) {
                             var object = results[i];
-                            var currentCandidate = new SurveyCandidate(object.get('firstName'), object.get('lastName'));
+                            var currentCandidate = new SurveyCandidate(object.id, object.get('firstName'), object.get('lastName'));
                             currentCandidate.parseIssues = object.get('Issues');
                             candidates.push(currentCandidate);
                         }
@@ -277,7 +278,7 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                                 sortedIssues.push(candidateIssue);
                             }
                             var candidateScoreAndSortedIssues = {
-                                "candidateID": candidates[i].first+candidates[i].last,
+                                "candidate": candidates[i].id,
                                 "score": candidates[i].score,
                                 "issues": sortedIssues
                             }
