@@ -159,4 +159,10 @@
   }];
 }
 
+#pragma mark - UIViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  return UIStatusBarStyleLightContent;
+}
+
 @end

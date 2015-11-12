@@ -77,8 +77,11 @@ static const CGFloat kSpacing = 10.f;
   UIBarButtonItem *itemIndicator = [[UIBarButtonItem alloc] initWithCustomView:indicator];
   self.navigationItem.rightBarButtonItem = itemIndicator;
   [indicator startAnimating];
-  [PFUser logOut];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"kPFUserLogOut" object:nil];
+  [PFUser logOutInBackgroundWithBlock:^(NSError *error) {
+    if (!error) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"kPFUserLogOut" object:nil];
+    }
+  }];
 }
 
 #pragma mark - Helper methods
