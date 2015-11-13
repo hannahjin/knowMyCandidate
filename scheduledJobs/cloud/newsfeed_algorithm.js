@@ -76,10 +76,11 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                     var items = []
                                     for (var i = 0; i < results.length; i++) {
                                         var object = results[i];
+                                        var summary = object.get('summary').replace(/\n/g, '');
                                         var item = {
                                             "source": object.get('source'),
                                             "title": object.get('title'),
-                                            "summary": object.get('summary'),
+                                            "summary": summary,
                                             "url": object.get('url'),
                                             "date": object.get('date'),
                                             "favoriteCount": object.get('favoriteCount'),
@@ -88,6 +89,7 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                         }
                                         if(object.get('source') === "Twitter") {
                                             var url = /https:\/\/t.co\/[a-zA-z0-9]*/.exec(object.get('summary'));
+
                                             if (url != null) {
                                                 item["url"] = url[0];
                                                 item["summary"] = item["summary"].replace(url, "");
