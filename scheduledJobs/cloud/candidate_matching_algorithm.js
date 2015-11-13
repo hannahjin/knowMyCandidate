@@ -7,12 +7,14 @@
 * Output: JSON with a sorted list of candidate object with most compatible candidate first
 *   Each candidate object contains
 *     candidate: candidate's objectId
+*     firstName: candidate's first name
 *     issues: a sorted list of issue objects with the issue most compatible to the user first
         Each issue object contains:
           compatibility: String 
           issue: String, the issue's objectID in the Issues table
           position: String, the user's position on the issue
-          weight: float, the user's weight on the issue
+          weight: float, the user's weight on the issue (default to 1)
+*     lastName: candidate's last name
 *     score: float, candidate's score based on the user's survey input; the higher the score, the more
 *       compatible the candidate is to the user
 * 
@@ -27,22 +29,24 @@
     "result": [
         {
             "candidate": "HDqZciBULT",
+            "firstName": "Mike",
             "issues": [
                 {
                     "compatibility": "Compatible",
                     "issue": "mQVtMXHSsY",
                     "position": "Strongly Agrees",
-                    "weight": 2.681591987609863
+                    "weight": 1
                 },
                 {
                     "compatibility": "Compatible",
                     "issue": "ink8H9BiGe",
                     "position": "Strongly Disagrees",
-                    "weight": 2
+                    "weight": 1
                 },
                 // More issues here
             ],
             "score": 40.10945272445679
+            "lastName": "Huckabee"
         },
         // More candidates here
     ]
@@ -219,11 +223,21 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
     // Given userId, retrieve the user object
     var query = new Parse.Query(Parse.User);
     query.equalTo("objectId", request.params.user);  
+
     query.find({
         success: function(results) {
             var surveyAnswers = results[0].get("surveyAnswers");
             var surveyWeights = results[0].get("surveyAnswerWeights");
-
+            
+            // Give a weight of 1 for each issue by default
+            if (surveyWeights == undefined) {
+                surveyWeights = {}
+                var issueIds = Object.keys(surveyAnswers);
+                for (var i=0; i<issueIds.length; i++) {
+                    surveyWeights[issueIds[i]] = 1;
+                }
+            }
+            
             // Retrieve all the candidates
             var Candidate = Parse.Object.extend("Candidate");
             var query = new Parse.Query(Candidate);
@@ -252,12 +266,13 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                                 var curIssue = candidates[i].parseIssues[j];
                                 var issueId = Object.keys(curIssue)[0];
                                 var candidatePositionOnIssue = curIssue[issueId];
+                                console.log(candidatePositionOnIssue);
 
                                 // Get the user's position and weight on the issue
                                 var userPositionOnIssue = surveyAnswers[issueId];
                                 var userWeightForIssue = surveyWeights[issueId];
 
-                                candidates[i].addIssue(issueId, candidatePositionOnIssue, userPositionOnIssue, userWeightForIssue);
+                                candidates[i].addIssue(issueId, candidatePositionOnIssue, Math.round(userPositionOnIssue), userWeightForIssue);
                             }
                             candidates[i].scoreAndSort();
                         }
@@ -279,6 +294,8 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                             }
                             var candidateScoreAndSortedIssues = {
                                 "candidate": candidates[i].id,
+                                "firstName": candidates[i].first,
+                                "lastName": candidates[i].last,
                                 "score": candidates[i].score,
                                 "issues": sortedIssues
                             }
@@ -301,6 +318,3 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
         }
     });    
 });
-
-
-
