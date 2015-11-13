@@ -22,7 +22,7 @@
             "favoriteCount": 2296,
             "retweetCount": 1276,
             "source": "Twitter",
-            "summary": "My closing statement at last night's #GOPDebate.\n",
+            "summary": "My closing statement at last night's #GOPDebate.",
             "twitterUsername": "RealBenCarson",
             "url": "https://t.co/qdJVC2RbeN"
         },
@@ -89,7 +89,6 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                         }
                                         if(object.get('source') === "Twitter") {
                                             var url = /https:\/\/t.co\/[a-zA-z0-9]*/.exec(object.get('summary'));
-
                                             if (url != null) {
                                                 item["url"] = url[0];
                                                 item["summary"] = item["summary"].replace(url, "");
