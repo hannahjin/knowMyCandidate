@@ -41,7 +41,8 @@ public class TwitterClient {
             Twitter twitter = new TwitterFactory(configurationbuilder.build()).getInstance(token);
 
             deleteAllOldTweets();
-            addCandidatesToProcess();
+            if (candidateDetails.isEmpty())
+            	addCandidatesToProcess();
             for (CandidateDetails candidate : candidateDetails) {
                 System.out.println("Processing candidate: " + candidate.parseId);
 
