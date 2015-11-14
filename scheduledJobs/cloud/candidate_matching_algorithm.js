@@ -2,17 +2,19 @@
 * Get a sorted list of candidates with the most similar viewpoints to the user,
 * with most compatible candidate first and least compatible candidate last. 
 *
-* Input: String, user's objectID
+* Input: String, user's objectId
 *   Ex) {"user": "pcEbh8GpHi"} 
 * Output: JSON with a sorted list of candidate object with most compatible candidate first
 *   Each candidate object contains
-*     candidateID: candidate's first and last name
+*     candidate: candidate's objectId
+*     firstName: candidate's first name
 *     issues: a sorted list of issue objects with the issue most compatible to the user first
         Each issue object contains:
           compatibility: String 
           issue: String, the issue's objectID in the Issues table
           position: String, the user's position on the issue
-          weight: float, the user's weight on the issue
+          weight: float, the user's weight on the issue (default to 1)
+*     lastName: candidate's last name
 *     score: float, candidate's score based on the user's survey input; the higher the score, the more
 *       compatible the candidate is to the user
 * 
@@ -26,23 +28,25 @@
 * {
     "result": [
         {
-            "candidateID": "DonaldTrump",
+            "candidate": "HDqZciBULT",
+            "firstName": "Mike",
             "issues": [
                 {
                     "compatibility": "Compatible",
                     "issue": "mQVtMXHSsY",
                     "position": "Strongly Agrees",
-                    "weight": 2.681591987609863
+                    "weight": 1
                 },
                 {
                     "compatibility": "Compatible",
                     "issue": "ink8H9BiGe",
                     "position": "Strongly Disagrees",
-                    "weight": 2
+                    "weight": 1
                 },
                 // More issues here
             ],
             "score": 40.10945272445679
+            "lastName": "Huckabee"
         },
         // More candidates here
     ]
@@ -56,7 +60,8 @@ var Compatibility = {
     STRONG_INCOMPATIBLE: 'Strongly incompatible'
 };
 
-var SurveyCandidate = function(first, last) {
+var SurveyCandidate = function(id, first, last) {
+    this.id = id;
     this.first = first;
     this.last = last;
     this.score = 0;
@@ -218,11 +223,21 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
     // Given userId, retrieve the user object
     var query = new Parse.Query(Parse.User);
     query.equalTo("objectId", request.params.user);  
+
     query.find({
         success: function(results) {
             var surveyAnswers = results[0].get("surveyAnswers");
             var surveyWeights = results[0].get("surveyAnswerWeights");
-
+            
+            // Give a weight of 1 for each issue by default
+            if (surveyWeights == undefined) {
+                surveyWeights = {}
+                var issueIds = Object.keys(surveyAnswers);
+                for (var i=0; i<issueIds.length; i++) {
+                    surveyWeights[issueIds[i]] = 1;
+                }
+            }
+            
             // Retrieve all the candidates
             var Candidate = Parse.Object.extend("Candidate");
             var query = new Parse.Query(Candidate);
@@ -236,7 +251,7 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                         alert("Successfully retrieved " + results.length);
                         for (var i = 0; i < results.length; i++) {
                             var object = results[i];
-                            var currentCandidate = new SurveyCandidate(object.get('firstName'), object.get('lastName'));
+                            var currentCandidate = new SurveyCandidate(object.id, object.get('firstName'), object.get('lastName'));
                             currentCandidate.parseIssues = object.get('Issues');
                             candidates.push(currentCandidate);
                         }
@@ -251,12 +266,13 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                                 var curIssue = candidates[i].parseIssues[j];
                                 var issueId = Object.keys(curIssue)[0];
                                 var candidatePositionOnIssue = curIssue[issueId];
+                                console.log(candidatePositionOnIssue);
 
                                 // Get the user's position and weight on the issue
                                 var userPositionOnIssue = surveyAnswers[issueId];
                                 var userWeightForIssue = surveyWeights[issueId];
 
-                                candidates[i].addIssue(issueId, candidatePositionOnIssue, userPositionOnIssue, userWeightForIssue);
+                                candidates[i].addIssue(issueId, candidatePositionOnIssue, Math.round(userPositionOnIssue), userWeightForIssue);
                             }
                             candidates[i].scoreAndSort();
                         }
@@ -277,7 +293,9 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                                 sortedIssues.push(candidateIssue);
                             }
                             var candidateScoreAndSortedIssues = {
-                                "candidateID": candidates[i].first+candidates[i].last,
+                                "candidate": candidates[i].id,
+                                "firstName": candidates[i].first,
+                                "lastName": candidates[i].last,
                                 "score": candidates[i].score,
                                 "issues": sortedIssues
                             }
@@ -300,6 +318,3 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
         }
     });    
 });
-
-
-
