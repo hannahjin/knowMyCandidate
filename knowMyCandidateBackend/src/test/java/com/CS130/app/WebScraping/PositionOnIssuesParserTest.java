@@ -83,7 +83,9 @@ public class PositionOnIssuesParserTest extends TestCase
             PowerMockito.mockStatic(ParseQuery.class);
             PowerMockito.when(ParseQuery.getQuery(Issue.class)).thenReturn(mockedIssue);
             PowerMockito.when(ParseQuery.getQuery(Candidate.class)).thenReturn(mockedCandidate);
-            //TODO: finish mocking parse
+            boolean scrapeFromLocalSrcFile = true;
+            boolean saveToParseDb = false;
+            positionOnIssuesParser.parse(scrapeFromLocalSrcFile, saveToParseDb);
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -60,7 +60,7 @@ public class IssueListParser implements ParserStrategy {
                 List<Issue> issueList = query.find();
                 Issue issue;
 
-                if (issueList == null) {
+                if (issueList == null || issueList.size() == 0) {
                     IssueFactory issueFactory = new IssueFactory();
                     issue = issueFactory.getNewIssue();
                     issue.setTopic(issueString);
