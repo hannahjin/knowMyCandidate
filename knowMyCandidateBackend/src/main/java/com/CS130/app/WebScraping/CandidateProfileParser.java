@@ -27,7 +27,7 @@ public class CandidateProfileParser implements ParserStrategy {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                System.out.println("Scraping Candidate Profile data for " + candidateId.firstName + " " + candidateId.lastName);
+                System.out.println("\nScraping Candidate Profile data for " + candidateId.firstName + " " + candidateId.lastName + "\n");
                 String content;
                 if (!scrapeLocalFile) {
                     String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
@@ -88,6 +88,8 @@ public class CandidateProfileParser implements ParserStrategy {
                         if (value.charAt(0) == ' ')
                             value = value.replaceFirst("\\s", "");
                         candidate.setAnyField(field, value);
+
+                        System.out.println(field + ": " + value);
                     }
                 }
 

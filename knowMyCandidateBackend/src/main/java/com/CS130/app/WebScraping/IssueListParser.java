@@ -26,6 +26,8 @@ public class IssueListParser implements ParserStrategy {
     @Override
     public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
+            System.out.println("\nScraping  List of Current Issues\n");
+
             String content;
             if (!scrapeLocalFile) {
                 String urlStr = "http://presidential-candidates.insidegov.com/l/40";
@@ -53,6 +55,8 @@ public class IssueListParser implements ParserStrategy {
 
             while (m.find()) {
                 String issueString = m.group(1);
+
+                System.out.println(issueString);
 
                 ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
                 query.whereEqualTo("topic", issueString);

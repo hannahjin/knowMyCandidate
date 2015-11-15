@@ -26,7 +26,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                System.out.println("Processing candidate positions for: " + candidateId.firstName + " " + candidateId.lastName);
+                System.out.println("\nScraping " + candidateId.firstName + " " + candidateId.lastName + "'s Position on Issues\n");
 
                 String content;
                 if (!scrapeLocalFile) {
@@ -74,15 +74,19 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     String issue = m.group(1);
                     String position = m.group(2);
 
-                    String issueId = addToIssuesPoll(issue, position, save);
-                    if (issueId == null || issueId.equals("")) {
-                        System.out.println("Issue " + issue + " not found");
-                        continue;
-                    }
+                    System.out.println(issue + ": " + position);
 
-                    Map<String, String> map = new HashMap<>();
-                    map.put(issueId, position);
-                    issues.add(map);
+                    if (save) {
+                        String issueId = addToIssuesPoll(issue, position, save);
+                        if (issueId == null || issueId.equals("")) {
+                            System.out.println("Issue " + issue + " not found");
+                            continue;
+                        }
+
+                        Map<String, String> map = new HashMap<>();
+                        map.put(issueId, position);
+                        issues.add(map);
+                    }
                 }
                 candidate.setIssues(issues);
 
