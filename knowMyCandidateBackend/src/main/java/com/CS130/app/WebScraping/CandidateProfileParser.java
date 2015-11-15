@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  */
 public class CandidateProfileParser implements ParserStrategy {
     @Override
-    public boolean parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
             addCandidatesToProcess();
 
@@ -92,7 +92,9 @@ public class CandidateProfileParser implements ParserStrategy {
                 }
 
                 try {
-                    candidate.save();
+                    if (save) {
+                        candidate.save();
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate: " + candidateId.firstName + " " + candidateId.lastName);

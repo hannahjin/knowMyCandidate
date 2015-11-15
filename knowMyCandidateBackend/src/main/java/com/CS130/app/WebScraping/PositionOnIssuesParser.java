@@ -20,9 +20,9 @@ import java.util.regex.Pattern;
  */
 public class PositionOnIssuesParser implements ParserStrategy {
     @Override
-    public boolean parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
-            resetPolls();
+            resetPolls(save);
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
@@ -74,7 +74,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
                     String issue = m.group(1);
                     String position = m.group(2);
 
-                    String issueId = addToIssuesPoll(issue, position);
+                    String issueId = addToIssuesPoll(issue, position, save);
                     if (issueId == null || issueId.equals("")) {
                         System.out.println("Issue " + issue + " not found");
                         continue;
@@ -87,7 +87,9 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 candidate.setIssues(issues);
 
                 try {
-                    candidate.save();
+                    if (save) {
+                        candidate.save();
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate issues for: " + candidateId.firstName + " " + candidateId.lastName);
@@ -101,7 +103,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
         }
     }
 
-    private void resetPolls() {
+    private void resetPolls(boolean save) {
         try {
             ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
             List<Issue> issueList = query.find();
@@ -109,7 +111,9 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 issue.setCandidatesFor(0);
                 issue.setCandidatesAgainst(0);
                 issue.setCandidatesNeutral(0);
-                issue.save();
+                if (save) {
+                    issue.save();
+                }
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -117,7 +121,7 @@ public class PositionOnIssuesParser implements ParserStrategy {
         }
     }
 
-    protected String addToIssuesPoll(String issueStr, String position) {
+    protected String addToIssuesPoll(String issueStr, String position, boolean save) {
         String issueId = "";
         try {
             ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
@@ -136,7 +140,9 @@ public class PositionOnIssuesParser implements ParserStrategy {
                 else
                     issue.setCandidatesNeutral(issue.getCandidatesNeutral() + 1);
 
-                issue.save();
+                if (save) {
+                    issue.save();
+                }
             } else {
                 System.out.println("Issue " + issueStr + "not found in parse db");
             }

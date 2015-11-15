@@ -24,7 +24,7 @@ import org.parse4j.util.ParseRegistry;
  */
 public class IssueListParser implements ParserStrategy {
     @Override
-    public boolean parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
             String content;
             if (!scrapeLocalFile) {
@@ -65,7 +65,9 @@ public class IssueListParser implements ParserStrategy {
                     issue = issueFactory.getNewIssue();
                     issue.setTopic(issueString);
                     try {
-                        issue.save();
+                        if (save) {
+                            issue.save();
+                        }
                     } catch (ParseException e) {
                         System.out.println("Failed to save issue: " + issueString);
                     }

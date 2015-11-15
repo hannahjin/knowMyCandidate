@@ -52,7 +52,7 @@ public class IssueListParserTest extends TestCase
             PowerMockito.mock(Candidate.class);
             PowerMockito.mockStatic(ParseQuery.class);
             PowerMockito.when(ParseQuery.getQuery(Issue.class)).thenReturn(mockedIssue);
-            assertTrue(issueListParser.parse(true));
+            assertTrue(issueListParser.parse(true, false));
         }
         catch (Exception e) {
             e.printStackTrace();
