@@ -48,6 +48,7 @@ public class TwitterClient {
 
                 String username = candidate.twitterUsername;
                 Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
+
                 List<Status> tweets = twitter.getUserTimeline(username, paging);
 
                 for (int i = 0; i < tweets.size(); i++) {
@@ -56,15 +57,21 @@ public class TwitterClient {
                     NewsfeedFactory newsfeedFactory = new NewsfeedFactory();
                     Newsfeed newsfeed = newsfeedFactory.getNewNewsfeed();
 
+                    if (tweet.getRetweetedStatus() != null) {
+                        String retweetedText = "RT @" + tweet.getRetweetedStatus().getUser().getScreenName() + ": " + tweet.getRetweetedStatus().getText();
+                        newsfeed.setSummary(retweetedText);
+                        System.out.println(retweetedText);
+                    } else {
+                        newsfeed.setSummary(tweet.getText());
+                    }
+
                     newsfeed.setSource("Twitter");
                     newsfeed.setCandidateID(candidate.parseId);
                     newsfeed.setTwitterUsername(candidate.twitterUsername);
-                    newsfeed.setSummary(tweet.getText());
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
 
-                    // TODO: batch save newsfeed items
                     newsfeed.save();
                 }
             }
@@ -97,7 +104,7 @@ public class TwitterClient {
             if (newsfeedList != null) {
             	num_tweets = newsfeedList.size();
                 for (Newsfeed newsfeed : newsfeedList) {
-                    System.out.println("deleting tweets for " + newsfeed.getCandidateID() + " created at" + newsfeed.getCreatedAt());
+                    System.out.println("deleting old tweets for " + newsfeed.getCandidateID() + " created on " + newsfeed.getCreatedAt());
                     newsfeed.delete();
                 }
             }
