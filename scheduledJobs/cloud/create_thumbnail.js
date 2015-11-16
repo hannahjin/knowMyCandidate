@@ -20,7 +20,7 @@ function saveNewsfeed(newsFeed) {
 module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidateID) {
     var formatted_title = title.replace(/['"’‘]+/g, '');
     formatted_title = encodeURIComponent(formatted_title);
-    var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/Image?Query=%27'+ title +'%27&$top=1&$format=json';
+    var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/Image?Query=%27'+ formatted_title +'%27&$top=1&$format=json';
 
     Parse.Cloud.httpRequest({
         url: formatted_url,
@@ -32,7 +32,7 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         var json_result = JSON.parse(httpResponse.text);
         // TODO: find cleaner way fo checking valid JSON
         if (httpResponse.text.length < 40 || !json_result) {
-            return Parse.Promise.error("Bing api returned no results for candidate: " + candidateID + " and title: " + formatted_title);
+            return Parse.Promise.error("Bing api returned no results for candidate: " + candidateID + " and title: " + title);
         }
 
         var bing_thumbnail = json_result.d.results[0].Thumbnail.MediaUrl;
