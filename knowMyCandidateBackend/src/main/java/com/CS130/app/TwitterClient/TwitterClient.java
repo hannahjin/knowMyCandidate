@@ -11,8 +11,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 
 public class TwitterClient {
@@ -40,11 +42,10 @@ public class TwitterClient {
 
             Twitter twitter = new TwitterFactory(configurationbuilder.build()).getInstance(token);
 
-            deleteAllOldTweets();
             if (candidateDetails.isEmpty())
             	addCandidatesToProcess();
             for (CandidateDetails candidate : candidateDetails) {
-                System.out.println("Processing candidate: " + candidate.parseId);
+                System.out.println("Fetching tweets for candidate: " + candidate.parseId);
 
                 String username = candidate.twitterUsername;
                 Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
@@ -60,7 +61,6 @@ public class TwitterClient {
                     if (tweet.getRetweetedStatus() != null) {
                         String retweetedText = "RT @" + tweet.getRetweetedStatus().getUser().getScreenName() + ": " + tweet.getRetweetedStatus().getText();
                         newsfeed.setSummary(retweetedText);
-                        System.out.println(retweetedText);
                     } else {
                         newsfeed.setSummary(tweet.getText());
                     }
@@ -75,6 +75,8 @@ public class TwitterClient {
                     newsfeed.save();
                 }
             }
+
+            deleteAllOldTweets();
 
             if (input != null) {
                 try {
@@ -98,13 +100,16 @@ public class TwitterClient {
         try {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
+            Date date = new Date(new Date().getTime() - TimeUnit.HOURS.toMillis(1));
+            parseQuery.whereLessThan("updatedAt", date);
+
             parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
             List<Newsfeed> newsfeedList = parseQuery.find();
             int num_tweets = 0;
             if (newsfeedList != null) {
             	num_tweets = newsfeedList.size();
                 for (Newsfeed newsfeed : newsfeedList) {
-                    System.out.println("deleting old tweets for " + newsfeed.getCandidateID() + " created on " + newsfeed.getCreatedAt());
+                    System.out.println("Deleting old tweets for " + newsfeed.getCandidateID() + " created on " + newsfeed.getCreatedAt());
                     newsfeed.delete();
                 }
             }
