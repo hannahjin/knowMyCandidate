@@ -24,8 +24,10 @@ import org.parse4j.util.ParseRegistry;
  */
 public class IssueListParser implements ParserStrategy {
     @Override
-    public boolean parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
+            System.out.println("\nScraping  List of Current Issues\n");
+
             String content;
             if (!scrapeLocalFile) {
                 String urlStr = "http://presidential-candidates.insidegov.com/l/40";
@@ -54,18 +56,22 @@ public class IssueListParser implements ParserStrategy {
             while (m.find()) {
                 String issueString = m.group(1);
 
+                System.out.println(issueString);
+
                 ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
                 query.whereEqualTo("topic", issueString);
                 query.limit(1);
                 List<Issue> issueList = query.find();
                 Issue issue;
 
-                if (issueList == null) {
+                if (issueList == null || issueList.size() == 0) {
                     IssueFactory issueFactory = new IssueFactory();
                     issue = issueFactory.getNewIssue();
                     issue.setTopic(issueString);
                     try {
-                        issue.save();
+                        if (save) {
+                            issue.save();
+                        }
                     } catch (ParseException e) {
                         System.out.println("Failed to save issue: " + issueString);
                     }

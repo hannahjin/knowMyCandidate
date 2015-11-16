@@ -25,23 +25,6 @@ public class WebConfig {
         get("/hello", (req, res) -> "Hello World");
         get("/bye", (req, res) -> "Bye World");
         get("/bye1", (req, res) -> "Bye World");
-        
-        get("/status", (req, res) -> {
-        	String status = "<p>Know My Candidate Heroku Backend Current Settings<p>\n";
-        	status += "<p>fetchTweets=" + Main.getFetchTweets() + "<br>";
-        	status += "scrapeData=" + Main.getScrapeData() + "</p>";
-        	return status;
-        });
-        
-        get("/enablefetchtweets", (req, res) -> {
-        	Main.setFetchTweets(true);
-        	return "Enabled fetchTweets";
-        });
-        
-        get("/disablefetchtweets", (req, res) -> {
-        	Main.setFetchTweets(false);
-        	return "Disabled fetchTweets";
-        });
     }
     
 }

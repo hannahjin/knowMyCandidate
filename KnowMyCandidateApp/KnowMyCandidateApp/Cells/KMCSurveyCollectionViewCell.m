@@ -1,22 +1,11 @@
 #import "KMCSurveyCollectionViewCell.h"
 
+#import "KMCAssets.h"
+
 static const CGFloat kLabelHeight = 30.f;
 static const CGFloat kLabelWidth = 60.f;
 static const CGFloat kSliderPadding = 20.f;
 static const CGFloat kVerticalPadding = 25.f;
-
-@interface KMCSlider : UISlider
-@end
-
-@implementation KMCSlider
-
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-  CGRect bounds = self.bounds;
-  bounds = CGRectInset(bounds, -10, -10);
-  return CGRectContainsPoint(bounds, point);
-}
-
-@end
 
 @implementation KMCSurveyCollectionViewCell {
   UILabel *_questionLabel;

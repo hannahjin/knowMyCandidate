@@ -67,7 +67,9 @@ public class CandidateProfileParserTest extends TestCase
         try {
             PowerMockito.mockStatic(ParseQuery.class);
             PowerMockito.when(ParseQuery.getQuery(Candidate.class)).thenReturn(mockedCandidate);
-            //TODO: finish mocking parse
+            boolean scrapeFromLocalSrcFile = true;
+            boolean saveToParseDb = false;
+            assertTrue(candidateProfileParser.parse(scrapeFromLocalSrcFile, saveToParseDb));
         }
         catch (Exception e) {
             e.printStackTrace();

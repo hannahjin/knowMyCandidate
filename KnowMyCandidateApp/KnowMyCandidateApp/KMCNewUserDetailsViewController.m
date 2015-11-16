@@ -16,65 +16,6 @@ static const CGFloat kTopPadding = 120.f;
 static const CGFloat kVerticalPadding = 20.f;
 static const NSInteger kMinimumAge = 18;
 
-@interface KMCTextField : UITextField
-
-- (instancetype)initWithCaret:(BOOL)caret;
-
-@end
-
-@implementation KMCTextField {
-  BOOL _showCaret;
-}
-
-- (instancetype)initWithCaret:(BOOL)caret {
-  self = [super init];
-  if (self) {
-    _showCaret = caret;
-  }
-  return self;
-}
-
-- (CGRect)caretRectForPosition:(UITextPosition *)position {
-  if (_showCaret) {
-    return [super caretRectForPosition:position];
-  }
-  return CGRectZero;
-}
-
-- (CGRect)textRectForBounds:(CGRect)bounds {
-  return CGRectInset(bounds, 10.f, 0.f);
-}
-
-- (CGRect)editingRectForBounds:(CGRect)bounds {
-  return CGRectInset(bounds, 10.f, 0.f);
-}
-
-@end
-
-@interface KMCToolbar : UIToolbar
-@end
-
-@implementation KMCToolbar
-
-- (void)drawRect:(CGRect)rect {
-}
-
-- (void)applyTranslucentBackground {
-  self.backgroundColor = [UIColor clearColor];
-  self.opaque = NO;
-  self.translucent = YES;
-}
-
-- (instancetype)initWithFrame:(CGRect) frame {
-  self = [super initWithFrame:frame];
-  if (self) {
-    [self applyTranslucentBackground];
-  }
-  return self;
-}
-
-@end
-
 @interface KMCNewUserDetailsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @end
 
