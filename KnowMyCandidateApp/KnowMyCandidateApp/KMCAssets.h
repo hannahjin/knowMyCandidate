@@ -18,6 +18,8 @@
 + (UIImage *)backArrowIcon;
 + (UIImage *)candidatesTabIcon;
 + (UIImage *)eventsTabIcon;
++ (UIImage *)facebookIcon;
++ (UIImage *)globeIcon;
 + (UIImage *)homeTabIcon;
 + (UIImage *)issuesTabIcon;
 + (UIImage *)signInBackground;

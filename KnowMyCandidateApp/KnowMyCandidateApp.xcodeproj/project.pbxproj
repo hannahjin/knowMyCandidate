@@ -105,6 +105,9 @@
 		CBC10A8A1BDBFE1200FABAF4 /* EventsTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A881BDBFE1200FABAF4 /* EventsTabIcon@2x.png */; };
 		CBC10A991BDCCDBA00FABAF4 /* KMCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */; };
 		CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */; };
+		CBDEACBF1BF940E800889797 /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACBD1BF940E800889797 /* Facebook.png */; };
+		CBDEACC01BF940E800889797 /* Facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACBE1BF940E800889797 /* Facebook@2x.png */; };
+		CBDEACC21BF973BC00889797 /* GlobeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC11BF973BC00889797 /* GlobeIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +229,9 @@
 		CBC10A971BDCCDBA00FABAF4 /* KMCSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSignUpViewController.h; sourceTree = "<group>"; };
 		CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSignUpViewController.m; sourceTree = "<group>"; };
 		CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackArrow.png; path = Images/BackArrow.png; sourceTree = "<group>"; };
+		CBDEACBD1BF940E800889797 /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Facebook.png; path = Images/Facebook.png; sourceTree = "<group>"; };
+		CBDEACBE1BF940E800889797 /* Facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Facebook@2x.png"; path = "Images/Facebook@2x.png"; sourceTree = "<group>"; };
+		CBDEACC11BF973BC00889797 /* GlobeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GlobeIcon.png; path = Images/GlobeIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +456,9 @@
 				CBC10A771BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png */,
 				CBC10A871BDBFE1200FABAF4 /* EventsTabIcon@1x.png */,
 				CBC10A881BDBFE1200FABAF4 /* EventsTabIcon@2x.png */,
+				CBDEACBD1BF940E800889797 /* Facebook.png */,
+				CBDEACBE1BF940E800889797 /* Facebook@2x.png */,
+				CBDEACC11BF973BC00889797 /* GlobeIcon.png */,
 				CBC10A781BDBFCA700FABAF4 /* HomeTabIcon@1x.png */,
 				CBC10A791BDBFCA700FABAF4 /* HomeTabIcon@2x.png */,
 				CBC10A7A1BDBFCA700FABAF4 /* IssuesTabIcon@1x.png */,
@@ -524,9 +533,11 @@
 				CB5B2C391BF27BCD0088B32E /* Jill_Stein@2x.png in Resources */,
 				CB5B2C441BF27BCD0088B32E /* Martin_O'Malley.png in Resources */,
 				CB5B2C561BF27C160088B32E /* RepublicanBackground@2x.png in Resources */,
+				CBDEACC01BF940E800889797 /* Facebook@2x.png in Resources */,
 				CB5B2C3E1BF27BCD0088B32E /* Larry_Lessig.png in Resources */,
 				CB5B2C341BF27BCD0088B32E /* Hillary_Clinton.png in Resources */,
 				CB5B2C2E1BF27BCD0088B32E /* Chris_Christie.png in Resources */,
+				CBDEACBF1BF940E800889797 /* Facebook.png in Resources */,
 				CB5B2C2F1BF27BCD0088B32E /* Chris_Christie@2x.png in Resources */,
 				CB5B2C3B1BF27BCD0088B32E /* Jim_Gilmore@2x.png in Resources */,
 				CB5B2C4B1BF27BCD0088B32E /* Rick_Santorum@2x.png in Resources */,
@@ -550,6 +561,7 @@
 				CBC10A831BDBFCA700FABAF4 /* UserTabIcon@1x.png in Resources */,
 				CB60A3871BCD8F8C001690BE /* LaunchScreen.storyboard in Resources */,
 				CB5B2C321BF27BCD0088B32E /* George_Pataki.png in Resources */,
+				CBDEACC21BF973BC00889797 /* GlobeIcon.png in Resources */,
 				CB5B2C481BF27BCD0088B32E /* Rand_Paul.png in Resources */,
 				CB5B2C271BF27BCD0088B32E /* Ben_Carson@2x.png in Resources */,
 				CB5B2C4D1BF27BCD0088B32E /* Ted_Cruz@2x.png in Resources */,

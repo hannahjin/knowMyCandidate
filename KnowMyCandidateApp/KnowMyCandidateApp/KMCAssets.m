@@ -74,6 +74,14 @@
   return [UIImage imageNamed:@"EventsTabIcon.png"];
 }
 
++ (UIImage *)facebookIcon {
+  return [UIImage imageNamed:@"Facebook.png"];
+}
+
++ (UIImage *)globeIcon {
+  return [UIImage imageNamed:@"GlobeIcon.png"];
+}
+
 + (UIImage *)homeTabIcon {
   return [UIImage imageNamed:@"HomeTabIcon.png"];
 }
