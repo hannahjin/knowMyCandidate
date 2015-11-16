@@ -5,6 +5,8 @@
 #import "KMCStandpointsCollectionViewCell.h"
 #import "Parse/Parse.h"
 
+@import SafariServices;
+
 NSString *const kCandidatesFollowedKey = @"candidatesFollowed";
 
 static NSString *const infoReuseIdentifier = @"kInfoCollectionViewCell";
@@ -12,6 +14,7 @@ static NSString *const standpointReuseIdentifier = @"kStandpointsCollectionViewC
 
 static const CGFloat kButtonTitleInset = 5.f;
 static const CGFloat kHeaderViewHeight = 210.f;
+static const CGFloat kInfoItemHeight = 45.f;
 static const CGFloat kRightPadding = 20.f;
 static const CGFloat kSegmentHeight = 30.f;
 static const CGFloat kSegmentPadding = 5.f;
@@ -19,12 +22,16 @@ static const CGFloat kStandpointItemHeight = 60.f;
 static const CGFloat kTopPadding = 20.f;
 static const CGFloat kVerticalPadding = 10.f;
 
-@interface KMCCandidateProfileViewController () <UICollectionViewDataSource,
-    UICollectionViewDelegate>
+@interface KMCCandidateProfileViewController () <KMCInfoCollectionViewCellDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate
+>
 @end
 
 @implementation KMCCandidateProfileViewController {
   NSDictionary *_issues;
+  NSDictionary *_infoTitleDict;
+  NSArray *_infoKeysArray;
   PFObject *_candidateObject;
   UIView *_headerView;
   UIButton *_followButton;
@@ -39,6 +46,27 @@ static const CGFloat kVerticalPadding = 10.f;
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
     _candidateObject = object;
+
+    // The keys for this are the keys in the Candidate object. This dictionary is a list of
+    // fields that we want to display the information for. PLEASE KEEP THE KEYS IN SYNC WITH
+    // the attribute names in Parse.
+    _infoKeysArray = @[ @"PartyAffiliation",
+                        @"Background",
+                        @"HomeResidence",
+                        @"TotalRaised",
+                        @"Birthday",
+                        @"Birthplace",
+                        @"Religion",
+                        @"Height"];
+    _infoTitleDict = @{ @"PartyAffiliation" : @"Party Affiliation",
+                        @"Background" : @"Background",
+                        @"HomeResidence" : @"Residence",
+                        @"TotalRaised" : @"Total raised",
+                        @"Birthday" : @"Birthday",
+                        @"Birthplace" : @"Birthplace",
+                        @"Religion" : @"Religion",
+                        @"Height" : @"Height",
+                      };
 
     [self getIssueDictionary];
 
@@ -74,7 +102,7 @@ static const CGFloat kVerticalPadding = 10.f;
     _experienceLabel.textColor = [UIColor whiteColor];
 
     _segmentPicker = [[UISegmentedControl alloc] initWithItems:@[ @"Information", @"Standpoints" ]];
-    _segmentPicker.selectedSegmentIndex = 1;
+    _segmentPicker.selectedSegmentIndex = 0;
     [_segmentPicker addTarget:self
                        action:@selector(didTapSegmentPicker)
              forControlEvents:UIControlEventValueChanged];
@@ -107,9 +135,8 @@ static const CGFloat kVerticalPadding = 10.f;
   NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
   self.navigationItem.title = name;
 
-  [view addSubview:_headerView];
-
   [self setUpHeaderView];
+  [view addSubview:_headerView];
 
   CGRect frame = _segmentPicker.frame;
   frame.origin.x = kSegmentPadding;
@@ -125,13 +152,13 @@ static const CGFloat kVerticalPadding = 10.f;
   layout.minimumLineSpacing = 0.f;
   [_standpointsView registerClass:[KMCStandpointsCollectionViewCell class]
        forCellWithReuseIdentifier:standpointReuseIdentifier];
-  [view addSubview:_standpointsView];
 
   layout = (UICollectionViewFlowLayout *)_infoView.collectionViewLayout;
-  layout.itemSize = CGSizeMake(CGRectGetWidth(view.frame), kStandpointItemHeight);
+  layout.itemSize = CGSizeMake(CGRectGetWidth(view.frame), kInfoItemHeight);
   layout.minimumLineSpacing = 0.f;
   [_infoView registerClass:[KMCInfoCollectionViewCell class]
         forCellWithReuseIdentifier:infoReuseIdentifier];
+  [view addSubview:_infoView];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -275,7 +302,7 @@ static const CGFloat kVerticalPadding = 10.f;
     NSArray *array = _candidateObject[@"Issues"];
     return [array count];
   } else {
-    return 10;
+    return [_infoTitleDict count] + 1;
   }
 }
 
@@ -300,8 +327,29 @@ static const CGFloat kVerticalPadding = 10.f;
         (KMCInfoCollectionViewCell *)
             [collectionView dequeueReusableCellWithReuseIdentifier:infoReuseIdentifier
                                                       forIndexPath:indexPath];
+    cell.delegate = self;
+
+    if (indexPath.item != [_infoTitleDict count]) {
+      NSString *key = _infoKeysArray[indexPath.item];
+      NSString *value = _candidateObject[key];
+      cell.title = _infoTitleDict[key];
+      cell.subtitle = value;
+    } else {
+      // Links cell
+      cell.title = @"Links";
+      cell.fbLink = _candidateObject[@"FacebookPage"];
+      cell.webLink = _candidateObject[@"MainWebsite"];
+    }
+
     return cell;
   }
+}
+
+#pragma mark - KMCInfoCollectionViewCollDelegate
+
+- (void)openUrl:(NSURL *)url {
+  SFSafariViewController *webVC = [[SFSafariViewController alloc] initWithURL:url];
+  [self presentViewController:webVC animated:YES completion:nil];
 }
 
 @end
