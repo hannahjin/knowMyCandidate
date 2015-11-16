@@ -1,7 +1,7 @@
 require("cloud/candidate_matching_algorithm.js")
 require("cloud/newsfeed_algorithm.js")
 require("cloud/survey_to_polls.js")
-
+var thumbnail = require("cloud/create_thumbnail.js")
 
 // Bing Search API key and authentication
 API_KEY = "Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4";
@@ -59,22 +59,16 @@ Parse.Cloud.job("pull_news", function(request, response) {
 								    if (duplicateResults.length == 0) {
 								    	var NewsFeed = Parse.Object.extend("Newsfeed");
 								    	var newsFeed = new NewsFeed();
-	    						    	newsFeed.save({
-										candidateID: candidate,
-										title: result_list[article].Title,
-										summary: result_list[article].Description,
-										url: result_list[article].Url,
-										source: result_list[article].Source,
-										date: new Date(result_list[article].Date),
-										}, {
-										  success: function(newsFeed) {
-										    // The object was saved successfully.
-										  },
-										  error: function(newsFeed, error) {
-										  	// The save failed.
-										  	alert("Error: " + error.code + " " + error.message);
-										  }
-										});							    	
+
+                                        newsFeed.set("candidateID", candidate);
+                                        newsFeed.set("title", result_list[article].Title);
+                                        newsFeed.set("summary", result_list[article].Description);
+                                        newsFeed.set("url", result_list[article].Url);
+                                        newsFeed.set("source", result_list[article].Source);
+                                        newsFeed.set("date", new Date(result_list[article].Date));
+
+                                        // TODO: move save newsfeed back to here
+                                        thumbnail.setThumbnailandSaveNewsfeed(newsFeed, result_list[article].Title, candidate); 							    	
 								    }
 								  },
 								  error: function(error) {
