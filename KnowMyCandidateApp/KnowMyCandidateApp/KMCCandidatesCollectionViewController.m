@@ -54,6 +54,7 @@ static const CGFloat kInterCellPadding = 2.f;
   layout.minimumLineSpacing = kInterCellPadding;
 
   [self.collectionView addSubview:_refreshControl];
+  [self.collectionView sendSubviewToBack:_refreshControl];
   [self getCandidates];
 }
 
