@@ -32,10 +32,12 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         var json_result = JSON.parse(httpResponse.text);
         // TODO: find cleaner way fo checking valid JSON
         if (httpResponse.text.length < 40 || !json_result) {
+            // bing_thumbnail URL fail, error is caught below
             return Parse.Promise.error("Bing api returned no results for candidate: " + candidateID + " and title: " + title);
         }
 
-        var bing_thumbnail = json_result.d.results[0].Thumbnail.MediaUrl;
+        //var bing_thumbnail = json_result.d.results[0].Thumbnail.MediaUrl;
+        var bing_thumbnail = json_result.d.results[0].MediaUrl;
         return bing_thumbnail;        
     }, function(httpResponse) {
         // bing api request error
@@ -82,7 +84,7 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         }).then(function(buffer) {
             // save image into new file
             var base64 = buffer.toString("base64");
-            var cropped = new Parse.File(candidateID + "_thumnail.jpg", { base64: base64 });
+            var cropped = new Parse.File("thumbnail.jpg", { base64: base64 });
             return cropped.save();
 
         }).then(function(cropped){
