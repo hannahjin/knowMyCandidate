@@ -22,12 +22,12 @@ import java.util.regex.Pattern;
  */
 public class CandidateProfileParser implements ParserStrategy {
     @Override
-    public boolean parse(boolean scrapeLocalFile) {
+    public boolean parse(boolean scrapeLocalFile, boolean save) {
         try {
             addCandidatesToProcess();
 
             for (CandidateID candidateId : candidateIds) {
-                System.out.println("processing candidate " + candidateId.firstName + " " + candidateId.lastName);
+                System.out.println("\nScraping Candidate Profile data for " + candidateId.firstName + " " + candidateId.lastName + "\n");
                 String content;
                 if (!scrapeLocalFile) {
                     String urlStr = "http://webcache.googleusercontent.com/search?q=cache:http://presidential-candidates.insidegov.com/l/" + candidateId.id;
@@ -67,7 +67,7 @@ public class CandidateProfileParser implements ParserStrategy {
                 List<Candidate> candidateList = query.find();
                 Candidate candidate;
 
-                if (candidateList == null) {
+                if (candidateList == null || candidateList.size() == 0) {
                     CandidateFactory candidateFactory = new CandidateFactory();
                     candidate = candidateFactory.getNewCandidate();
                     candidate.setFirstName(candidateId.firstName);
@@ -88,11 +88,15 @@ public class CandidateProfileParser implements ParserStrategy {
                         if (value.charAt(0) == ' ')
                             value = value.replaceFirst("\\s", "");
                         candidate.setAnyField(field, value);
+
+                        System.out.println(field + ": " + value);
                     }
                 }
 
                 try {
-                    candidate.save();
+                    if (save) {
+                        candidate.save();
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                     System.out.println("Failed to save candidate: " + candidateId.firstName + " " + candidateId.lastName);

@@ -1,4 +1,5 @@
 require("cloud/candidate_matching_algorithm.js")
+require("cloud/newsfeed_algorithm.js")
 require("cloud/survey_to_polls.js")
 
 
