@@ -7,5 +7,4 @@
 @property (nonatomic, copy) NSString *issueID;
 @property (nonatomic, copy) NSString *issueName;
 
-
 @end

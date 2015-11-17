@@ -1,10 +1,8 @@
 #import <UIKit/UIKit.h>
-#import "PieChartView.h"
-
 
 @class PFObject;
 
-@interface KMCIssuesViewController : UIViewController<PieChartDelegate>
+@interface KMCIssueViewController : UIViewController
 
 - (instancetype)initWithIssueObject:(PFObject *)object;
 

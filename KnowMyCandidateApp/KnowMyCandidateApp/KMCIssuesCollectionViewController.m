@@ -1,24 +1,21 @@
 #import "KMCIssuesCollectionViewController.h"
 
 #import "KMCAssets.h"
-#import "KMCAssets.h"
 #import "KMCIssuesCollectionViewCell.h"
-#import "KMCIssuesViewController.h"
+#import "KMCIssueViewController.h"
 #import "Parse/Parse.h"
 
 static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
 
-static const CGFloat kCellHeight = 180.f;
-static const CGFloat kCellWidth = 183.f;
-static const CGFloat kCellPadding = 5.f;
-static const CGFloat kInterCellPadding = 3.f;
+static const CGFloat kCellHeight = 140.f;
+static const CGFloat kCellWidth = 180.f;
 
 @interface KMCIssuesCollectionViewController ()
 @end
 
 @implementation KMCIssuesCollectionViewController {
-    UIRefreshControl *_refreshControl;
-    NSArray *_modelArray;
+  UIRefreshControl *_refreshControl;
+  NSArray *_modelArray;
 }
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
@@ -31,9 +28,9 @@ static const CGFloat kInterCellPadding = 3.f;
     item.image = [KMCAssets issuesTabIcon];
       
     _refreshControl = [[UIRefreshControl alloc] init];
-      [_refreshControl addTarget:self
-                          action:@selector(getIssues)
-                forControlEvents:UIControlEventValueChanged];
+    [_refreshControl addTarget:self
+                        action:@selector(getIssues)
+              forControlEvents:UIControlEventValueChanged];
   }
   return self;
 }
@@ -44,57 +41,61 @@ static const CGFloat kInterCellPadding = 3.f;
   
   [self.collectionView registerClass:[KMCIssuesCollectionViewCell class]
             forCellWithReuseIdentifier:reuseIdentifier];
+
+  self.navigationItem.title = @"Issues";
     
-    // Defining layout attributes.
-    UICollectionViewFlowLayout *layout =
-    (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    layout.itemSize = CGSizeMake(kCellWidth - 2*kCellPadding, kCellHeight-2*kCellPadding);
-    layout.sectionInset =
-    UIEdgeInsetsMake(kCellPadding, kCellPadding, kCellPadding, kCellPadding);
-    //layout.minimumLineSpacing = kInterCellPadding;
-    
-    [self.collectionView addSubview:_refreshControl];
-    [self getIssues];
+  // Defining layout attributes.
+  UICollectionViewFlowLayout *layout =
+      (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+  layout.itemSize = CGSizeMake(kCellWidth, kCellHeight);
+  CGFloat spacing = (CGRectGetWidth(self.view.frame) - 2*kCellWidth) / 3.f;
+  layout.sectionInset = UIEdgeInsetsMake(spacing, spacing, spacing, spacing);
+  layout.minimumLineSpacing = spacing;
+  layout.minimumInteritemSpacing = 0.f;
+
+  [self.collectionView addSubview:_refreshControl];
+  [self.collectionView sendSubviewToBack:_refreshControl];
+  [self getIssues];
 }
 
 - (void)getIssues {
-    [_refreshControl beginRefreshing];
-    PFQuery *query = [PFQuery queryWithClassName:@"Issue"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            _modelArray = objects;
-            [_refreshControl endRefreshing];
-            [self.collectionView reloadData];
-        }
-    }];
+  [_refreshControl beginRefreshing];
+  PFQuery *query = [PFQuery queryWithClassName:@"Issue"];
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    if (!error) {
+      _modelArray = objects;
+      [_refreshControl endRefreshing];
+      [self.collectionView reloadData];
+    }
+  }];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return [_modelArray count];
+  return [_modelArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    KMCIssuesCollectionViewCell *cell =
-    [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
-                                              forIndexPath:indexPath];
-    
-    PFObject *object = _modelArray[indexPath.item];
-    
-    cell.issueID = object.objectId;
-    cell.issueName = object[@"keywords"];
-    return cell;
+  KMCIssuesCollectionViewCell *cell =
+      [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
+                                                forIndexPath:indexPath];
+  
+  PFObject *object = _modelArray[indexPath.item];
+  
+  cell.issueID = object.objectId;
+  cell.issueName = object[@"keywords"];
+  return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *object = _modelArray[indexPath.item];
-    KMCIssuesViewController *vc =
-    [[KMCIssuesViewController alloc] initWithIssueObject:object];
-    [self.navigationController pushViewController:vc animated:YES];
+  PFObject *object = _modelArray[indexPath.item];
+  KMCIssueViewController *vc =
+      [[KMCIssueViewController alloc] initWithIssueObject:object];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
