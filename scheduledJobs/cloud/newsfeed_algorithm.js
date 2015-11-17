@@ -85,7 +85,8 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                             "date": object.get('date'),
                                             "favoriteCount": object.get('favoriteCount'),
                                             "retweetCount": object.get('retweetCount'),
-                                            "twitterUsername": object.get('twitterUsername')
+                                            "twitterUsername": object.get('twitterUsername'),
+                                            "thumbnail": object.get('thumbnail')
                                         }
                                         if(object.get('source') === "Twitter") {
                                             var url = /https:\/\/t.co\/[a-zA-z0-9]*/.exec(object.get('summary'));
