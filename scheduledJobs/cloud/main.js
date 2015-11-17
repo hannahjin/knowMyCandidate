@@ -1,7 +1,7 @@
 require("cloud/candidate_matching_algorithm.js")
 require("cloud/newsfeed_algorithm.js")
 require("cloud/survey_to_polls.js")
-
+var thumbnail = require("cloud/create_thumbnail.js")
 
 // Bing Search API key and authentication
 API_KEY = "Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4";
@@ -19,29 +19,29 @@ Parse.Cloud.job("pull_news", function(request, response) {
 	// is to query all the values and search for distinct values. 
 	query.find({
 	  success: function(results) {
-	    alert("Successfully retrieved " + results.length);
-	    var candidateNames = [];
-	    for (var i = 0; i < results.length; i++) {
-	      	var object = results[i];
-	      	// Check that we haven't updated the news for this candidate yet. 
-	      	var candidateFirstAndLast = object.get('firstName') + " " + object.get('lastName');
-	      	if (candidateNames.indexOf(candidateFirstAndLast) == -1) {
-	      		candidateNames.push(candidateFirstAndLast);
+		alert("Successfully retrieved " + results.length);
+		var candidateNames = [];
+		for (var i = 0; i < results.length; i++) {
+			var object = results[i];
+			// Check that we haven't updated the news for this candidate yet. 
+			var candidateFirstAndLast = object.get('firstName') + " " + object.get('lastName');
+			if (candidateNames.indexOf(candidateFirstAndLast) == -1) {
+				candidateNames.push(candidateFirstAndLast);
 
-	      		// Bing Search API URL to get the top 5 news results for a query
-	      		var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/News?Query=%27'+object.get('firstName')+ '%20' +object.get('lastName') +'%27&$top=5&$format=json';
+				// Bing Search API URL to get the top 5 news results for a query
+				var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/News?Query=%27'+object.get('firstName')+ '%20' +object.get('lastName') +'%27&$top=5&$format=json';
 
-	      		// Make a GET request to the Bing Search API 
+				// Make a GET request to the Bing Search API 
 				Parse.Cloud.httpRequest({
 					url: formatted_url,
 					headers: {
-				    	'Authorization': AUTH,
-				    },
+						'Authorization': AUTH,
+					},
 					success: function(httpResponse) {
 						var json_result = JSON.parse(httpResponse.text);
-					    var result_list = json_result.d.results;
+						var result_list = json_result.d.results;
 
-					    for (var article in result_list) {
+						for (var article in result_list) {
 							// Obtain the candidate name and remove the space between the first and last name
 							// ex) URL: https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/News?Query='Jeb Bush'&$skip=0&$top=1 
 							// will be JebBush 
@@ -56,44 +56,38 @@ Parse.Cloud.job("pull_news", function(request, response) {
 							(function(article){
 								checkDuplicateQuery.find({
 								  success: function(duplicateResults) {
-								    if (duplicateResults.length == 0) {
-								    	var NewsFeed = Parse.Object.extend("Newsfeed");
-								    	var newsFeed = new NewsFeed();
-	    						    	newsFeed.save({
-										candidateID: candidate,
-										title: result_list[article].Title,
-										summary: result_list[article].Description,
-										url: result_list[article].Url,
-										source: result_list[article].Source,
-										date: new Date(result_list[article].Date),
-										}, {
-										  success: function(newsFeed) {
-										    // The object was saved successfully.
-										  },
-										  error: function(newsFeed, error) {
-										  	// The save failed.
-										  	alert("Error: " + error.code + " " + error.message);
-										  }
-										});							    	
-								    }
+									if (duplicateResults.length == 0) {
+										var NewsFeed = Parse.Object.extend("Newsfeed");
+										var newsFeed = new NewsFeed();
+
+										newsFeed.set("candidateID", candidate);
+										newsFeed.set("title", result_list[article].Title);
+										newsFeed.set("summary", result_list[article].Description);
+										newsFeed.set("url", result_list[article].Url);
+										newsFeed.set("source", result_list[article].Source);
+										newsFeed.set("date", new Date(result_list[article].Date));
+
+										// TODO: move save newsfeed back to here
+										thumbnail.setThumbnailandSaveNewsfeed(newsFeed, result_list[article].Title, candidate); 							    	
+									}
 								  },
 								  error: function(error) {
-								    alert("Error: " + error.code + " " + error.message);
+									alert("Error: " + error.code + " " + error.message);
 								  }
 								});
 							})(article);						
-					    }
+						}
 					},
 					error: function(httpResponse) {
 					alert('Request failed with response code ' + httpResponse.status);
 					}
 				});
-	      	} 
-	    }
+			} 
+		}
 	  //response.success("Ran scheduled job.");
 	  },
 	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
+		alert("Error: " + error.code + " " + error.message);
 	  }
 	});
 
@@ -114,22 +108,22 @@ Parse.Cloud.job("delete_old_news", function(request, response) {
 
 	query.find({
 	  success: function(results) {
-	    alert("Successfully retrieved " + results.length + " old news items.");
-	    for (var i = 0; i < results.length; i++) {
-	      var object = results[i];
+		alert("Successfully retrieved " + results.length + " old news items.");
+		for (var i = 0; i < results.length; i++) {
+		  var object = results[i];
 			object.destroy({
 			  success: function(object) {
-			    // The object was deleted from the Parse Cloud.
+				// The object was deleted from the Parse Cloud.
 			  },
 			  error: function(object, error) {
-			    // The delete failed.
-			    alert("Error: " + error.code + " " + error.message);
+				// The delete failed.
+				alert("Error: " + error.code + " " + error.message);
 			  }
 			});
-	    }
+		}
 	  },
 	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
+		alert("Error: " + error.code + " " + error.message);
 	  }
 	});
 });
