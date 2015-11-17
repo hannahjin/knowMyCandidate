@@ -162,6 +162,21 @@
 
 #pragma mark - Issues
 
++ (UIImage *)pictureForIssues:(NSString *)name {
+    
+    NSString *string = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
+    
+    if([UIImage imageNamed:string] == nil){
+        NSLog(@"%@", string);
+        return [UIImage imageNamed:@"Bernie_Sanders.png"];
+    }
+    return [UIImage imageNamed:string];
+    
+}
+
+
+
 + (UIColor *)colorForStand:(NSString *)stand {
   if ([stand isEqualToString:@"Strongly Disagrees"]) {
     return [UIColor redColor];
