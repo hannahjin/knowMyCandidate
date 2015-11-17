@@ -2,7 +2,7 @@
 
 #import "KMCAssets.h"
 #import "KMCCandidatesCollectionViewController.h"
-#import "KMCIssuesViewController.h"
+#import "KMCIssuesCollectionViewController.h"
 #import "KMCNewsfeedViewController.h"
 #import "KMCUserProfileViewController.h"
 
@@ -21,8 +21,8 @@
         [[UINavigationController alloc] initWithRootViewController:newsfeedVC];
 
     UICollectionViewFlowLayout *issuesLayout = [[UICollectionViewFlowLayout alloc] init];
-    KMCIssuesViewController *issuesVC =
-        [[KMCIssuesViewController alloc] initWithCollectionViewLayout:issuesLayout];
+    KMCIssuesCollectionViewController *issuesVC =
+        [[KMCIssuesCollectionViewController alloc] initWithCollectionViewLayout:issuesLayout];
     UINavigationController *issuesNavVC =
         [[UINavigationController alloc] initWithRootViewController:issuesVC];
 

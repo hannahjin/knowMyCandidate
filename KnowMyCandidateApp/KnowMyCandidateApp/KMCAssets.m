@@ -162,6 +162,11 @@
 
 #pragma mark - Issues
 
++ (UIImage *)pictureForIssues:(NSString *)name {
+  NSString *string = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+  return [UIImage imageNamed:string];
+}
+
 + (UIColor *)colorForStand:(NSString *)stand {
   if ([stand isEqualToString:@"Strongly Disagrees"]) {
     return [UIColor redColor];
