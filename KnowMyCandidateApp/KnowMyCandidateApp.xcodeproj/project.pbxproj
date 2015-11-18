@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64F090EF1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */; };
 		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; };
 		CB3D4A191BD60A7400A907F1 /* KMCIssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCIssuesViewController.m */; };
 		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; };
@@ -107,7 +108,20 @@
 		CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC10A9A1BDD4FAA00FABAF4 /* BackArrow.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		64F090F11BF6C548006D3FF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB60A36C1BCD8F8C001690BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB60A3731BCD8F8C001690BE;
+			remoteInfo = KnowMyCandidateApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowMyCandidateAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowMyCandidateAppUITests.swift; sourceTree = "<group>"; };
+		64F090F01BF6C548006D3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
 		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
 		CB3D4A171BD60A7400A907F1 /* KMCIssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssuesViewController.h; sourceTree = "<group>"; };
@@ -229,6 +243,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		64F090E91BF6C548006D3FF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB60A3711BCD8F8C001690BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +277,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64F090ED1BF6C548006D3FF1 /* KnowMyCandidateAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */,
+				64F090F01BF6C548006D3FF1 /* Info.plist */,
+			);
+			path = KnowMyCandidateAppUITests;
+			sourceTree = "<group>";
+		};
 		CB5B2B851BE53F400088B32E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				CB60A3761BCD8F8C001690BE /* KnowMyCandidateApp */,
+				64F090ED1BF6C548006D3FF1 /* KnowMyCandidateAppUITests */,
 				CB60A3751BCD8F8C001690BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -362,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				CB60A3741BCD8F8C001690BE /* KnowMyCandidateApp.app */,
+				64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -464,6 +496,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		64F090EB1BF6C548006D3FF1 /* KnowMyCandidateAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64F090F51BF6C548006D3FF1 /* Build configuration list for PBXNativeTarget "KnowMyCandidateAppUITests" */;
+			buildPhases = (
+				64F090E81BF6C548006D3FF1 /* Sources */,
+				64F090E91BF6C548006D3FF1 /* Frameworks */,
+				64F090EA1BF6C548006D3FF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64F090F21BF6C548006D3FF1 /* PBXTargetDependency */,
+			);
+			name = KnowMyCandidateAppUITests;
+			productName = KnowMyCandidateAppUITests;
+			productReference = 64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CB60A3731BCD8F8C001690BE /* KnowMyCandidateApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB60A38B1BCD8F8C001690BE /* Build configuration list for PBXNativeTarget "KnowMyCandidateApp" */;
@@ -487,9 +537,14 @@
 		CB60A36C1BCD8F8C001690BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Samir Choudhary";
 				TargetAttributes = {
+					64F090EB1BF6C548006D3FF1 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = CB60A3731BCD8F8C001690BE;
+					};
 					CB60A3731BCD8F8C001690BE = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -509,11 +564,19 @@
 			projectRoot = "";
 			targets = (
 				CB60A3731BCD8F8C001690BE /* KnowMyCandidateApp */,
+				64F090EB1BF6C548006D3FF1 /* KnowMyCandidateAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		64F090EA1BF6C548006D3FF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB60A3721BCD8F8C001690BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,6 +649,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		64F090E81BF6C548006D3FF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64F090EF1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB60A3701BCD8F8C001690BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -614,6 +685,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		64F090F21BF6C548006D3FF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB60A3731BCD8F8C001690BE /* KnowMyCandidateApp */;
+			targetProxy = 64F090F11BF6C548006D3FF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -626,6 +705,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		64F090F31BF6C548006D3FF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KnowMyCandidateAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CS130.KnowMyCandidateAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = KnowMyCandidateApp;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		64F090F41BF6C548006D3FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KnowMyCandidateAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CS130.KnowMyCandidateAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = KnowMyCandidateApp;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		CB60A3891BCD8F8C001690BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -739,6 +845,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		64F090F51BF6C548006D3FF1 /* Build configuration list for PBXNativeTarget "KnowMyCandidateAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64F090F31BF6C548006D3FF1 /* Debug */,
+				64F090F41BF6C548006D3FF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		CB60A36F1BCD8F8C001690BE /* Build configuration list for PBXProject "KnowMyCandidateApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
