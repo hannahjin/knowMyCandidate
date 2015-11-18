@@ -109,6 +109,7 @@
 		CBDEACC21BF973BC00889797 /* GlobeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC11BF973BC00889797 /* GlobeIcon.png */; };
 		CBDEACC51BFBC52500889797 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC31BFBC52500889797 /* center.png */; };
 		CBDEACC61BFBC52500889797 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC41BFBC52500889797 /* select.png */; };
+		CBDEACCC1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */; };
 		EC5E5D9D1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */; };
 		EC5E5DAF1BFB170600D0AF5A /* KMCIssuesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5DA61BFB170600D0AF5A /* KMCIssuesCollectionViewController.m */; };
 		EC5E5DB01BFB170600D0AF5A /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5DA81BFB170600D0AF5A /* PieChartView.m */; };
@@ -280,6 +281,8 @@
 		CBDEACC11BF973BC00889797 /* GlobeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GlobeIcon.png; path = Images/GlobeIcon.png; sourceTree = "<group>"; };
 		CBDEACC31BFBC52500889797 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = center.png; path = Images/center.png; sourceTree = "<group>"; };
 		CBDEACC41BFBC52500889797 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select.png; path = Images/select.png; sourceTree = "<group>"; };
+		CBDEACCA1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCNewsfeedCollectionViewCell.h; path = Cells/KMCNewsfeedCollectionViewCell.h; sourceTree = "<group>"; };
+		CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCNewsfeedCollectionViewCell.m; path = Cells/KMCNewsfeedCollectionViewCell.m; sourceTree = "<group>"; };
 		EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCIssuesCollectionViewCell.h; path = Cells/KMCIssuesCollectionViewCell.h; sourceTree = "<group>"; };
 		EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCIssuesCollectionViewCell.m; path = Cells/KMCIssuesCollectionViewCell.m; sourceTree = "<group>"; };
 		EC5E5DA51BFB170600D0AF5A /* KMCIssuesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssuesCollectionViewController.h; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				CB5B2C651BF413F00088B32E /* KMCInfoCollectionViewCell.m */,
 				EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */,
 				EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */,
+				CBDEACCA1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.h */,
+				CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -823,6 +828,7 @@
 				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
 				EC5E5DAF1BFB170600D0AF5A /* KMCIssuesCollectionViewController.m in Sources */,
 				CB5B2B8E1BE9BC710088B32E /* KMCNewsfeedViewController.m in Sources */,
+				CBDEACCC1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m in Sources */,
 				CB5B2C631BF3262E0088B32E /* KMCStandpointsCollectionViewCell.m in Sources */,
 				CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */,
 				CB3D4A191BD60A7400A907F1 /* KMCIssueViewController.m in Sources */,
