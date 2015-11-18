@@ -1,5 +1,5 @@
 /*
-* Get a list of newsfeed items
+* Get a list of newsfeed items, sorted by date, newest first
 *
 * Input: String, user's objectId
 *   Ex) {"user": "gBAz26cAHK"}
@@ -74,6 +74,7 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                             var Newsfeed = Parse.Object.extend("Newsfeed");
                             var query = new Parse.Query(Newsfeed);
                             query.containedIn("candidateID", candidateNames);
+                            query.descending("date");
 
                             query.find({
                                 success: function(results) { 
