@@ -1,6 +1,7 @@
 require("cloud/candidate_matching_algorithm.js")
 require("cloud/newsfeed_algorithm.js")
 require("cloud/survey_to_polls.js")
+require("cloud/twitterpicture.js")
 var thumbnail = require("cloud/create_thumbnail.js")
 
 // Bing Search API key and authentication
