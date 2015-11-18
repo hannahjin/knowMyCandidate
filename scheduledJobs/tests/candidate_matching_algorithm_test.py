@@ -1,4 +1,6 @@
 # Tests the get_survey_candidates function on Cloud Code
+# Command to run the tests:
+#	python candidate_matching_algorithm_test.py
 
 import json,httplib
 
