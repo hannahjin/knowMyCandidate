@@ -74,6 +74,14 @@
   return [UIImage imageNamed:@"EventsTabIcon.png"];
 }
 
++ (UIImage *)facebookIcon {
+  return [UIImage imageNamed:@"Facebook.png"];
+}
+
++ (UIImage *)globeIcon {
+  return [UIImage imageNamed:@"GlobeIcon.png"];
+}
+
 + (UIImage *)homeTabIcon {
   return [UIImage imageNamed:@"HomeTabIcon.png"];
 }
@@ -153,6 +161,11 @@
 }
 
 #pragma mark - Issues
+
++ (UIImage *)pictureForIssues:(NSString *)name {
+  NSString *string = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+  return [UIImage imageNamed:string];
+}
 
 + (UIColor *)colorForStand:(NSString *)stand {
   if ([stand isEqualToString:@"Strongly Disagrees"]) {

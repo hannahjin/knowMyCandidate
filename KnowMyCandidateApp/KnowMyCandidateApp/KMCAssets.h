@@ -18,6 +18,8 @@
 + (UIImage *)backArrowIcon;
 + (UIImage *)candidatesTabIcon;
 + (UIImage *)eventsTabIcon;
++ (UIImage *)facebookIcon;
++ (UIImage *)globeIcon;
 + (UIImage *)homeTabIcon;
 + (UIImage *)issuesTabIcon;
 + (UIImage *)signInBackground;
@@ -34,6 +36,7 @@
 + (UIImage *)cellBackgroundForAffiliation:(KMCPartyAffiliation)party;
 + (UIColor *)partyColorForAffiliation:(KMCPartyAffiliation)party;
 
++ (UIImage *)pictureForIssues:(NSString *)name;
 + (UIColor *)colorForStand:(NSString *)stand;
 
 @end

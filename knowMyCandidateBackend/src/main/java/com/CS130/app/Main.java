@@ -58,9 +58,10 @@ public class Main {
 
         // TODO: add a UI trigger to run a web scraping
         boolean scrapeFromLocalFile = true;
+		boolean saveToParse = true;
         if (scrapeData) {
             WebParser webParser = new WebParser();
-            webParser.parse(scrapeFromLocalFile);
+            webParser.parse(scrapeFromLocalFile, saveToParse);
         }
         
         scheduleTweetFetcher();
