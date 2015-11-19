@@ -46,7 +46,7 @@ Parse.Cloud.job("pull_news", function(request, response) {
 							// Obtain the candidate name and remove the space between the first and last name
 							// ex) URL: https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/News?Query='Jeb Bush'&$skip=0&$top=1 
 							// will be JebBush 
-							var candidate = /.*Query='([a-zA-z' ]*)'.*/.exec(result_list[article].__metadata.uri)[1].replace(/\s+/g, '');
+							var candidate = /.*Query='([a-zA-z' ]*)'.*/.exec(result_list[article].__metadata.uri)[1];
 							
 							// Only save the news article if it doesn't exist in the table already 
 							var NewsFeed = Parse.Object.extend("Newsfeed");
