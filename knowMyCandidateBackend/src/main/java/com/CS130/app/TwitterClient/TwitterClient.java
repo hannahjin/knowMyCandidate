@@ -71,7 +71,7 @@ public class TwitterClient {
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
-
+                    newsfeed.setUrl("http://twitter.com/" + candidate.twitterUsername + "/status/" + tweet.getId());
                     newsfeed.save();
                 }
             }
@@ -100,7 +100,7 @@ public class TwitterClient {
         try {
             ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
             parseQuery.whereEqualTo("source", "Twitter");
-            Date date = new Date(new Date().getTime() - TimeUnit.HOURS.toMillis(1));
+            Date date = new Date(new Date().getTime() - TimeUnit.MINUTES.toMillis(10));
             parseQuery.whereLessThan("updatedAt", date);
 
             parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
