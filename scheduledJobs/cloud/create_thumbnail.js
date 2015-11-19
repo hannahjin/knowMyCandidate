@@ -34,16 +34,15 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         var bing_thumbnail;
         if (httpResponse.text.length < 40 || !json_result) {
             // bing_thumbnail URL fail, error is caught below
-            // return Parse.Promise.error("Bing api returned no results for candidate: " + candidateID + " and title: " + title);
-        
-            // set default image if no results from bing
-            console.error("Bing api returned no results. Using default image for candidate: " + candidateID + " and title: " + title);
-            bing_thumbnail = "http://files.parsetfss.com/1d04d21c-5d62-4dc6-87ba-62701bc65478/tfss-19fe64ca-c9b8-4085-8605-3d81163d1d84-thumbnail.jpg";
+            return Parse.Promise.error("Bing api returned no results. Using default image for candidate: " + candidateID + " and title: " + title);
+
         } else {
-            // bing_thumbnail = json_result.d.results[0].Thumbnail.MediaUrl;
             bing_thumbnail = json_result.d.results[0].MediaUrl;
-            if (bing_thumbnail.length < 5)
-                bing_thumbnail = "http://files.parsetfss.com/1d04d21c-5d62-4dc6-87ba-62701bc65478/tfss-19fe64ca-c9b8-4085-8605-3d81163d1d84-thumbnail.jpg";                
+
+            // if invalid url
+            if (bing_thumbnail.length < 5) {
+                return Parse.Promise.error("Bing api returned invalid url. Using default image for candidate: " + candidateID + " and title: " + title);
+            }
         }
         return bing_thumbnail;        
     }, function(httpResponse) {
@@ -61,10 +60,7 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         }, function(error) {
             // bing thumbnail download fail
             // save newsFeed without thumbnail
-            console.error("Bing thumbnail download failed. Using default image for candidate: " + candidateID + " and title: " + title);
-            saveNewsfeed(newsFeed);
-
-            // TODO: add default image
+            Parse.Promise.error("Bing thumbnail download failed. Saving with default thumbnail." + candidateID + " and title: " + title);
 
         }).then(function(image) {
             // Crop image to small of width or height
@@ -100,38 +96,107 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
             // attach image file to original object
             newsFeed.set("thumbnail", cropped);
             saveNewsfeed(newsFeed);
-            /*newsFeed.save(null, {
+
+        });
+    }, function(error) {
+        // Catch ALL Parse.Promse.error here
+        // bing_thumbnail URL fail is highest level error caught here
+        
+        console.error(error);
+
+        // save newsFeed with default thumbanil
+        saveWithDefaultThumbnail(newsFeed);
+    });
+}
+
+function saveWithDefaultThumbnail(newsfeed) {
+    var Candidate = Parse.Object.extend("Candidate");
+    var query = new Parse.Query(Candidate);
+    query.equalTo("candidateID", newsfeed.get("candidateID"));
+    query.first({
+        success: function(candidate) {
+            var thumbnail = candidate.get("thumbnail");
+            newsfeed.set("thumbnail", thumbnail);
+            newsfeed.save(null, {
               success: function(newsFeed) {
-                // The object was saved successfully.
               },
               error: function(newsFeed, error) {
                 // The save failed.
                 alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
               }
-            });*/
-        });
-    }, function(error) {
-        // bing_thumbnail URL fail
-        console.error(error);
-        // save newsFeed without thumbnail
-        saveNewsfeed(newsFeed);
+            });
+        },
+        error: function(error) {
+            alert("Failed to get candidate from candiateID: " + error.code + " " + error.message);
+            // save without thumbnail
+            saveNewsfeed(newsFeed);
+        }
     });
 }
 
+
+
+Parse.Cloud.define("set_candidateid", function(request, response) {
+    var Candidate = Parse.Object.extend("Candidate");
+    var query = new Parse.Query(Candidate);
+
+    query.find({
+        success: function(results) {
+            for (var i = 0; i < results.length; i++) {
+                var candidate = results[i];
+                var candidateFirstAndLast = candidate.get('firstName') + candidate.get('lastName');
+                candidate.set("candidateID", candidateFirstAndLast);
+                candidate.save(null, {
+                    success: function(candidate) {
+                        // The object was saved successfully.
+                    },
+                    error: function(candidate, error) {
+                        // The save failed.
+                        alert("candidatids save failed. Error: " + error.code + " " + error.message);
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+            response.error("Error: " + error.code + " " + error.message);
+        }
+    });
+});
+
 // set twitter images and news items that are missing images
-Parse.Cloud.beforeSave('Newsfeed', function(request, response) {
+/*Parse.Cloud.beforeSave('Newsfeed', function(request, response) {
     var newsfeed = request.object;
     
-    // handle news items
-    if (newsfeed.get("source") != "Twitter") {
-        if (newsfeed.get("thumbnail")) {
-            // news item already has image, pass
-            response.success();
-        } else {
-            // news item missing thumbnail
-            console.log("identified missing thumbnail for Candidate: " + newsfeed.get("candidateID")) + " Title: " + newsfeed.get("title");
-            
-        }
-    }
+    if (newsfeed.get("thumbnail")) {
+        // news item already has image, pass
+        // response.success();
+    } else {
+        if(newsfeed.get("source") != "Twitter")
+            console.log("Identified missing thumbnail newsitem. Candidate: " + newsfeed.get("candidateID") + " Title: " + newsfeed.get("title"));
 
-})
+        var Candidate = Parse.Object.extend("Candidate");
+        var query = new Parse.Query(Candidate);
+        query.equalTo("candidateID", newsfeed.get("candidateID"));
+        query.first({
+            success: function(candidate) {
+                var thumbnail = candidate.get("thumbnail");
+                newsfeed.set("thumbnail", thumbnail);
+                newsfeed.save(null, {
+                  success: function(newsFeed) {
+                    // The object was saved successfully.
+                    response.success();
+                  },
+                  error: function(newsFeed, error) {
+                    // The save failed.
+                    alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
+                    response.error("newsfeed save failed");
+                  }
+                });
+            },
+            error: function(error) {
+                alert("Failed to get candidate from canddiateID: " + error.code + " " + error.message);
+            }
+        });
+    }
+});*/

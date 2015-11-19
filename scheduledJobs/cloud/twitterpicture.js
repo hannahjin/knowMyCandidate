@@ -43,7 +43,7 @@ Parse.Cloud.job("update_twitter_pictures", function(request, status) {
 
 });
 
-Parse.Cloud.define("generate_twitter_table");
+//Parse.Cloud.define("generate_twitter_table");
 
 function getTwitterImage(screenName){
 
@@ -119,7 +119,7 @@ function getTwitterImage(screenName){
 
             }, function(error) {
                 // failed to download image
-                console.log(error);
+                console.log("Failed to download image: " + error.code + " " + error.message);
                 promise.reject(error.message);
 
             }).then(function(image) {
@@ -167,7 +167,7 @@ function getTwitterImage(screenName){
             });
         }, function(error) {
             // twitter api call failed
-            console.log(error);
+            console.log("twitter api call failed: " + error.code + " " + error.message);
             promise.reject(error.message);
         });
     });

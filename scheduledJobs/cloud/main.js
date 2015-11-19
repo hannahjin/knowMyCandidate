@@ -115,7 +115,6 @@ Parse.Cloud.job("delete_old_news", function(request, response) {
 			object.destroy({
 			  success: function(object) {
 				// The object was deleted from the Parse Cloud.
-				response.success();
 			  },
 			  error: function(object, error) {
 				// The delete failed.
