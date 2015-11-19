@@ -1,8 +1,16 @@
 package com.CS130.app.TwitterClient;
 import com.CS130.app.web.Newsfeed;
 import com.CS130.app.web.NewsfeedFactory;
+import com.CS130.app.web.Candidate;
+import com.CS130.app.web.CandidateFactory;
+
+import org.parse4j.ParseCloud;
 import org.parse4j.ParseException;
+import org.parse4j.ParseFile;
+import org.parse4j.ParseObject;
 import org.parse4j.ParseQuery;
+import org.parse4j.callback.SaveCallback;
+
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
@@ -12,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +50,7 @@ public class TwitterClient {
             AccessToken token = new AccessToken(accessToken, accessTokenSecret);
 
             Twitter twitter = new TwitterFactory(configurationbuilder.build()).getInstance(token);
+            CandidateFactory candidateFactory = new CandidateFactory();
 
             if (candidateDetails.isEmpty())
             	addCandidatesToProcess();
@@ -49,8 +59,15 @@ public class TwitterClient {
 
                 String username = candidate.twitterUsername;
                 Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
+                
+                //Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
+                //ParseFile thumbnail = cur_candidate.getThumbnail();
+                //System.out.println("got candidate: " + cur_candidate.getFirstName());
+                //thumbnail.save();
+                
+                List<Status> tweets = new ArrayList<Status>();
 
-                List<Status> tweets = twitter.getUserTimeline(username, paging);
+				tweets = twitter.getUserTimeline(username, paging);
 
                 for (int i = 0; i < tweets.size(); i++) {
                     Status tweet = tweets.get(i);
@@ -71,9 +88,13 @@ public class TwitterClient {
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
-
-                    newsfeed.save();
-                }
+                    
+					//newsfeed.save();;
+                    HashMap<String, ParseObject> params = new HashMap<String, ParseObject>();
+                    params.put("tweet", newsfeed);
+                    Integer result = ParseCloud.callFunction("setThumbnailandSave", params);
+                    System.out.println("setthumbnailandsave result " + result);
+				}
             }
 
             deleteAllOldTweets();
@@ -139,7 +160,7 @@ public class TwitterClient {
         addCandidate("RickSantorum", "RickSantorum");
         addCandidate("BobbyJindal", "BobbyJindal");
         addCandidate("gov_gilmore", "JimGilmore");
-        //addCandidate("", "JillStein"); (does not have a twitter account)
+        addCandidate("DrJillStein", "JillStein");
     }
 
     protected void addCandidate(String twitterUsername, String parseId) {

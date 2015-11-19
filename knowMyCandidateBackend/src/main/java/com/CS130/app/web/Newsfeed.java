@@ -2,6 +2,7 @@ package com.CS130.app.web;
 
 import org.parse4j.ParseObject;
 import org.parse4j.ParseClassName;
+import org.parse4j.ParseFile;
 
 import java.util.Date;
 
@@ -63,5 +64,9 @@ public class Newsfeed extends ParseObject {
 
     public void setTweetDate(Date date) {
         put("date", date);
+    }
+    
+    public void setThumbnail(ParseFile file) {
+    	put("thumbnail", file);
     }
 }

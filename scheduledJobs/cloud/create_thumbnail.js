@@ -119,10 +119,12 @@ function saveWithDefaultThumbnail(newsfeed) {
             newsfeed.set("thumbnail", thumbnail);
             newsfeed.save(null, {
               success: function(newsFeed) {
+                return 0;
               },
               error: function(newsFeed, error) {
                 // The save failed.
                 alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
+                return 1;
               }
             });
         },
@@ -130,11 +132,19 @@ function saveWithDefaultThumbnail(newsfeed) {
             alert("Failed to get candidate from candiateID: " + error.code + " " + error.message);
             // save without thumbnail
             saveNewsfeed(newsFeed);
+            return 2;
         }
     });
 }
 
-
+Parse.Cloud.define("setThumbnailandSave", function(request, response) {
+    var result = saveWithDefaultThumbnail(request.params.tweet);
+    if (result == 0) {
+        response.success();
+    } else {
+        response.error();
+    }
+});
 
 Parse.Cloud.define("set_candidateid", function(request, response) {
     var Candidate = Parse.Object.extend("Candidate");
