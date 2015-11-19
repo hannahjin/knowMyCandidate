@@ -5,8 +5,8 @@ require("cloud/twitterpicture.js")
 var thumbnail = require("cloud/create_thumbnail.js")
 
 // Bing Search API key and authentication
-API_KEY = "Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4";
-BASE_64_ENCODED_API_KEY = "OkNmZCswaHVZNmQ3RWtoejA0bEVYUWZKQnIyanQ1QVMzT2kzMjNYOFR0VjQ="
+API_KEY = "4ORqdbQRr/FQTkttrengT8432RKxKlkLrcPAND1zjOo";
+BASE_64_ENCODED_API_KEY = "OjRPUnFkYlFSci9GUVRrdHRyZW5nVDg0MzJSS3hLbGtMcmNQQU5EMXpqT28="
 AUTH = "Basic " + BASE_64_ENCODED_API_KEY;
 
 // Updates the Newsfeed table with the top 5 news article related to the candidate
