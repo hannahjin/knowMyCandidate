@@ -23,7 +23,8 @@ Parse.Cloud.job("update_twitter_pictures", function(request, status) {
         "GovernorPataki",
         "RickSantorum",
         "BobbyJindal",
-        "gov_gilmore"
+        "gov_gilmore",
+        "DrJillStein"
     ];
 
     var promise = Parse.Promise.as();
@@ -41,6 +42,8 @@ Parse.Cloud.job("update_twitter_pictures", function(request, status) {
     });
 
 });
+
+Parse.Cloud.define("generate_twitter_table");
 
 function getTwitterImage(screenName){
 

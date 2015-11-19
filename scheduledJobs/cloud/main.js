@@ -115,16 +115,19 @@ Parse.Cloud.job("delete_old_news", function(request, response) {
 			object.destroy({
 			  success: function(object) {
 				// The object was deleted from the Parse Cloud.
+				response.success();
 			  },
 			  error: function(object, error) {
 				// The delete failed.
 				alert("Error: " + error.code + " " + error.message);
+				response.error("Error: " + error.code + " " + error.message);
 			  }
 			});
 		}
 	  },
 	  error: function(error) {
 		alert("Error: " + error.code + " " + error.message);
+		response.error("Error: " + error.code + " " + error.message);
 	  }
 	});
 });
