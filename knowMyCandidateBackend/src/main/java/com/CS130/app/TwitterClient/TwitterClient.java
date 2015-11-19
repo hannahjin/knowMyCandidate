@@ -1,8 +1,13 @@
 package com.CS130.app.TwitterClient;
 import com.CS130.app.web.Newsfeed;
 import com.CS130.app.web.NewsfeedFactory;
+import com.CS130.app.web.Candidate;
+import com.CS130.app.web.CandidateFactory;
+
 import org.parse4j.ParseException;
+import org.parse4j.ParseFile;
 import org.parse4j.ParseQuery;
+
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
@@ -41,6 +46,7 @@ public class TwitterClient {
             AccessToken token = new AccessToken(accessToken, accessTokenSecret);
 
             Twitter twitter = new TwitterFactory(configurationbuilder.build()).getInstance(token);
+            CandidateFactory candidateFactory = new CandidateFactory();
 
             if (candidateDetails.isEmpty())
             	addCandidatesToProcess();
@@ -49,7 +55,14 @@ public class TwitterClient {
 
                 String username = candidate.twitterUsername;
                 Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
-
+                
+                Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
+                ParseFile cur_thumbnail = cur_candidate.getThumbnail();
+                
+                byte[] img = cur_thumbnail.getData();
+                ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
+                thumbnail.save();
+                
                 List<Status> tweets = twitter.getUserTimeline(username, paging);
 
                 for (int i = 0; i < tweets.size(); i++) {
@@ -72,6 +85,7 @@ public class TwitterClient {
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
                     newsfeed.setUrl("http://twitter.com/" + candidate.twitterUsername + "/status/" + tweet.getId());
+                    newsfeed.setThumbnail(thumbnail);
                     newsfeed.save();
                 }
             }
@@ -139,7 +153,7 @@ public class TwitterClient {
         addCandidate("RickSantorum", "RickSantorum");
         addCandidate("BobbyJindal", "BobbyJindal");
         addCandidate("gov_gilmore", "JimGilmore");
-        //addCandidate("", "JillStein"); (does not have a twitter account)
+        addCandidate("DrJillStein", "JillStein");
     }
 
     protected void addCandidate(String twitterUsername, String parseId) {
