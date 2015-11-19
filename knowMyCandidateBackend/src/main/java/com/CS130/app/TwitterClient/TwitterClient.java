@@ -4,12 +4,9 @@ import com.CS130.app.web.NewsfeedFactory;
 import com.CS130.app.web.Candidate;
 import com.CS130.app.web.CandidateFactory;
 
-import org.parse4j.ParseCloud;
 import org.parse4j.ParseException;
 import org.parse4j.ParseFile;
-import org.parse4j.ParseObject;
 import org.parse4j.ParseQuery;
-import org.parse4j.callback.SaveCallback;
 
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
@@ -20,7 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
