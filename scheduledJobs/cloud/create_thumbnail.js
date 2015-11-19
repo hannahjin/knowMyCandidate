@@ -119,12 +119,10 @@ function saveWithDefaultThumbnail(newsfeed) {
             newsfeed.set("thumbnail", thumbnail);
             newsfeed.save(null, {
               success: function(newsFeed) {
-                return 0;
               },
               error: function(newsFeed, error) {
                 // The save failed.
                 alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
-                return 1;
               }
             });
         },
@@ -132,19 +130,9 @@ function saveWithDefaultThumbnail(newsfeed) {
             alert("Failed to get candidate from candiateID: " + error.code + " " + error.message);
             // save without thumbnail
             saveNewsfeed(newsFeed);
-            return 2;
         }
     });
 }
-
-Parse.Cloud.define("setThumbnailandSave", function(request, response) {
-    var result = saveWithDefaultThumbnail(request.params.tweet);
-    if (result == 0) {
-        response.success();
-    } else {
-        response.error();
-    }
-});
 
 Parse.Cloud.define("set_candidateid", function(request, response) {
     var Candidate = Parse.Object.extend("Candidate");
@@ -173,40 +161,3 @@ Parse.Cloud.define("set_candidateid", function(request, response) {
         }
     });
 });
-
-// set twitter images and news items that are missing images
-/*Parse.Cloud.beforeSave('Newsfeed', function(request, response) {
-    var newsfeed = request.object;
-    
-    if (newsfeed.get("thumbnail")) {
-        // news item already has image, pass
-        // response.success();
-    } else {
-        if(newsfeed.get("source") != "Twitter")
-            console.log("Identified missing thumbnail newsitem. Candidate: " + newsfeed.get("candidateID") + " Title: " + newsfeed.get("title"));
-
-        var Candidate = Parse.Object.extend("Candidate");
-        var query = new Parse.Query(Candidate);
-        query.equalTo("candidateID", newsfeed.get("candidateID"));
-        query.first({
-            success: function(candidate) {
-                var thumbnail = candidate.get("thumbnail");
-                newsfeed.set("thumbnail", thumbnail);
-                newsfeed.save(null, {
-                  success: function(newsFeed) {
-                    // The object was saved successfully.
-                    response.success();
-                  },
-                  error: function(newsFeed, error) {
-                    // The save failed.
-                    alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
-                    response.error("newsfeed save failed");
-                  }
-                });
-            },
-            error: function(error) {
-                alert("Failed to get candidate from canddiateID: " + error.code + " " + error.message);
-            }
-        });
-    }
-});*/
