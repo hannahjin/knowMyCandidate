@@ -60,10 +60,13 @@ public class TwitterClient {
                 String username = candidate.twitterUsername;
                 Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
                 
-                //Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
-                //ParseFile thumbnail = cur_candidate.getThumbnail();
-                //System.out.println("got candidate: " + cur_candidate.getFirstName());
-                //thumbnail.save();
+                Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
+                ParseFile cur_thumbnail = cur_candidate.getThumbnail();
+                System.out.println("got candidate: " + cur_candidate.getFirstName());
+                
+                byte[] img = cur_thumbnail.getData();
+                ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
+                thumbnail.save();
                 
                 List<Status> tweets = new ArrayList<Status>();
 
@@ -88,8 +91,8 @@ public class TwitterClient {
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
-
                     newsfeed.setUrl("http://twitter.com/" + candidate.twitterUsername + "/status/" + tweet.getId());
+                    newsfeed.setThumbnail(thumbnail);
                     newsfeed.save();
                 }
             }
