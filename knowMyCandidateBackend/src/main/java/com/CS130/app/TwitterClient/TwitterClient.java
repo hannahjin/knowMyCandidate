@@ -62,7 +62,6 @@ public class TwitterClient {
                 
                 Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
                 ParseFile cur_thumbnail = cur_candidate.getThumbnail();
-                System.out.println("got candidate: " + cur_candidate.getFirstName());
                 
                 byte[] img = cur_thumbnail.getData();
                 ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
