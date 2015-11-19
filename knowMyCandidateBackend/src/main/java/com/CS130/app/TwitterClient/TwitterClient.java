@@ -63,9 +63,7 @@ public class TwitterClient {
                 ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
                 thumbnail.save();
                 
-                List<Status> tweets;
-
-				tweets = twitter.getUserTimeline(username, paging);
+                List<Status> tweets = twitter.getUserTimeline(username, paging);
 
                 for (int i = 0; i < tweets.size(); i++) {
                     Status tweet = tweets.get(i);
