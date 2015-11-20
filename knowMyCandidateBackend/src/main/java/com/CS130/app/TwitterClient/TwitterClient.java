@@ -151,25 +151,25 @@ public class TwitterClient {
 //    }
 
     protected void addCandidatesToProcess() {
-        addCandidate("MartinOMalley", "MartinO'Malley");
-        addCandidate("HillaryClinton", "HillaryClinton");
-        addCandidate("realDonaldTrump", "DonaldTrump");
-        addCandidate("BernieSanders", "BernieSanders");
-        addCandidate("RealBenCarson", "BenCarson");
-        addCandidate("marcorubio", "MarcoRubio");
-        addCandidate("tedcruz", "TedCruz");
-        addCandidate("JebBush", "JebBush");
-        addCandidate("CarlyFiorina", "CarlyFiorina");
-        addCandidate("GovMikeHuckabee", "MikeHuckabee");
-        addCandidate("RandPaul", "RandPaul");
-        addCandidate("ChrisChristie", "ChrisChristie");
-        addCandidate("JohnKasich", "JohnKasich");
-        addCandidate("LindseyGrahamSC", "LindseyGraham");
-        addCandidate("GovernorPataki", "GeorgePataki");
-        addCandidate("RickSantorum", "RickSantorum");
-        addCandidate("BobbyJindal", "BobbyJindal");
-        addCandidate("gov_gilmore", "JimGilmore");
-        addCandidate("DrJillStein", "JillStein");
+        addCandidate("MartinOMalley", "Martin O'Malley");
+        addCandidate("HillaryClinton", "Hillary Clinton");
+        addCandidate("realDonaldTrump", "Donald Trump");
+        addCandidate("BernieSanders", "Bernie Sanders");
+        addCandidate("RealBenCarson", "Ben Carson");
+        addCandidate("marcorubio", "Marco Rubio");
+        addCandidate("tedcruz", "Ted Cruz");
+        addCandidate("JebBush", "Jeb Bush");
+        addCandidate("CarlyFiorina", "Carly Fiorina");
+        addCandidate("GovMikeHuckabee", "Mike Huckabee");
+        addCandidate("RandPaul", "Rand Paul");
+        addCandidate("ChrisChristie", "Chris Christie");
+        addCandidate("JohnKasich", "John Kasich");
+        addCandidate("LindseyGrahamSC", "Lindsey Graham");
+        addCandidate("GovernorPataki", "George Pataki");
+        addCandidate("RickSantorum", "Rick Santorum");
+        addCandidate("BobbyJindal", "Bobby Jindal");
+        addCandidate("gov_gilmore", "Jim Gilmore");
+        addCandidate("DrJillStein", "Jill Stein");
     }
 
     protected void addCandidate(String twitterUsername, String parseId) {
