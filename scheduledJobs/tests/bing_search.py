@@ -7,7 +7,7 @@ import urllib
 import urllib2
 import json
  
-API_KEY = 'Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4'
+API_KEY = '4ORqdbQRr/FQTkttrengT8432RKxKlkLrcPAND1zjOo'
 
 def main():
     # TODO(jennhuang): Given a list of candidates, perform a search query for each candidate.    

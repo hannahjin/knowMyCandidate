@@ -1,9 +1,9 @@
 /*
-* Get a list of newsfeed items, sorted by date, newest first
+* Get a list of newsfeed items, sorted by most recent first
 *
 * Input: String, user's objectId
 *   Ex) {"user": "gBAz26cAHK"}
-* Output: JSON with an unsorted list of newsfeed items
+* Output: JSON with a list of newsfeed items, sorted by most recent first
 * 
 * Usage examples:
 * Through the API console (or REST API):
@@ -52,7 +52,7 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                 idToName = {}
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
-                    idToName[object.id] = object.get('firstName')+object.get('lastName');
+                    idToName[object.id] = object.get('firstName')+ " " + object.get('lastName');
                 }
 
                 (function(idToName){
@@ -93,13 +93,6 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                             "retweetCount": object.get('retweetCount'),
                                             "twitterUsername": object.get('twitterUsername'),
                                             "thumbnail": object.get('thumbnail')
-                                        }
-                                        if(object.get('source') === "Twitter") {
-                                            var url = /https:\/\/t.co\/[a-zA-z0-9]*/.exec(object.get('summary'));
-                                            if (url != null) {
-                                                item["url"] = url[0];
-                                                item["summary"] = item["summary"].replace(url, "");
-                                            }
                                         }
                                         items.push(item);
                                     }
