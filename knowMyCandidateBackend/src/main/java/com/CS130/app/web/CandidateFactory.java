@@ -17,7 +17,10 @@ public class CandidateFactory {
 
 		List<Candidate> candidateList;
 		candidateList = query.find();
-		
+
+		if (candidateList == null || candidateList.size() == 0)
+			return getNewCandidate();
+
 		return candidateList.get(0);
 	}
 }
