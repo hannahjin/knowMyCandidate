@@ -31,13 +31,19 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         // bing api request success
         var json_result = JSON.parse(httpResponse.text);
         // TODO: find cleaner way fo checking valid JSON
+        var bing_thumbnail;
         if (httpResponse.text.length < 40 || !json_result) {
             // bing_thumbnail URL fail, error is caught below
-            return Parse.Promise.error("Bing api returned no results for candidate: " + candidateID + " and title: " + title);
-        }
+            return Parse.Promise.error("Bing api returned no results. Using default image for candidate: " + candidateID + " and title: " + title);
 
-        //var bing_thumbnail = json_result.d.results[0].Thumbnail.MediaUrl;
-        var bing_thumbnail = json_result.d.results[0].MediaUrl;
+        } else {
+            bing_thumbnail = json_result.d.results[0].MediaUrl;
+
+            // if invalid url
+            if (bing_thumbnail.length < 5) {
+                return Parse.Promise.error("Bing api returned invalid url. Using default image for candidate: " + candidateID + " and title: " + title);
+            }
+        }
         return bing_thumbnail;        
     }, function(httpResponse) {
         // bing api request error
@@ -54,8 +60,7 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         }, function(error) {
             // bing thumbnail download fail
             // save newsFeed without thumbnail
-            console.error(error);
-            saveNewsfeed(newsFeed);
+            Parse.Promise.error("Bing thumbnail download failed. Saving with default thumbnail." + candidateID + " and title: " + title);
 
         }).then(function(image) {
             // Crop image to small of width or height
@@ -90,20 +95,69 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
         }).then(function(cropped){
             // attach image file to original object
             newsFeed.set("thumbnail", cropped);
-            newsFeed.save(null, {
+            saveNewsfeed(newsFeed);
+
+        });
+    }, function(error) {
+        // Catch ALL Parse.Promse.error here
+        // bing_thumbnail URL fail is highest level error caught here
+        
+        console.error(error);
+
+        // save newsFeed with default thumbanil
+        saveWithDefaultThumbnail(newsFeed);
+    });
+}
+
+function saveWithDefaultThumbnail(newsfeed) {
+    var Candidate = Parse.Object.extend("Candidate");
+    var query = new Parse.Query(Candidate);
+    query.equalTo("candidateID", newsfeed.get("candidateID"));
+    query.first({
+        success: function(candidate) {
+            var thumbnail = candidate.get("thumbnail");
+            newsfeed.set("thumbnail", thumbnail);
+            newsfeed.save(null, {
               success: function(newsFeed) {
-                // The object was saved successfully.
               },
               error: function(newsFeed, error) {
                 // The save failed.
                 alert("Newsfeed save failed. Error: " + error.code + " " + error.message);
               }
             });
-        });
-    }, function(error) {
-        // bing_thumbnail URL fail
-        console.error(error);
-        // save newsFeed without thumbnail
-        saveNewsfeed(newsFeed);
+        },
+        error: function(error) {
+            alert("Failed to get candidate from candiateID: " + error.code + " " + error.message);
+            // save without thumbnail
+            saveNewsfeed(newsFeed);
+        }
     });
 }
+
+Parse.Cloud.define("set_candidateid", function(request, response) {
+    var Candidate = Parse.Object.extend("Candidate");
+    var query = new Parse.Query(Candidate);
+
+    query.find({
+        success: function(results) {
+            for (var i = 0; i < results.length; i++) {
+                var candidate = results[i];
+                var candidateFirstAndLast = candidate.get('firstName') + candidate.get('lastName');
+                candidate.set("candidateID", candidateFirstAndLast);
+                candidate.save(null, {
+                    success: function(candidate) {
+                        // The object was saved successfully.
+                    },
+                    error: function(candidate, error) {
+                        // The save failed.
+                        alert("candidatids save failed. Error: " + error.code + " " + error.message);
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+            response.error("Error: " + error.code + " " + error.message);
+        }
+    });
+});

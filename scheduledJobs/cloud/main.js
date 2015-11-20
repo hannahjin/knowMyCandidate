@@ -119,12 +119,14 @@ Parse.Cloud.job("delete_old_news", function(request, response) {
 			  error: function(object, error) {
 				// The delete failed.
 				alert("Error: " + error.code + " " + error.message);
+				response.error("Error: " + error.code + " " + error.message);
 			  }
 			});
 		}
 	  },
 	  error: function(error) {
 		alert("Error: " + error.code + " " + error.message);
+		response.error("Error: " + error.code + " " + error.message);
 	  }
 	});
 });
