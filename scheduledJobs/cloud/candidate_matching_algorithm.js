@@ -6,6 +6,7 @@
 *   Ex) {"user": "pcEbh8GpHi"} 
 * Output: JSON with a sorted list of candidate object with most compatible candidate first
 *   Each candidate object contains
+*     PartyAffiliation: candidate's political party
 *     candidate: candidate's objectId
 *     firstName: candidate's first name
 *     issues: a sorted list of issue objects with the issue most compatible to the user first
@@ -28,6 +29,7 @@
 * {
     "result": [
         {
+            "PartyAffiliation": "Republican Party",
             "candidate": "HDqZciBULT",
             "firstName": "Mike",
             "issues": [
@@ -60,10 +62,11 @@ var Compatibility = {
     STRONG_INCOMPATIBLE: 'Strongly incompatible'
 };
 
-var SurveyCandidate = function(id, first, last) {
+var SurveyCandidate = function(id, first, last, party) {
     this.id = id;
     this.first = first;
     this.last = last;
+    this.party = party;
     this.score = 0;
     this.issues = []; // Holds processed issues with compatibility
     this.parseIssues = []; // Holds unprocessed arrays from Parse
@@ -251,7 +254,7 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                         alert("Successfully retrieved " + results.length);
                         for (var i = 0; i < results.length; i++) {
                             var object = results[i];
-                            var currentCandidate = new SurveyCandidate(object.id, object.get('firstName'), object.get('lastName'));
+                            var currentCandidate = new SurveyCandidate(object.id, object.get('firstName'), object.get('lastName'), object.get('PartyAffiliation'));
                             currentCandidate.parseIssues = object.get('Issues');
                             candidates.push(currentCandidate);
                         }
@@ -296,6 +299,7 @@ Parse.Cloud.define("get_survey_candidates", function(request, response) {
                                 "candidate": candidates[i].id,
                                 "firstName": candidates[i].first,
                                 "lastName": candidates[i].last,
+                                "PartyAffiliation": candidates[i].party,
                                 "score": candidates[i].score,
                                 "issues": sortedIssues
                             }
