@@ -39,7 +39,7 @@ public class TwitterClientTest extends TestCase
     public void testCreatingCandidateList()
     {
         twitterClient.addCandidatesToProcess();
-        assertEquals(twitterClient.candidateDetails.size(), 18);
+        assertEquals(19, twitterClient.candidateDetails.size());
     }
 
     public void testAddingOneCandidate()

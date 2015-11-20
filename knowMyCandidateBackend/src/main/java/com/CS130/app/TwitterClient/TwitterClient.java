@@ -49,27 +49,48 @@ public class TwitterClient {
             CandidateFactory candidateFactory = new CandidateFactory();
 
             if (candidateDetails.isEmpty())
-            	addCandidatesToProcess();
+                addCandidatesToProcess();
+
             for (CandidateDetails candidate : candidateDetails) {
-                System.out.println("Fetching tweets for candidate: " + candidate.parseId);
+                System.out.println("Processing tweets for candidate: " + candidate.parseId);
+
+                NewsfeedFactory newsfeedFactory = new NewsfeedFactory();
+                List<Newsfeed> preExistingTweets = newsfeedFactory.getNewsfeedTweets(candidate.parseId);
+
+                long latestTweetId = 1L;
+                if (preExistingTweets != null && preExistingTweets.size() > 0) {
+                    System.out.println("Found " + preExistingTweets.size() + " existing tweets");
+                    latestTweetId = Long.parseLong(preExistingTweets.get(0).getTweetId());
+                }
 
                 String username = candidate.twitterUsername;
-                Paging paging = new Paging(1, TWEETS_PER_CANDIDATE);
-                
+                Paging paging = new Paging(1, TWEETS_PER_CANDIDATE).sinceId(latestTweetId);
+
                 Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
                 ParseFile cur_thumbnail = cur_candidate.getThumbnail();
-                
+
                 byte[] img = cur_thumbnail.getData();
                 ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
                 thumbnail.save();
-                
+
                 List<Status> tweets = twitter.getUserTimeline(username, paging);
+                System.out.println("Found " + tweets.size() + " new tweets");
 
                 for (int i = 0; i < tweets.size(); i++) {
                     Status tweet = tweets.get(i);
 
-                    NewsfeedFactory newsfeedFactory = new NewsfeedFactory();
-                    Newsfeed newsfeed = newsfeedFactory.getNewNewsfeed();
+                    Newsfeed newsfeed;
+                    if (preExistingTweets != null && preExistingTweets.size() == TWEETS_PER_CANDIDATE) {
+                        //pre-existing tweets list is sorted in descending order of time, so replace tweets from the end with new ones
+                        newsfeed = preExistingTweets.get(TWEETS_PER_CANDIDATE - 1 - i);
+                    }
+                    else {
+                        newsfeed = newsfeedFactory.getNewNewsfeed();
+                        newsfeed.setSource("Twitter");
+                        newsfeed.setCandidateID(candidate.parseId);
+                        newsfeed.setTwitterUsername(candidate.twitterUsername);
+                        newsfeed.setThumbnail(thumbnail);
+                    }
 
                     if (tweet.getRetweetedStatus() != null) {
                         String retweetedText = "RT @" + tweet.getRetweetedStatus().getUser().getScreenName() + ": " + tweet.getRetweetedStatus().getText();
@@ -78,19 +99,14 @@ public class TwitterClient {
                         newsfeed.setSummary(tweet.getText());
                     }
 
-                    newsfeed.setSource("Twitter");
-                    newsfeed.setCandidateID(candidate.parseId);
-                    newsfeed.setTwitterUsername(candidate.twitterUsername);
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());
                     newsfeed.setUrl("http://twitter.com/" + candidate.twitterUsername + "/status/" + tweet.getId());
-                    newsfeed.setThumbnail(thumbnail);
+                    newsfeed.setTweetId(Long.toString(tweet.getId()));
                     newsfeed.save();
                 }
             }
-
-            deleteAllOldTweets();
 
             if (input != null) {
                 try {
@@ -110,50 +126,50 @@ public class TwitterClient {
         }
     }
 
-    protected void deleteAllOldTweets() {
-        try {
-            ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
-            parseQuery.whereEqualTo("source", "Twitter");
-            Date date = new Date(new Date().getTime() - TimeUnit.MINUTES.toMillis(10));
-            parseQuery.whereLessThan("updatedAt", date);
-
-            parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
-            List<Newsfeed> newsfeedList = parseQuery.find();
-            int num_tweets = 0;
-            if (newsfeedList != null) {
-            	num_tweets = newsfeedList.size();
-                for (Newsfeed newsfeed : newsfeedList) {
-                    System.out.println("Deleting old tweets for " + newsfeed.getCandidateID() + " created on " + newsfeed.getCreatedAt());
-                    newsfeed.delete();
-                }
-            }
-            System.out.println("Deleted " + num_tweets + " old tweets.");
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Failed to delete old candidate tweets from parse");
-        }
-    }
+//    protected void deleteAllOldTweets() {
+//        try {
+//            ParseQuery<Newsfeed> parseQuery = ParseQuery.getQuery(Newsfeed.class);
+//            parseQuery.whereEqualTo("source", "Twitter");
+//            Date date = new Date(new Date().getTime() - TimeUnit.MINUTES.toMillis(10));
+//            parseQuery.whereLessThan("updatedAt", date);
+//
+//            parseQuery.limit(1000); //by default parse only allows 100 items to be deleted
+//            List<Newsfeed> newsfeedList = parseQuery.find();
+//            int num_tweets = 0;
+//            if (newsfeedList != null) {
+//                num_tweets = newsfeedList.size();
+//                for (Newsfeed newsfeed : newsfeedList) {
+//                    System.out.println("Deleting old tweets for " + newsfeed.getCandidateID() + " created on " + newsfeed.getCreatedAt());
+//                    newsfeed.delete();
+//                }
+//            }
+//            System.out.println("Deleted " + num_tweets + " old tweets.");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//            System.out.println("Failed to delete old candidate tweets from parse");
+//        }
+//    }
 
     protected void addCandidatesToProcess() {
-        addCandidate("MartinOMalley", "MartinO'Malley");
-        addCandidate("HillaryClinton", "HillaryClinton");
-        addCandidate("realDonaldTrump", "DonaldTrump");
-        addCandidate("BernieSanders", "BernieSanders");
-        addCandidate("RealBenCarson", "BenCarson");
-        addCandidate("marcorubio", "MarcoRubio");
-        addCandidate("tedcruz", "TedCruz");
-        addCandidate("JebBush", "JebBush");
-        addCandidate("CarlyFiorina", "CarlyFiorina");
-        addCandidate("GovMikeHuckabee", "MikeHuckabee");
-        addCandidate("RandPaul", "RandPaul");
-        addCandidate("ChrisChristie", "ChrisChristie");
-        addCandidate("JohnKasich", "JohnKasich");
-        addCandidate("LindseyGrahamSC", "LindseyGraham");
-        addCandidate("GovernorPataki", "GeorgePataki");
-        addCandidate("RickSantorum", "RickSantorum");
-        addCandidate("BobbyJindal", "BobbyJindal");
-        addCandidate("gov_gilmore", "JimGilmore");
-        addCandidate("DrJillStein", "JillStein");
+        addCandidate("MartinOMalley", "Martin O'Malley");
+        addCandidate("HillaryClinton", "Hillary Clinton");
+        addCandidate("realDonaldTrump", "Donald Trump");
+        addCandidate("BernieSanders", "Bernie Sanders");
+        addCandidate("RealBenCarson", "Ben Carson");
+        addCandidate("marcorubio", "Marco Rubio");
+        addCandidate("tedcruz", "Ted Cruz");
+        addCandidate("JebBush", "Jeb Bush");
+        addCandidate("CarlyFiorina", "Carly Fiorina");
+        addCandidate("GovMikeHuckabee", "Mike Huckabee");
+        addCandidate("RandPaul", "Rand Paul");
+        addCandidate("ChrisChristie", "Chris Christie");
+        addCandidate("JohnKasich", "John Kasich");
+        addCandidate("LindseyGrahamSC", "Lindsey Graham");
+        addCandidate("GovernorPataki", "George Pataki");
+        addCandidate("RickSantorum", "Rick Santorum");
+        addCandidate("BobbyJindal", "Bobby Jindal");
+        addCandidate("gov_gilmore", "Jim Gilmore");
+        addCandidate("DrJillStein", "Jill Stein");
     }
 
     protected void addCandidate(String twitterUsername, String parseId) {
