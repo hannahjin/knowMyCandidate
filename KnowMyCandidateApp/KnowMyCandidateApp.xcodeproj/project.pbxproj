@@ -8,6 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		64F090EF1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */; };
+		B403DB4A1BFE873200A6D894 /* KMCSurveyResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */; };
+		B403DB4B1BFE873200A6D894 /* KMCSurveyResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */; };
+		B403DB4C1BFE873200A6D894 /* UIFont+SystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */; };
+		B403DB671BFE87F100A6D894 /* BebasNeue Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */; };
+		B403DB681BFE87F100A6D894 /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */; };
+		B403DB6A1BFE87F100A6D894 /* BebasNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */; };
+		B403DB6B1BFE87F100A6D894 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */; };
+		B403DB6C1BFE87F100A6D894 /* BebasNeue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */; };
+		B403DB6D1BFE87F100A6D894 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */; };
+		B403DB6E1BFE87F100A6D894 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */; };
+		B403DB6F1BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */; };
+		B403DB701BFE87F100A6D894 /* MyriadPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */; };
+		B403DB711BFE87F100A6D894 /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */; };
+		B403DB721BFE87F100A6D894 /* MyriadPro-CondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */; };
+		B403DB731BFE87F100A6D894 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */; };
+		B403DB741BFE87F100A6D894 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */; };
+		B403DB751BFE87F100A6D894 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */; };
+		B403DB761BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */; };
+		B403DB771BFE87F100A6D894 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */; };
+		B403DB781BFE87F100A6D894 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */; };
+		B403DB791BFE87F100A6D894 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */; };
+		B403DB7A1BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */; };
+		B403DB7B1BFE87F100A6D894 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */; };
+		B403DB7C1BFE87F100A6D894 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */; };
+		B403DB7D1BFE87F100A6D894 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */; };
+		B403DB7E1BFE87F100A6D894 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */; };
+		B403DB7F1BFE87F100A6D894 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */; };
+		B403DB801BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */; };
+		B403DB841BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */; };
 		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; };
 		CB3D4A191BD60A7400A907F1 /* KMCIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCIssueViewController.m */; };
 		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; };
@@ -172,6 +201,39 @@
 		64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowMyCandidateAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowMyCandidateAppUITests.swift; sourceTree = "<group>"; };
 		64F090F01BF6C548006D3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B403DB441BFE873100A6D894 /* KMCSurveyResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsViewController.h; sourceTree = "<group>"; };
+		B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsViewController.m; sourceTree = "<group>"; };
+		B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultView.h; sourceTree = "<group>"; };
+		B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultView.m; sourceTree = "<group>"; };
+		B403DB481BFE873200A6D894 /* UIFont+SystemFontOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SystemFontOverride.h"; sourceTree = "<group>"; };
+		B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SystemFontOverride.m"; sourceTree = "<group>"; };
+		B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue Book.ttf"; sourceTree = "<group>"; };
+		B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
+		B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
+		B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
+		B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
+		B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCondIt.otf"; sourceTree = "<group>"; };
+		B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldIt.otf"; sourceTree = "<group>"; };
+		B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Cond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Cond.otf"; sourceTree = "<group>"; };
+		B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-CondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-CondIt.otf"; sourceTree = "<group>"; };
+		B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-It.otf"; sourceTree = "<group>"; };
+		B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Semibold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
+		B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-SemiboldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-SemiboldIt.otf"; sourceTree = "<group>"; };
+		B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsCollectionViewCell.h; sourceTree = "<group>"; };
+		B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsCollectionViewCell.m; sourceTree = "<group>"; };
 		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
 		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
 		CB3D4A171BD60A7400A907F1 /* KMCIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssueViewController.h; sourceTree = "<group>"; };
@@ -391,6 +453,39 @@
 			path = KnowMyCandidateAppUITests;
 			sourceTree = "<group>";
 		};
+		B403DB811BFE87FB00A6D894 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */,
+				B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */,
+				B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */,
+				B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */,
+				B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */,
+				B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */,
+				B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */,
+				B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */,
+				B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */,
+				B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */,
+				B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */,
+				B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */,
+				B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */,
+				B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */,
+				B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */,
+				B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */,
+				B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */,
+				B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */,
+				B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */,
+				B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */,
+				B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */,
+				B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */,
+				B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */,
+				B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */,
+				B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = Fonts;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CB5B2B851BE53F400088B32E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +499,8 @@
 				CB5B2C651BF413F00088B32E /* KMCInfoCollectionViewCell.m */,
 				EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */,
 				EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */,
+				B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */,
+				B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -531,17 +628,24 @@
 				CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */,
 				CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */,
 				CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */,
+				CB5B2B821BE2B9E90088B32E /* KMCSurveyViewController.h */,
+				CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */,
+				B403DB441BFE873100A6D894 /* KMCSurveyResultsViewController.h */,
+				B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */,
+				B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */,
+				B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */,
+				B403DB481BFE873200A6D894 /* UIFont+SystemFontOverride.h */,
+				B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
 				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
 				CBC10A971BDCCDBA00FABAF4 /* KMCSignUpViewController.h */,
 				CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */,
-				CB5B2B821BE2B9E90088B32E /* KMCSurveyViewController.h */,
-				CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */,
 				CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */,
 				CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
 				CB60A3881BCD8F8C001690BE /* Info.plist */,
 				CBC10A751BDBFBDD00FABAF4 /* Icons */,
+				B403DB811BFE87FB00A6D894 /* Fonts */,
 				CB60A3A21BCD90BF001690BE /* Frameworks */,
 				CB60A3771BCD8F8C001690BE /* Supporting Files */,
 			);
@@ -750,6 +854,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B403DB671BFE87F100A6D894 /* BebasNeue Book.ttf in Resources */,
+				B403DB681BFE87F100A6D894 /* BebasNeue-Bold.ttf in Resources */,
+				B403DB6A1BFE87F100A6D894 /* BebasNeue-Light.ttf in Resources */,
+				B403DB6B1BFE87F100A6D894 /* BebasNeue-Regular.ttf in Resources */,
+				B403DB6C1BFE87F100A6D894 /* BebasNeue-Thin.ttf in Resources */,
+				B403DB6D1BFE87F100A6D894 /* MyriadPro-Bold.otf in Resources */,
+				B403DB6E1BFE87F100A6D894 /* MyriadPro-BoldCond.otf in Resources */,
+				B403DB6F1BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf in Resources */,
+				B403DB701BFE87F100A6D894 /* MyriadPro-BoldIt.otf in Resources */,
+				B403DB711BFE87F100A6D894 /* MyriadPro-Cond.otf in Resources */,
+				B403DB721BFE87F100A6D894 /* MyriadPro-CondIt.otf in Resources */,
+				B403DB731BFE87F100A6D894 /* MyriadPro-It.otf in Resources */,
+				B403DB741BFE87F100A6D894 /* MyriadPro-Regular.otf in Resources */,
+				B403DB751BFE87F100A6D894 /* MyriadPro-Semibold.otf in Resources */,
+				B403DB761BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf in Resources */,
+				B403DB771BFE87F100A6D894 /* OpenSans-Bold.ttf in Resources */,
+				B403DB781BFE87F100A6D894 /* OpenSans-BoldItalic.ttf in Resources */,
+				B403DB791BFE87F100A6D894 /* OpenSans-ExtraBold.ttf in Resources */,
+				B403DB7A1BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				B403DB7B1BFE87F100A6D894 /* OpenSans-Italic.ttf in Resources */,
+				B403DB7C1BFE87F100A6D894 /* OpenSans-Light.ttf in Resources */,
+				B403DB7D1BFE87F100A6D894 /* OpenSans-LightItalic.ttf in Resources */,
+				B403DB7E1BFE87F100A6D894 /* OpenSans-Regular.ttf in Resources */,
+				B403DB7F1BFE87F100A6D894 /* OpenSans-Semibold.ttf in Resources */,
+				B403DB801BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				CB5B2C401BF27BCD0088B32E /* Lindsey_Graham.png in Resources */,
 				CB5B2C431BF27BCD0088B32E /* Marco_Rubio@2x.png in Resources */,
 				CB5B2C361BF27BCD0088B32E /* Jeb_Bush.png in Resources */,
@@ -878,17 +1007,21 @@
 				CB5B2B841BE2B9E90088B32E /* KMCSurveyViewController.m in Sources */,
 				CB5B2B991BF19ACC0088B32E /* KMCConstants.m in Sources */,
 				CB5B2C591BF27D010088B32E /* KMCCandidateProfileViewController.m in Sources */,
+				B403DB4C1BFE873200A6D894 /* UIFont+SystemFontOverride.m in Sources */,
 				CB5B2C661BF413F00088B32E /* KMCInfoCollectionViewCell.m in Sources */,
 				CB5B2B881BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m in Sources */,
 				CB5B2B961BF199730088B32E /* KMCCandidatesCollectionViewCell.m in Sources */,
 				CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */,
+				B403DB4B1BFE873200A6D894 /* KMCSurveyResultView.m in Sources */,
 				CB60A37F1BCD8F8C001690BE /* KMCSignInViewController.m in Sources */,
+				B403DB4A1BFE873200A6D894 /* KMCSurveyResultsViewController.m in Sources */,
 				EC5E5DB01BFB170600D0AF5A /* PieChartView.m in Sources */,
 				CB5B2B911BE9C0540088B32E /* KMCCandidatesCollectionViewController.m in Sources */,
 				CB60A37C1BCD8F8C001690BE /* AppDelegate.m in Sources */,
 				EC5E5D9D1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m in Sources */,
 				CBC10A991BDCCDBA00FABAF4 /* KMCSignUpViewController.m in Sources */,
 				CB60A3791BCD8F8C001690BE /* main.m in Sources */,
+				B403DB841BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m in Sources */,
 				EC5E5DB21BFB170600D0AF5A /* RotatedView.m in Sources */,
 				CBC10A861BDBFCD800FABAF4 /* KMCAssets.m in Sources */,
 				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
@@ -911,17 +1044,6 @@
 			targetProxy = 64F090F11BF6C548006D3FF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CB60A3851BCD8F8C001690BE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB60A3861BCD8F8C001690BE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		64F090F31BF6C548006D3FF1 /* Debug */ = {
@@ -1071,6 +1193,7 @@
 				64F090F41BF6C548006D3FF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB60A36F1BCD8F8C001690BE /* Build configuration list for PBXProject "KnowMyCandidateApp" */ = {
 			isa = XCConfigurationList;

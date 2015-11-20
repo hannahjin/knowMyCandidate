@@ -4,7 +4,8 @@
 
 @protocol KMCSurveyCollectionViewCellDelegate <NSObject>
 
-- (void)didChangeSliderValueForCell:(KMCSurveyCollectionViewCell *)cell;
+- (void)didChangeScoreValueForCell:(KMCSurveyCollectionViewCell *)cell;
+- (void)didChangeWeightValueForCell:(KMCSurveyCollectionViewCell *)cell;
 
 @end
 
@@ -12,7 +13,8 @@
 
 @property (nonatomic, copy) NSString *cellID;
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic) CGFloat sliderValue;
+@property (nonatomic) CGFloat score;
+@property (nonatomic) CGFloat weight;
 @property (nonatomic, weak) id<KMCSurveyCollectionViewCellDelegate> delegate;
 
 @end

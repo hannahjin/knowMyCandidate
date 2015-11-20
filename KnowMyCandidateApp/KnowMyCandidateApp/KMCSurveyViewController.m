@@ -5,10 +5,11 @@
 #import "Parse/Parse.h"
 
 NSString *const kSurveyAnswersKey = @"surveyAnswers";
+NSString *const kSurveyAnswerWeightsKey = @"surveyAnswerWeights";
 
-static const CGFloat kButtonHeight = 60.f;
+static const CGFloat kButtonHeight = 50.f;
 static const CGFloat kCellPadding = 10.f;
-static const CGFloat kCellHeight = 150.f;
+static const CGFloat kCellHeight = 200.f;
 
 static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 
@@ -20,7 +21,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   BOOL _requestInFlight;
   NSDictionary *_surveyDictionary;
   UIButton *_submitButton;
-  NSMutableDictionary *_sliderValues;
+  NSMutableDictionary *_scoreValues;
+  NSMutableDictionary *_weightValues;
 }
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
@@ -28,7 +30,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    _sliderValues = [[NSMutableDictionary alloc] init];
+    _scoreValues = [[NSMutableDictionary alloc] init];
+    _weightValues = [[NSMutableDictionary alloc] init];
     [self getSurveyQuestions];
   }
   return self;
@@ -37,7 +40,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.collectionView.backgroundColor = [KMCAssets mainPurpleColor];
+  self.collectionView.backgroundColor = [KMCAssets lightGrayBackgroundColor];
   self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
                                          UIViewAutoresizingFlexibleWidth;
   [self.collectionView registerClass:[KMCSurveyCollectionViewCell class]
@@ -49,21 +52,24 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   layout.itemSize = CGSizeMake(self.view.bounds.size.width - 2 * kCellPadding, kCellHeight);
   layout.sectionInset = UIEdgeInsetsMake(kCellPadding, kCellPadding, kCellPadding, kCellPadding);
 
-  self.navigationItem.title = @"How do you feel about...";
+  self.navigationItem.title = @"How do you feel about ...";
 
   // Defining submit button attributes.
   CGFloat width = self.collectionView.frame.size.width;
   CGRect frame = CGRectMake(0.f, 0.f, width, kButtonHeight);
+
   _submitButton = [[UIButton alloc] initWithFrame:frame];
   [_submitButton addTarget:self
                     action:@selector(didTapSubmitButton)
           forControlEvents:UIControlEventTouchUpInside];
-  _submitButton.backgroundColor = [KMCAssets mainPurpleColor];
-  _submitButton.titleLabel.font = [UIFont systemFontOfSize:20.f weight:0.3f];
-  [_submitButton setTitle:@"Submit" forState:UIControlStateNormal];
-  _submitButton.layer.shadowRadius = 2.f;
-  _submitButton.layer.shadowOpacity = 0.3f;
-  _submitButton.layer.shadowColor = [UIColor blackColor].CGColor;
+  _submitButton.backgroundColor = [UIColor lightGrayColor];
+  _submitButton.titleLabel.font = [KMCAssets titleFont:[KMCAssets largeFont]];
+  [_submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+  [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [_submitButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |
+   UIViewAutoresizingFlexibleRightMargin];
+
+  _submitButton.layer.cornerRadius = 3.f;
   [self.view addSubview:_submitButton];
 }
 
@@ -93,7 +99,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     for (PFObject *object in objects) {
       temp[object.objectId] = [object objectForKey:@"topic"];
-      _sliderValues[object.objectId] = @(3.f);
+      _scoreValues[object.objectId] = @(3.f);
+      _weightValues[object.objectId] = @(2.f);
     }
     _requestInFlight = NO;
     _submitButton.hidden = NO;
@@ -114,9 +121,13 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   [self.navigationController.view addSubview:overlayView];
 
   PFUser *user = [PFUser currentUser];
-  [user setObject:[_sliderValues copy] forKey:kSurveyAnswersKey];
+  [user setObject:[_scoreValues copy] forKey:kSurveyAnswersKey];
+  [user setObject:[_weightValues copy] forKey:kSurveyAnswerWeightsKey];
   [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [PFCloud callFunctionInBackground:@"add_user_survey_data_to_polls"
+                       withParameters:@{ @"user" : user.objectId }];
     [indicatorView stopAnimating];
+    [overlayView removeFromSuperview];
     [self.delegate didCompleteSurvey];
   }];
 }
@@ -136,21 +147,30 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
                                                     forIndexPath:indexPath];
 
   cell.delegate = self;
+
   NSArray *keys = [_surveyDictionary allKeys];
   NSString *issueID = keys[indexPath.item];
-  cell.text = _surveyDictionary[issueID];
+  NSString *prompt = [NSString stringWithFormat:@"%lu. %@", indexPath.item + 1, _surveyDictionary[issueID]];
+  cell.text = prompt;
   cell.cellID = issueID;
-  NSNumber *number = _sliderValues[issueID];
-  cell.sliderValue = [number doubleValue];
+  NSNumber *score = _scoreValues[issueID];
+  NSNumber *weight = _weightValues[issueID];
+  cell.score = [score doubleValue];
+  cell.weight = [weight doubleValue];
 
   return cell;
 }
 
 #pragma mark - KMCSurveyCollectionViewCellDelegate
 
-- (void)didChangeSliderValueForCell:(KMCSurveyCollectionViewCell *)cell {
-  NSNumber *number = [NSNumber numberWithDouble:cell.sliderValue];
-  _sliderValues[cell.cellID] = number;
+- (void)didChangeScoreValueForCell:(KMCSurveyCollectionViewCell *)cell {
+  NSNumber *number = [NSNumber numberWithDouble:cell.score];
+  _scoreValues[cell.cellID] = number;
+}
+
+- (void)didChangeWeightValueForCell:(KMCSurveyCollectionViewCell *)cell {
+  NSNumber *number = [NSNumber numberWithDouble:cell.weight];
+  _weightValues[cell.cellID] = number;
 }
 
 @end
