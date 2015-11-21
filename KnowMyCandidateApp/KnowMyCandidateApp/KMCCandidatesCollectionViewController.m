@@ -53,9 +53,18 @@ static const CGFloat kInterCellPadding = 2.f;
       UIEdgeInsetsMake(kInterCellPadding, kCellPadding, kInterCellPadding, kCellPadding);
   layout.minimumLineSpacing = kInterCellPadding;
 
+  _refreshControl.frame = self.collectionView.frame;
   [self.collectionView addSubview:_refreshControl];
-  [self.collectionView sendSubviewToBack:_refreshControl];
   [self getCandidates];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  CGPoint point = self.collectionView.contentOffset;
+  CGRect frame = _refreshControl.frame;
+  frame.origin.y = point.y * -1;
+  _refreshControl.frame = frame;
 }
 
 - (void)getCandidates {

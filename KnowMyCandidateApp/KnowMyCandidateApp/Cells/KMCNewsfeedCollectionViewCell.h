@@ -1,13 +1,12 @@
-//
-//  KMCNewsfeedCollectionViewCell.h
-//  KnowMyCandidateApp
-//
-//  Created by Samir Choudhary on 11/17/15.
-//  Copyright © 2015 Samir Choudhary. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 @interface KMCNewsfeedCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, copy) NSString *timestamp;
+@property (nonatomic, copy) NSString *source;
+@property (nonatomic, strong) UIImage *thumbnail;
+@property (nonatomic, copy) NSString *candidateName;
 
 @end

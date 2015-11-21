@@ -22,7 +22,9 @@
 + (UIImage *)globeIcon;
 + (UIImage *)homeTabIcon;
 + (UIImage *)issuesTabIcon;
++ (UIImage *)newspaperIcon;
 + (UIImage *)signInBackground;
++ (UIImage *)twitterIcon;
 + (UIImage *)userTabIcon;
 
 + (UIColor *)democraticPartyColor;

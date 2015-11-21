@@ -90,8 +90,16 @@
   return [UIImage imageNamed:@"IssuesTabIcon.png"];
 }
 
++ (UIImage *)newspaperIcon {
+  return [UIImage imageNamed:@"NewspaperIcon.png"];
+}
+
 + (UIImage *)signInBackground {
   return [UIImage imageNamed:@"SignInBackground.png"];
+}
+
++ (UIImage *)twitterIcon {
+  return [UIImage imageNamed:@"TwitterIcon.png"];
 }
 
 + (UIImage *)userTabIcon {
