@@ -1,5 +1,4 @@
 var Image = require("parse-image");
-var cheerio = require('cloud/modules/cheerio.js');
 var url = require('url');
 
 // Bing Search API keys
@@ -136,46 +135,15 @@ function saveWithDefaultThumbnail(newsfeed) {
     });
 }
 
-cleanURL = function(baseURL, discoveredURL) {
-    if (!discoveredURL) {
-        return null;
-    }
-    if (discoveredURL.indexOf("/") === 0) {
-        return baseURL + discoveredURL;
-    }
-    if (discoveredURL.indexOf("http") != 0) {
-        return baseURL + "/" + discoveredURL;
-    }
-    return discoveredURL;
-};
-
-Parse.Cloud.define("testscrape", function(request, response) {
-    // ensure scrape_url does not end with a /
-    var scrape_url = 'https://www.wikipedia.org';
-
-    Parse.Cloud.httpRequest({
-        url: scrape_url
-    }).then(function(httpResponse) {
-        // success
-        
-        $ = cheerio.load(httpResponse.text);
-        var images = $('img');
-        for (var i = 0; i < images.length; i++) {
-            var src = $(images[i]).attr('src');
-            //var temp = cleanURL(scrape_url, src);
-            var temp = url.resolve(scrape_url, src);
-            console.log("wiki urls: " + temp);
+Parse.Cloud.define("testapi", function(request, response) {
+    Parse.Cloud.run('getMaxImage', { image_url: 'testing.com' }, {
+        success: function(max_image) {
+            response.success(max_image);
+        },
+        error: function(error) {
+            response.error(error);
         }
-        //var testwidth = $(images[0]).attr('width');
-
-        //var testsrc = $(images[0]).attr('src');
-        //console.log("imagesrc: " + testsrc);
-
-    },function(httpResponse) {
-        // error
-        console.error('Request failed with response code ' + httpResponse.status);
     });
-
 });
 
 Parse.Cloud.define("set_candidateid", function(request, response) {
