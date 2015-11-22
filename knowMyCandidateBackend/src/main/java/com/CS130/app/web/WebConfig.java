@@ -27,7 +27,7 @@ public class WebConfig {
         
         post("/api", "application/json", (req, res) -> {
             if (req.headers("X-Parse-Webhook-Key") != webhook_key) {
-                return new JSONObject().put("error", "Request Unauthorized");
+                return new JSONObject().put("error", "Request Unauthorized, key was " + req.headers("X-Parse-Webhook-Key"));
             }
             if (req.params("functionName") == "getMaxImage") {
                 String image_url = req.params("image_url");
@@ -36,7 +36,7 @@ public class WebConfig {
                 return new JSONObject().put("success", max_img_url);
             }
             
-            return new JSONObject().put("error", "Request function unrecognized");
+            return new JSONObject().put("error", "Request function unrecognized. functioname param was: " + req.params("functionName"));
         });
     }
     
