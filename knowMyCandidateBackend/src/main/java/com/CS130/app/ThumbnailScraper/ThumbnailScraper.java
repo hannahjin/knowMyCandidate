@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -44,32 +45,41 @@ public class ThumbnailScraper {
         
         for (Element image : images) {
             try {
+                if(image.attr("abs:src").equals(""))
+                    continue;
+                
                 URI img_uri = new URI(image.attr("abs:src").replace(" ", "%20"));
                 URL img_url = img_uri.toURL();
                 // create file with same filename
                 String img_path = img_url.getPath();
-                File img_file = new java.io.File(img_path.substring(img_path.lastIndexOf('/') + 1));
+                File img_file = new java.io.File("/tmp/" + img_path.substring(img_path.lastIndexOf('/') + 1));
                 FileUtils.copyURLToFile(img_url, img_file, 2000, 2000);
                 
                 BufferedImage bimage = ImageIO.read(img_file);
-                
-                int width = bimage.getWidth();
-                int height = bimage.getHeight();
-                
-                int area = width * height;
-                if (area > max_area) {
-                    max_area = area;
-                    max_img_url = img_url;
+                if (bimage != null) {
+
+                    int width = bimage.getWidth();
+                    int height = bimage.getHeight();
+                    
+                    int area = width * height;
+                    if (area > max_area) {
+                        max_area = area;
+                        max_img_url = img_url;
+                    }
                 }
                 
                 img_file.delete();
             } catch (MalformedURLException e) {
                 System.err.println("Failed to parse URL for: " + image.attr("abs:src"));
+            } catch (SocketTimeoutException e){
+                System.err.println("SocketTimeOut, failed to check image size for url: " + image.attr("abs:src"));
             } catch (IOException e) {
-                System.err.println("IOException, failed to check image size");
-                e.printStackTrace();
+                System.err.println("IOException, failed to check image size for url: " + image.attr("abs:src"));
+                //e.printStackTrace();
             } catch (URISyntaxException e) {
                 System.err.println("Failed to parse URI: " + image.attr("abs:src"));
+            } catch (IllegalArgumentException e) {
+                System.err.println("Illegal argument exception for url: " + image.attr("abs:src"));
             }
         }
         // if biggest image is small, probably only logos were found

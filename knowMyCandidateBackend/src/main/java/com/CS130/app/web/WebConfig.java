@@ -54,6 +54,16 @@ public class WebConfig {
             
             return new JSONObject().put("error", "Request function unrecognized. functionName param was: " + req.queryParams("functionName"));
         });
+        
+        get("/apitest", "application/json", (req, res) -> {
+            
+            String max_img_url = scraper.thumbnail_scrape("http://www.cnn.com/videos/politics/2015/11/22/sotu-tapper-chris-christie-full-interview.cnn");
+            
+            if (max_img_url != null)
+                return new JSONObject().put("success", max_img_url);
+            
+            return new JSONObject().put("error", "Max URL not obtained");
+        });
     }
     
 }
