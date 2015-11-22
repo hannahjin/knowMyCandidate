@@ -29,11 +29,12 @@ public class WebConfig {
             if (!req.headers("X-Parse-Webhook-Key").equals(webhook_key)) {
                 return new JSONObject().put("error", "Request Unauthorized");
             }
-            System.out.println("req.body: " + req.body());
             
+            JSONObject body = new JSONObject(req.body());
+            body.getJSONObject("params").getString("image_url");
             
-            if (req.queryParams("functionName") == "getMaxImage") {
-                String image_url = req.queryMap("params").get("image_url").toString();
+            if (body.getString("functionName") == "getMaxImage") {
+                String image_url = body.getJSONObject("params").getString("image_url");
                 System.out.println("image url: " + image_url);
                 String max_img_url = "google.com";
                 return new JSONObject().put("success", max_img_url);
