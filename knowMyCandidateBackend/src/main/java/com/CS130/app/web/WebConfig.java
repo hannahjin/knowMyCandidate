@@ -29,14 +29,14 @@ public class WebConfig {
             if (!req.headers("X-Parse-Webhook-Key").equals(webhook_key)) {
                 return new JSONObject().put("error", "Request Unauthorized");
             }
-            if (req.params("functionName") == "getMaxImage") {
-                String image_url = req.params("image_url");
+            if (req.queryParams("functionName") == "getMaxImage") {
+                String image_url = req.queryMap("params").get("image_url").toString();
                 System.out.println("image url: " + image_url);
                 String max_img_url = "google.com";
                 return new JSONObject().put("success", max_img_url);
             }
             
-            return new JSONObject().put("error", "Request function unrecognized. functionName param was: " + req.params("functionName"));
+            return new JSONObject().put("error", "Request function unrecognized. functionName param was: " + req.queryParams("functionName"));
         });
     }
     
