@@ -26,17 +26,17 @@ public class WebConfig {
         post("/bye1", (req, res) -> "Bye World");
         
         post("/api", "application/json", (req, res) -> {
-            if (req.headers("X-Parse-Webhook-Key") != webhook_key) {
-                return new JSONObject().put("error", "Request Unauthorized, internal key was " + webhook_key);
+            if (!req.headers("X-Parse-Webhook-Key").equals(webhook_key)) {
+                return new JSONObject().put("error", "Request Unauthorized");
             }
             if (req.params("functionName") == "getMaxImage") {
                 String image_url = req.params("image_url");
-                System.out.println(image_url);
+                System.out.println("image url: " + image_url);
                 String max_img_url = "google.com";
                 return new JSONObject().put("success", max_img_url);
             }
             
-            return new JSONObject().put("error", "Request function unrecognized. functioname param was: " + req.params("functionName"));
+            return new JSONObject().put("error", "Request function unrecognized. functionName param was: " + req.params("functionName"));
         });
     }
     
