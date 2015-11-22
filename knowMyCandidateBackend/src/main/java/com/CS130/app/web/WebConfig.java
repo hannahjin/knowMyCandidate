@@ -29,6 +29,10 @@ public class WebConfig {
             if (!req.headers("X-Parse-Webhook-Key").equals(webhook_key)) {
                 return new JSONObject().put("error", "Request Unauthorized");
             }
+            System.out.println("all params: " + req.params().toString());
+            System.out.println("all queryParams: " + req.queryParams().toString());
+            System.out.println("all queryParams(params): " + req.queryParams("params").toString());
+            
             if (req.queryParams("functionName") == "getMaxImage") {
                 String image_url = req.queryMap("params").get("image_url").toString();
                 System.out.println("image url: " + image_url);
