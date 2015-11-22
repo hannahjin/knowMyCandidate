@@ -27,7 +27,7 @@ public class WebConfig {
         
         post("/api", "application/json", (req, res) -> {
             if (req.headers("X-Parse-Webhook-Key") != webhook_key) {
-                return new JSONObject().put("error", "Request Unauthorized, key was " + req.headers("X-Parse-Webhook-Key"));
+                return new JSONObject().put("error", "Request Unauthorized, internal key was " + webhook_key);
             }
             if (req.params("functionName") == "getMaxImage") {
                 String image_url = req.params("image_url");
