@@ -31,7 +31,7 @@ public class WebConfig {
             }
             
             JSONObject body = new JSONObject(req.body());
-            body.getJSONObject("params").getString("image_url");
+            System.out.println("body: " + body.toString());
             
             if (body.getString("functionName") == "getMaxImage") {
                 String image_url = body.getJSONObject("params").getString("image_url");
