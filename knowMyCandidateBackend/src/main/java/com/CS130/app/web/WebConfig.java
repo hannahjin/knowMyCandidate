@@ -4,6 +4,8 @@ import static spark.Spark.*;
 
 import org.json.JSONObject;
 
+import com.CS130.app.ThumbnailScraper.ThumbnailScraper;
+
 /**
  * @author david
  * Basic web pages shown by Spark
@@ -12,6 +14,7 @@ import org.json.JSONObject;
 public class WebConfig {
     
     private final String webhook_key = "JeQnvYEojk3c97IWZepoFb2pzOvImJP8ZN70wsMS";
+    private ThumbnailScraper scraper = new ThumbnailScraper();
     
     public WebConfig() {
         staticFileLocation("/public");
@@ -37,12 +40,15 @@ public class WebConfig {
                 String image_url = "";
                 if (params != null) {
                     image_url = params.getString("image_url");
-                    String max_img_url = "google.com";
-                    System.out.println("image url: " + image_url);
-                    return new JSONObject().put("success", max_img_url);
                     
+                    String max_img_url = scraper.thumbnail_scrape(image_url);
+                    
+                    if (max_img_url != null)
+                        return new JSONObject().put("success", max_img_url);
+                    
+                    return new JSONObject().put("error", "Max URL not obtained");
                 } else {
-                    return new JSONObject().put("error", "image_url was missing from the request");
+                    return new JSONObject().put("error", "params was missing from the request");
                 }
             }
             
