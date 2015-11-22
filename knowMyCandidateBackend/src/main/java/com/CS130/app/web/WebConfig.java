@@ -23,7 +23,7 @@ public class WebConfig {
         get("/", (req, res) -> "Main Page");
         get("/hello", (req, res) -> "Hello World");
         get("/bye", (req, res) -> "Bye World");
-        get("/bye1", (req, res) -> "Bye World");
+        post("/bye1", (req, res) -> "Bye World");
         
         post("/api", "application/json", (req, res) -> {
             if (req.headers("X-Parse-Webhook-Key") != webhook_key) {
