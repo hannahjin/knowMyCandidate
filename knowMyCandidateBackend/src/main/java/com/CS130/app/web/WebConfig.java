@@ -1,10 +1,10 @@
 package com.CS130.app.web;
+import com.CS130.app.ThumbnailScraper.ThumbnailScraper;
 
 import static spark.Spark.*;
 
 import org.json.JSONObject;
 
-import com.CS130.app.ThumbnailScraper.ThumbnailScraper;
 
 /**
  * @author david
