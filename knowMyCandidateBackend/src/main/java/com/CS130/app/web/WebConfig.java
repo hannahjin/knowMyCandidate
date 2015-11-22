@@ -37,6 +37,7 @@ public class WebConfig {
                 String image_url = "";
                 if (params != null) {
                     image_url = params.getString("image_url");
+                    String max_img_url = "google.com";
                     System.out.println("image url: " + image_url);
                     return new JSONObject().put("success", max_img_url);
                     
