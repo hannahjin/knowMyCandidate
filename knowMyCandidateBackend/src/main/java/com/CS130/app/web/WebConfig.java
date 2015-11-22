@@ -11,7 +11,7 @@ import org.json.JSONObject;
  */
 public class WebConfig {
     
-    private String webhook_key = "";
+    private final String webhook_key = "JeQnvYEojk3c97IWZepoFb2pzOvImJP8ZN70wsMS";
     
     public WebConfig() {
         staticFileLocation("/public");
