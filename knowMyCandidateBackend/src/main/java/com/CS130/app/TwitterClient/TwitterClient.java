@@ -92,13 +92,18 @@ public class TwitterClient {
                         newsfeed.setThumbnail(thumbnail);
                     }
 
+                    String text = tweet.getText();
                     if (tweet.getRetweetedStatus() != null) {
-                        String retweetedText = "RT @" + tweet.getRetweetedStatus().getUser().getScreenName() + ": " + tweet.getRetweetedStatus().getText();
-                        newsfeed.setSummary(retweetedText);
-                    } else {
-                        newsfeed.setSummary(tweet.getText());
+                        text = "RT @" + tweet.getRetweetedStatus().getUser().getScreenName() + ": " + tweet.getRetweetedStatus().getText();
                     }
 
+                    String textWithRemovedURLs = text;
+                    //external links are stored within URL entities, so if no external links, remove from text
+                    if (tweet.getURLEntities().length == 0) {
+                        textWithRemovedURLs = text.replaceAll("https?:\\/\\/\\S*", "");
+                    }
+
+                    newsfeed.setSummary(textWithRemovedURLs);
                     newsfeed.setFavoriteCount(tweet.getFavoriteCount());
                     newsfeed.setRetweetCount(tweet.getRetweetCount());
                     newsfeed.setTweetDate(tweet.getCreatedAt());

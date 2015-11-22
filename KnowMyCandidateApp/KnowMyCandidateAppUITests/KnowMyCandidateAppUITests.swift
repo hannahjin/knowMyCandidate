@@ -35,7 +35,7 @@ class KnowMyCandidateAppUITests: XCTestCase {
         let elementsQuery = scrollViewsQuery.otherElements
         let emailTextField = elementsQuery.textFields["Email"]
         emailTextField.tap()
-        emailTextField.typeText("janet@gmail.com")
+        emailTextField.typeText("existingAccount@gmail.com")
         
         let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
         passwordSecureTextField.tap()
@@ -101,7 +101,7 @@ class KnowMyCandidateAppUITests: XCTestCase {
         let emailTextField = elementsQuery.textFields["Email"]
         emailTextField.tap()
         emailTextField.tap()
-        emailTextField.typeText("test8@gmail.com")
+        emailTextField.typeText("remeberToDeleteMeInParse@gmail.com")
         
         let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
         passwordSecureTextField.tap()
@@ -135,6 +135,65 @@ class KnowMyCandidateAppUITests: XCTestCase {
         XCTAssertNotNil(app.tabBars)
         
         app.tabBars.buttons["User"].tap()
+        app.navigationBars["User"].buttons["Log Out"].tap()
+    }
+    
+    func testIssues() {
+        
+        let app = XCUIApplication()
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        let emailTextField = elementsQuery.textFields["Email"]
+        emailTextField.tap()
+        emailTextField.typeText("existingAccount@gmail.com")
+        
+        let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("123456")
+        scrollViewsQuery.childrenMatchingType(.Button).matchingIdentifier("Log In").elementBoundByIndex(1).tap()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Issues"].tap()
+        app.collectionViews.cells.containingType(.StaticText, identifier:"Abortion").element.tap()
+        
+        let centerButton = app.buttons["center"]
+        centerButton.tap()
+        centerButton.tap()
+        app.navigationBars["Abortion"].buttons["Issues"].tap()
+        
+        tabBarsQuery.buttons["User"].tap()
+        app.navigationBars["User"].buttons["Log Out"].tap()
+    }
+    
+    func testCandidates() {
+        
+        let app = XCUIApplication()
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        let emailTextField = elementsQuery.textFields["Email"]
+        emailTextField.tap()
+        emailTextField.typeText("existingAccount@gmail.com")
+        
+        let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("123456")
+        scrollViewsQuery.childrenMatchingType(.Button).matchingIdentifier("Log In").elementBoundByIndex(1).tap()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Candidates"].tap()
+        
+        let collectionViewsQuery2 = app.collectionViews
+        let collectionViewsQuery = collectionViewsQuery2
+        collectionViewsQuery.staticTexts["Hillary Clinton"].tap()
+        collectionViewsQuery.staticTexts["Democratic Party"].tap()
+        app.buttons["Standpoints"].tap()
+        collectionViewsQuery2.cells.containingType(.StaticText, identifier:"Legally require hiring women & minorities").staticTexts["Strongly Agrees"].tap()
+        app.buttons["Follow"].tap()
+        app.buttons["Following"].tap()
+        
+        tabBarsQuery.buttons["User"].tap()
         app.navigationBars["User"].buttons["Log Out"].tap()
     }
 }
