@@ -12,6 +12,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -32,8 +33,7 @@ public class ThumbnailScraper {
             else
                 return null;
         } catch (IOException e) {
-            System.err.println("Failed to retrieve URL");
-            e.printStackTrace();
+            System.err.println("Failed to retrieve URL: " + url + "\n    Exception: " + e.toString());
         }
         
         return null;
@@ -70,16 +70,17 @@ public class ThumbnailScraper {
                 
                 img_file.delete();
             } catch (MalformedURLException e) {
-                System.err.println("Failed to parse URL for: " + image.attr("abs:src"));
+                System.err.println("Failed to parse URL for: " + image.attr("abs:src") + " Exception: " + e);
             } catch (SocketTimeoutException e){
-                System.err.println("SocketTimeOut, failed to check image size for url: " + image.attr("abs:src"));
+                System.err.println("SocketTimeOut, failed to check image size for url: " + image.attr("abs:src") + " Exception: " + e);
             } catch (IOException e) {
-                System.err.println("IOException, failed to check image size for url: " + image.attr("abs:src"));
-                //e.printStackTrace();
+                System.err.println("IOException, failed to check image size for url: " + image.attr("abs:src") + " Exception: " + e);
             } catch (URISyntaxException e) {
-                System.err.println("Failed to parse URI: " + image.attr("abs:src"));
+                System.err.println("Failed to parse URI: " + image.attr("abs:src") + " Exception: " + e);
             } catch (IllegalArgumentException e) {
-                System.err.println("Illegal argument exception for url: " + image.attr("abs:src"));
+                System.err.println("Illegal argument exception for url: " + image.attr("abs:src") + " Exception: " + e);
+            } catch (Exception e) {
+                System.err.println("EXCEPTION CATCH ALL url: " + image.attr("abs:src") + " Exception: " + e);
             }
         }
         // if biggest image is small, probably only logos were found
