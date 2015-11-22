@@ -31,13 +31,18 @@ public class WebConfig {
             }
             
             JSONObject body = new JSONObject(req.body());
-            System.out.println("body: " + body.toString());
             
-            if (body.getString("functionName") == "getMaxImage") {
-                String image_url = body.getJSONObject("params").getString("image_url");
-                System.out.println("image url: " + image_url);
-                String max_img_url = "google.com";
-                return new JSONObject().put("success", max_img_url);
+            if (body.getString("functionName").equals("getMaxImage")) {
+                JSONObject params = body.getJSONObject("params");
+                String image_url = "";
+                if (params != null) {
+                    image_url = params.getString("image_url");
+                    System.out.println("image url: " + image_url);
+                    return new JSONObject().put("success", max_img_url);
+                    
+                } else {
+                    return new JSONObject().put("error", "image_url was missing from the request");
+                }
             }
             
             return new JSONObject().put("error", "Request function unrecognized. functionName param was: " + req.queryParams("functionName"));
