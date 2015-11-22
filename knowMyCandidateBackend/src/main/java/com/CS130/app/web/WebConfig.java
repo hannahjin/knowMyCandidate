@@ -25,7 +25,7 @@ public class WebConfig {
         get("/bye", (req, res) -> "Bye World");
         get("/bye1", (req, res) -> "Bye World");
         
-        get("/api", "application/json", (req, res) -> {
+        post("/api", "application/json", (req, res) -> {
             if (req.headers("X-Parse-Webhook-Key") != webhook_key) {
                 return new JSONObject().put("error", "Request Unauthorized");
             }
