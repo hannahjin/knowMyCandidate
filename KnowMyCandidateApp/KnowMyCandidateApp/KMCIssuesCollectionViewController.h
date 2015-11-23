@@ -2,4 +2,6 @@
 
 @interface KMCIssuesCollectionViewController : UICollectionViewController
 
+- (void)scrollToTop;
+
 @end

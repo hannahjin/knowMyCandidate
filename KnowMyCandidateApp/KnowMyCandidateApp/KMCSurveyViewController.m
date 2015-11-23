@@ -67,7 +67,6 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   [_submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
   [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
-  _submitButton.layer.cornerRadius = 3.f;
   [self.view addSubview:_submitButton];
 }
 

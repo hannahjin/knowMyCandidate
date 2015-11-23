@@ -2,4 +2,6 @@
 
 @interface KMCNewsfeedViewController : UICollectionViewController
 
+- (void)scrollToTop;
+
 @end

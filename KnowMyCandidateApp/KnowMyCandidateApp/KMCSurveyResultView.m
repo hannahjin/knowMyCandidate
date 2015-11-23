@@ -37,8 +37,8 @@
     _headerView = [[UIView alloc] init];
 
     _followButton = [[UIButton alloc] init];
-    PFUser *user = [PFUser currentUser];
-    NSArray *candidatesFollowed = [user objectForKey:@"candidatesFollowed"];
+    //PFUser *user = [PFUser currentUser];
+    //NSArray *candidatesFollowed = [user objectForKey:@"candidatesFollowed"];
 //    if ([candidatesFollowed containsObject:_candidateObject.objectId]) {
 //      [_followButton setTitle:@"Following" forState:UIControlStateNormal];
 //      [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

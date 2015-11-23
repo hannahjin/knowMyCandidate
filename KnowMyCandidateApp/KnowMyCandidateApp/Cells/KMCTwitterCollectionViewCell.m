@@ -32,12 +32,12 @@ static const CGSize kImageSize = {50.f, 50.f};
     self.backgroundView.backgroundColor = [UIColor whiteColor];
 
     _nameLabel = [[UILabel alloc] init];
-    _nameLabel.font = [UIFont systemFontOfSize:13.f weight:0.4f];
+    _nameLabel.font = [UIFont systemFontOfSize:14.f weight:0.4f];
     [contentView addSubview:_nameLabel];
 
     _usernameLabel = [[UILabel alloc] init];
     _usernameLabel.textColor = [UIColor grayColor];
-    _usernameLabel.font = [UIFont systemFontOfSize:13.f];
+    _usernameLabel.font = [UIFont systemFontOfSize:12.f];
     [contentView addSubview:_usernameLabel];
 
     _sourceIconView = [[UIImageView alloc] initWithImage:[KMCAssets twitterIcon]];
