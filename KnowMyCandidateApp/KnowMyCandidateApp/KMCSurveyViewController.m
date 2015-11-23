@@ -66,8 +66,6 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   _submitButton.titleLabel.font = [KMCAssets titleFont:[KMCAssets largeFont]];
   [_submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
   [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  [_submitButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |
-   UIViewAutoresizingFlexibleRightMargin];
 
   _submitButton.layer.cornerRadius = 3.f;
   [self.view addSubview:_submitButton];
