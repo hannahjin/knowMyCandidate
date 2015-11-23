@@ -42,6 +42,14 @@ public class Newsfeed extends ParseObject {
         put("url", url);
     }
 
+    public String getTweetId() {
+        return getString("tweetId");
+    }
+
+    public void setTweetId(String tweetId) {
+        put("tweetId", tweetId);
+    }
+
     public int getRetweetCount() {
         return getInt("retweetCount");
     }

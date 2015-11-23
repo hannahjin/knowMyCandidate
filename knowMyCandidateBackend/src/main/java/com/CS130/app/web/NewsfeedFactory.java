@@ -25,10 +25,10 @@ public class NewsfeedFactory {
         ParseQuery<Newsfeed> query = ParseQuery.getQuery(Newsfeed.class);
         query.whereEqualTo("candidateID", candidateID);
         query.whereEqualTo("source", "Twitter");
-        
+        query.addDescendingOrder("date");
         List<Newsfeed> candidateList;
         candidateList = query.find();
-        
+
         return candidateList;
     }   
 }

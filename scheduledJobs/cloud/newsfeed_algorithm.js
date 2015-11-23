@@ -1,9 +1,9 @@
 /*
-* Get a list of newsfeed items, sorted by date, newest first
+* Get a list of newsfeed items, sorted by most recent first
 *
 * Input: String, user's objectId
 *   Ex) {"user": "gBAz26cAHK"}
-* Output: JSON with an unsorted list of newsfeed items
+* Output: JSON with a list of newsfeed items, sorted by most recent first
 * 
 * Usage examples:
 * Through the API console (or REST API):
@@ -24,7 +24,8 @@
             "source": "Twitter",
             "summary": "My closing statement at last night's #GOPDebate.",
             "twitterUsername": "RealBenCarson",
-            "url": "https://t.co/qdJVC2RbeN"
+            "url": "https://t.co/qdJVC2RbeN",
+            "candidateID": "Ben Carson"
         },
         {
             "date": {
@@ -34,7 +35,8 @@
             "source": "Independent Political Report",
             "summary": "I’m just back from another whirlwind tour, this time in Texas. I wanted to share with you some of the latest remarkable moments that leave me ever more humbled and honored to be part of this peaceful uprising. Across the Lone Star State, everyday heroes ...",
             "title": "Jill Stein Reports From Texas",
-            "url": "http://www.independentpoliticalreport.com/2015/11/jill-stein-reports-from-texas/"
+            "url": "http://www.independentpoliticalreport.com/2015/11/jill-stein-reports-from-texas/",
+            "candidateID": "Jill Stein"
         },
         // some more newsfeed items
     ]
@@ -52,7 +54,7 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                 idToName = {}
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
-                    idToName[object.id] = object.get('firstName')+object.get('lastName');
+                    idToName[object.id] = object.get('firstName')+ " " + object.get('lastName');
                 }
 
                 (function(idToName){
@@ -88,18 +90,12 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                             "title": object.get('title'),
                                             "summary": summary,
                                             "url": object.get('url'),
+                                            "candidateID": object.get('candidateID'),
                                             "date": object.get('date'),
                                             "favoriteCount": object.get('favoriteCount'),
                                             "retweetCount": object.get('retweetCount'),
                                             "twitterUsername": object.get('twitterUsername'),
                                             "thumbnail": object.get('thumbnail')
-                                        }
-                                        if(object.get('source') === "Twitter") {
-                                            var url = /https:\/\/t.co\/[a-zA-z0-9]*/.exec(object.get('summary'));
-                                            if (url != null) {
-                                                item["url"] = url[0];
-                                                item["summary"] = item["summary"].replace(url, "");
-                                            }
                                         }
                                         items.push(item);
                                     }

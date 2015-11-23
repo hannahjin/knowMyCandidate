@@ -5,8 +5,8 @@ require("cloud/twitterpicture.js")
 var thumbnail = require("cloud/create_thumbnail.js")
 
 // Bing Search API key and authentication
-API_KEY = "Cfd+0huY6d7Ekhz04lEXQfJBr2jt5AS3Oi323X8TtV4";
-BASE_64_ENCODED_API_KEY = "OkNmZCswaHVZNmQ3RWtoejA0bEVYUWZKQnIyanQ1QVMzT2kzMjNYOFR0VjQ="
+API_KEY = "4ORqdbQRr/FQTkttrengT8432RKxKlkLrcPAND1zjOo";
+BASE_64_ENCODED_API_KEY = "OjRPUnFkYlFSci9GUVRrdHRyZW5nVDg0MzJSS3hLbGtMcmNQQU5EMXpqT28="
 AUTH = "Basic " + BASE_64_ENCODED_API_KEY;
 
 // Updates the Newsfeed table with the top 5 news article related to the candidate
@@ -46,7 +46,7 @@ Parse.Cloud.job("pull_news", function(request, response) {
 							// Obtain the candidate name and remove the space between the first and last name
 							// ex) URL: https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/News?Query='Jeb Bush'&$skip=0&$top=1 
 							// will be JebBush 
-							var candidate = /.*Query='([a-zA-z' ]*)'.*/.exec(result_list[article].__metadata.uri)[1].replace(/\s+/g, '');
+							var candidate = /.*Query='([a-zA-z' ]*)'.*/.exec(result_list[article].__metadata.uri)[1];
 							
 							// Only save the news article if it doesn't exist in the table already 
 							var NewsFeed = Parse.Object.extend("Newsfeed");
