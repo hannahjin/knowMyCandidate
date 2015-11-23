@@ -3,11 +3,8 @@ package com.CS130.app;
 import static spark.Spark.port;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -25,7 +22,6 @@ public class Main {
 
 	private static Properties prop;
 	private static InputStream config_file;
-	private static OutputStream config_out;
 	private static boolean scrapeData;
 	private static boolean fetchTweets;
 	

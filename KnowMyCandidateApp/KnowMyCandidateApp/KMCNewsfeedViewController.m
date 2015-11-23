@@ -23,6 +23,7 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
   self = [super initWithCollectionViewLayout:layout];
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     UITabBarItem *item = [self tabBarItem];
     item.title = @"Newsfeed";
     item.image = [KMCAssets homeTabIcon];
@@ -76,7 +77,9 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
 
   CGPoint point = self.collectionView.contentOffset;
   CGRect frame = _refreshControl.frame;
-  frame.origin.y = point.y * -1;
+  if (frame.origin.y > 0.f) {
+    frame.origin.y = point.y * -1;
+  }
   _refreshControl.frame = frame;
 }
 
@@ -91,20 +94,21 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSDictionary *dict = _newsfeedItems[indexPath.item];
   NSString *source = dict[@"source"];
+
+  NSDate *date = dict[@"date"];
+  NSTimeInterval timeInterval = [date timeIntervalSinceNow];
+  NSString *timestamp = [self formatTimeInterval:timeInterval];
+
   if (![source isEqualToString:@"Twitter"]) {
     KMCNewsfeedCollectionViewCell *cell =
         [collectionView dequeueReusableCellWithReuseIdentifier:newsfeedReuseIdentifier
                                                   forIndexPath:indexPath];
-    NSDictionary *dict = _newsfeedItems[indexPath.item];
 
-    NSDate *date = dict[@"date"];
-    NSTimeInterval timeInterval = [date timeIntervalSinceNow];
-
-    cell.source = dict[@"source"];
+    cell.source = source;
     cell.title = dict[@"title"];
     cell.subtitle = dict[@"summary"];
     cell.candidateName = dict[@"candidateID"];
-    cell.timestamp = [self formatTimeInterval:timeInterval];
+    cell.timestamp = timestamp;
 
     NSNumber *number = [NSNumber numberWithInteger:indexPath.item];
     if (_newsfeedPictures[number]) {
@@ -123,11 +127,35 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
         });
       });
     }
+
     return cell;
   } else {
     KMCTwitterCollectionViewCell *cell =
         [collectionView dequeueReusableCellWithReuseIdentifier:twitterReuseIdentifier
                                                   forIndexPath:indexPath];
+    cell.summary = dict[@"summary"];
+    cell.candidateName = dict[@"candidateID"];
+    cell.timestamp = timestamp;
+    cell.twitterID = dict[@"twitterUsername"];
+
+    NSNumber *number = [NSNumber numberWithInteger:indexPath.item];
+    if (_newsfeedPictures[number]) {
+      cell.thumbnail = _newsfeedPictures[number];
+    } else {
+      dispatch_queue_t queue = dispatch_queue_create("com.KMC.imageExtract", NULL);
+      dispatch_async(queue, ^{
+        PFFile *file = dict[@"thumbnail"];
+        NSData *data = [file getData];
+        UIImage *image = [UIImage imageWithData:data];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+          NSNumber *number = [NSNumber numberWithInteger:indexPath.item];
+          _newsfeedPictures[number] = image;
+          cell.thumbnail = image;
+        });
+      });
+    }
+
     return cell;
   }
 }
@@ -137,15 +165,24 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSDictionary *dict = _newsfeedItems[indexPath.item];
   NSString *source = dict[@"source"];
+  NSString *summary = dict[@"summary"];
+
   if ([source isEqualToString:@"Twitter"]) {
-    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 100.f);
+    // Keep in sync with metrics from KMCTwitterCollectionViewCell.
+    CGFloat width = CGRectGetWidth(self.collectionView.frame) - 75.f;
+    UIFont *font = [UIFont systemFontOfSize:13.f];
+    CGRect frame = [summary boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{ NSFontAttributeName : font }
+                                         context:nil];
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 65.f + frame.size.height);
   } else {
     return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 170.f);
   }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   NSDictionary *dict = _newsfeedItems[indexPath.item];
   NSString *string = dict[@"url"];
   NSURL *url = [NSURL URLWithString:string];
@@ -168,6 +205,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   }
 
   return [NSString stringWithFormat:@"%li%@", interval, toAppend];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+  CGRect frame = _refreshControl.frame;
+  frame.origin.y = -60.f;
+  _refreshControl.frame = frame;
+
+  self.collectionView.contentOffset = CGPointZero;
 }
 
 @end

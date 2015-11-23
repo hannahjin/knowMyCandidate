@@ -1,6 +1,9 @@
 package com.CS130.app.web;
 
-import org.parse4j.ParseObject;
+import java.util.List;
+
+import org.parse4j.ParseException;
+import org.parse4j.ParseQuery;
 
 public class CandidateFactory {
 
@@ -8,10 +11,16 @@ public class CandidateFactory {
 		return new Candidate();
 	}
 	
-	public Candidate getCandidate(String objectId) {
-		// TODO: try to get rid of cast
-		Candidate candidateReference = (Candidate) ParseObject.createWithoutData("Candidate", objectId);
-		return candidateReference;
+	public Candidate getCandidate(String candidateID) throws ParseException {	
+		ParseQuery<Candidate> query = ParseQuery.getQuery(Candidate.class);
+		query.whereEqualTo("candidateID", candidateID);
+
+		List<Candidate> candidateList;
+		candidateList = query.find();
+
+		if (candidateList == null || candidateList.size() == 0)
+			return getNewCandidate();
+
+		return candidateList.get(0);
 	}
-	
 }

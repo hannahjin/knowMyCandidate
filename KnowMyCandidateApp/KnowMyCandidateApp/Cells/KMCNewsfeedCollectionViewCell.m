@@ -6,7 +6,7 @@ static const CGFloat kBottomPadding = 10.f;
 static const CGFloat kLabelPadding = 5.f;
 static const CGFloat kImageSidePadding = 10.f;
 static const CGFloat kTitleSidePadding = 15.f;
-static const CGFloat kTopPadding = 15.f;
+static const CGFloat kTopPadding = 10.f;
 static const CGSize kImageSize = {100.f, 100.f};
 
 @implementation KMCNewsfeedCollectionViewCell {
@@ -34,10 +34,11 @@ static const CGSize kImageSize = {100.f, 100.f};
     self.backgroundView.backgroundColor = [UIColor whiteColor];
 
     _nameLabel = [[UILabel alloc] init];
-    _nameLabel.textColor = [UIColor whiteColor];
-    _nameLabel.backgroundColor = [UIColor darkGrayColor];
-    _nameLabel.font = [UIFont systemFontOfSize:7.f];
-    _nameLabel.layer.borderWidth = 2.f;
+    _nameLabel.textColor = [UIColor darkGrayColor];
+    _nameLabel.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+    _nameLabel.font = [UIFont systemFontOfSize:10.f];
+    _nameLabel.textAlignment = NSTextAlignmentCenter;
+    _nameLabel.layer.cornerRadius = 5.f;
     _nameLabel.layer.masksToBounds = YES;
     [contentView addSubview:_nameLabel];
 
@@ -47,6 +48,7 @@ static const CGSize kImageSize = {100.f, 100.f};
     [contentView addSubview:_sourceLabel];
 
     _sourceIconView = [[UIImageView alloc] initWithImage:[KMCAssets newspaperIcon]];
+    [_sourceIconView sizeToFit];
     [contentView addSubview:_sourceIconView];
 
     _timeLabel = [[UILabel alloc] init];
@@ -56,7 +58,7 @@ static const CGSize kImageSize = {100.f, 100.f};
 
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.numberOfLines = 3;
-    _titleLabel.font = [UIFont systemFontOfSize:17.f weight:0.4f];
+    _titleLabel.font = [UIFont systemFontOfSize:16.f weight:0.4f];
     [contentView addSubview:_titleLabel];
 
     _subtitleLabel = [[UILabel alloc] init];
@@ -82,7 +84,6 @@ static const CGSize kImageSize = {100.f, 100.f};
   _sourceLabel.text = _source;
 
   [_sourceLabel sizeToFit];
-  [_sourceIconView sizeToFit];
 }
 
 - (void)setThumbnail:(UIImage *)thumbnail {
@@ -106,6 +107,10 @@ static const CGSize kImageSize = {100.f, 100.f};
   _nameLabel.text = _candidateName;
 
   [_nameLabel sizeToFit];
+  CGRect frame = _nameLabel.frame;
+  frame.size.width += 10.f;
+  frame.size.height += 2.f;
+  _nameLabel.frame = frame;
 }
 
 - (void)prepareForReuse {
@@ -115,11 +120,12 @@ static const CGSize kImageSize = {100.f, 100.f};
   _timeLabel.text = @"";
   _titleLabel.text = @"";
   _subtitleLabel.text = @"";
-  _sourceIconView.image = nil;
   _thumbnailView.image = nil;
 }
 
 - (void)layoutSubviews {
+  [super layoutSubviews];
+
   CGRect frame = CGRectZero;
   if (_thumbnail) {
     frame.size = kImageSize;
@@ -129,8 +135,8 @@ static const CGSize kImageSize = {100.f, 100.f};
   _thumbnailView.frame = frame;
 
   frame = _nameLabel.frame;
-  frame.origin.x = CGRectGetMidX(_thumbnailView.frame) - CGRectGetWidth(_nameLabel.frame) / 2.f;
-  frame.origin.y = CGRectGetMinY(_thumbnailView.frame) - CGRectGetHeight(frame) - kLabelPadding;
+  frame.origin.x = kTitleSidePadding;
+  frame.origin.y = kTopPadding;
   _nameLabel.frame = frame;
 
   CGFloat availableWidth =
@@ -140,7 +146,7 @@ static const CGSize kImageSize = {100.f, 100.f};
   CGSize size = [_titleLabel sizeThatFits:CGSizeMake(availableWidth, CGFLOAT_MAX)];
   frame.size = size;
   frame.origin.x = kTitleSidePadding;
-  frame.origin.y = kTopPadding;
+  frame.origin.y = CGRectGetMaxY(_nameLabel.frame) + kLabelPadding;
   _titleLabel.frame = frame;
 
   frame = _sourceIconView.frame;

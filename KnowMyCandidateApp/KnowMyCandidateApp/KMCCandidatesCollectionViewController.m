@@ -63,7 +63,9 @@ static const CGFloat kInterCellPadding = 2.f;
 
   CGPoint point = self.collectionView.contentOffset;
   CGRect frame = _refreshControl.frame;
-  frame.origin.y = point.y * -1;
+  if (frame.origin.y >= 0.f) {
+    frame.origin.y = point.y * -1;
+  }
   _refreshControl.frame = frame;
 }
 
@@ -121,6 +123,15 @@ static const CGFloat kInterCellPadding = 2.f;
   KMCCandidateProfileViewController *vc =
       [[KMCCandidateProfileViewController alloc] initWithCandidateObject:object];
   [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+  CGPoint point = self.collectionView.contentOffset;
+  CGRect frame = _refreshControl.frame;
+  if (frame.origin.y >= 0.f) {
+    frame.origin.y = point.y * -1;
+  }
+  _refreshControl.frame = frame;
 }
 
 @end

@@ -2,6 +2,7 @@ package com.CS130.app.web;
 
 import org.parse4j.ParseObject;
 import org.parse4j.ParseClassName;
+import org.parse4j.ParseFile;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -60,6 +61,7 @@ public class Candidate extends ParseObject {
 		put("Issues", issues);
 	}
 	
-	// TODO: add rest of getters and setters
-	// getIssues
+	public ParseFile getThumbnail() {
+		return (ParseFile) get("thumbnail");
+	}
 }

@@ -1,12 +1,6 @@
 package com.CS130.app.web;
 
 import static spark.Spark.*;
-import spark.template.freemarker.FreeMarkerEngine;
-import spark.ModelAndView;
-import static spark.Spark.get;
-
-import com.CS130.app.Main;
-
 
 /**
  * @author david

@@ -32,6 +32,24 @@
 + (UIColor *)greenPartyColor;
 + (UIColor *)mainPurpleColor;
 + (UIColor *)lightBlueColor;
++ (UIColor *)lightGrayBackgroundColor;
+
++ (UIFont *)labelFont:(CGFloat)size;
++ (UIFont *)buttonFont:(CGFloat)size;
++ (UIFont *)titleFont:(CGFloat)size;
++ (UIFont *)questionFont:(CGFloat)size;
++ (UIFont *)scoreFont:(CGFloat)size;
++ (UIFont *)dateFont:(CGFloat)size;
++ (UIFont *)nameFont:(CGFloat)size;
+
++ (CGFloat)tinyFont;
++ (CGFloat)xSmallFont;
++ (CGFloat)smallFont;
++ (CGFloat)regularFont;
++ (CGFloat)mediumFont;
++ (CGFloat)largeFont;
++ (CGFloat)xLargeFont;
+
 
 + (UIImage *)pictureForCandidate:(NSString *)name;
 + (UIImage *)backgroundForAffiliation:(KMCPartyAffiliation)party;
