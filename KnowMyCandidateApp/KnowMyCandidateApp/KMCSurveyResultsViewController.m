@@ -3,7 +3,6 @@
 #import "KMCSurveyResultsCollectionViewCell.h"
 #import "KMCCandidateProfileViewController.h"
 #import "KMCAssets.h"
-
 #import "Parse/Parse.h"
 
 static NSString *const reuseIdentifier = @"kSurveyResultsCollectionViewCell";
@@ -13,7 +12,6 @@ static const CGFloat kCellPadding = 2.f;
 static const CGFloat kInterCellPadding = 2.f;
 
 @interface KMCSurveyResultsViewController ()
-
 @end
 
 @implementation KMCSurveyResultsViewController {
@@ -26,17 +24,15 @@ static const CGFloat kInterCellPadding = 2.f;
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    self.navigationController.title = @"Survey Results";
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"DONE"
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(didTapDoneButton)];
-
+        [[UIBarButtonItem alloc] initWithTitle:@"DONE"
+                                         style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(didTapDoneButton)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 
     self.collectionView.backgroundColor = [KMCAssets lightGrayBackgroundColor];
-    self.navigationItem.title = @"Candidates";
+    self.navigationItem.title = @"Your Results";
   }
 
   return self;
@@ -48,22 +44,22 @@ static const CGFloat kInterCellPadding = 2.f;
   PFUser *user = [PFUser currentUser];
   [PFCloud callFunctionInBackground:@"get_survey_candidates"
                      withParameters:@{ @"user" : user.objectId }
-      block:^(id object, NSError *error) {
-        if (!error) {
-          _candidateResults = object;
-          [self.collectionView reloadData];
-        }
-      }];
+                              block:^(id object, NSError *error) {
+   if (!error) {
+    _candidateResults = object;
+    [self.collectionView reloadData];
+  }
+}];
 
   [self.collectionView registerClass:[KMCSurveyResultsCollectionViewCell class]
           forCellWithReuseIdentifier:reuseIdentifier];
 
   // Defining layout attributes.
   UICollectionViewFlowLayout *layout =
-    (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+      (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
   layout.itemSize = CGSizeMake(self.view.bounds.size.width - (2 * kCellPadding), kCellHeight);
   layout.sectionInset =
-    UIEdgeInsetsMake(kInterCellPadding, kCellPadding, kInterCellPadding, kCellPadding);
+      UIEdgeInsetsMake(kInterCellPadding, kCellPadding, kInterCellPadding, kCellPadding);
   layout.minimumLineSpacing = kInterCellPadding;
 }
 
@@ -76,8 +72,8 @@ static const CGFloat kInterCellPadding = 2.f;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   KMCSurveyResultsCollectionViewCell *cell =
-  [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
-                                            forIndexPath:indexPath];
+      [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
+                                                forIndexPath:indexPath];
 
   NSDictionary *object = _candidateResults[indexPath.item];
   NSString *firstName = object[@"firstName"];
@@ -95,7 +91,7 @@ static const CGFloat kInterCellPadding = 2.f;
 //    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 //  NSDictionary *object = _candidateResults[indexPath.item];
 //  KMCCandidateProfileViewController *vc =
-//  [[KMCCandidateProfileViewController alloc] initWithCandidateObject:object];
+//      [[KMCCandidateProfileViewController alloc] initWithCandidateObject:object];
 //  [self.navigationController pushViewController:vc animated:YES];
 //}
 
