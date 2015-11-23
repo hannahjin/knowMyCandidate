@@ -1,4 +1,5 @@
 var Image = require("parse-image");
+var url = require('url');
 
 // Bing Search API keys
 API_KEY = "O8ROly8zYwdZ9aPwePFsLqOXjEeeCMuqYKGWV15TaTo";
@@ -17,7 +18,7 @@ function saveNewsfeed(newsFeed) {
     });
 }
 
-module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidateID) {
+module.exports.setThumbnailandSaveNewsfeed2 = function(newsFeed, title, candidateID) {
     var formatted_title = title.replace(/['"’‘]+/g, '');
     formatted_title = encodeURIComponent(formatted_title);
     var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/Image?Query=%27'+ formatted_title +'%27&$top=1&$format=json';
@@ -109,6 +110,76 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, title, candidate
     });
 }
 
+module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, url, candidateID) {
+
+    Parse.Cloud.run('getMaxImage', { image_url: url }).then(function(max_image_url) {
+        return downloadImageandSave(max_image_url, newsFeed);  
+    }).then(function(response) {
+        saveNewsfeed(newsFeed);
+    }, function(error) {
+        console.error("Failed to set scraped thumbnail for candidate: " + candidateID +
+            " and URL: " + url + "\ndue to error: " + error +
+            "\nSetting default thumnbail instead.");
+        saveWithDefaultThumbnail(newsFeed);
+    });
+}
+
+function downloadImageandSave(image_url, newsFeed) {
+    var promise = new Parse.Promise();
+
+    Parse.Cloud.httpRequest({
+        url: image_url
+    }).then(function(response) {
+        // image_url download success
+        var image = new Image();
+        return image.setData(response.buffer);
+    
+    }, function(error) {
+        // image_url download fail
+        promise.reject("Image_url download failed: " + image_url);
+
+    }).then(function(image) {
+        // Crop image to small of width or height
+        var size = Math.min(image.width(), image.height());
+        return image.crop({
+            left: (image.width() - size) / 2,
+            top: (image.height() - size) / 2,
+            width: size,
+            height: size
+        });
+    
+    }).then(function(image) {
+        // Resize image to 200x200
+        return image.scale({
+            width: 200,
+            height: 200
+        });
+    
+    }).then(function(image) {
+        return image.setFormat("JPEG");
+    
+    }).then(function(image) {
+        // get image data in a Buffer
+        return image.data();
+
+    }).then(function(buffer) {
+        // save image into new file
+        var base64 = buffer.toString("base64");
+        var cropped = new Parse.File("thumbnail.jpg", { base64: base64 });
+        return cropped.save();
+
+    }).then(function(cropped){
+        // attach image file to original object
+        newsFeed.set("thumbnail", cropped);
+        //saveNewsfeed(newsFeed);
+        promise.resolve();
+    }, function(error) {
+        promise.reject("Thumbnail cropping and saving failed for: " + image_url);
+    });
+
+    return promise;
+}
+
 function saveWithDefaultThumbnail(newsfeed) {
     var Candidate = Parse.Object.extend("Candidate");
     var query = new Parse.Query(Candidate);
@@ -133,6 +204,17 @@ function saveWithDefaultThumbnail(newsfeed) {
         }
     });
 }
+
+Parse.Cloud.define("testapi", function(request, response) {
+    Parse.Cloud.run('getMaxImage', { image_url: 'http://anandtech.com/' }, {
+        success: function(max_image) {
+            response.success("max_image is: " + max_image);
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    });
+});
 
 Parse.Cloud.define("set_candidateid", function(request, response) {
     var Candidate = Parse.Object.extend("Candidate");
