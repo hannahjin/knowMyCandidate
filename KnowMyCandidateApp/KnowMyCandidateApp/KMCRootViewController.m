@@ -6,6 +6,7 @@
 #import "KMCSignInViewController.h"
 #import "KMCSignUpViewController.h"
 #import "KMCSurveyViewController.h"
+#import "KMCSurveyResultsViewController.h"
 #import "Parse/Parse.h"
 
 @interface KMCRootViewController () <
@@ -18,6 +19,7 @@
 @implementation KMCRootViewController {
   KMCSignInViewController *_signInVC;
   KMCMainViewController *_mainVC;
+  KMCSurveyResultsViewController *_surveyResultsVC;
   UINavigationController *_surveyNavVC;
 }
 
@@ -34,6 +36,7 @@
                                                  name:@"kPFUserLogOut"
                                                object:nil];
   }
+
   return self;
 }
 
@@ -57,6 +60,12 @@
 
 - (void)setUpMainVC {
   _mainVC = [[KMCMainViewController alloc] initWithNibName:nil bundle:nil];
+}
+
+- (void)setUpSurveyResultsVC {
+  UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+  _surveyResultsVC =  [[KMCSurveyResultsViewController alloc] initWithCollectionViewLayout:layout];
+  _surveyResultsVC.delegate = self;
 }
 
 - (void)setUpSignInVC {
@@ -143,6 +152,11 @@
 #pragma mark - KMCSurveyViewControllerDelegate
 
 - (void)didCompleteSurvey {
+  [self setUpSurveyResultsVC];
+  [_surveyNavVC pushViewController:_surveyResultsVC animated:YES];
+}
+
+- (void)didFinishSurveyResults {
   [self setUpMainVC];
   [self dismissViewControllerAnimated:YES completion:nil];
   [self addChildViewController:_mainVC];
@@ -157,12 +171,6 @@
     [_surveyNavVC removeFromParentViewController];
     _surveyNavVC = nil;
   }];
-}
-
-#pragma mark - UIViewController
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-  return UIStatusBarStyleLightContent;
 }
 
 @end
