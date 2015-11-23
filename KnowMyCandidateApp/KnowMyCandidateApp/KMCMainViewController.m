@@ -49,8 +49,6 @@
 
   self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.tabBar.tintColor = [KMCAssets mainPurpleColor];
-//  [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}
-//                                           forState:UIControlStateNormal];
 }
 
 @end
