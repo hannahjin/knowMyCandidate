@@ -121,7 +121,7 @@
 }
 
 + (UIColor *)lightGrayBackgroundColor {
-  return [UIColor colorWithWhite:0.95f alpha:0.8f];
+  return [UIColor colorWithWhite:0.95f alpha:1.0f];
 }
 
 #pragma mark - UIFont

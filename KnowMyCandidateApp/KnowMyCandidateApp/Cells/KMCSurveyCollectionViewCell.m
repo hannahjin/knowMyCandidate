@@ -35,6 +35,7 @@ static const CGFloat kTitlePadding = 30.f;
     _questionLabel = [[UILabel alloc] init];
     _questionLabel.font = [KMCAssets questionFont:[KMCAssets mediumFont]];
     _questionLabel.textAlignment = NSTextAlignmentCenter;
+    _questionLabel.numberOfLines = 2;
     [contentView addSubview:_questionLabel];
 
     _scoreSlider = [[KMCSlider alloc] init];
@@ -186,14 +187,10 @@ static const CGFloat kTitlePadding = 30.f;
 - (void)setText:(NSString *)text {
   _text = [text copy];
   _questionLabel.text = _text;
-  [_questionLabel sizeToFit];
-  _questionLabel.adjustsFontSizeToFitWidth = YES;
-  CGFloat originX =
-      CGRectGetMidX(self.contentView.frame) - (CGRectGetWidth(_questionLabel.frame) - kTitlePadding)/2.f;
-  _questionLabel.frame = CGRectMake(originX,
-                                    10.f,
-                                    CGRectGetWidth(_questionLabel.frame) - kTitlePadding,
-                                    CGRectGetHeight(_questionLabel.frame));
+  CGFloat availableWidth = CGRectGetWidth(self.contentView.frame) - kTitlePadding;
+  CGSize size = [_questionLabel sizeThatFits:CGSizeMake(availableWidth, CGFLOAT_MAX)];
+  CGFloat originX = CGRectGetMidX(self.contentView.frame) - size.width / 2.f;
+  _questionLabel.frame = CGRectMake(originX, 10.f, size.width, size.height);
 }
 
 - (void)setScoreValue:(CGFloat)sliderValue {

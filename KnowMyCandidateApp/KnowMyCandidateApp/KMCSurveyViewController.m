@@ -52,7 +52,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   layout.itemSize = CGSizeMake(self.view.bounds.size.width - 2 * kCellPadding, kCellHeight);
   layout.sectionInset = UIEdgeInsetsMake(kCellPadding, kCellPadding, kCellPadding, kCellPadding);
 
-  self.navigationItem.title = @"How do you feel about ...";
+  self.navigationItem.title = @"How do you feel about...";
 
   // Defining submit button attributes.
   CGFloat width = self.collectionView.frame.size.width;
@@ -114,10 +114,22 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   UIView *overlayView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   overlayView.backgroundColor = [UIColor blackColor];
   overlayView.alpha = 0.7f;
-  UIActivityIndicatorView *indicatorView =
-      [[UIActivityIndicatorView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  [indicatorView startAnimating];
+  UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
+  [indicatorView sizeToFit];
+  indicatorView.center = self.navigationController.view.center;
   [overlayView addSubview:indicatorView];
+  [indicatorView startAnimating];
+
+  UILabel *textLabel = [[UILabel alloc] init];
+  [overlayView addSubview:textLabel];
+  textLabel.text = @"Personalizing...";
+  textLabel.textColor = [UIColor whiteColor];
+  [textLabel sizeToFit];
+  CGRect frame = textLabel.frame;
+  frame.origin.x = CGRectGetMidX(self.collectionView.frame) - CGRectGetWidth(textLabel.frame) / 2.f;
+  frame.origin.y = CGRectGetMaxY(indicatorView.frame) + 10.f;
+  textLabel.frame = frame;
+
   [self.navigationController.view addSubview:overlayView];
 
   PFUser *user = [PFUser currentUser];
