@@ -114,6 +114,7 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   UIView *overlayView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   overlayView.backgroundColor = [UIColor blackColor];
   overlayView.alpha = 0.7f;
+
   UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
   [indicatorView sizeToFit];
   indicatorView.center = self.navigationController.view.center;
