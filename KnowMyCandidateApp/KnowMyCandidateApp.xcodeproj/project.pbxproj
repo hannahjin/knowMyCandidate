@@ -207,14 +207,12 @@
 		64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowMyCandidateAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowMyCandidateAppUITests.swift; sourceTree = "<group>"; };
 		64F090F01BF6C548006D3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterIcon.png; path = Images/TwitterIcon.png; sourceTree = "<group>"; };
 		CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TwitterIcon@2x.png"; path = "Images/TwitterIcon@2x.png"; sourceTree = "<group>"; };
 		CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NewspaperIcon.png; path = Images/NewspaperIcon.png; sourceTree = "<group>"; };
 		CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewspaperIcon@2x.png"; path = "Images/NewspaperIcon@2x.png"; sourceTree = "<group>"; };
 		CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCTwitterCollectionViewCell.h; path = Cells/KMCTwitterCollectionViewCell.h; sourceTree = "<group>"; };
 		CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCTwitterCollectionViewCell.m; path = Cells/KMCTwitterCollectionViewCell.m; sourceTree = "<group>"; };
-=======
 		B403DB441BFE873100A6D894 /* KMCSurveyResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsViewController.h; sourceTree = "<group>"; };
 		B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsViewController.m; sourceTree = "<group>"; };
 		B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultView.h; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 		B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsCollectionViewCell.h; sourceTree = "<group>"; };
 		B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsCollectionViewCell.m; sourceTree = "<group>"; };
->>>>>>> upstream/master
 		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
 		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
 		CB3D4A171BD60A7400A907F1 /* KMCIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssueViewController.h; sourceTree = "<group>"; };
@@ -516,15 +513,12 @@
 				CB5B2C651BF413F00088B32E /* KMCInfoCollectionViewCell.m */,
 				EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */,
 				EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */,
-<<<<<<< HEAD
 				CBDEACCA1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.h */,
 				CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */,
 				CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */,
 				CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */,
-=======
 				B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */,
 				B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */,
->>>>>>> upstream/master
 			);
 			name = Cells;
 			sourceTree = "<group>";
