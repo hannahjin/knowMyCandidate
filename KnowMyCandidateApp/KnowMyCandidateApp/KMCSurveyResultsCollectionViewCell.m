@@ -8,7 +8,7 @@ static const CGFloat kTextLabelPadding = 10.f;
 static const CGFloat kScoreWidth = 60.f;
 static const CGFloat kScoreFontSize = 36.f;
 
-@implementation KMCSurveyResultsCollectionViewCell{
+@implementation KMCSurveyResultsCollectionViewCell {
   UILabel *_nameLabel;
   UILabel *_scoreLabel;
   UIImageView *_pictureView;
@@ -43,8 +43,7 @@ static const CGFloat kScoreFontSize = 36.f;
   _name = [name copy];
   _nameLabel.text = _name;
   _pictureView.image = [KMCAssets pictureForCandidate:_name];
-  [_pictureView sizeToFit];
-  CGRect frame = _pictureView.frame;
+  CGRect frame;
   frame.origin.x = kLeftPadding;
   frame.origin.y = CGRectGetMidY(self.contentView.frame) - (kImageDimension / 2.f);
   frame.size.height = kImageDimension;
@@ -56,7 +55,7 @@ static const CGFloat kScoreFontSize = 36.f;
 
 - (void)setScore:(NSString *)score {
   _matchingScore = [score copy];
-  _scoreLabel.text = [NSString stringWithFormat:@"%@", _matchingScore];
+  _scoreLabel.text = _matchingScore;
   [_scoreLabel sizeToFit];
   CGRect frame = _scoreLabel.frame;
   frame.origin.x = CGRectGetWidth(self.contentView.frame) - kScoreWidth;
