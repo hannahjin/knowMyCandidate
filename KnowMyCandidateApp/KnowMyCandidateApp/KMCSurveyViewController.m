@@ -117,6 +117,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
   UIActivityIndicatorView *indicatorView =
       [[UIActivityIndicatorView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   [indicatorView startAnimating];
+  
+
   [overlayView addSubview:indicatorView];
   [self.navigationController.view addSubview:overlayView];
 
