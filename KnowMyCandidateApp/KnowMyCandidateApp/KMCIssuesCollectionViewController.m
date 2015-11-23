@@ -54,8 +54,18 @@ static const CGFloat kCellWidth = 180.f;
   layout.minimumInteritemSpacing = 0.f;
 
   [self.collectionView addSubview:_refreshControl];
-  [self.collectionView sendSubviewToBack:_refreshControl];
   [self getIssues];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  CGPoint point = self.collectionView.contentOffset;
+  CGRect frame = _refreshControl.frame;
+  if (frame.origin.y >= 0.f) {
+    frame.origin.y = point.y * -1;
+  }
+  _refreshControl.frame = frame;
 }
 
 - (void)getIssues {

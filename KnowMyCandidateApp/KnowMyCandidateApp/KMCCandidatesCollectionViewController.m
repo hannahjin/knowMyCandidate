@@ -53,9 +53,20 @@ static const CGFloat kInterCellPadding = 2.f;
       UIEdgeInsetsMake(kInterCellPadding, kCellPadding, kInterCellPadding, kCellPadding);
   layout.minimumLineSpacing = kInterCellPadding;
 
+  _refreshControl.frame = self.collectionView.frame;
   [self.collectionView addSubview:_refreshControl];
-  [self.collectionView sendSubviewToBack:_refreshControl];
   [self getCandidates];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  CGPoint point = self.collectionView.contentOffset;
+  CGRect frame = _refreshControl.frame;
+  if (frame.origin.y >= 0.f) {
+    frame.origin.y = point.y * -1;
+  }
+  _refreshControl.frame = frame;
 }
 
 - (void)getCandidates {
@@ -112,6 +123,15 @@ static const CGFloat kInterCellPadding = 2.f;
   KMCCandidateProfileViewController *vc =
       [[KMCCandidateProfileViewController alloc] initWithCandidateObject:object];
   [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+  CGPoint point = self.collectionView.contentOffset;
+  CGRect frame = _refreshControl.frame;
+  if (frame.origin.y >= 0.f) {
+    frame.origin.y = point.y * -1;
+  }
+  _refreshControl.frame = frame;
 }
 
 @end

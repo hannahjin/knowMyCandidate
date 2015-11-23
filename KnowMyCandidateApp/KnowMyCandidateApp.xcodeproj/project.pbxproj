@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		64F090EF1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */; };
+		CB0BE7D11BFD804000326D53 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */; };
+		CB0BE7D21BFD804000326D53 /* TwitterIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */; };
+		CB0BE7D51BFD80FF00326D53 /* NewspaperIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */; };
+		CB0BE7D61BFD80FF00326D53 /* NewspaperIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */; };
+		CB0BE7DC1C01187900326D53 /* KMCTwitterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */; };
 		B403DB4A1BFE873200A6D894 /* KMCSurveyResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */; };
 		B403DB4B1BFE873200A6D894 /* KMCSurveyResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */; };
 		B403DB4C1BFE873200A6D894 /* UIFont+SystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */; };
@@ -139,6 +144,7 @@
 		CBDEACC21BF973BC00889797 /* GlobeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC11BF973BC00889797 /* GlobeIcon.png */; };
 		CBDEACC51BFBC52500889797 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC31BFBC52500889797 /* center.png */; };
 		CBDEACC61BFBC52500889797 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDEACC41BFBC52500889797 /* select.png */; };
+		CBDEACCC1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */; };
 		EC5E5D9D1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */; };
 		EC5E5DAF1BFB170600D0AF5A /* KMCIssuesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5DA61BFB170600D0AF5A /* KMCIssuesCollectionViewController.m */; };
 		EC5E5DB01BFB170600D0AF5A /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5DA81BFB170600D0AF5A /* PieChartView.m */; };
@@ -201,6 +207,12 @@
 		64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowMyCandidateAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowMyCandidateAppUITests.swift; sourceTree = "<group>"; };
 		64F090F01BF6C548006D3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterIcon.png; path = Images/TwitterIcon.png; sourceTree = "<group>"; };
+		CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TwitterIcon@2x.png"; path = "Images/TwitterIcon@2x.png"; sourceTree = "<group>"; };
+		CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NewspaperIcon.png; path = Images/NewspaperIcon.png; sourceTree = "<group>"; };
+		CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewspaperIcon@2x.png"; path = "Images/NewspaperIcon@2x.png"; sourceTree = "<group>"; };
+		CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCTwitterCollectionViewCell.h; path = Cells/KMCTwitterCollectionViewCell.h; sourceTree = "<group>"; };
+		CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCTwitterCollectionViewCell.m; path = Cells/KMCTwitterCollectionViewCell.m; sourceTree = "<group>"; };
 		B403DB441BFE873100A6D894 /* KMCSurveyResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsViewController.h; sourceTree = "<group>"; };
 		B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsViewController.m; sourceTree = "<group>"; };
 		B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultView.h; sourceTree = "<group>"; };
@@ -356,6 +368,8 @@
 		CBDEACC11BF973BC00889797 /* GlobeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GlobeIcon.png; path = Images/GlobeIcon.png; sourceTree = "<group>"; };
 		CBDEACC31BFBC52500889797 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = center.png; path = Images/center.png; sourceTree = "<group>"; };
 		CBDEACC41BFBC52500889797 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select.png; path = Images/select.png; sourceTree = "<group>"; };
+		CBDEACCA1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCNewsfeedCollectionViewCell.h; path = Cells/KMCNewsfeedCollectionViewCell.h; sourceTree = "<group>"; };
+		CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCNewsfeedCollectionViewCell.m; path = Cells/KMCNewsfeedCollectionViewCell.m; sourceTree = "<group>"; };
 		EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCIssuesCollectionViewCell.h; path = Cells/KMCIssuesCollectionViewCell.h; sourceTree = "<group>"; };
 		EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCIssuesCollectionViewCell.m; path = Cells/KMCIssuesCollectionViewCell.m; sourceTree = "<group>"; };
 		EC5E5DA51BFB170600D0AF5A /* KMCIssuesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssuesCollectionViewController.h; sourceTree = "<group>"; };
@@ -499,6 +513,10 @@
 				CB5B2C651BF413F00088B32E /* KMCInfoCollectionViewCell.m */,
 				EC5E5D9B1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.h */,
 				EC5E5D9C1BFB163500D0AF5A /* KMCIssuesCollectionViewCell.m */,
+				CBDEACCA1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.h */,
+				CBDEACCB1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m */,
+				CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */,
+				CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */,
 				B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */,
 				B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */,
 			);
@@ -710,7 +728,11 @@
 				CBC10A791BDBFCA700FABAF4 /* HomeTabIcon@2x.png */,
 				CBC10A7A1BDBFCA700FABAF4 /* IssuesTabIcon@1x.png */,
 				CBC10A7B1BDBFCA700FABAF4 /* IssuesTabIcon@2x.png */,
+				CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */,
+				CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */,
 				CB5B2B921BEC34E40088B32E /* SignInBackground.png */,
+				CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */,
+				CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */,
 				CBC10A7C1BDBFCA700FABAF4 /* UserTabIcon@1x.png */,
 				CBC10A731BDBFBD900FABAF4 /* UserTabIcon@2x.png */,
 			);
@@ -913,6 +935,7 @@
 				EC5E5E071BFB187A00D0AF5A /* Taxes.png in Resources */,
 				CBC10A821BDBFCA700FABAF4 /* IssuesTabIcon@2x.png in Resources */,
 				EC5E5DE51BFB187A00D0AF5A /* EPA.png in Resources */,
+				CB0BE7D21BFD804000326D53 /* TwitterIcon@2x.png in Resources */,
 				EC5E5DF21BFB187A00D0AF5A /* Green_Energy@2x.png in Resources */,
 				CB5B2B931BEC34E40088B32E /* SignInBackground.png in Resources */,
 				CB5B2C4C1BF27BCD0088B32E /* Ted_Cruz.png in Resources */,
@@ -941,12 +964,15 @@
 				CB5B2C271BF27BCD0088B32E /* Ben_Carson@2x.png in Resources */,
 				CB5B2C4D1BF27BCD0088B32E /* Ted_Cruz@2x.png in Resources */,
 				CB5B2C301BF27BCD0088B32E /* Donald_Trump.png in Resources */,
+				CB0BE7D11BFD804000326D53 /* TwitterIcon.png in Resources */,
+				CB0BE7D51BFD80FF00326D53 /* NewspaperIcon.png in Resources */,
 				CB5B2C3C1BF27BCD0088B32E /* John_Kasich.png in Resources */,
 				EC5E5DE11BFB187A00D0AF5A /* Abortion.png in Resources */,
 				EC5E5E091BFB187A00D0AF5A /* Voter_Registration.png in Resources */,
 				EC5E5DE31BFB187A00D0AF5A /* American_Exceptionalism.png in Resources */,
 				EC5E5DF51BFB187A00D0AF5A /* Illegal_Immigrants.png in Resources */,
 				EC5E5DEE1BFB187A00D0AF5A /* Gay_Marriage@2x.png in Resources */,
+				CB0BE7D61BFD80FF00326D53 /* NewspaperIcon@2x.png in Resources */,
 				CBC10A741BDBFBD900FABAF4 /* UserTabIcon@2x.png in Resources */,
 				CB5B2C311BF27BCD0088B32E /* Donald_Trump@2x.png in Resources */,
 				CBC10A7F1BDBFCA700FABAF4 /* HomeTabIcon@1x.png in Resources */,
@@ -1027,6 +1053,8 @@
 				CBA652181BD3273E000EFAEC /* KMCUserProfileViewController.m in Sources */,
 				EC5E5DAF1BFB170600D0AF5A /* KMCIssuesCollectionViewController.m in Sources */,
 				CB5B2B8E1BE9BC710088B32E /* KMCNewsfeedViewController.m in Sources */,
+				CBDEACCC1BFC0D7F00889797 /* KMCNewsfeedCollectionViewCell.m in Sources */,
+				CB0BE7DC1C01187900326D53 /* KMCTwitterCollectionViewCell.m in Sources */,
 				CB5B2C631BF3262E0088B32E /* KMCStandpointsCollectionViewCell.m in Sources */,
 				CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */,
 				CB3D4A191BD60A7400A907F1 /* KMCIssueViewController.m in Sources */,
