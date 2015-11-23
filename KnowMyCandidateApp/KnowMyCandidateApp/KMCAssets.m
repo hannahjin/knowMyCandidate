@@ -147,7 +147,7 @@
 }
 
 + (UIFont *)questionFont:(CGFloat)size {
-  return [UIFont fontWithName:@"MyriadPro-Regular" size:size];
+  return [UIFont fontWithName:@"MyriadPro" size:size];
 }
 
 + (UIFont *)scoreFont:(CGFloat)size {
@@ -155,14 +155,15 @@
 }
 
 + (UIFont *)dateFont:(CGFloat)size {
-  return [UIFont fontWithName:@"Open Sans" size:size];
+  return [UIFont fontWithName:@"OpenSans" size:size];
 }
 
 + (UIFont *)nameFont:(CGFloat)size {
-  return [UIFont fontWithName:@"Open Sans" size:size];
+  return [UIFont fontWithName:@"OpenSans" size:size];
 }
 
 #pragma mark - Font Size
+
 + (CGFloat)tinyFont {
   return 10.0f;
 }

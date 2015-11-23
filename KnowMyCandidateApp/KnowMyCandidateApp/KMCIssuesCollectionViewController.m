@@ -7,8 +7,8 @@
 
 static NSString *const reuseIdentifier = @"kIssuesCollectionViewCell";
 
-static const CGFloat kCellHeight = 140.f;
-static const CGFloat kCellWidth = 180.f;
+static const CGFloat kCellHeight = 145.f;
+static const CGFloat kCellWidth = 185.f;
 
 @interface KMCIssuesCollectionViewController ()
 @end
@@ -22,6 +22,7 @@ static const CGFloat kCellWidth = 180.f;
   self = [super initWithCollectionViewLayout:layout];
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 
     UITabBarItem *item = [self tabBarItem];
     item.title = @"Issues";
@@ -42,6 +43,7 @@ static const CGFloat kCellWidth = 180.f;
   [self.collectionView registerClass:[KMCIssuesCollectionViewCell class]
             forCellWithReuseIdentifier:reuseIdentifier];
 
+  self.collectionView.alwaysBounceVertical = YES;
   self.navigationItem.title = @"Issues";
     
   // Defining layout attributes.
@@ -57,17 +59,6 @@ static const CGFloat kCellWidth = 180.f;
   [self getIssues];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
-  CGPoint point = self.collectionView.contentOffset;
-  CGRect frame = _refreshControl.frame;
-  if (frame.origin.y >= 0.f) {
-    frame.origin.y = point.y * -1;
-  }
-  _refreshControl.frame = frame;
-}
-
 - (void)getIssues {
   [_refreshControl beginRefreshing];
   PFQuery *query = [PFQuery queryWithClassName:@"Issue"];
@@ -78,6 +69,10 @@ static const CGFloat kCellWidth = 180.f;
       [self.collectionView reloadData];
     }
   }];
+}
+
+- (void)scrollToTop {
+  [self.collectionView setContentOffset:CGPointZero animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -106,6 +101,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   KMCIssueViewController *vc =
       [[KMCIssueViewController alloc] initWithIssueObject:object];
   [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+  [self.collectionView sendSubviewToBack:_refreshControl];
 }
 
 @end

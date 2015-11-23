@@ -2,7 +2,7 @@
 
 #import "KMCAssets.h"
 
-static const CGFloat kTextPadding = 5.f;
+static const CGFloat kTextPadding = 10.f;
 
 @implementation KMCIssuesCollectionViewCell {
   UILabel *_nameLabel;
@@ -18,7 +18,7 @@ static const CGFloat kTextPadding = 5.f;
     UIView *contentView = self.contentView;
     
     _nameLabel = [[UILabel alloc] init];
-    _nameLabel.font = [UIFont systemFontOfSize:18.f weight:0.4f];
+    _nameLabel.font = [UIFont boldSystemFontOfSize:18.f];
     _nameLabel.numberOfLines = 2;
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.textColor = [UIColor whiteColor];

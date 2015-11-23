@@ -2,4 +2,6 @@
 
 @interface KMCCandidatesCollectionViewController : UICollectionViewController
 
+- (void)scrollToTop;
+
 @end

@@ -8,43 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		64F090EF1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */; };
+		B403DB4A1BFE873200A6D894 /* KMCSurveyResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */; };
+		B403DB4B1BFE873200A6D894 /* KMCSurveyResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */; };
+		B403DB4C1BFE873200A6D894 /* UIFont+SystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */; };
+		B403DB841BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */; };
 		CB0BE7D11BFD804000326D53 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */; };
 		CB0BE7D21BFD804000326D53 /* TwitterIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */; };
 		CB0BE7D51BFD80FF00326D53 /* NewspaperIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */; };
 		CB0BE7D61BFD80FF00326D53 /* NewspaperIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */; };
 		CB0BE7DC1C01187900326D53 /* KMCTwitterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */; };
-		B403DB4A1BFE873200A6D894 /* KMCSurveyResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */; };
-		B403DB4B1BFE873200A6D894 /* KMCSurveyResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */; };
-		B403DB4C1BFE873200A6D894 /* UIFont+SystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */; };
-		B403DB671BFE87F100A6D894 /* BebasNeue Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */; };
-		B403DB681BFE87F100A6D894 /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */; };
-		B403DB6A1BFE87F100A6D894 /* BebasNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */; };
-		B403DB6B1BFE87F100A6D894 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */; };
-		B403DB6C1BFE87F100A6D894 /* BebasNeue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */; };
-		B403DB6D1BFE87F100A6D894 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */; };
-		B403DB6E1BFE87F100A6D894 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */; };
-		B403DB6F1BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */; };
-		B403DB701BFE87F100A6D894 /* MyriadPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */; };
-		B403DB711BFE87F100A6D894 /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */; };
-		B403DB721BFE87F100A6D894 /* MyriadPro-CondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */; };
-		B403DB731BFE87F100A6D894 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */; };
-		B403DB741BFE87F100A6D894 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */; };
-		B403DB751BFE87F100A6D894 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */; };
-		B403DB761BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */; };
-		B403DB771BFE87F100A6D894 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */; };
-		B403DB781BFE87F100A6D894 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */; };
-		B403DB791BFE87F100A6D894 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */; };
-		B403DB7A1BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */; };
-		B403DB7B1BFE87F100A6D894 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */; };
-		B403DB7C1BFE87F100A6D894 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */; };
-		B403DB7D1BFE87F100A6D894 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */; };
-		B403DB7E1BFE87F100A6D894 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */; };
-		B403DB7F1BFE87F100A6D894 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */; };
-		B403DB801BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */; };
-		B403DB841BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */; };
 		CB3D4A161BD6011900A907F1 /* KMCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */; };
 		CB3D4A191BD60A7400A907F1 /* KMCIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A181BD60A7400A907F1 /* KMCIssueViewController.m */; };
 		CB3D4A1C1BD613B300A907F1 /* KMCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */; };
+		CB54C97D1C03B14200EA89A9 /* BebasNeue Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9641C03B14200EA89A9 /* BebasNeue Book.ttf */; };
+		CB54C97E1C03B14200EA89A9 /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9651C03B14200EA89A9 /* BebasNeue-Bold.ttf */; };
+		CB54C97F1C03B14200EA89A9 /* BebasNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9661C03B14200EA89A9 /* BebasNeue-Light.ttf */; };
+		CB54C9801C03B14200EA89A9 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9671C03B14200EA89A9 /* BebasNeue-Regular.ttf */; };
+		CB54C9811C03B14200EA89A9 /* BebasNeue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9681C03B14200EA89A9 /* BebasNeue-Thin.ttf */; };
+		CB54C9821C03B14200EA89A9 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9691C03B14200EA89A9 /* MyriadPro-Bold.otf */; };
+		CB54C9831C03B14200EA89A9 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96A1C03B14200EA89A9 /* MyriadPro-BoldCond.otf */; };
+		CB54C9841C03B14200EA89A9 /* MyriadPro-BoldCondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96B1C03B14200EA89A9 /* MyriadPro-BoldCondIt.otf */; };
+		CB54C9851C03B14200EA89A9 /* MyriadPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96C1C03B14200EA89A9 /* MyriadPro-BoldIt.otf */; };
+		CB54C9861C03B14200EA89A9 /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96D1C03B14200EA89A9 /* MyriadPro-Cond.otf */; };
+		CB54C9871C03B14200EA89A9 /* MyriadPro-CondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96E1C03B14200EA89A9 /* MyriadPro-CondIt.otf */; };
+		CB54C9881C03B14200EA89A9 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C96F1C03B14200EA89A9 /* MyriadPro-It.otf */; };
+		CB54C9891C03B14200EA89A9 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9701C03B14200EA89A9 /* MyriadPro-Regular.otf */; };
+		CB54C98A1C03B14200EA89A9 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9711C03B14200EA89A9 /* MyriadPro-Semibold.otf */; };
+		CB54C98B1C03B14200EA89A9 /* MyriadPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9721C03B14200EA89A9 /* MyriadPro-SemiboldIt.otf */; };
+		CB54C98C1C03B14200EA89A9 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9731C03B14200EA89A9 /* OpenSans-Bold.ttf */; };
+		CB54C98D1C03B14200EA89A9 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9741C03B14200EA89A9 /* OpenSans-BoldItalic.ttf */; };
+		CB54C98E1C03B14200EA89A9 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9751C03B14200EA89A9 /* OpenSans-ExtraBold.ttf */; };
+		CB54C98F1C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9761C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf */; };
+		CB54C9901C03B14200EA89A9 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9771C03B14200EA89A9 /* OpenSans-Italic.ttf */; };
+		CB54C9911C03B14200EA89A9 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9781C03B14200EA89A9 /* OpenSans-Light.ttf */; };
+		CB54C9921C03B14200EA89A9 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9791C03B14200EA89A9 /* OpenSans-LightItalic.ttf */; };
+		CB54C9931C03B14200EA89A9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97A1C03B14200EA89A9 /* OpenSans-Regular.ttf */; };
+		CB54C9941C03B14200EA89A9 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97B1C03B14200EA89A9 /* OpenSans-Semibold.ttf */; };
+		CB54C9951C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97C1C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf */; };
 		CB5B2B841BE2B9E90088B32E /* KMCSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */; };
 		CB5B2B881BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B871BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m */; };
 		CB5B2B8B1BE876080088B32E /* KMCNewUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */; };
@@ -164,7 +164,6 @@
 		EC5E5DED1BFB187A00D0AF5A /* Gay_Marriage.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC11BFB187A00D0AF5A /* Gay_Marriage.png */; };
 		EC5E5DEE1BFB187A00D0AF5A /* Gay_Marriage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC21BFB187A00D0AF5A /* Gay_Marriage@2x.png */; };
 		EC5E5DEF1BFB187A00D0AF5A /* God_In_Public_Sphere.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC31BFB187A00D0AF5A /* God_In_Public_Sphere.png */; };
-		EC5E5DF01BFB187A00D0AF5A /* God_In_Public_Sphere@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC41BFB187A00D0AF5A /* God_In_Public_Sphere@2x.png */; };
 		EC5E5DF11BFB187A00D0AF5A /* Green_Energy.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC51BFB187A00D0AF5A /* Green_Energy.png */; };
 		EC5E5DF21BFB187A00D0AF5A /* Green_Energy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC61BFB187A00D0AF5A /* Green_Energy@2x.png */; };
 		EC5E5DF31BFB187A00D0AF5A /* Gun_Ownership.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DC71BFB187A00D0AF5A /* Gun_Ownership.png */; };
@@ -190,7 +189,6 @@
 		EC5E5E091BFB187A00D0AF5A /* Voter_Registration.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DDD1BFB187A00D0AF5A /* Voter_Registration.png */; };
 		EC5E5E0A1BFB187A00D0AF5A /* Voter_Registration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DDE1BFB187A00D0AF5A /* Voter_Registration@2x.png */; };
 		EC5E5E0B1BFB187A00D0AF5A /* Women_Minority.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DDF1BFB187A00D0AF5A /* Women_Minority.png */; };
-		EC5E5E0C1BFB187A00D0AF5A /* Women_Minority@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5E5DE01BFB187A00D0AF5A /* Women_Minority@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,51 +205,51 @@
 		64F090EC1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowMyCandidateAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F090EE1BF6C548006D3FF1 /* KnowMyCandidateAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowMyCandidateAppUITests.swift; sourceTree = "<group>"; };
 		64F090F01BF6C548006D3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterIcon.png; path = Images/TwitterIcon.png; sourceTree = "<group>"; };
-		CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TwitterIcon@2x.png"; path = "Images/TwitterIcon@2x.png"; sourceTree = "<group>"; };
-		CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NewspaperIcon.png; path = Images/NewspaperIcon.png; sourceTree = "<group>"; };
-		CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewspaperIcon@2x.png"; path = "Images/NewspaperIcon@2x.png"; sourceTree = "<group>"; };
-		CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCTwitterCollectionViewCell.h; path = Cells/KMCTwitterCollectionViewCell.h; sourceTree = "<group>"; };
-		CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCTwitterCollectionViewCell.m; path = Cells/KMCTwitterCollectionViewCell.m; sourceTree = "<group>"; };
 		B403DB441BFE873100A6D894 /* KMCSurveyResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsViewController.h; sourceTree = "<group>"; };
 		B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsViewController.m; sourceTree = "<group>"; };
 		B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultView.h; sourceTree = "<group>"; };
 		B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultView.m; sourceTree = "<group>"; };
 		B403DB481BFE873200A6D894 /* UIFont+SystemFontOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SystemFontOverride.h"; sourceTree = "<group>"; };
 		B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SystemFontOverride.m"; sourceTree = "<group>"; };
-		B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue Book.ttf"; sourceTree = "<group>"; };
-		B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
-		B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
-		B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
-		B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
-		B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Bold.otf"; sourceTree = "<group>"; };
-		B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
-		B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCondIt.otf"; sourceTree = "<group>"; };
-		B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldIt.otf"; sourceTree = "<group>"; };
-		B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Cond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Cond.otf"; sourceTree = "<group>"; };
-		B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-CondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-CondIt.otf"; sourceTree = "<group>"; };
-		B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-It.otf"; sourceTree = "<group>"; };
-		B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Regular.otf"; sourceTree = "<group>"; };
-		B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Semibold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
-		B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-SemiboldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-SemiboldIt.otf"; sourceTree = "<group>"; };
-		B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
-		B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		B403DB821BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyResultsCollectionViewCell.h; sourceTree = "<group>"; };
 		B403DB831BFEA29500A6D894 /* KMCSurveyResultsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyResultsCollectionViewCell.m; sourceTree = "<group>"; };
+		CB0BE7CF1BFD804000326D53 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterIcon.png; path = Images/TwitterIcon.png; sourceTree = "<group>"; };
+		CB0BE7D01BFD804000326D53 /* TwitterIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TwitterIcon@2x.png"; path = "Images/TwitterIcon@2x.png"; sourceTree = "<group>"; };
+		CB0BE7D31BFD80FF00326D53 /* NewspaperIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NewspaperIcon.png; path = Images/NewspaperIcon.png; sourceTree = "<group>"; };
+		CB0BE7D41BFD80FF00326D53 /* NewspaperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewspaperIcon@2x.png"; path = "Images/NewspaperIcon@2x.png"; sourceTree = "<group>"; };
+		CB0BE7DA1C01187900326D53 /* KMCTwitterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCTwitterCollectionViewCell.h; path = Cells/KMCTwitterCollectionViewCell.h; sourceTree = "<group>"; };
+		CB0BE7DB1C01187900326D53 /* KMCTwitterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMCTwitterCollectionViewCell.m; path = Cells/KMCTwitterCollectionViewCell.m; sourceTree = "<group>"; };
 		CB3D4A141BD6011900A907F1 /* KMCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCMainViewController.h; sourceTree = "<group>"; };
 		CB3D4A151BD6011900A907F1 /* KMCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCMainViewController.m; sourceTree = "<group>"; };
 		CB3D4A171BD60A7400A907F1 /* KMCIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCIssueViewController.h; sourceTree = "<group>"; };
 		CB3D4A181BD60A7400A907F1 /* KMCIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCIssueViewController.m; sourceTree = "<group>"; };
 		CB3D4A1A1BD613B300A907F1 /* KMCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCRootViewController.h; sourceTree = "<group>"; };
 		CB3D4A1B1BD613B300A907F1 /* KMCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCRootViewController.m; sourceTree = "<group>"; };
+		CB54C9641C03B14200EA89A9 /* BebasNeue Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue Book.ttf"; sourceTree = "<group>"; };
+		CB54C9651C03B14200EA89A9 /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
+		CB54C9661C03B14200EA89A9 /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
+		CB54C9671C03B14200EA89A9 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		CB54C9681C03B14200EA89A9 /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "KnowMyCandidateApp/Fonts/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
+		CB54C9691C03B14200EA89A9 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		CB54C96A1C03B14200EA89A9 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
+		CB54C96B1C03B14200EA89A9 /* MyriadPro-BoldCondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldCondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldCondIt.otf"; sourceTree = "<group>"; };
+		CB54C96C1C03B14200EA89A9 /* MyriadPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-BoldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-BoldIt.otf"; sourceTree = "<group>"; };
+		CB54C96D1C03B14200EA89A9 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Cond.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Cond.otf"; sourceTree = "<group>"; };
+		CB54C96E1C03B14200EA89A9 /* MyriadPro-CondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-CondIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-CondIt.otf"; sourceTree = "<group>"; };
+		CB54C96F1C03B14200EA89A9 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-It.otf"; sourceTree = "<group>"; };
+		CB54C9701C03B14200EA89A9 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		CB54C9711C03B14200EA89A9 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Semibold.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
+		CB54C9721C03B14200EA89A9 /* MyriadPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-SemiboldIt.otf"; path = "KnowMyCandidateApp/Fonts/MyriadPro-SemiboldIt.otf"; sourceTree = "<group>"; };
+		CB54C9731C03B14200EA89A9 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		CB54C9741C03B14200EA89A9 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		CB54C9751C03B14200EA89A9 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CB54C9761C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		CB54C9771C03B14200EA89A9 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		CB54C9781C03B14200EA89A9 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		CB54C9791C03B14200EA89A9 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		CB54C97A1C03B14200EA89A9 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		CB54C97B1C03B14200EA89A9 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		CB54C97C1C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		CB5B2B821BE2B9E90088B32E /* KMCSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyViewController.h; sourceTree = "<group>"; };
 		CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyViewController.m; sourceTree = "<group>"; };
 		CB5B2B861BE53F6E0088B32E /* KMCSurveyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCSurveyCollectionViewCell.h; path = Cells/KMCSurveyCollectionViewCell.h; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 		EC5E5DC11BFB187A00D0AF5A /* Gay_Marriage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gay_Marriage.png; sourceTree = "<group>"; };
 		EC5E5DC21BFB187A00D0AF5A /* Gay_Marriage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gay_Marriage@2x.png"; sourceTree = "<group>"; };
 		EC5E5DC31BFB187A00D0AF5A /* God_In_Public_Sphere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = God_In_Public_Sphere.png; sourceTree = "<group>"; };
-		EC5E5DC41BFB187A00D0AF5A /* God_In_Public_Sphere@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "God_In_Public_Sphere@2x.png"; sourceTree = "<group>"; };
 		EC5E5DC51BFB187A00D0AF5A /* Green_Energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green_Energy.png; sourceTree = "<group>"; };
 		EC5E5DC61BFB187A00D0AF5A /* Green_Energy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Energy@2x.png"; sourceTree = "<group>"; };
 		EC5E5DC71BFB187A00D0AF5A /* Gun_Ownership.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gun_Ownership.png; sourceTree = "<group>"; };
@@ -420,7 +417,6 @@
 		EC5E5DDD1BFB187A00D0AF5A /* Voter_Registration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voter_Registration.png; sourceTree = "<group>"; };
 		EC5E5DDE1BFB187A00D0AF5A /* Voter_Registration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Voter_Registration@2x.png"; sourceTree = "<group>"; };
 		EC5E5DDF1BFB187A00D0AF5A /* Women_Minority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Women_Minority.png; sourceTree = "<group>"; };
-		EC5E5DE01BFB187A00D0AF5A /* Women_Minority@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Women_Minority@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,31 +466,31 @@
 		B403DB811BFE87FB00A6D894 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B403DB4D1BFE87F100A6D894 /* BebasNeue Book.ttf */,
-				B403DB4E1BFE87F100A6D894 /* BebasNeue-Bold.ttf */,
-				B403DB501BFE87F100A6D894 /* BebasNeue-Light.ttf */,
-				B403DB511BFE87F100A6D894 /* BebasNeue-Regular.ttf */,
-				B403DB521BFE87F100A6D894 /* BebasNeue-Thin.ttf */,
-				B403DB531BFE87F100A6D894 /* MyriadPro-Bold.otf */,
-				B403DB541BFE87F100A6D894 /* MyriadPro-BoldCond.otf */,
-				B403DB551BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf */,
-				B403DB561BFE87F100A6D894 /* MyriadPro-BoldIt.otf */,
-				B403DB571BFE87F100A6D894 /* MyriadPro-Cond.otf */,
-				B403DB581BFE87F100A6D894 /* MyriadPro-CondIt.otf */,
-				B403DB591BFE87F100A6D894 /* MyriadPro-It.otf */,
-				B403DB5A1BFE87F100A6D894 /* MyriadPro-Regular.otf */,
-				B403DB5B1BFE87F100A6D894 /* MyriadPro-Semibold.otf */,
-				B403DB5C1BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf */,
-				B403DB5D1BFE87F100A6D894 /* OpenSans-Bold.ttf */,
-				B403DB5E1BFE87F100A6D894 /* OpenSans-BoldItalic.ttf */,
-				B403DB5F1BFE87F100A6D894 /* OpenSans-ExtraBold.ttf */,
-				B403DB601BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf */,
-				B403DB611BFE87F100A6D894 /* OpenSans-Italic.ttf */,
-				B403DB621BFE87F100A6D894 /* OpenSans-Light.ttf */,
-				B403DB631BFE87F100A6D894 /* OpenSans-LightItalic.ttf */,
-				B403DB641BFE87F100A6D894 /* OpenSans-Regular.ttf */,
-				B403DB651BFE87F100A6D894 /* OpenSans-Semibold.ttf */,
-				B403DB661BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf */,
+				CB54C9641C03B14200EA89A9 /* BebasNeue Book.ttf */,
+				CB54C9651C03B14200EA89A9 /* BebasNeue-Bold.ttf */,
+				CB54C9661C03B14200EA89A9 /* BebasNeue-Light.ttf */,
+				CB54C9671C03B14200EA89A9 /* BebasNeue-Regular.ttf */,
+				CB54C9681C03B14200EA89A9 /* BebasNeue-Thin.ttf */,
+				CB54C9691C03B14200EA89A9 /* MyriadPro-Bold.otf */,
+				CB54C96A1C03B14200EA89A9 /* MyriadPro-BoldCond.otf */,
+				CB54C96B1C03B14200EA89A9 /* MyriadPro-BoldCondIt.otf */,
+				CB54C96C1C03B14200EA89A9 /* MyriadPro-BoldIt.otf */,
+				CB54C96D1C03B14200EA89A9 /* MyriadPro-Cond.otf */,
+				CB54C96E1C03B14200EA89A9 /* MyriadPro-CondIt.otf */,
+				CB54C96F1C03B14200EA89A9 /* MyriadPro-It.otf */,
+				CB54C9701C03B14200EA89A9 /* MyriadPro-Regular.otf */,
+				CB54C9711C03B14200EA89A9 /* MyriadPro-Semibold.otf */,
+				CB54C9721C03B14200EA89A9 /* MyriadPro-SemiboldIt.otf */,
+				CB54C9731C03B14200EA89A9 /* OpenSans-Bold.ttf */,
+				CB54C9741C03B14200EA89A9 /* OpenSans-BoldItalic.ttf */,
+				CB54C9751C03B14200EA89A9 /* OpenSans-ExtraBold.ttf */,
+				CB54C9761C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf */,
+				CB54C9771C03B14200EA89A9 /* OpenSans-Italic.ttf */,
+				CB54C9781C03B14200EA89A9 /* OpenSans-Light.ttf */,
+				CB54C9791C03B14200EA89A9 /* OpenSans-LightItalic.ttf */,
+				CB54C97A1C03B14200EA89A9 /* OpenSans-Regular.ttf */,
+				CB54C97B1C03B14200EA89A9 /* OpenSans-Semibold.ttf */,
+				CB54C97C1C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			name = Fonts;
 			path = ..;
@@ -652,14 +648,14 @@
 				B403DB451BFE873200A6D894 /* KMCSurveyResultsViewController.m */,
 				B403DB461BFE873200A6D894 /* KMCSurveyResultView.h */,
 				B403DB471BFE873200A6D894 /* KMCSurveyResultView.m */,
-				B403DB481BFE873200A6D894 /* UIFont+SystemFontOverride.h */,
-				B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */,
 				CB60A37D1BCD8F8C001690BE /* KMCSignInViewController.h */,
 				CB60A37E1BCD8F8C001690BE /* KMCSignInViewController.m */,
 				CBC10A971BDCCDBA00FABAF4 /* KMCSignUpViewController.h */,
 				CBC10A981BDCCDBA00FABAF4 /* KMCSignUpViewController.m */,
 				CBA652161BD3273E000EFAEC /* KMCUserProfileViewController.h */,
 				CBA652171BD3273E000EFAEC /* KMCUserProfileViewController.m */,
+				B403DB481BFE873200A6D894 /* UIFont+SystemFontOverride.h */,
+				B403DB491BFE873200A6D894 /* UIFont+SystemFontOverride.m */,
 				CB60A3831BCD8F8C001690BE /* Assets.xcassets */,
 				CB60A3881BCD8F8C001690BE /* Info.plist */,
 				CBC10A751BDBFBDD00FABAF4 /* Icons */,
@@ -756,7 +752,6 @@
 				EC5E5DC11BFB187A00D0AF5A /* Gay_Marriage.png */,
 				EC5E5DC21BFB187A00D0AF5A /* Gay_Marriage@2x.png */,
 				EC5E5DC31BFB187A00D0AF5A /* God_In_Public_Sphere.png */,
-				EC5E5DC41BFB187A00D0AF5A /* God_In_Public_Sphere@2x.png */,
 				EC5E5DC51BFB187A00D0AF5A /* Green_Energy.png */,
 				EC5E5DC61BFB187A00D0AF5A /* Green_Energy@2x.png */,
 				EC5E5DC71BFB187A00D0AF5A /* Gun_Ownership.png */,
@@ -782,7 +777,6 @@
 				EC5E5DDD1BFB187A00D0AF5A /* Voter_Registration.png */,
 				EC5E5DDE1BFB187A00D0AF5A /* Voter_Registration@2x.png */,
 				EC5E5DDF1BFB187A00D0AF5A /* Women_Minority.png */,
-				EC5E5DE01BFB187A00D0AF5A /* Women_Minority@2x.png */,
 			);
 			name = Issues;
 			path = Images/Issues;
@@ -876,37 +870,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B403DB671BFE87F100A6D894 /* BebasNeue Book.ttf in Resources */,
-				B403DB681BFE87F100A6D894 /* BebasNeue-Bold.ttf in Resources */,
-				B403DB6A1BFE87F100A6D894 /* BebasNeue-Light.ttf in Resources */,
-				B403DB6B1BFE87F100A6D894 /* BebasNeue-Regular.ttf in Resources */,
-				B403DB6C1BFE87F100A6D894 /* BebasNeue-Thin.ttf in Resources */,
-				B403DB6D1BFE87F100A6D894 /* MyriadPro-Bold.otf in Resources */,
-				B403DB6E1BFE87F100A6D894 /* MyriadPro-BoldCond.otf in Resources */,
-				B403DB6F1BFE87F100A6D894 /* MyriadPro-BoldCondIt.otf in Resources */,
-				B403DB701BFE87F100A6D894 /* MyriadPro-BoldIt.otf in Resources */,
-				B403DB711BFE87F100A6D894 /* MyriadPro-Cond.otf in Resources */,
-				B403DB721BFE87F100A6D894 /* MyriadPro-CondIt.otf in Resources */,
-				B403DB731BFE87F100A6D894 /* MyriadPro-It.otf in Resources */,
-				B403DB741BFE87F100A6D894 /* MyriadPro-Regular.otf in Resources */,
-				B403DB751BFE87F100A6D894 /* MyriadPro-Semibold.otf in Resources */,
-				B403DB761BFE87F100A6D894 /* MyriadPro-SemiboldIt.otf in Resources */,
-				B403DB771BFE87F100A6D894 /* OpenSans-Bold.ttf in Resources */,
-				B403DB781BFE87F100A6D894 /* OpenSans-BoldItalic.ttf in Resources */,
-				B403DB791BFE87F100A6D894 /* OpenSans-ExtraBold.ttf in Resources */,
-				B403DB7A1BFE87F100A6D894 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				B403DB7B1BFE87F100A6D894 /* OpenSans-Italic.ttf in Resources */,
-				B403DB7C1BFE87F100A6D894 /* OpenSans-Light.ttf in Resources */,
-				B403DB7D1BFE87F100A6D894 /* OpenSans-LightItalic.ttf in Resources */,
-				B403DB7E1BFE87F100A6D894 /* OpenSans-Regular.ttf in Resources */,
-				B403DB7F1BFE87F100A6D894 /* OpenSans-Semibold.ttf in Resources */,
-				B403DB801BFE87F100A6D894 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				CB5B2C401BF27BCD0088B32E /* Lindsey_Graham.png in Resources */,
 				CB5B2C431BF27BCD0088B32E /* Marco_Rubio@2x.png in Resources */,
+				CB54C9891C03B14200EA89A9 /* MyriadPro-Regular.otf in Resources */,
 				CB5B2C361BF27BCD0088B32E /* Jeb_Bush.png in Resources */,
 				CB5B2C391BF27BCD0088B32E /* Jill_Stein@2x.png in Resources */,
 				EC5E5E051BFB187A00D0AF5A /* Stimulus.png in Resources */,
 				CB5B2C441BF27BCD0088B32E /* Martin_O'Malley.png in Resources */,
+				CB54C97F1C03B14200EA89A9 /* BebasNeue-Light.ttf in Resources */,
+				CB54C9901C03B14200EA89A9 /* OpenSans-Italic.ttf in Resources */,
 				EC5E5DF71BFB187A00D0AF5A /* Marijuana.png in Resources */,
 				CB5B2C561BF27C160088B32E /* RepublicanBackground@2x.png in Resources */,
 				EC5E5DF81BFB187A00D0AF5A /* Marijuana@2x.png in Resources */,
@@ -931,12 +903,17 @@
 				CB5B2C491BF27BCD0088B32E /* Rand_Paul@2x.png in Resources */,
 				EC5E5DF31BFB187A00D0AF5A /* Gun_Ownership.png in Resources */,
 				CB5B2C3F1BF27BCD0088B32E /* Larry_Lessig@2x.png in Resources */,
+				CB54C98A1C03B14200EA89A9 /* MyriadPro-Semibold.otf in Resources */,
 				EC5E5E011BFB187A00D0AF5A /* School_Vouchers.png in Resources */,
 				EC5E5E071BFB187A00D0AF5A /* Taxes.png in Resources */,
 				CBC10A821BDBFCA700FABAF4 /* IssuesTabIcon@2x.png in Resources */,
 				EC5E5DE51BFB187A00D0AF5A /* EPA.png in Resources */,
+				CB54C9861C03B14200EA89A9 /* MyriadPro-Cond.otf in Resources */,
+				CB54C9941C03B14200EA89A9 /* OpenSans-Semibold.ttf in Resources */,
 				CB0BE7D21BFD804000326D53 /* TwitterIcon@2x.png in Resources */,
+				CB54C97D1C03B14200EA89A9 /* BebasNeue Book.ttf in Resources */,
 				EC5E5DF21BFB187A00D0AF5A /* Green_Energy@2x.png in Resources */,
+				CB54C9911C03B14200EA89A9 /* OpenSans-Light.ttf in Resources */,
 				CB5B2B931BEC34E40088B32E /* SignInBackground.png in Resources */,
 				CB5B2C4C1BF27BCD0088B32E /* Ted_Cruz.png in Resources */,
 				EC5E5E061BFB187A00D0AF5A /* Stimulus@2x.png in Resources */,
@@ -944,16 +921,22 @@
 				CB5B2BFC1BF27BAE0088B32E /* RepublicanCellBackground.png in Resources */,
 				CBDEACC51BFBC52500889797 /* center.png in Resources */,
 				EC5E5E0A1BFB187A00D0AF5A /* Voter_Registration@2x.png in Resources */,
+				CB54C9851C03B14200EA89A9 /* MyriadPro-BoldIt.otf in Resources */,
 				CB5B2C2D1BF27BCD0088B32E /* Carly_Fiorina@2x.png in Resources */,
+				CB54C9841C03B14200EA89A9 /* MyriadPro-BoldCondIt.otf in Resources */,
 				CB5B2BFB1BF27BAE0088B32E /* DemocratCellBackground@2x.png in Resources */,
 				EC5E5DFC1BFB187A00D0AF5A /* ObamaCare@2x.png in Resources */,
+				CB54C9951C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				CB5B2C461BF27BCD0088B32E /* Mike_Huckabee.png in Resources */,
 				EC5E5DFA1BFB187A00D0AF5A /* Military_Expansion@2x.png in Resources */,
 				CB5B2C2A1BF27BCD0088B32E /* Bobby_Jindal.png in Resources */,
 				EC5E5DEA1BFB187A00D0AF5A /* Free_Trade@2x.png in Resources */,
 				EC5E5DFD1BFB187A00D0AF5A /* Punishment.png in Resources */,
 				CB5B2C421BF27BCD0088B32E /* Marco_Rubio.png in Resources */,
+				CB54C98B1C03B14200EA89A9 /* MyriadPro-SemiboldIt.otf in Resources */,
 				EC5E5DE61BFB187A00D0AF5A /* EPA@2x.png in Resources */,
+				CB54C9801C03B14200EA89A9 /* BebasNeue-Regular.ttf in Resources */,
+				CB54C98D1C03B14200EA89A9 /* OpenSans-BoldItalic.ttf in Resources */,
 				CBC10A831BDBFCA700FABAF4 /* UserTabIcon@1x.png in Resources */,
 				CB5B2C321BF27BCD0088B32E /* George_Pataki.png in Resources */,
 				EC5E5DFE1BFB187A00D0AF5A /* Punishment@2x.png in Resources */,
@@ -961,12 +944,14 @@
 				EC5E5DE41BFB187A00D0AF5A /* American_Exceptionalism@2x.png in Resources */,
 				CB5B2C481BF27BCD0088B32E /* Rand_Paul.png in Resources */,
 				EC5E5DED1BFB187A00D0AF5A /* Gay_Marriage.png in Resources */,
+				CB54C9921C03B14200EA89A9 /* OpenSans-LightItalic.ttf in Resources */,
 				CB5B2C271BF27BCD0088B32E /* Ben_Carson@2x.png in Resources */,
 				CB5B2C4D1BF27BCD0088B32E /* Ted_Cruz@2x.png in Resources */,
 				CB5B2C301BF27BCD0088B32E /* Donald_Trump.png in Resources */,
 				CB0BE7D11BFD804000326D53 /* TwitterIcon.png in Resources */,
 				CB0BE7D51BFD80FF00326D53 /* NewspaperIcon.png in Resources */,
 				CB5B2C3C1BF27BCD0088B32E /* John_Kasich.png in Resources */,
+				CB54C9871C03B14200EA89A9 /* MyriadPro-CondIt.otf in Resources */,
 				EC5E5DE11BFB187A00D0AF5A /* Abortion.png in Resources */,
 				EC5E5E091BFB187A00D0AF5A /* Voter_Registration.png in Resources */,
 				EC5E5DE31BFB187A00D0AF5A /* American_Exceptionalism.png in Resources */,
@@ -977,7 +962,9 @@
 				CB5B2C311BF27BCD0088B32E /* Donald_Trump@2x.png in Resources */,
 				CBC10A7F1BDBFCA700FABAF4 /* HomeTabIcon@1x.png in Resources */,
 				CB5B2C551BF27C160088B32E /* RepublicanBackground.png in Resources */,
+				CB54C98F1C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				EC5E5DE71BFB187A00D0AF5A /* Foreign_Entanglement.png in Resources */,
+				CB54C9831C03B14200EA89A9 /* MyriadPro-BoldCond.otf in Resources */,
 				CBC10A811BDBFCA700FABAF4 /* IssuesTabIcon@1x.png in Resources */,
 				CB5B2C3A1BF27BCD0088B32E /* Jim_Gilmore.png in Resources */,
 				EC5E5E0B1BFB187A00D0AF5A /* Women_Minority.png in Resources */,
@@ -988,19 +975,22 @@
 				CB5B2C471BF27BCD0088B32E /* Mike_Huckabee@2x.png in Resources */,
 				CB5B2C541BF27C160088B32E /* DemocratBackground@2x.png in Resources */,
 				CB5B2C2B1BF27BCD0088B32E /* Bobby_Jindal@2x.png in Resources */,
-				EC5E5E0C1BFB187A00D0AF5A /* Women_Minority@2x.png in Resources */,
+				CB54C97E1C03B14200EA89A9 /* BebasNeue-Bold.ttf in Resources */,
 				CB5B2C371BF27BCD0088B32E /* Jeb_Bush@2x.png in Resources */,
+				CB54C98C1C03B14200EA89A9 /* OpenSans-Bold.ttf in Resources */,
 				CB5B2C291BF27BCD0088B32E /* Bernie_Sanders@2x.png in Resources */,
+				CB54C9931C03B14200EA89A9 /* OpenSans-Regular.ttf in Resources */,
 				CB5B2C4A1BF27BCD0088B32E /* Rick_Santorum.png in Resources */,
 				EC5E5DEB1BFB187A00D0AF5A /* FreeTrade.png in Resources */,
 				EC5E5E081BFB187A00D0AF5A /* Taxes@2x.png in Resources */,
 				EC5E5E041BFB187A00D0AF5A /* Social_Security@2x.png in Resources */,
 				EC5E5DF91BFB187A00D0AF5A /* Military_Expansion.png in Resources */,
-				EC5E5DF01BFB187A00D0AF5A /* God_In_Public_Sphere@2x.png in Resources */,
+				CB54C9881C03B14200EA89A9 /* MyriadPro-It.otf in Resources */,
 				CBDEACC61BFBC52500889797 /* select.png in Resources */,
 				CB5B2C351BF27BCD0088B32E /* Hillary_Clinton@2x.png in Resources */,
 				EC5E5DE81BFB187A00D0AF5A /* Foreign_Entanglement@2x.png in Resources */,
 				EC5E5DE21BFB187A00D0AF5A /* Abortion@2x.png in Resources */,
+				CB54C9811C03B14200EA89A9 /* BebasNeue-Thin.ttf in Resources */,
 				CB5B2BFA1BF27BAE0088B32E /* DemocratCellBackground.png in Resources */,
 				CBC10A7E1BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png in Resources */,
 				CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */,
@@ -1009,9 +999,11 @@
 				CB5B2C261BF27BCD0088B32E /* Ben_Carson.png in Resources */,
 				EC5E5E021BFB187A00D0AF5A /* School_Vouchers@2x.png in Resources */,
 				CBC10A8A1BDBFE1200FABAF4 /* EventsTabIcon@2x.png in Resources */,
+				CB54C9821C03B14200EA89A9 /* MyriadPro-Bold.otf in Resources */,
 				EC5E5DF11BFB187A00D0AF5A /* Green_Energy.png in Resources */,
 				CBC10A891BDBFE1200FABAF4 /* EventsTabIcon@1x.png in Resources */,
 				CB5B2C451BF27BCD0088B32E /* Martin_O'Malley@2x.png in Resources */,
+				CB54C98E1C03B14200EA89A9 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

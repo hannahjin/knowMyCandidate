@@ -24,6 +24,7 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
+
     UITabBarItem *item = [self tabBarItem];
     item.title = @"Newsfeed";
     item.image = [KMCAssets homeTabIcon];
@@ -46,6 +47,7 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
   [self.collectionView registerClass:[KMCTwitterCollectionViewCell class]
           forCellWithReuseIdentifier:twitterReuseIdentifier];
 
+  self.collectionView.alwaysBounceVertical = YES;
   self.collectionView.backgroundColor = [UIColor whiteColor];
   self.navigationItem.title = @"Newsfeed";
 
@@ -66,21 +68,14 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
     if (!error) {
       _newsfeedItems = object;
       [_newsfeedPictures removeAllObjects];
-      [_refreshControl endRefreshing];
       [self.collectionView reloadData];
+      [_refreshControl endRefreshing];
     }
   }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
-  CGPoint point = self.collectionView.contentOffset;
-  CGRect frame = _refreshControl.frame;
-  if (frame.origin.y > 0.f) {
-    frame.origin.y = point.y * -1;
-  }
-  _refreshControl.frame = frame;
+- (void)scrollToTop {
+  [self.collectionView setContentOffset:CGPointZero animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -207,12 +202,8 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
   return [NSString stringWithFormat:@"%li%@", interval, toAppend];
 }
 
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-  CGRect frame = _refreshControl.frame;
-  frame.origin.y = -60.f;
-  _refreshControl.frame = frame;
-
-  self.collectionView.contentOffset = CGPointZero;
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+  [self.collectionView sendSubviewToBack:_refreshControl];
 }
 
 @end

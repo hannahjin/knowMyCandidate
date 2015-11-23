@@ -55,7 +55,7 @@ static const CGFloat kScoreFontSize = 36.f;
 
 - (void)setScore:(NSString *)score {
   _matchingScore = [score copy];
-  _scoreLabel.text = _matchingScore;
+  _scoreLabel.text = [_matchingScore stringValue];
   [_scoreLabel sizeToFit];
   CGRect frame = _scoreLabel.frame;
   frame.origin.x = CGRectGetWidth(self.contentView.frame) - kScoreWidth;

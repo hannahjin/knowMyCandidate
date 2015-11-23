@@ -25,7 +25,7 @@ static const CGFloat kInterCellPadding = 2.f;
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.navigationItem.rightBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:@"DONE"
+        [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                          style:UIBarButtonItemStylePlain
                                         target:self
                                         action:@selector(didTapDoneButton)];
