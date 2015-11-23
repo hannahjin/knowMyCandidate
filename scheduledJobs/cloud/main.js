@@ -68,8 +68,7 @@ Parse.Cloud.job("pull_news", function(request, response) {
 										newsFeed.set("source", result_list[article].Source);
 										newsFeed.set("date", new Date(result_list[article].Date));
 
-										// TODO: move save newsfeed back to here
-										thumbnail.setThumbnailandSaveNewsfeed(newsFeed, result_list[article].Title, candidate); 							    	
+										thumbnail.setThumbnailandSaveNewsfeed(newsFeed, result_list[article].Url, candidate); 							    	
 									}
 								  },
 								  error: function(error) {
