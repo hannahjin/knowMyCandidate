@@ -130,6 +130,10 @@ public class CandidateProfileParser implements ParserStrategy {
         addCandidate(56, "Bobby", "Jindal");
         addCandidate(72, "Jim", "Gilmore");
         addCandidate(44, "Jill", "Stein");
+        addCandidate(66, "Jim", "Webb");
+        addCandidate(61, "Scott", "Walker");
+        addCandidate(67, "Lincoln", "Chafee");
+        addCandidate(42, "Rick", "Perry");
     }
 
     protected void addCandidate(int id, String firstName, String lastName) {
