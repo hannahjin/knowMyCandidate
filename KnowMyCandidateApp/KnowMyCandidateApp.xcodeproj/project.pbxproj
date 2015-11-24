@@ -45,6 +45,18 @@
 		CB54C9931C03B14200EA89A9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97A1C03B14200EA89A9 /* OpenSans-Regular.ttf */; };
 		CB54C9941C03B14200EA89A9 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97B1C03B14200EA89A9 /* OpenSans-Semibold.ttf */; };
 		CB54C9951C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB54C97C1C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf */; };
+		CB54C99C1C03F0DD00EA89A9 /* GreenPartyCellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C99A1C03F0DD00EA89A9 /* GreenPartyCellBackground.png */; };
+		CB54C99D1C03F0DD00EA89A9 /* GreenPartyCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C99B1C03F0DD00EA89A9 /* GreenPartyCellBackground@2x.png */; };
+		CB54C9A01C040CCA00EA89A9 /* GrayCellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C99E1C040CCA00EA89A9 /* GrayCellBackground.png */; };
+		CB54C9A11C040CCA00EA89A9 /* GrayCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C99F1C040CCA00EA89A9 /* GrayCellBackground@2x.png */; };
+		CB54C9AA1C0428A900EA89A9 /* Jim_Webb.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A21C0428A900EA89A9 /* Jim_Webb.png */; };
+		CB54C9AB1C0428A900EA89A9 /* Jim_Webb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A31C0428A900EA89A9 /* Jim_Webb@2x.png */; };
+		CB54C9AC1C0428A900EA89A9 /* Lincoln_Chafee.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A41C0428A900EA89A9 /* Lincoln_Chafee.png */; };
+		CB54C9AD1C0428A900EA89A9 /* Lincoln_Chafee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A51C0428A900EA89A9 /* Lincoln_Chafee@2x.png */; };
+		CB54C9AE1C0428A900EA89A9 /* Rick_Perry.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A61C0428A900EA89A9 /* Rick_Perry.png */; };
+		CB54C9AF1C0428A900EA89A9 /* Rick_Perry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A71C0428A900EA89A9 /* Rick_Perry@2x.png */; };
+		CB54C9B01C0428A900EA89A9 /* Scott_Walker.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A81C0428A900EA89A9 /* Scott_Walker.png */; };
+		CB54C9B11C0428A900EA89A9 /* Scott_Walker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB54C9A91C0428A900EA89A9 /* Scott_Walker@2x.png */; };
 		CB5B2B841BE2B9E90088B32E /* KMCSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */; };
 		CB5B2B881BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B871BE53F6E0088B32E /* KMCSurveyCollectionViewCell.m */; };
 		CB5B2B8B1BE876080088B32E /* KMCNewUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5B2B8A1BE876080088B32E /* KMCNewUserDetailsViewController.m */; };
@@ -250,6 +262,18 @@
 		CB54C97A1C03B14200EA89A9 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		CB54C97B1C03B14200EA89A9 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		CB54C97C1C03B14200EA89A9 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "KnowMyCandidateApp/Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		CB54C99A1C03F0DD00EA89A9 /* GreenPartyCellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenPartyCellBackground.png; path = Images/Candidates/CellImages/GreenPartyCellBackground.png; sourceTree = "<group>"; };
+		CB54C99B1C03F0DD00EA89A9 /* GreenPartyCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GreenPartyCellBackground@2x.png"; path = "Images/Candidates/CellImages/GreenPartyCellBackground@2x.png"; sourceTree = "<group>"; };
+		CB54C99E1C040CCA00EA89A9 /* GrayCellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayCellBackground.png; path = Images/Candidates/CellImages/GrayCellBackground.png; sourceTree = "<group>"; };
+		CB54C99F1C040CCA00EA89A9 /* GrayCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GrayCellBackground@2x.png"; path = "Images/Candidates/CellImages/GrayCellBackground@2x.png"; sourceTree = "<group>"; };
+		CB54C9A21C0428A900EA89A9 /* Jim_Webb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Jim_Webb.png; path = ../../Mockups/icons_png/ProfilePictures/Jim_Webb.png; sourceTree = "<group>"; };
+		CB54C9A31C0428A900EA89A9 /* Jim_Webb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Jim_Webb@2x.png"; path = "../../Mockups/icons_png/ProfilePictures/Jim_Webb@2x.png"; sourceTree = "<group>"; };
+		CB54C9A41C0428A900EA89A9 /* Lincoln_Chafee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Lincoln_Chafee.png; path = ../../Mockups/icons_png/ProfilePictures/Lincoln_Chafee.png; sourceTree = "<group>"; };
+		CB54C9A51C0428A900EA89A9 /* Lincoln_Chafee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lincoln_Chafee@2x.png"; path = "../../Mockups/icons_png/ProfilePictures/Lincoln_Chafee@2x.png"; sourceTree = "<group>"; };
+		CB54C9A61C0428A900EA89A9 /* Rick_Perry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Rick_Perry.png; path = ../../Mockups/icons_png/ProfilePictures/Rick_Perry.png; sourceTree = "<group>"; };
+		CB54C9A71C0428A900EA89A9 /* Rick_Perry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rick_Perry@2x.png"; path = "../../Mockups/icons_png/ProfilePictures/Rick_Perry@2x.png"; sourceTree = "<group>"; };
+		CB54C9A81C0428A900EA89A9 /* Scott_Walker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Scott_Walker.png; path = ../../Mockups/icons_png/ProfilePictures/Scott_Walker.png; sourceTree = "<group>"; };
+		CB54C9A91C0428A900EA89A9 /* Scott_Walker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Scott_Walker@2x.png"; path = "../../Mockups/icons_png/ProfilePictures/Scott_Walker@2x.png"; sourceTree = "<group>"; };
 		CB5B2B821BE2B9E90088B32E /* KMCSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCSurveyViewController.h; sourceTree = "<group>"; };
 		CB5B2B831BE2B9E90088B32E /* KMCSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCSurveyViewController.m; sourceTree = "<group>"; };
 		CB5B2B861BE53F6E0088B32E /* KMCSurveyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMCSurveyCollectionViewCell.h; path = Cells/KMCSurveyCollectionViewCell.h; sourceTree = "<group>"; };
@@ -522,6 +546,14 @@
 		CB5B2B9A1BF19D960088B32E /* CandidateImages */ = {
 			isa = PBXGroup;
 			children = (
+				CB54C9A21C0428A900EA89A9 /* Jim_Webb.png */,
+				CB54C9A31C0428A900EA89A9 /* Jim_Webb@2x.png */,
+				CB54C9A41C0428A900EA89A9 /* Lincoln_Chafee.png */,
+				CB54C9A51C0428A900EA89A9 /* Lincoln_Chafee@2x.png */,
+				CB54C9A61C0428A900EA89A9 /* Rick_Perry.png */,
+				CB54C9A71C0428A900EA89A9 /* Rick_Perry@2x.png */,
+				CB54C9A81C0428A900EA89A9 /* Scott_Walker.png */,
+				CB54C9A91C0428A900EA89A9 /* Scott_Walker@2x.png */,
 				CB5B2BFE1BF27BCD0088B32E /* Ben_Carson.png */,
 				CB5B2BFF1BF27BCD0088B32E /* Ben_Carson@2x.png */,
 				CB5B2C001BF27BCD0088B32E /* Bernie_Sanders.png */,
@@ -569,6 +601,10 @@
 		CB5B2BEB1BF1B1160088B32E /* CellImages */ = {
 			isa = PBXGroup;
 			children = (
+				CB54C99E1C040CCA00EA89A9 /* GrayCellBackground.png */,
+				CB54C99F1C040CCA00EA89A9 /* GrayCellBackground@2x.png */,
+				CB54C99A1C03F0DD00EA89A9 /* GreenPartyCellBackground.png */,
+				CB54C99B1C03F0DD00EA89A9 /* GreenPartyCellBackground@2x.png */,
 				CB5B2BF61BF27BAE0088B32E /* DemocratCellBackground.png */,
 				CB5B2BF71BF27BAE0088B32E /* DemocratCellBackground@2x.png */,
 				CB5B2BF81BF27BAE0088B32E /* RepublicanCellBackground.png */,
@@ -873,6 +909,7 @@
 				CB5B2C401BF27BCD0088B32E /* Lindsey_Graham.png in Resources */,
 				CB5B2C431BF27BCD0088B32E /* Marco_Rubio@2x.png in Resources */,
 				CB54C9891C03B14200EA89A9 /* MyriadPro-Regular.otf in Resources */,
+				CB54C9AB1C0428A900EA89A9 /* Jim_Webb@2x.png in Resources */,
 				CB5B2C361BF27BCD0088B32E /* Jeb_Bush.png in Resources */,
 				CB5B2C391BF27BCD0088B32E /* Jill_Stein@2x.png in Resources */,
 				EC5E5E051BFB187A00D0AF5A /* Stimulus.png in Resources */,
@@ -892,6 +929,7 @@
 				CB5B2C3B1BF27BCD0088B32E /* Jim_Gilmore@2x.png in Resources */,
 				CB5B2C4B1BF27BCD0088B32E /* Rick_Santorum@2x.png in Resources */,
 				EC5E5DE91BFB187A00D0AF5A /* Free_Trade.png in Resources */,
+				CB54C99C1C03F0DD00EA89A9 /* GreenPartyCellBackground.png in Resources */,
 				CB5B2C531BF27C160088B32E /* DemocratBackground.png in Resources */,
 				CB5B2C2C1BF27BCD0088B32E /* Carly_Fiorina.png in Resources */,
 				CB5B2C331BF27BCD0088B32E /* George_Pataki@2x.png in Resources */,
@@ -915,10 +953,12 @@
 				EC5E5DF21BFB187A00D0AF5A /* Green_Energy@2x.png in Resources */,
 				CB54C9911C03B14200EA89A9 /* OpenSans-Light.ttf in Resources */,
 				CB5B2B931BEC34E40088B32E /* SignInBackground.png in Resources */,
+				CB54C9A01C040CCA00EA89A9 /* GrayCellBackground.png in Resources */,
 				CB5B2C4C1BF27BCD0088B32E /* Ted_Cruz.png in Resources */,
 				EC5E5E061BFB187A00D0AF5A /* Stimulus@2x.png in Resources */,
 				EC5E5DFB1BFB187A00D0AF5A /* ObamaCare.png in Resources */,
 				CB5B2BFC1BF27BAE0088B32E /* RepublicanCellBackground.png in Resources */,
+				CB54C9AA1C0428A900EA89A9 /* Jim_Webb.png in Resources */,
 				CBDEACC51BFBC52500889797 /* center.png in Resources */,
 				EC5E5E0A1BFB187A00D0AF5A /* Voter_Registration@2x.png in Resources */,
 				CB54C9851C03B14200EA89A9 /* MyriadPro-BoldIt.otf in Resources */,
@@ -938,7 +978,10 @@
 				CB54C9801C03B14200EA89A9 /* BebasNeue-Regular.ttf in Resources */,
 				CB54C98D1C03B14200EA89A9 /* OpenSans-BoldItalic.ttf in Resources */,
 				CBC10A831BDBFCA700FABAF4 /* UserTabIcon@1x.png in Resources */,
+				CB54C9AF1C0428A900EA89A9 /* Rick_Perry@2x.png in Resources */,
+				CB54C9AD1C0428A900EA89A9 /* Lincoln_Chafee@2x.png in Resources */,
 				CB5B2C321BF27BCD0088B32E /* George_Pataki.png in Resources */,
+				CB54C9AC1C0428A900EA89A9 /* Lincoln_Chafee.png in Resources */,
 				EC5E5DFE1BFB187A00D0AF5A /* Punishment@2x.png in Resources */,
 				CBDEACC21BF973BC00889797 /* GlobeIcon.png in Resources */,
 				EC5E5DE41BFB187A00D0AF5A /* American_Exceptionalism@2x.png in Resources */,
@@ -955,6 +998,7 @@
 				EC5E5DE11BFB187A00D0AF5A /* Abortion.png in Resources */,
 				EC5E5E091BFB187A00D0AF5A /* Voter_Registration.png in Resources */,
 				EC5E5DE31BFB187A00D0AF5A /* American_Exceptionalism.png in Resources */,
+				CB54C9B11C0428A900EA89A9 /* Scott_Walker@2x.png in Resources */,
 				EC5E5DF51BFB187A00D0AF5A /* Illegal_Immigrants.png in Resources */,
 				EC5E5DEE1BFB187A00D0AF5A /* Gay_Marriage@2x.png in Resources */,
 				CB0BE7D61BFD80FF00326D53 /* NewspaperIcon@2x.png in Resources */,
@@ -962,6 +1006,8 @@
 				CB5B2C311BF27BCD0088B32E /* Donald_Trump@2x.png in Resources */,
 				CBC10A7F1BDBFCA700FABAF4 /* HomeTabIcon@1x.png in Resources */,
 				CB5B2C551BF27C160088B32E /* RepublicanBackground.png in Resources */,
+				CB54C9AE1C0428A900EA89A9 /* Rick_Perry.png in Resources */,
+				CB54C99D1C03F0DD00EA89A9 /* GreenPartyCellBackground@2x.png in Resources */,
 				CB54C98F1C03B14200EA89A9 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				EC5E5DE71BFB187A00D0AF5A /* Foreign_Entanglement.png in Resources */,
 				CB54C9831C03B14200EA89A9 /* MyriadPro-BoldCond.otf in Resources */,
@@ -991,6 +1037,7 @@
 				EC5E5DE81BFB187A00D0AF5A /* Foreign_Entanglement@2x.png in Resources */,
 				EC5E5DE21BFB187A00D0AF5A /* Abortion@2x.png in Resources */,
 				CB54C9811C03B14200EA89A9 /* BebasNeue-Thin.ttf in Resources */,
+				CB54C9B01C0428A900EA89A9 /* Scott_Walker.png in Resources */,
 				CB5B2BFA1BF27BAE0088B32E /* DemocratCellBackground.png in Resources */,
 				CBC10A7E1BDBFCA700FABAF4 /* CandidatesTabIcon@2x.png in Resources */,
 				CBC10A9C1BDD4FAA00FABAF4 /* BackArrow.png in Resources */,
@@ -1002,6 +1049,7 @@
 				CB54C9821C03B14200EA89A9 /* MyriadPro-Bold.otf in Resources */,
 				EC5E5DF11BFB187A00D0AF5A /* Green_Energy.png in Resources */,
 				CBC10A891BDBFE1200FABAF4 /* EventsTabIcon@1x.png in Resources */,
+				CB54C9A11C040CCA00EA89A9 /* GrayCellBackground@2x.png in Resources */,
 				CB5B2C451BF27BCD0088B32E /* Martin_O'Malley@2x.png in Resources */,
 				CB54C98E1C03B14200EA89A9 /* OpenSans-ExtraBold.ttf in Resources */,
 			);

@@ -42,9 +42,15 @@ static const CGFloat kTextLabelPadding = 10.f;
   self.backgroundView = [[UIImageView alloc] initWithImage:image];
   self.backgroundView.layer.cornerRadius = 5.f;
   self.backgroundView.layer.masksToBounds = YES;
+}
 
-  if (!image) {
-    self.backgroundColor = [KMCAssets greenPartyColor];
+- (void)setHasDroppedOut:(BOOL)hasDroppedOut {
+  _hasDroppedOut = hasDroppedOut;
+  if (_hasDroppedOut) {
+    UIImage *image = [KMCAssets grayCellBackground];
+    self.backgroundView = [[UIImageView alloc] initWithImage:image];
+    self.backgroundView.layer.cornerRadius = 5.f;
+    self.backgroundView.layer.masksToBounds = YES;
   }
 }
 

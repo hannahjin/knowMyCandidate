@@ -81,23 +81,27 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                             query.find({
                                 success: function(results) { 
                                     console.log("Successfully retrieved " + results.length + " newsfeed items.");
-                                    var items = []
+                                    var items = [];
+                                    var titles = {};
                                     for (var i = 0; i < results.length; i++) {
                                         var object = results[i];
-                                        var summary = object.get('summary').replace(/\n/g, '');
-                                        var item = {
-                                            "source": object.get('source'),
-                                            "title": object.get('title'),
-                                            "summary": summary,
-                                            "url": object.get('url'),
-                                            "candidateID": object.get('candidateID'),
-                                            "date": object.get('date'),
-                                            "favoriteCount": object.get('favoriteCount'),
-                                            "retweetCount": object.get('retweetCount'),
-                                            "twitterUsername": object.get('twitterUsername'),
-                                            "thumbnail": object.get('thumbnail')
+                                        if (!(object.get('title') in titles)) {
+                                           var summary = object.get('summary').replace(/\n/g, '');
+                                            var item = {
+                                                "source": object.get('source'),
+                                                "title": object.get('title'),
+                                                "summary": summary,
+                                                "url": object.get('url'),
+                                                "candidateID": object.get('candidateID'),
+                                                "date": object.get('date'),
+                                                "favoriteCount": object.get('favoriteCount'),
+                                                "retweetCount": object.get('retweetCount'),
+                                                "twitterUsername": object.get('twitterUsername'),
+                                                "thumbnail": object.get('thumbnail')
+                                            }
+                                            items.push(item);
+                                            titles[object.get('title')] = 1;
                                         }
-                                        items.push(item);
                                     }
                                     // Return array of newsfeed items in JSON
                                     response.success(items);

@@ -8,5 +8,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *experience;
 @property (nonatomic) KMCPartyAffiliation affiliation;
+@property (nonatomic) BOOL hasDroppedOut;
 
 @end

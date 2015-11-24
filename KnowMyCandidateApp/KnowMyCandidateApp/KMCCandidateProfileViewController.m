@@ -13,14 +13,14 @@ static NSString *const infoReuseIdentifier = @"kInfoCollectionViewCell";
 static NSString *const standpointReuseIdentifier = @"kStandpointsCollectionViewCell";
 
 static const CGFloat kButtonTitleInset = 5.f;
-static const CGFloat kHeaderViewHeight = 210.f;
+static const CGFloat kHeaderViewHeight = 205.f;
 static const CGFloat kInfoItemHeight = 45.f;
 static const CGFloat kRightPadding = 20.f;
 static const CGFloat kSegmentHeight = 30.f;
 static const CGFloat kSegmentPadding = 5.f;
 static const CGFloat kStandpointItemHeight = 60.f;
 static const CGFloat kTopPadding = 20.f;
-static const CGFloat kVerticalPadding = 10.f;
+static const CGFloat kVerticalPadding = 5.f;
 
 @interface KMCCandidateProfileViewController () <KMCInfoCollectionViewCellDelegate,
     UICollectionViewDataSource,
@@ -51,6 +51,7 @@ static const CGFloat kVerticalPadding = 10.f;
     // fields that we want to display the information for. PLEASE KEEP THE KEYS IN SYNC WITH
     // the attribute names in Parse.
     _infoKeysArray = @[ @"PartyAffiliation",
+                        @"hasDroppedOut",
                         @"Background",
                         @"HomeResidence",
                         @"TotalRaised",
@@ -59,6 +60,7 @@ static const CGFloat kVerticalPadding = 10.f;
                         @"Religion",
                         @"Height"];
     _infoTitleDict = @{ @"PartyAffiliation" : @"Party Affiliation",
+                        @"hasDroppedOut" : @"Out Of Race?",
                         @"Background" : @"Background",
                         @"HomeResidence" : @"Residence",
                         @"TotalRaised" : @"Total raised",
@@ -181,6 +183,10 @@ static const CGFloat kVerticalPadding = 10.f;
   CGRect frame = CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.frame), kHeaderViewHeight);
   _headerView.frame = frame;
   _headerView.backgroundColor = [KMCAssets partyColorForAffiliation:[self getAffiliation]];
+  NSNumber *number = [_candidateObject objectForKey:@"hasDroppedOut"];
+  if ([number boolValue]) {
+    _headerView.backgroundColor = [UIColor darkGrayColor];
+  }
 
   NSString *firstName = _candidateObject[@"firstName"];
   NSString *lastName = _candidateObject[@"lastName"];
@@ -319,7 +325,9 @@ static const CGFloat kVerticalPadding = 10.f;
     NSString *id = [dict allKeys][0];
 
     cell.issue = _issues[id];
-    cell.stand = [dict allValues][0];
+    if (_issues) {
+      cell.stand = [dict allValues][0];
+    }
 
     return cell;
   } else {
@@ -331,9 +339,14 @@ static const CGFloat kVerticalPadding = 10.f;
 
     if (indexPath.item != [_infoTitleDict count]) {
       NSString *key = _infoKeysArray[indexPath.item];
-      NSString *value = _candidateObject[key];
       cell.title = _infoTitleDict[key];
-      cell.subtitle = value;
+      id value = _candidateObject[key];
+      if ([value isKindOfClass:[NSNumber class]]) {
+        BOOL hasDroppedOut = [(NSNumber *)value boolValue];
+        cell.subtitle = hasDroppedOut ? @"Yes" : @"No";
+      } else {
+        cell.subtitle = (NSString *)value;
+      }
     } else {
       // Links cell
       cell.title = @"Links";
