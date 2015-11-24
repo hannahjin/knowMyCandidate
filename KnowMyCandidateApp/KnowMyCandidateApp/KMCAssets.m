@@ -90,8 +90,16 @@
   return [UIImage imageNamed:@"IssuesTabIcon.png"];
 }
 
++ (UIImage *)newspaperIcon {
+  return [UIImage imageNamed:@"NewspaperIcon.png"];
+}
+
 + (UIImage *)signInBackground {
   return [UIImage imageNamed:@"SignInBackground.png"];
+}
+
++ (UIImage *)twitterIcon {
+  return [UIImage imageNamed:@"TwitterIcon.png"];
 }
 
 + (UIImage *)userTabIcon {
@@ -118,6 +126,70 @@
 
 + (UIColor *)lightBlueColor {
   return [UIColor colorWithRed:0.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)lightGrayBackgroundColor {
+  return [UIColor colorWithWhite:0.95f alpha:1.0f];
+}
+
+#pragma mark - UIFont
+
++ (UIFont *)labelFont:(CGFloat)size {
+  return [UIFont fontWithName:@"OpenSans" size:size];
+}
+
++ (UIFont *)buttonFont:(CGFloat)size {
+  return [UIFont fontWithName:@"BebasNeue" size:size];
+}
+
++ (UIFont *)titleFont:(CGFloat)size {
+  return [UIFont fontWithName:@"BebasNeueBook" size:size];
+}
+
++ (UIFont *)questionFont:(CGFloat)size {
+  return [UIFont fontWithName:@"MyriadPro" size:size];
+}
+
++ (UIFont *)scoreFont:(CGFloat)size {
+  return [UIFont fontWithName:@"MyriadPro-Semibold" size:size];
+}
+
++ (UIFont *)dateFont:(CGFloat)size {
+  return [UIFont fontWithName:@"OpenSans" size:size];
+}
+
++ (UIFont *)nameFont:(CGFloat)size {
+  return [UIFont fontWithName:@"OpenSans" size:size];
+}
+
+#pragma mark - Font Size
+
++ (CGFloat)tinyFont {
+  return 10.0f;
+}
+
++ (CGFloat)xSmallFont {
+  return 14.0f;
+}
+
++ (CGFloat)smallFont {
+  return 16.0f;
+}
+
++ (CGFloat)regularFont {
+  return 18.0f;
+}
+
++ (CGFloat)mediumFont {
+  return 20.0f;
+}
+
++ (CGFloat)largeFont {
+  return 24.0f;
+}
+
++ (CGFloat)xLargeFont {
+  return 30.0f;
 }
 
 #pragma mark - Candidates

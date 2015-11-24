@@ -51,4 +51,14 @@
   self.tabBar.tintColor = [KMCAssets mainPurpleColor];
 }
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+  if (item == tabBar.selectedItem) {
+    UINavigationController *navVC = self.selectedViewController;
+    id vc = navVC.viewControllers[0];
+    if ([vc respondsToSelector:@selector(scrollToTop)]) {
+      [vc scrollToTop];
+    }
+  }
+}
+
 @end

@@ -17,7 +17,7 @@ static const CGFloat kTextLabelPadding = 10.f;
   if (self) {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    self.layer.cornerRadius = 5.f;
+    self.layer.cornerRadius = 3.f;
     UIView *contentView = self.contentView;
 
     _nameLabel = [[UILabel alloc] init];

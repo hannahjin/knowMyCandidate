@@ -23,6 +23,7 @@ static const CGFloat kInterCellPadding = 2.f;
   self = [super initWithCollectionViewLayout:layout];
   if (self) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = YES;
 
     UITabBarItem *item = [self tabBarItem];
     item.title = @"Candidates";
@@ -45,6 +46,8 @@ static const CGFloat kInterCellPadding = 2.f;
   [self.collectionView registerClass:[KMCCandidatesCollectionViewCell class]
           forCellWithReuseIdentifier:reuseIdentifier];
 
+  self.collectionView.alwaysBounceVertical = YES;
+
   // Defining layout attributes.
   UICollectionViewFlowLayout *layout =
       (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
@@ -53,8 +56,8 @@ static const CGFloat kInterCellPadding = 2.f;
       UIEdgeInsetsMake(kInterCellPadding, kCellPadding, kInterCellPadding, kCellPadding);
   layout.minimumLineSpacing = kInterCellPadding;
 
+  _refreshControl.frame = self.collectionView.frame;
   [self.collectionView addSubview:_refreshControl];
-  [self.collectionView sendSubviewToBack:_refreshControl];
   [self getCandidates];
 }
 
@@ -68,6 +71,10 @@ static const CGFloat kInterCellPadding = 2.f;
       [self.collectionView reloadData];
     }
   }];
+}
+
+- (void)scrollToTop {
+  [self.collectionView setContentOffset:CGPointZero animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -112,6 +119,10 @@ static const CGFloat kInterCellPadding = 2.f;
   KMCCandidateProfileViewController *vc =
       [[KMCCandidateProfileViewController alloc] initWithCandidateObject:object];
   [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+  [self.collectionView sendSubviewToBack:_refreshControl];
 }
 
 @end
