@@ -7,7 +7,8 @@
 
 @import SafariServices;
 
-@interface KMCNewsfeedViewController () <UICollectionViewDelegateFlowLayout>
+@interface KMCNewsfeedViewController () <UICollectionViewDelegateFlowLayout,
+    UIViewControllerPreviewingDelegate>
 @end
 
 @implementation KMCNewsfeedViewController {
@@ -26,7 +27,7 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     UITabBarItem *item = [self tabBarItem];
-    item.title = @"Newsfeed";
+    item.title = @"Home";
     item.image = [KMCAssets homeTabIcon];
 
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -42,6 +43,10 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+    [self registerForPreviewingWithDelegate:self sourceView:self.view];
+  }
+
   [self.collectionView registerClass:[KMCNewsfeedCollectionViewCell class]
           forCellWithReuseIdentifier:newsfeedReuseIdentifier];
   [self.collectionView registerClass:[KMCTwitterCollectionViewCell class]
@@ -49,7 +54,7 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
 
   self.collectionView.alwaysBounceVertical = YES;
   self.collectionView.backgroundColor = [UIColor whiteColor];
-  self.navigationItem.title = @"Newsfeed";
+  self.navigationItem.title = @"Home";
 
   UICollectionViewFlowLayout *layout =
       (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
@@ -204,6 +209,27 @@ static NSString *const twitterReuseIdentifier = @"kTwitterCollectionViewCell";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
   [self.collectionView sendSubviewToBack:_refreshControl];
+}
+
+#pragma mark - UIViewControllerPreviewingDelegate
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext
+              viewControllerForLocation:(CGPoint)location {
+  NSIndexPath *path = [self.collectionView indexPathForItemAtPoint:location];
+  UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:path];
+  NSDictionary *dict = _newsfeedItems[path.item];
+  NSString *string = dict[@"url"];
+  NSURL *url = [NSURL URLWithString:string];
+  SFSafariViewController *webVC = [[SFSafariViewController alloc] initWithURL:url];
+
+  previewingContext.sourceRect = cell.frame;
+
+  return webVC;
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext
+     commitViewController:(UIViewController *)viewControllerToCommit {
+  [self presentViewController:viewControllerToCommit animated:YES completion:nil];
 }
 
 @end

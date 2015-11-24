@@ -29,7 +29,11 @@
     if (![PFUser currentUser]) {
       [self setUpSignInVC];
     } else {
-      [self setUpMainVC];
+      if ([[PFUser currentUser] objectForKey:kSurveyAnswersKey]) {
+        [self setUpMainVC];
+      } else {
+        [self setUpSurveyVC];
+      }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didLogOutUser)
@@ -52,9 +56,15 @@
     [self.view addSubview:_signInVC.view];
     [_signInVC didMoveToParentViewController:self];
   } else {
-    [self addChildViewController:_mainVC];
-    [self.view addSubview:_mainVC.view];
-    [_mainVC didMoveToParentViewController:self];
+    if ([[PFUser currentUser] objectForKey:kSurveyAnswersKey]) {
+      [self addChildViewController:_mainVC];
+      [self.view addSubview:_mainVC.view];
+      [_mainVC didMoveToParentViewController:self];
+    } else {
+      [self addChildViewController:_surveyNavVC];
+      [self.view addSubview:_surveyNavVC.view];
+      [_surveyNavVC didMoveToParentViewController:self];
+    }
   }
 }
 

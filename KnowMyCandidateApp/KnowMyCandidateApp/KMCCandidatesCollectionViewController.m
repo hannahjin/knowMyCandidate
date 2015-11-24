@@ -67,6 +67,40 @@ static const CGFloat kInterCellPadding = 2.f;
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       _modelArray = objects;
+      PFUser *user = [PFUser currentUser];
+      NSArray *candidatesFollowed = [user objectForKey:kCandidatesFollowedKey];
+      NSString *affiliation = [user objectForKey:@"affiliation"];
+      _modelArray = [_modelArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        PFObject *object1 = (PFObject *)obj1;
+        PFObject *object2 = (PFObject *)obj2;
+        NSNumber *checkObject1 = [object1 objectForKey:@"hasDroppedOut"];
+        NSNumber *checkObject2 = [object2 objectForKey:@"hasDroppedOut"];
+        NSString *party1 = [object1 objectForKey:@"PartyAffiliation"];
+        NSString *party2 = [object2 objectForKey:@"PartyAffiliation"];
+
+        // Sort by candidates followed by user.
+        if ([candidatesFollowed containsObject:object1.objectId]) {
+          return NSOrderedAscending;
+        } else if ([candidatesFollowed containsObject:object2.objectId]) {
+          return NSOrderedDescending;
+        }
+
+        // If candidate has dropped out.
+        if ([checkObject1 boolValue]) {
+          return NSOrderedDescending;
+        } else if ([checkObject2 boolValue]) {
+          return NSOrderedAscending;
+        }
+
+        // Sort by party affiliation of user.
+        if ([party1 containsString:affiliation]) {
+          return NSOrderedAscending;
+        } else if ([party2 containsString:affiliation]) {
+          return NSOrderedDescending;
+        }
+
+        return NSOrderedSame;
+      }];
       [_refreshControl endRefreshing];
       [self.collectionView reloadData];
     }
@@ -105,10 +139,13 @@ static const CGFloat kInterCellPadding = 2.f;
     affiliation = KMCPartyAffiliationGreen;
   }
 
+  NSNumber *number = [object objectForKey:@"hasDroppedOut"];
+
   cell.candidateID = object.objectId;
   cell.name = name;
   cell.affiliation = affiliation;
   cell.experience = object[@"Experience"];
+  cell.hasDroppedOut = [number boolValue];
 
   return cell;
 }
