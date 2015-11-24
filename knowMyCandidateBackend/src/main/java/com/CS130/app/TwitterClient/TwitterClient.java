@@ -69,9 +69,12 @@ public class TwitterClient {
                 Candidate cur_candidate = candidateFactory.getCandidate(candidate.parseId);
                 ParseFile cur_thumbnail = cur_candidate.getThumbnail();
 
-                byte[] img = cur_thumbnail.getData();
-                ParseFile thumbnail = new ParseFile("thumbnail.jpg", img);
-                thumbnail.save();
+                ParseFile thumbnail = null;
+                if (cur_thumbnail != null) {
+                    byte[] img = cur_thumbnail.getData();
+                    thumbnail = new ParseFile("thumbnail.jpg", img);
+                    thumbnail.save();
+                }
 
                 List<Status> tweets = twitter.getUserTimeline(username, paging);
                 System.out.println("Found " + tweets.size() + " new tweets");
@@ -89,7 +92,9 @@ public class TwitterClient {
                         newsfeed.setSource("Twitter");
                         newsfeed.setCandidateID(candidate.parseId);
                         newsfeed.setTwitterUsername(candidate.twitterUsername);
-                        newsfeed.setThumbnail(thumbnail);
+                        if (cur_thumbnail != null) {
+                            newsfeed.setThumbnail(thumbnail);
+                        }
                     }
 
                     String text = tweet.getText();
