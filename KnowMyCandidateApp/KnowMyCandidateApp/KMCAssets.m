@@ -117,7 +117,7 @@
 }
 
 + (UIColor *)greenPartyColor {
-  return [UIColor colorWithRed:36.0/255.0 green:170.0/255.0 blue:95.0/255.0 alpha:1.0];
+  return [UIColor colorWithRed:77.0/255.0 green:131.0/255.0 blue:14.0/255.0 alpha:1.0];
 }
 
 + (UIColor *)mainPurpleColor {
@@ -216,8 +216,8 @@
       return [UIImage imageNamed:@"DemocratCellBackground.png"];
     case KMCPartyAffiliationRepublican:
       return [UIImage imageNamed:@"RepublicanCellBackground.png"];
-    default:
-      return nil;
+    case KMCPartyAffiliationGreen:
+      return [UIImage imageNamed:@"GreenPartyCellBackground.png"];
   }
 }
 
@@ -230,6 +230,10 @@
     case KMCPartyAffiliationGreen:
       return [self greenPartyColor];
   }
+}
+
++ (UIImage *)grayCellBackground {
+  return [UIImage imageNamed:@"GrayCellBackground.png"];
 }
 
 #pragma mark - Issues

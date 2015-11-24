@@ -49,7 +49,7 @@ static const NSInteger kMinimumAge = 18;
     }
     _ageModel = [tempAgeModel copy];
     _genderModel = @[ @"Male", @"Female" ];
-    _partyModel = @[ @"Democratic", @"Republican" ];
+    _partyModel = @[ @"Democratic", @"Republican", @"Green Party" ];
 
     [self setUpAgeField];
     [self setUpGenderField];

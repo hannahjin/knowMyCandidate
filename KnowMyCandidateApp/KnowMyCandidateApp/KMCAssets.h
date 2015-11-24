@@ -55,6 +55,7 @@
 + (UIImage *)backgroundForAffiliation:(KMCPartyAffiliation)party;
 + (UIImage *)cellBackgroundForAffiliation:(KMCPartyAffiliation)party;
 + (UIColor *)partyColorForAffiliation:(KMCPartyAffiliation)party;
++ (UIImage *)grayCellBackground;
 
 + (UIImage *)pictureForIssues:(NSString *)name;
 + (UIColor *)colorForStand:(NSString *)stand;
