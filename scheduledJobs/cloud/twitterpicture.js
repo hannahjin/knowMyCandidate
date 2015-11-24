@@ -24,7 +24,11 @@ Parse.Cloud.job("update_twitter_pictures", function(request, status) {
         "RickSantorum",
         "BobbyJindal",
         "gov_gilmore",
-        "DrJillStein"
+        "DrJillStein",
+        "JimWebbUSA",
+        "ScottWalker",
+        "LincolnChafee",
+        "GovernorPerry"
     ];
 
     var promise = Parse.Promise.as();
