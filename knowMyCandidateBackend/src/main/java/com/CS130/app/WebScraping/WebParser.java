@@ -13,6 +13,9 @@ public class WebParser {
 
         parserContext = new ParserContext(new PositionOnIssuesParser());
         parserContext.executeStrategy(scrapeLocalFile, save);
+
+        parserContext = new ParserContext(new CandidateStatusParser());
+        parserContext.executeStrategy(scrapeLocalFile, save);
     }
 }
 

@@ -44,7 +44,15 @@ public class Candidate extends ParseObject {
 	public void setParty(String value) {
 		put("party", value);
 	}
-	
+
+	public Boolean getHasDroppedOut() {
+		return getBoolean("hasDroppedOut");
+	}
+
+	public void setHasDroppedOut(Boolean value) {
+		put("hasDroppedOut", value);
+	}
+
 	public String getCurrentPosition() {
 		return getString("currentPosition");
 	}
