@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgMEU1NSGwcJUVZXBwA="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:24,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:11,2:10,3:8,4:12,5:3,6:25,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){if(window.addEventListener){var e=t("handle"),n=t("ee");t(1),window.addEventListener("click",function(){e("inc",["ck"])},!1),window.addEventListener("hashchange",function(){e("inc",["hc"])},!1),n.on("pushState-start",function(){e("inc",["ps"])})}},{1:9,ee:"QJf3ax",handle:"D5DuLP"}],6:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],7:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3);var a=Event;n.on("fn-start",function(t){var e=t[0];e instanceof a&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof a&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:11,2:10,3:9,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=t("ee").create(),i=t(1)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t,e){function n(){return s}if(t[1]){var r=t[1];if("function"==typeof r){var s=a(r,"nr@wrapped",function(){return i(r,"fn-",n,r.name||"anonymous")});this.wrapped=t[1]=s,o.emit("initEventContext",[t,e],this.wrapped)}else"function"==typeof r.handleEvent&&i.inPlace(r,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:26,ee:"QJf3ax",gos:"7eSDFh"}],9:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState","replaceState"],"-")},{1:26,ee:"QJf3ax"}],10:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:26,ee:"QJf3ax"}],11:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){function r(){return a}this.ctx={};var a={"nr@context":this.ctx};o.emit("initTimerContext",[t,n],a),t[0]=i(t[0],"fn-",r,n)}var o=t("ee").create(),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:26,ee:"QJf3ax"}],12:[function(t,e){function n(){f.inPlace(this,p,"fn-",o)}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:8,2:26,ee:"QJf3ax"}],13:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1),u=window.XMLHttpRequest;t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof u&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:14,3:12,4:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],14:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],15:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:24,2:25,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-768.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:24,2:15,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],24:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],25:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],26:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:25,ee:"QJf3ax"}]},{},["G9z0Bl",4,13,7,6,5]);</script>
+        <title>Election 2016: U.S. Presidential Candidates | Rolling Stone</title>
+        <meta name="description" content="See how the Democrat and Republican presidential candidates stack up for the 2016 United States election." />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+
+        <meta property="fb:app_id" content="107978575944240" />
+
+        <meta property="og:title" content="Election 2016: U.S. Presidential Candidates" />
+        <meta property="og:site_name" content="Rolling Stone" />
+        <meta property="og:url" content="http://www.rollingstone.com/politics/news/us-presidential-election-candidates-2016" />
+        <meta property="og:description" content="The Baggage, the Gaffes and the Billionaires: See how the 2016 presidential candidates stack up." />
+
+        <meta property="og:image" content="http://cdn.rollingstone.com/feature/election-2016/img/share/political-og-v3.jpg" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" /> 
+
+        <meta name="twitter:card" content="summary_large_image" /> 
+        <meta name="twitter:site" content="@RollingStone" /> 
+        <meta name="twitter:creator" content="@RollingStone" /> 
+        <meta name="twitter:title" content="Election 2016: U.S. Presidential Candidates" /> 
+        <meta name="twitter:description" content="The Baggage, the Gaffes and the Billionaires: See how the 2016 presidential candidates stack up." /> 
+        <meta name="twitter:image" content="http://cdn.rollingstone.com/feature/election-2016/img/share/political-og-v3.jpg" /> 
+
+        <link rel="canonical" href="http://www.rollingstone.com/politics/news/us-presidential-election-candidates-2016" />
+        
+        <link href="https://plus.google.com/+RollingStone" rel="publisher" />
+        
+        <script src="http://cdn.rollingstone.com/feature/election-2016/js/libs/modernizr-2.8.3.min.js"></script>
+            <link rel="stylesheet" href="http://cdn.rollingstone.com/feature/election-2016/css/style.min.css">
+
+        <script>
+        document.createElement( "dialog" );
+        document.createElement( "main" );
+        </script>
+    </head>
+    <body>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '107978575944240',
+              xfbml      : true,
+              version    : 'v2.0'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <header class="header" role="banner">
+            <h1 class="document-title">Election 2016</h1>
+            <div class="header-container">
+                <a href="http://www.rollingstone.com" class="sprite-logo" title="Home" data-track data-label="http://www.rollingstone.com" data-category="Candidates" data-action="Nav">Rolling Stone</a> <span>Politics</span>
+            </div>
+            <a id="politics-link" href="http://www.rollingstone.com/politics" data-track data-label="http://www.rollingstone.com/politics" data-category="Candidates" data-action="Nav">More RS Politics</a>
+        </header>
+
+<div id="content">
+    <header>
+        <h2>The Baggage, the Gaffes and the Billionaires</h2>
+        <p>See how the 2016 presidential candidates stack up.</p>
+        <p>By <a href="http://www.rollingstone.com/contributor/lauren-kelley">Lauren Kelley</a>, <a href="http://www.rollingstone.com/contributor/tim-dickinson">Tim Dickinson</a></p>
+
+        <hr />
+    </header>
+
+    <div class="container">
+        
+        
+        <dl class="cards" id="democrats">
+            <dt class="party">The Democrats (3)</dt>
+        
+        <dd class="card democrat in" id="clinton">
+            <a href="#clinton" data-track data-label="Hillary Clinton" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/clinton-democrat-148x.jpg" alt="Hillary Clinton" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/clinton-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Hillary Clinton</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Blackberry</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Hillary Clinton" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/clinton-democrat-320x.jpg" alt="Hillary Clinton Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/clinton-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Hillary Clinton</dt>
+                        <dt>Age</dt>
+                        <dd>68</dd>
+                        <dt>Religion</dt>
+                        <dd> Methodist
+</dd>
+                        <dt>Resume</dt>
+                        <dd>Lawyer. Former first lady of Arkansas (1983-1992), first lady of the United States (1993-2001), U.S. senator (2001-2009) and secretary of state (2009-2013). Failed 2008 presidential candidate. Former board member of the Clinton Foundation (2013-2015). Potentially historic female presidential nominee.</dd>
+                        <dd class="pullquote">"We came out of the White House not only dead broke, but in debt."</dd>
+                        <dd class="attribution">&#8212;Clinton, in 2014</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> In a 2014 interview, Clinton said of her family's time immediately after her husband left office, "We came out of the White House not only dead broke, but in debt." This rankled many commentators, who pointed to the Clintons' ability to make many millions of dollars in the ensuing years. (Clinton later walked back the comment, calling it "inartful.")</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>That, at one time, invading Iraq was the right thing to do. (She now says she regrets voting for the war.) </dd>
+                        <dt>Home-state clout</dt>
+                        <dd>New York has 29 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Priorities USA Action.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Alice Walton, George Soros, Marc Benioff and Haim Saban have all reportedly supported Clinton's presidential ambitions.</dd>
+                        <dt>Baggage</dt>
+                        <dd>The Clinton name, and its association with numerous scandals: Lewinsky, Whitewater, Vince Foster, Emailgate, the Clinton Foundation's finances, Benghazi, etc. The Clinton name, and its association with Bill Clinton &#8212; seen as a member of a political dynasty. Many progressive Dems consider her too hawkish, too wealthy to be in touch with ordinary Americans and too establishment. Voted for the Iraq War. Up against significant sexism in the media and from the political world.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/12-progressive-promises-from-hillary-clintons-economic-speech-20150713"target="_blank">12 Progressive Promises From Hillary Clinton's Economic Speech</a>
+
+<a href="http://www.rollingstone.com/politics/news/in-classic-clintonian-fashion-dems-insult-their-own-voters-20150609" target="_blank">In Classic Clintonian Fashion, Dems Insult Their Own Voters</a>
+
+<a href="http://www.rollingstone.com/politics/news/campaign-2016-hillary-clintons-fake-populism-is-a-hit-20150416" target="_blank">Campaign 2016: Hillary Clinton's Fake Populism Is a Hit</a>
+
+<a href="http://www.rollingstone.com/politics/news/hillary-clinton-is-turning-into-richard-nixon-and-bill-belichick-20150314" target="_blank">Hillary Clinton Is Turning Into Richard Nixon and Bill Belichick</a>
+<a href="http://www.rollingstone.com/politics/news/bill-and-hillary-will-see-you-now-19930429" target="_blank">Bill and Hillary Clinton Will See You Now</a>
+
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card democrat in" id="sanders">
+            <a href="#sanders" data-track data-label="Bernie Sanders" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/sanders-democrat-148x.jpg" alt="Bernie Sanders" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/sanders-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Bernie Sanders</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Indie</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Bernie Sanders" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/sanders-democrat-320x.jpg" alt="Bernie Sanders Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/sanders-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Bernie Sanders</dt>
+                        <dt>Age</dt>
+                        <dd>74</dd>
+                        <dt>Religion</dt>
+                        <dd>Jewish (non-practicing)</dd>
+                        <dt>Resume</dt>
+                        <dd>Recording artist (a 1987 folk album, re-released in 2014). Former mayor of Burlington (1981-1989) and U.S. representative (1991-2007). Current U.S. senator. Has done stint as Senate veterans' affairs committee chair and held a nearly nine-hour filibuster (#filibernie) against tax cuts for the rich. Is the longest serving Independent ever to hold a seat in Congress.</dd>
+                        <dd class="pullquote">"A major problem of our campaign finance system is that anybody can start a super PAC on behalf of anybody and can say anything. And this is what makes our current campaign finance situation totally absurd."</dd>
+                        <dd class="attribution"> &#8212;Sanders, in May 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Around the time Sanders launched his 2016 campaign, <i>Mother Jones </i>unearthed a bizarre 1972 essay by the presidential hopeful, in which Sanders discusses rape, masturbation and gender roles. Sanders' team has dismissed it as a four-decades-old "dumb attempt at dark satire," but some people have been put off by the piece.
+</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>Sanders &#8212; who represents a state with few gun laws and low rates of gun violence  &#8212; has voted in favor of NRA-backed gun laws and against several gun control measures.</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Vermont has three electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Sanders has said he does not support super PAC funding for his campaign, though his supporters have set up at least one PAC: Bet on Bernie 2016. He said in May that the average donation to his campaign had been around $40. His leadership PAC is called Progressive Voters of America.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Sanders says he is committed to raising funds from grassroots supporters, rather than ultra-wealthy donors.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Is up against the well-funded, well-oiled Clinton campaign, and a media narrative that tends to paint Clinton as the inevitable nominee. Lacks the Democratic Party support that Clinton enjoys. And will enough Americans vote for a self-described democratic socialist to take over the White House? Has had trouble shoring up support from people of color.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/weekend-with-bernie-sanders-20150709"target="_blank">Weekend with Bernie</a>
+
+<a href="http://www.rollingstone.com/politics/videos/three-days-on-the-campaign-trail-with-bernie-sanders-20150604" target="_blank">Three Days on the Campaign Trail With Bernie Sanders</a>
+
+<a href="http://www.rollingstone.com/politics/news/give-em-hell-bernie-20150429" target="_blank">Give 'Em Hell, Bernie</a>
+
+<a href="http://www.rollingstone.com/politics/news/bernie-sanders-puts-barack-obama-to-shame-20101215" target="_blank">Bernie Sanders Puts Barack Obama to Shame</a>
+
+<a href="http://www.rollingstone.com/politics/news/inside-the-horror-show-that-is-congress-20050825" target="_blank">Inside the Horror Show That Is Congress</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card democrat out" id="chafee">
+            <a href="#chafee" data-track data-label="Lincoln Chafee" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/chafee-democrat-148x.jpg" alt="Lincoln Chafee" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/chafee-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Lincoln Chafee</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Millimeter</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Lincoln Chafee" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/chafee-democrat-320x.jpg" alt="Lincoln Chafee Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/chafee-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Lincoln Chafee</dt>
+                        <dt>Age</dt>
+                        <dd>62</dd>
+                        <dt>Religion</dt>
+                        <dd>Episcopalian</dd>
+                        <dt>Resume</dt>
+                        <dd>Former racehorse farrier, mayor of Warwick, Rhode Island (1993-1999), U.S. senator (1999-2007) and governor of Rhode Island (2011-2015). Was the only Republican senator to vote against the Iraq War.</dd>
+                        <dd class="pullquote">"Let's be bold &#8212; let's join the rest of the world and go metric."</dd>
+                        <dd class="attribution">&#8212;Chafee, during his June 2015 campaign announcement speech</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>In a 2010 radio interview, Chafee angered many New England baseball fans by criticizing former Red Sox pitcher Curt Schilling, repeating an untrue rumor about how he once painted his sock red to make it look like he was bleeding. (At the time, Schilling's video game company was considering a move from Rhode Island to Massachusetts as part of a controversial multimillion-dollar economic development plan.)</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>He wrote in George H.W. Bush on his 2004 presidential election ballot. (He was not a fan of George W.)</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Rhode Island has four electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: As of early summer 2015, his supporters had not established one.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Unclear, though Chafee and his wife are quite wealthy  &#8212; they had a reported net worth of some $60 million in 2007  &#8212; and Chafee's wife, Stephanie Danforth Chafee, donated to his 2010 gubernatorial campaign.
+</dd>
+                        <dt>Baggage</dt>
+                        <dd>Has virtually no name recognition outside tiny Rhode Island. Has been mocked for focusing on U.S. adoption of the metric system. Doesn't appear to be even trying to raise significant funds. Does not have deep roots in the party  &#8212; he only joined in 2013, after serving as a Republican U.S. senator and then switching his affiliation to Independent in 2007.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/how-the-gop-became-the-party-of-the-rich-20111109" target="_blank">How the GOP Became the Party of the Rich</a>
+
+<a href="http://www.rollingstone.com/politics/lists/9-signs-that-pot-legalization-is-coming-soon-20120928" target="_blank">Nine Signs That Pot Legalization Is Coming Soon</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card democrat in" id="omalley">
+            <a href="#omalley" data-track data-label="Martin O&#39;Malley" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/omalley-democrat-148x.jpg" alt="Martin O&#39;Malley" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/omalley-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Martin O&#39;Malley</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Balto</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Martin O&#39;Malley" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/omalley-democrat-320x.jpg" alt="Martin O&#39;Malley Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/omalley-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Martin O&#39;Malley</dt>
+                        <dt>Age</dt>
+                        <dd>52</dd>
+                        <dt>Religion</dt>
+                        <dd> Roman Catholic</dd>
+                        <dt>Resume</dt>
+                        <dd> Failed Maryland state senate candidate (1990). Former Baltimore city council member (1991-1999) and mayor (1999-2007). Former governor of Maryland.</dd>
+                        <dd class="pullquote">"President Obama is moving America forward, not back."</dd>
+                        <dd class="attribution">&#8212;O'Malley at the 2012 DNC, walking back his earlier assertion that America had not gotten better under Obama</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> In a 2012 television interview, O'Malley answered in the negative when asked if America was better off than it had been when Barack Obama took office, providing fodder to Republican critics of the president. (O'Malley quickly walked back his answer.) </dd>
+                        <dt>Scariest belief</dt>
+                        <dd>There's not much about O'Malley's beliefs, as stated, that could reasonably be called "scary." But that might signal a problem for the candidate: What DOES he believe?</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Maryland has ten electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Generation Forward.
+</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Some of O'Malley's past political donors include hedge-fund billionaire Tom Steyer and real-estate heir Stephen Bing.</dd>
+                        <dt>Baggage</dt>
+                        <dd> His association with Baltimore, which recently exploded into protests and riots in the wake of Freddie Gray's death, raising questions about how good a job O'Malley has actually done in the region. Not enough of a national political presence, and not much Democratic Party support. Considered a longshot next to Hillary Clinton.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/why-baltimore-blew-up-20150526" target="_blank">Why Baltimore Blew Up</a>
+
+<a href="http://www.rollingstone.com/politics/news/one-year-after-newtown-20-reasons-for-hope-and-despair-20131213" target="_blank">One Year After Newtown: 20 Reasons for Hope And Despair</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card democrat out" id="webb">
+            <a href="#webb" data-track data-label="Jim Webb" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/webb-democrat-148x.jpg" alt="Jim Webb" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/webb-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Jim Webb</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Annapolis</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Jim Webb" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/webb-democrat-320x.jpg" alt="Jim Webb Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/webb-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Jim Webb</dt>
+                        <dt>Age</dt>
+                        <dd>69</dd>
+                        <dt>Religion</dt>
+                        <dd>Nondenominational Christian</dd>
+                        <dt>Resume</dt>
+                        <dd>Decorated Vietnam veteran (Marine Corps). Author. Former assistant secretary of defense for reserve affairs (1984-1987), secretary of the Navy (1987-1888) and U.S. senator representing Virginia (2007-2013). Was considered a possible 2008 vice presidential pick for Barack Obama.</dd>
+                        <dd class="pullquote">"This is a time for us to come together, and to recognize once more that our complex multicultural society is founded on the principle of mutual respect."</dd>
+                        <dd class="attribution">&#8212;Webb, on the Confederate flag controversy, in June 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Referring to the n-word, Webb told a Virginia newspaper during his 2006 campaign, "I don't think that there's anyone who grew up around the South that hasn't had the word pass through their lips at one time in their life." (His spokesperson later said Webb had never used the word as a slur.)</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>That the Confederate flag is worthy of defense. Unlike all of the other 2016 Democratic candidates, and many of the Republicans, Webb hedged on what to do about the flag in the wake of the Charleston massacre, urging "mutual respect" from both sides of the issue. He has also in the past referred to the "Nazification of the Confederacy."
+
+</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Virginia, often a battleground state, has 13 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Webb said in June that he does not want a super PAC to support his candidacy, and at the time his supporters had not established one. He does, however, have a leadership PAC called Born Fighting.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>"There is no interest among the people who give money in Jim Webb," former Pennsylvania governor and Hillary Clinton supporter Ed Rendell has said, according to <i>MSNBC</i>.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Wrote a 1979 essay called "Women Can't Fight" about how women should not have been allowed to join service academies. Is something of a Johnny-come-lately to some leftist issues (he switched from Republican to Democrat in 2006 and only in 2014 began supporting marriage equality). Reportedly only ran for one term as senator because he dislikes campaigning. Is considered a bit of a loose cannon: Before joining office, he said things like "Jane Fonda can kiss my ass. I wouldn't walk across the street to watch her slit her wrist" and that affirmative action is "a permeating state-sponsored racism that is as odious as the Jim Crow laws it sought to countermand."</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/james-webbs-never-ending-war-20070614" target="_blank">James Webb's Never-Ending War</a>
+
+<a href="http://www.rollingstone.com/politics/news/a-drug-war-truce-20110325" target="_blank">A Drug War Truce?</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+
+        <dd class="card democrat out" id="lessig">
+            <a href="#lessig" data-track data-label=“Lawrence Lessig” data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/lessig-democrat-148x.jpg" alt="Lawrence Lessig" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/lessig-democrat-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Lawrence Lessig</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Relinquisher</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label=“Lawrence Lessig” data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/lessig-democrat-320x.jpg" alt="Lawrence Lessig Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/lessig-democrat-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Lawrence Lessig</dt>
+                        <dt>Age</dt>
+                        <dd>54</dd>
+                        <dt>Religion</dt>
+                        <dd>Grew up Christian and entered college a theist; hasn't talked publicly about his religious views as an adult.</dd>
+                        <dt>Resume</dt>
+                        <dd>Professor at Harvard Law School and director of Harvard's Edmond J. Safra Center for Ethics. On advisory board of Creative Commons, which he founded, and the Sunlight Foundation. Former Stanford and University of Chicago law professor. Founded the Stanford Center for Internet and Society. Clerked for 7th Circuit Judge Richard Posner and Supreme Court Justice Antonin Scalia.</dd>
+                        <dd class="pullquote">"If the problem with American democracy is that our government is dependent upon its funders, but the <i>funders</i> are not the People, then the solution is to make the funders the People.”</dd>
+                        <dd class="attribution">&#8212;Lessig, in <i>The Atlantic</i>, in 2012</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Hasn’t been in the political game long enough to make any public statements that could be considered gaffes.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>That as president he'd see the quick passage of his Citizens Equality Act (after which he'd step down). His aims – to boost election rights for citizens – are noble, but the logistics are questionable.</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Massachusetts has 11 electoral votes, and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Lessig crowdfunded $1 million to launch his campaign.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>None.</dd>
+                        <dt>Baggage</dt>
+                        <dd>His plan as a "referendum" candidate &#8212; to resign the presidency after passing a single law &#8212;is considered wacky at best, and dangerous at worst. Is an extreme longshot.</dd.>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/meet-the-presidential-hopeful-whod-quit-after-signing-a-single-law-20150819" target="_blank">Meet the Presidential Hopeful Who'd Quit After Signing a Single Law</a>
+
+                            <a href="http://www.rollingstone.com/politics/news/lawrence-lessig-on-how-money-corrupts-congress-and-how-to-stop-it-20111005" target="_blank">Lawrence Lessig on How Money Corrupts Congress – and How to Stop It</a>
+
+
+                            </dd>
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        </dl><dl class="cards" id="republicans">
+            <dt class="party republicans">The Republicans (14)</dt>
+        
+        <dd class="card republican in" id="bush">
+            <a href="#bush" data-track data-label="Jeb Bush" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/bush-republican-148x.jpg" alt="Jeb Bush" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/bush-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Jeb Bush</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Triple Threat</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Jeb Bush" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/bush-republican-320x.jpg" alt="Jeb Bush Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/bush-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Jeb Bush</dt>
+                        <dt>Age</dt>
+                        <dd>62</dd>
+                        <dt>Religion</dt>
+                        <dd>Roman Catholic (converted)</dd>
+                        <dt>Resume</dt>
+                        <dd>Two-term governor of Florida, which at the time led the nation in job creation and scored a AAA credit rating. Son of the 41st president of the United States and brother of the 43rd. </dd>
+                        <dd class="pullquote">"For the people to say the science is decided on this is really arrogant, to be honest with you."</dd>
+                        <dd class="attribution">&#8212;Bush on climate change, in May 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Asked on <i>Fox News</i> whether, knowing what he knows today, he would have chosen to invade Iraq, he replied: "I would have." Later, backtracking, he said, "I would have not have engaged, I would not have gone into Iraq."</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>On climate change: "For the people to say the science is decided on this is really arrogant, to be honest with you."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Florida has 29 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Right to Rise PAC. Has also set up his own &quot;dark money&quot; nonprofit to solicit anonymous/corporate cash: Right to Rise Policy Solutions.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Henry Kravis, a private equity billionaire, hosted a $100,000-a-head fundraiser for Bush. The candidate is also angling for support of casino tycoons Sheldon Adelson and Steve Wynn, as well as vulture capitalist Paul Singer.</dd>
+                        <dt>Baggage</dt>
+                        <dd>The Bush name, and its association with Iraq. Surrounded by W. alums like Paul Wolfowitz, Condi Rice and Michael Hayden. Favors a path to legalization for undocumented immigrants, and statehood for Puerto Rico. Claimed Hispanic ethnicity on a voter registration form. Defends Common Core education standards, which are despised by the Tea Party. Has admitted, "I smoked marijuana when I was at Andover." Played political football with braindead Terri Schiavo. Earned dodgy fortune as a young man by lending name to South Florida real estate developer. Played shadowy role in Bush/Gore recount.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/forget-what-we-know-now-we-knew-then-the-iraq-war-was-a-joke-20150518" target="_blank">Forget What We Know Now: We Knew Then the Iraq War Was a Joke</a>
+
+<a href="http://www.rollingstone.com/politics/news/tea-partiers-are-right-jeb-is-a-rino-20141218" target="_blank">Tea Partiers Are Right: Jeb Is a RINO</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican out" id="walker">
+            <a href="#walker" data-track data-label="Scott Walker" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/walker-republican-148x.jpg" alt="Scott Walker" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/walker-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Scott Walker</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Miller Time</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Scott Walker" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/walker-republican-320x.jpg" alt="Scott Walker Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/walker-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Scott Walker</dt>
+                        <dt>Age</dt>
+                        <dd>48</dd>
+                        <dt>Religion</dt>
+                        <dd>Evangelical Christian</dd>
+                        <dt>Resume</dt>
+                        <dd> Two-term governor of Wisconsin. Winner of three statewide elections (including 2012 recall vote). Cut state unemployment rate from 9.2 to 4.8 percent. Eagle Scout.</dd>
+                        <dd class="pullquote">"We need to take the fight to ISIS and any other radical Islamic terrorist in and around the world."</dd>
+                        <dd class="attribution">&#8212;Walker, in February 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> <a href="http://scottwalkerwatch.com/koch-brothers/walkers-punked-phone-call/"target="_blank">Once caught on tape pandering to a David Koch impersonator</a>.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"We need to take the fight to ISIS and any other radical Islamic terrorist in and around the world."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Wisconsin has ten electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Unintimidated PAC.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>John Menard Jr., a billionaire hardware-store magnate, reportedly gave $1.5 million to Wisconsin Club for Growth to support Walker in his recall election, and subsequently received nearly $2 million in state tax breaks. Menard is a member of the donor network controlled by the Koch brothers  &#8212; who also backed Walker's recall fight: "We're helping him, as we should," David Koch said in 2012. "We've spent a lot of money in Wisconsin. We're going to spend more."</dd>
+                        <dt>Baggage</dt>
+                        <dd> A career politician: first ran for state assembly at 22, won three years later and has been in elected office ever since. Despite rosy employment figures, median Wisconsin household income has fallen 1.39 percent during the economic recovery (2011-2013). Helped preside over Wisconsin's worst-in-the-nation decline of the middle class, according to the Pew Charitable Trust. Was a college dropout (dropped out of Marquette his senior year). Has described himself as "100% pro-life"  &#8212; opposes abortion, even in cases of rape or incest. Is a union buster: eliminated collective bargaining for state workers and compared union members to ISIS. Has supported Arizona-style police stops of Hispanics to check immigration papers. The $2 billion in tax cuts he oversaw that were supposed to spur growth in Wisconsin have instead created a $2 billion state budget deficit. Has proposed axing $300 million from the University of Wisconsin as part of his austerity program. Is a foreign policy lightweight. Had <a href="http://www.newrepublic.com/article/118145/scott-walkers-toxic-racial-politics" target="_blank">a teenage mullet</a>.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/scott-walker-gods-gift-to-the-democratic-party-20150227" target="_blank">Scott Walker, God's Gift to the Democratic Party</a>
+
+<a href="http://www.rollingstone.com/politics/news/why-wisconsins-recall-clusterf-k-matters-20120508" target="_blank">Why Wisconsin's Recall Clusterf#@k Matters</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="rubio">
+            <a href="#rubio" data-track data-label="Marco Rubio" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/rubio-republican-148x.jpg" alt="Marco Rubio" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/rubio-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Marco Rubio</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Poland Spring</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Marco Rubio" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/rubio-republican-320x.jpg" alt="Marco Rubio Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/rubio-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Marco Rubio</dt>
+                        <dt>Age</dt>
+                        <dd>44</dd>
+                        <dt>Religion</dt>
+                        <dd>Roman Catholic (ex-Mormon)</dd>
+                        <dt>Resume</dt>
+                        <dd> One-term Senator. Former Speaker of Florida House. Potentially historic Hispanic (Cuban) nominee.</dd>
+                        <dd class="pullquote">"Whether the Earth was created in seven days, or seven actual eras, I'm not sure we'll ever be able to answer that."</dd>
+                        <dd class="attribution">&#8212;Rubio, in 2012</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> <a href="https://www.youtube.com/watch?v=dWkjVvoXIS0"target="_blank">The most awkward sip of water ever caught on tape</a>.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"Whether the Earth was created in seven days, or seven actual eras, I'm not sure we'll ever be able to answer that. It's one of the great mysteries."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Florida has 29 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Conservative Solutions PAC.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Florida billionaire Norman Braman  &#8212; owner of luxury car dealerships and, formerly, the Philadelphia Eagles  &#8212; has been a career-long patron and "father figure" to Rubio. Braman's charity has <a href="http://www.tampabay.com/news/politics/stateroundup/marco-rubios-wife-long-an-unseen-presence-in-his-career/2229838" target="_blank">employed Rubio's wife</a>, a former Miami Dolphins cheerleader. Oracle CEO Larry Ellison hosted a fundraiser for Rubio. He's angling for support from Sheldon Adelson and the Koch brothers.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Led passage of the Senate's comprehensive immigration reform bill (which was despised by many in GOP base and died in the House). Opposes normalization of Cuban relations, unlike most Republicans. Dogged by rumors of personal scandal. Is callow. Has cloaked himself in neoconservatism. Former top Cheney hand Cesar Conda was chief of staff, now runs his Reclaim America PAC. Insists Iraq war was not a mistake. Tax plan  &#8212; slashing corporate taxes and income taxes across the board  &#8212; would cost $4 trillion over a decade, according to the Tax Foundation. People wonder if he's just Cuban Mitt Romney.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related"><a href="http://www.rollingstone.com/politics/news/marco-rubio-declares-his-allegiance-to-west-coast-rap-on-outnumbered-20150606" target="_blank">Marco Rubio Declares Allegiance to West Coast Rap on 'Outnumbered'</a><br />
+<a href="http://www.rollingstone.com/politics/news/marco-rubios-weird-defeatist-vision-20130213" target="_blank">Marco Rubio's Weird, Defeatist Vision</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+                <dd class="card republican in" id="trump">
+            <a href="#trump" data-track data-label="Donald Trump" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/trump-republican-148x.jpg" alt="Donald Trump" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/trump-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Donald Trump</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Goldfinger</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Donald Trump" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/trump-republican-320x.jpg" alt="Donald Trump Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/trump-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Donald Trump</dt>
+                        <dt>Age</dt>
+                        <dd>69</dd>
+                        <dt>Religion</dt>
+                        <dd> Presbyterian
+</dd>
+                        <dt>Resume</dt>
+                        <dd>Billionaire real estate mogul. Former host of the <i>Apprentice </i>reality show franchise. Miss Universe Organization owner. Been threatening to run for president since 1999, but hasn't done so until now.</dd>
+                        <dd class="pullquote">"I have a great relationship with the blacks."</dd>
+                        <dd class="attribution">&#8212;Trump, in 2011</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> "I have a great relationship with the blacks."</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>That President Obama was born in Kenya and is therefore in the White House illegally. Trump continues to have doubts about this even after allegedly conducting an investigation into the matter, and after Obama released his birth certificate showing his real birthplace: Hawaii.
+</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>New York has 29 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Citizens for Restoring USA. Though Trump has said he plans to self-fund his campaign.
+</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Himself.
+</dd>
+                        <dt>Baggage</dt>
+                        <dd>Zero experience holding office. Was a Nineties tabloid staple for his multiple, messy divorces. Is considered by many to be a joke candidate and an attention-seeker. Fuzzy policy positions. Most known for his money and <a href="http://www.rollingstone.com/politics/news/the-47-funniest-things-about-donald-trump-20150617"target="_blank">his hair</a>. Kicked off campaign by calling Mexican immigrants rapists and drug dealers, causing him to be dropped by numerous companies.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+<a href="http://www.rollingstone.com/politics/news/trump-seriously-20150909" target="_blank">Trump Seriously: On the Trail With the GOP's Tough Guy</a> 
+<a href="http://www.rollingstone.com/politics/news/a-brief-timeline-of-companies-dumping-donald-trump-20150701"target="_blank">A Brief Timeline of Companies Dumping Donald Trump</a>
+
+<a href="http://www.rollingstone.com/politics/news/the-47-funniest-things-about-donald-trump-20150617" target="_blank">The 47 Funniest Things About Donald Trump</a>
+
+<a href="http://www.rollingstone.com/culture/news/donald-trump-lets-his-hair-down-20110511" target="_blank">Donald Trump Lets His Hair Down</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        <dd class="card republican in" id="paul">
+            <a href="#paul" data-track data-label="Rand Paul" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/paul-republican-148x.jpg" alt="Rand Paul" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/paul-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Rand Paul</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Galt </dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Rand Paul" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/paul-republican-320x.jpg" alt="Rand Paul Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/paul-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Rand Paul</dt>
+                        <dt>Age</dt>
+                        <dd>52</dd>
+                        <dt>Religion</dt>
+                        <dd>Presbyterian </dd>
+                        <dt>Resume</dt>
+                        <dd>Freshman Kentucky Senator. Son of gadfly former libertarian presidential candidate Ron Paul. Held a 13-hour filibuster against drones. Filed a <a href="http://s3.amazonaws.com/freedomworks.org/files/nsa_complaint.pdf"target="_blank">class-action suit</a> against President Obama and the NSA's leadership over illegal metadata collection.</dd>
+                        <dd class="pullquote">"It means you believe in slavery."</dd>
+                        <dd class="attribution">&#8212;Paul, on those who believe in a right to health care, in 2011</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> <a href="http://talkingpointsmemo.com/livewire/rand-paul-kelly-evans-cnbc-interview"target="_blank">Manshusshing a female CNBC anchor</a>.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>On whether Americans have a right to health care: "That means you have a right to come to my house and conscript me. It means you believe in slavery."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Kentucky has eight electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: America&#39;s Liberty PAC, run by former Ron Paul campaign manager Jesse Benton.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Reportedly angling for support from Silicon Valley moneymen Peter Thiel and Sean Parker. David Koch has praised him, saying, "Rand's got good ideas."</dd>
+                        <dt>Baggage</dt>
+                        <dd>Relatively dovish on foreign policy. Cast the lone "nay" vote in saber-rattling Senate resolution seeking to cow Iran from obtaining nukes. Criticized U.S. strikes on ISIS: "Do we want to, in effect, become Iran's air force?" Has unconventional issue set among the Republican field (audit the Fed, ban NSA spying on Americans, criminal justice and drug law reform).
+
+Has repeatedly sponsored fetal "personhood" bills and amendments seeking to outlaw abortion. Supports a Koch-backed flat tax. Once suggested the Civil Rights Act should not apply to the private sector. (He later said he would have voted for it.) Co-authored a book on the Tea Party with a neo-Confederate radio personality, the "Southern Avenger," who fantasized about shooting a movie scene in which "Spike Lee and Kweisi Mfume are both tied to trees while Mel Gibson whips the hell out of them." Father has published virulently racist newsletters.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/why-rand-pauls-filibuster-matters-20130307" target="_blank">Why Rand Paul's Filibuster Matters</a>
+
+<a href="http://www.rollingstone.com/politics/news/kentucky-death-match-20140512" target="_blank">Kentucky Death Match</a>
+
+<a href="http://www.rollingstone.com/politics/news/matt-taibbi-on-the-tea-party-20100928" target="_blank">The Truth About the Tea Party</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="cruz">
+            <a href="#cruz" data-track data-label="Ted Cruz" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/cruz-republican-148x.jpg" alt="Ted Cruz" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/cruz-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Ted Cruz</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Calgary</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Ted Cruz" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/cruz-republican-320x.jpg" alt="Ted Cruz Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/cruz-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Ted Cruz</dt>
+                        <dt>Age</dt>
+                        <dd>44</dd>
+                        <dt>Religion</dt>
+                        <dd> Southern Baptist</dd>
+                        <dt>Resume</dt>
+                        <dd> Freshman Senator from Texas. Conspired to force shutdown, near-default of federal government. Former clerk to Chief Justice William Rehnquist. Potentially historic Hispanic nominee (though confesses to speaking "lousy" Spanish).</dd>
+                        <dd class="pullquote">"There is a liberal fascism that is dedicated to going after believing Christians who follow the biblical teaching on marriage."</dd>
+                        <dd class="attribution">&#8212;Cruz, in April 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Launched campaign at Liberty University, in front of a crowd of students who had to attend, or else pay a $10 fine.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"There is a liberal fascism that is dedicated to going after believing Christians who follow the biblical teaching on marriage."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Texas has 38 electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Has an interlocking network of four super PACs under the name Keep the Promise, each tailored to a big donor.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Hedge fund magnate Robert Mercer  &#8212; whose fund has been accused by the Senate Permanent Subcommittee on Investigations of bilking the IRS of $6 billion  &#8212; is reportedly funding one of Cruz's super PACs.</dd>
+                        <dt>Baggage</dt>
+                        <dd> Born in Canada (to a U.S. citizen mother); renounced his dual citizenship in 2013. No foreign policy experience to speak of. Self-serving shutdown theatrics have antagonized party establishment. Wife has been a managing director of Goldman Sachs (she's currently on leave).
+
+Is staunchly opposed to same-sex marriage; introduced legislation to allow states to ban marriage equality. Voted against the Violence Against Women Act. Is a climate change denier. Received a 100 percent rating from National Right to Life Committee. Assembled Bush's legal team for the Florida Bush/Gore recount. Brought future Chief Justice John Roberts into Bush's orbit. Is a proponent of a flat tax. Father, pastor Rafael Cruz, is a fire-breathing wing nut who called on Obama to "go back to Kenya."</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/inside-the-republican-suicide-machine-20131009" target="_blank">Inside the Republican Suicide Machine</a>
+
+<a href="http://www.rollingstone.com/politics/news/what-does-ted-cruz-look-like-20150327" target="_blank">What Does Ted Cruz Look Like?</a>
+
+<a href="http://www.rollingstone.com/politics/news/democrats-must-stop-ted-cruzs-hollywood-ending-20131011" target="_blank">Democrats Must Stop Ted Cruz's Hollywood Ending</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>        
+        
+        <dd class="card republican in" id="huckabee">
+            <a href="#huckabee" data-track data-label="Mike Huckabee" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/huckabee-republican-148x.jpg" alt="Mike Huckabee" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/huckabee-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Mike Huckabee</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Grits</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Mike Huckabee" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/huckabee-republican-320x.jpg" alt="Mike Huckabee Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/huckabee-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Mike Huckabee</dt>
+                        <dt>Age</dt>
+                        <dd>60</dd>
+                        <dt>Religion</dt>
+                        <dd> Southern Baptist</dd>
+                        <dt>Resume</dt>
+                        <dd>Former Southern Baptist pastor. Lieutenant governor (1993-1996) and governor (1996-2007) of Arkansas. Failed 2008 presidential candidate. Former <i>FOX News </i>and conservative radio show host. Memoirist.</dd>
+                        <dd class="pullquote">"We ask why there is violence in our schools but we have systematically removed God from our schools."</dd>
+                        <dd class="attribution">&#8212;Huckabee in 2012, soon after the Newtown shooting</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> Referring to the contraception mandate in Obamacare, Huckabee said in 2014, "If the Democrats want to insult the women of America by making them believe that they are helpless without Uncle Sugar coming in and providing for them a prescription each month for birth control because they cannot control their libido or their reproductive system without the help of the government, then so be it."
+</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"We ask why there is violence in our schools but we have systematically removed God from our schools. Should we be so surprised that schools would become a place of carnage?" Huckabee said in the wake of the Newtown school shooting.</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Arkansas has six electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Pursuing America&#39;s Greatness</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Huckabee is reportedly a close personal friend of Sheldon Adelson, though it's not clear if the billionaire will fund his 2016 bid.</dd>
+                        <dt>Baggage</dt>
+                        <dd> Has had trouble raising as much money as other GOP candidates. Is well liked among evangelicals for his folksy affect and far-right social stances, but may be too far to the left economically for that voting bloc. Has earned a reputation as a huckster who's endorsed sketchy diabetes treatments and sold use of his mailing list to promote dietary supplements and a scheme claiming to reveal cancer cures hidden in the Bible.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/mike-huckabee-still-talking-crazy-20110505"target="_blank">Mike Huckabee's Craziest Comments</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="carson">
+            <a href="#carson" data-track data-label="Ben Carson" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/carson-republican-148x.jpg" alt="Ben Carson" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/carson-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Ben Carson</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Scalpel</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Ben Carson" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/carson-republican-320x.jpg" alt="Ben Carson Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/carson-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Ben Carson</dt>
+                        <dt>Age</dt>
+                        <dd>64</dd>
+                        <dt>Religion</dt>
+                        <dd> Baptized Seventh Day Adventist</dd>
+                        <dt>Resume</dt>
+                        <dd> World-famous pediatric neurosurgeon  &#8212; separated twins conjoined at the head. Presidential Medal of Freedom winner, 2008. Has 38 honorary doctorates. Became Tea Party darling following 2013 prayer breakfast speech denouncing political correctness. Last book outsold Hillary Clinton's.</dd>
+                        <dd class="pullquote">"A lot of people go into prison straight, and when they come out, they're gay."</dd>
+                        <dd class="attribution">&#8212;Carson, in March 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> Called President Obama a "psychopath." </dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"A lot of people who go into prison straight, and when they come out, they're gay. So, did something happen while they were in there? Ask yourself that question."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Michigan has 18 electoral votes and went blue in 2012. (Carson hails from Detroit.)</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>The National Draft Ben Carson for President Committee.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>He has legit grassroots support  &#8212; his pre-presidential super PAC raised nearly as much as Ready for Hillary, mostly through small-dollar donations.</dd>
+                        <dt>Baggage</dt>
+                        <dd> Is a Johnny-come-lately: only joined Republican party in 2014. Favors a flat tax. Pundits wonder if he's a serious candidate, or if he's just leveraging the campaign process to boost his profile and sell books.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/gun-control-where-each-of-the-presidential-candidates-stands-20150618" target="_blank">Gun Control: Where Each of the Presidential Candidates Stands</a>
+
+<a href="http://www.rollingstone.com/politics/news/prison-proves-being-gay-is-a-choice-says-gop-pres-hopeful-ben-carson-20150304" target="_blank">Prison Proves Being Gay Is a Choice, Says GOP Pres Hopeful Ben Carson</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican out" id="perry">
+            <a href="#perry" data-track data-label="Rick Perry" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/perry-republican-148x.jpg" alt="Rick Perry" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/perry-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Rick Perry</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Socrates</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Rick Perry" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/perry-republican-320x.jpg" alt="Rick Perry Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/perry-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Rick Perry</dt>
+                        <dt>Age</dt>
+                        <dd>65</dd>
+                        <dt>Religion</dt>
+                        <dd> Evangelical</dd>
+                        <dt>Resume</dt>
+                        <dd> Three-term Texas governor. Spent 14 years running the nation's second biggest economy, in a state that accounted for about 25 percent of new jobs over that time. </dd>
+                        <dd class="pullquote">"I am a firm believer in intelligent design, and I believe it should be presented in schools alongside the theories of evolution."</dd>
+                        <dd class="attribution">&#8212;Perry, in 2010</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> In a 2012 presidential candidate debate, couldn't recall the third government bureaucracy he'd shut down: "Oops!"
+</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"I am a firm believer in intelligent design as a matter of faith and intellect, and I believe it should be presented in schools alongside the theories of evolution."
+</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Texas has 38 electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Opportunity and Freedom PAC.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Perry has counted on the support of more than a dozen billionaires over the course of his career, including T. Boone Pickens and David Koch.</dd>
+                        <dt>Baggage</dt>
+                        <dd>His new glasses may not be enough to throw voters off the stink of his disastrous 2012 run. Has called Social Security an unconstitutional Ponzi scheme. Supported a flat tax. Is facing an indictment for felony abuse of power in connection to a veto he threatened while trying to force a political opponent to resign. (Primary voters may write this off as just politics, but general election voters may be less forgiving.) Texas' environmental record.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/rick-perry-the-best-little-whore-in-texas-20111026" target="_blank">Rick Perry: The Best Little Whore In Texas</a>
+
+<a href="http://www.rollingstone.com/politics/news/why-rick-perry-is-way-worse-than-george-w-bush-20110816" target="_blank">Why Rick Perry Is Worse Than George W. Bush</a><br />
+<a href="http://www.rollingstone.com/politics/news/rick-perrys-social-security-extremism-why-itll-do-him-him-20110908" target="_blank">Rick Perry's Social Security Extremism: Why It Will Sink Him</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="christie">
+            <a href="#christie" data-track data-label="Chris Christie" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/christie-republican-148x.jpg" alt="Chris Christie" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/christie-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Chris Christie</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Roadrage</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Chris Christie" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/christie-republican-320x.jpg" alt="Chris Christie Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/christie-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Chris Christie</dt>
+                        <dt>Age</dt>
+                        <dd>53</dd>
+                        <dt>Religion</dt>
+                        <dd>Roman Catholic</dd>
+                        <dt>Resume</dt>
+                        <dd> Former Morris County freeholder (1995-1998), energy lobbyist and U.S. Attorney for New Jersey (2002-2008). Current governor of New Jersey.</dd>
+                        <dd class="pullquote">"You know, something may go down tonight, but it ain't gonna be jobs, sweetheart."</dd>
+                        <dd class="attribution">&#8212;Christie, in 2012</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>When a female heckler at a 2012 Romney campaign event asked Christie about "jobs going down," Christie retorted with what many people interpreted to be a crude reference to oral sex: "You know, something may go down tonight, but it ain't gonna be jobs, sweetheart."</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>Christie has hedged on the vaccine issue in ways that public health advocates believe to be dangerous, noting that while he and his wife have vaccinated their children, "I also understand that parents need to have some measure of choice in things as well, so that's the balance that the government has to decide."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>New Jersey has 14 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: America Leads.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Home Depot co-founder Ken Langone supports Christie for president, and is reportedly working to line up other wealthy donors for the candidate.
+</dd>
+                        <dt>Baggage</dt>
+                        <dd> Bridgegate. Has reputation as a bully, especially against teachers. Could be dinged for reaching across the aisle to work with Obama after Hurricane Sandy. Too socially moderate for the GOP base. On his watch as governor, New Jersey has seen high unemployment rates, low job growth numbers, poor economic growth and high taxes for businesses.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/culture/news/apocalypse-new-jersey-a-dispatch-from-americas-most-desperate-town-20131211" target="_blank">Apocalypse, New Jersey: A Dispatch From America's Most Desperate Town</a>
+
+<a href="http://www.rollingstone.com/music/news/bruce-springsteen-and-chris-christie-connect-through-hurricane-sandy-20121105" target="_blank">Bruce Springsteen and Chris Christie Connect Through Hurricane Sandy</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="santorum">
+            <a href="#santorum" data-track data-label="Rick Santorum" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/santorum-republican-148x.jpg" alt="Rick Santorum" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/santorum-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Rick Santorum</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Pious</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Rick Santorum" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/santorum-republican-320x.jpg" alt="Rick Santorum Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/santorum-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Rick Santorum</dt>
+                        <dt>Age</dt>
+                        <dd>57</dd>
+                        <dt>Religion</dt>
+                        <dd>Catholic</dd>
+                        <dt>Resume</dt>
+                        <dd>Lawyer. Former U.S. representative (1991-1995), senator (1995-2007) and Senate Republican Conference chair (2001-2007). Failed 2012 presidential candidate. </dd>
+                        <dd class="pullquote">"Man on child, man on dog."</dd>
+                        <dd class="attribution">&#8212;Santorum, in a discussion of same-sex relationships, in 2003</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> In 2003, Santorum likened homosexual relationships to pedophilia and bestiality. "In every society, the definition of marriage has not ever to my knowledge included homosexuality," he said. "That's not to pick on homosexuality. It's not, you know, man on child, man on dog, or whatever the case may be." (His comments prompted sex columnist Dan Savage, who is gay, to Google bomb Santorum with a website redefining the word "Santorum" as "the byproduct of anal sex.")</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>Even beyond his 2003 comments, Santorum has consistently struggled to come to terms with the rights  &#8212; or basic humanity  &#8212; of same-sex couples. In 2004, he said of same-sex marriage, "This is an issue just like 9/11. We didn't decide we wanted to fight the war on terrorism because we wanted to. It was brought to us. And if not now, when? When the supreme courts in all the other states have succumbed to the Massachusetts version of the law?"</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Pennsylvania has 20 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Working Again PAC</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Foster Friess, who funded Santorum during his 2012 presidential bid, is reportedly supporting the GOP politician again this campaign.</dd>
+                        <dt>Baggage</dt>
+                        <dd> That whole Google bomb business. Is counting on evangelical voters to turn out for him, but those votes are likely to be split this cycle in a crowded Republican field. Voted for the Iraq War.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/10-completely-vile-things-rick-santorum-has-said-20150528" target="_blank">10 Completely Vile Things Rick Santorum Has Said</a>
+
+<a href="http://www.rollingstone.com/politics/news/dialing-for-santorum-20110323?page=1" target="_blank">Dialing for Santorum</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="fiorina">
+            <a href="#fiorina" data-track data-label="Carly Fiorina" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/fiorina-republican-148x.jpg" alt="Carly Fiorina" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/fiorina-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Carly Fiorina</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Pink Slipper</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Carly Fiorina" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/fiorina-republican-320x.jpg" alt="Carly Fiorina Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/fiorina-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Carly Fiorina</dt>
+                        <dt>Age</dt>
+                        <dd>61</dd>
+                        <dt>Religion</dt>
+                        <dd>Nondenominational Christian (raised Episcopalian)</dd>
+                        <dt>Resume</dt>
+                        <dd>Former Hewlett-Packard CEO  &#8212; the first woman to lead a Fortune 100 company. Republican political consultant, most notably for John McCain's 2008 presidential campaign. Failed 2010 U.S. Senate candidate (lost to incumbent Democrat Barbara Boxer).</dd>
+                        <dd class="pullquote">"Carly Fiorina failed to register this domain. So I'm using it to tell you how many people she laid off at Hewlett-Packard."</dd>
+                        <dd class="attribution">&#8212;SEIU staffer Michael Link, who registered CarlyFiorina.org</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>Ahead of her campaign launch, Fiorina's team neglected to secure the domain name CarlyFiorina.org, which a Democratic supporter purchased and used to criticize the candidate. "Carly Fiorina failed to register this domain. So I'm using it to tell you how many people she laid off at Hewlett-Packard. It was this many," the site says, following that statement with 30,000 frowny face emoticons. :(</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>That <i>Roe v. Wade </i>should be overturned.</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>California has 55 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: CARLY (Conservative, Authentic, Responsive Leadership for You) for America.
+</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>The Koch brothers funded Fiorina's 2010 Senate bid. Other billionaires who have reportedly supported her include T. Boone Pickens and Paul Singer.</dd>
+                        <dt>Baggage</dt>
+                        <dd> Is leaning heavily on her business acumen, but her tenure at Hewlett-Packard was widely considered disastrous, with tens of thousands of staffers fired before she was forced to resign in 2005. No experience holding public office.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/gun-control-where-each-of-the-presidential-candidates-stands-20150618" target="_blank">Gun Control: Where Each of the Presidential Candidates Stands</a><br />
+<a href="http://www.rollingstone.com/politics/news/things-we-learned-at-the-midterms-20101103" target="_blank">Things We Learned at the Midterms</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="graham">
+            <a href="#graham" data-track data-label="Lindsey Graham" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/graham-republican-148x.jpg" alt="Lindsey Graham" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/graham-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Lindsey Graham</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>The Bachelor</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Lindsey Graham" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/graham-republican-320x.jpg" alt="Lindsey Graham Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/graham-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Lindsey Graham</dt>
+                        <dt>Age</dt>
+                        <dd>60</dd>
+                        <dt>Religion</dt>
+                        <dd>Southern Baptist</dd>
+                        <dt>Resume</dt>
+                        <dd> Thirty-three-year Air Force veteran. Former South Carolina state representative (1993-1995) and U.S. representative (1995-2003). Played key role in Bill Clinton impeachment proceedings. U.S. senator since 2003.
+</dd>
+                        <dd class="pullquote">"White men who are in male-only clubs are going to do great in my presidency."</dd>
+                        <dd class="attribution">&#8212; Graham, in 2014</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> Graham was caught on tape in 2014 joking to a group of Republicans at an all-male club that "white men who are in male-only clubs are going to do great in my presidency."</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>Speaking in 2013 of the federal 20-week abortion ban that he has introduced multiple times, Graham said that "nothing bad will happen" if the bill passed. "Good things will happen. Babies will be born that wouldn't have made it otherwise, and only God knows who they will grow up to be."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>South Carolina has nine electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Security Is Strength PAC. (Graham has been critical of super PACs and supports campaign finance reform.)</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Billionaire grocery chain owner and former New York City mayoral candidate John Catsimatidis supported Graham in his 2014 re-election campaign. Graham has also received funding in the past from Sheldon Adelson and Ronald Perelman, the latter of whom is now on Graham's national finance committee.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Has long been dogged by rumors of being gay, despite a solidly anti-gay rights voting record. Some family values voters are skeptical of him being unmarried. (When asked who would fill the role of FLOTUS if he was elected president, Graham said he'd have a "rotating first lady," with female friends and his sister playing a part.) Is considered by some in his party to be too willing to work with Democrats on immigration ("Grahamnesty"), climate change and other issues. Doesn't know how to use email. Voted for the Iraq War. </dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/indefinite-detention-of-american-citizens-coming-soon-to-battlefield-u-s-a-20111209" target="_blank">Indefinite Detention of American Citizens: Coming Soon to Battlefield U.S.A.</a><br />
+<a href="http://www.rollingstone.com/politics/news/obama-vs-the-hawks-20140401" target="_blank">Obama Vs. The Hawks</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+
+        
+        <dd class="card republican in" id="pataki">
+            <a href="#pataki" data-track data-label="George Pataki" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/pataki-republican-148x.jpg" alt="George Pataki" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/pataki-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>George Pataki</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Underdog  </dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="George Pataki" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/pataki-republican-320x.jpg" alt="George Pataki Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/pataki-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">George Pataki</dt>
+                        <dt>Age</dt>
+                        <dd>70</dd>
+                        <dt>Religion</dt>
+                        <dd> Roman Catholic</dd>
+                        <dt>Resume</dt>
+                        <dd> Former mayor of Peekskill, New York (1981-1984), New York Assembly member (1985-1992), New York state senator (1993-1994) and New York governor (1995-2006).</dd>
+                        <dd class="pullquote">"The worst law of my lifetime."</dd>
+                        <dd class="attribution">&#8212;Pataki on Obamacare  in March 2015</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> During the debate about Obamacare in 2010, Pataki wrongly called the individual mandate in Mitt Romney's Massachusetts health care law "unconstitutional," before admitting that he did not know much about the plan.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>Considers Obamacare to be "the worst law of my lifetime" and created a nonprofit to support repealing the legislation.</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>New York has 29 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: We The People, Not Washington.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>New York grocery chain mogul John Catsimatidis is a longtime supporter of Pataki, and Pataki endorsed Catsimatidis in his failed 2013 New York City mayoral run. </dd>
+                        <dt>Baggage</dt>
+                        <dd> Is far too moderate  &#8212; on some issues, downright liberal  &#8212; to appeal to the GOP base. Is considered the longest of the long-shot Republican candidates, as evidenced by the sarcastic #patakimentum hashtag on Twitter and headlines like "George Pataki May Be Running the Saddest Campaign for President" (<i>Slate</i>). Much of America does not even realize he's in the race.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/gun-control-where-each-of-the-presidential-candidates-stands-20150618" target="_blank">Gun Control: Where Each of the Presidential Candidates Stands</a>
+
+<a href="http://www.rollingstone.com/politics/news/top-ten-lukewarm-romney-endorsements-20120529" target="_blank">Top Ten Lukewarm Romney Endorsements</a>
+</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican out" id="jindal">
+            <a href="#jindal" data-track data-label="Bobby Jindal" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/jindal-republican-148x.jpg" alt="Bobby Jindal" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/jindal-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Bobby Jindal</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Darwin
+</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Bobby Jindal" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/jindal-republican-320x.jpg" alt="Bobby Jindal Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/jindal-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Bobby Jindal</dt>
+                        <dt>Age</dt>
+                        <dd>44</dd>
+                        <dt>Religion</dt>
+                        <dd> Roman Catholic (raised Hindu)</dd>
+                        <dt>Resume</dt>
+                        <dd>Former Rhodes Scholar, business consultant and president of the University of Louisiana system. Roles in government include Louisiana Department of Health and Hospitals secretary (1996-1998), U.S. Department of Health and Human Services assistant secretary (2001-2003) and U.S. representative (2005-2008). Current governor of Louisiana  &#8212; the first Indian American to be elected governor in the U.S.</dd>
+                        <dd class="pullquote">"We've got to stop being the stupid party." </dd>
+                        <dd class="attribution">&#8212;Jindal, at a 2013 RNC meeting</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>On an RNC-hosted conference call in 2012, at a time when Jindal was considered a top Mitt Romney vice presidential pick, Jindal accidentally called Obamacare "Obamney[care]," a term coined by Tim Pawlenty to derisively compare Obama's and Romney's signature health care laws.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"Right now, we've got an administration &#8212; the Obama administration &#8212; that are science deniers when it comes to harnessing America's energy resources and the potential to create good-paying jobs."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Louisiana has eight electoral votes and went red in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: Believe Again.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Jindal has sought funding from Sheldon Adelson. Koch brother-affiliated donors have reportedly considered backing the candidate.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Has called the GOP the "stupid party," while embracing many of the ideals he was criticizing. Trails other conservative candidates in support from evangelical voters. Not enough of a national following. </dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/bobby-jindal-how-did-you-end-up-here-20150625" target="_blank">Bobby Jindal, How Did You End Up Here?</a>
+
+<a href="http://www.rollingstone.com/politics/news/are-republicans-at-war-with-their-own-future-bobby-jindal-gay-marriage-20150423" target="_blank">Are Republicans at War With Their Own Future?</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="kasich">
+            <a href="#kasich" data-track data-label="John Kasich" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/kasich-republican-148x.jpg" alt="John Kasich" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/kasich-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>John Kasich</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Heartland </dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="John Kasich" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/kasich-republican-320x.jpg" alt="John Kasich Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/kasich-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">John Kasich</dt>
+                        <dt>Age</dt>
+                        <dd>63</dd>
+                        <dt>Religion</dt>
+                        <dd> Anglican (raised Catholic)</dd>
+                        <dt>Resume</dt>
+                        <dd> Former Ohio state senator (1979-1982), U.S. representative (1983-2001) and <i>FOX News </i>host. Failed 2000 presidential candidate. Current governor of Ohio.
+</dd>
+                        <dd class="pullquote">"I don't really see expanding Medicaid as really connected to Obamacare."</dd>
+                        <dd class="attribution">&#8212;Kasich, in 2014</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd> In a 2011 speech, Kasich mentioned that a woman who works at Bob Evans  &#8212; an Ohio-based food company  &#8212; probably has benefits that are only "shabby at best." Labor groups seized on the comment, hammering Kasich on his record of rolling back workers' rights and even starting an organization called Ohioans Against Shabby Benefits.</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"I don't really see expanding Medicaid as really connected to Obamacare."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Ohio has 18 electoral votes, went blue in 2012 and is considered a key battleground state.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>Super PAC: New Day for America.
+</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>Kasich has sought funding from Sheldon Adelson, and reportedly has political ties to the Koch brothers.
+</dd>
+                        <dt>Baggage</dt>
+                        <dd>Some in the party consider him a RINO. Expanded Medicaid under Obamacare  &#8212; one of few GOP governors to do so. Has received an F rating from the NRA. Fundraising could be a hurdle.</dd>
+                        
+                            <dt>Related</dt>
+                            <dd class="related">
+
+<a href="http://www.rollingstone.com/politics/news/where-the-tea-party-rules-20141014" target="_blank">Where the Tea Party Rules</a>
+
+<a href="http://www.rollingstone.com/politics/news/how-roger-ailes-built-the-fox-news-fear-factory-20110525" target="_blank">How Roger Ailes Built the Fox News Fear Factor</a></dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        
+        <dd class="card republican in" id="gilmore">
+            <a href="#gilmore" data-track data-label="Jim Gilmore" data-action="Read More" data-category="Candidates">
+                <figure class="main-photo">
+                    <img src="http://cdn.rollingstone.com/feature/election-2016/img/headshots/gilmore-republican-148x.jpg" alt="Jim Gilmore" srcset="http://cdn.rollingstone.com/feature/election-2016/img/headshots/gilmore-republican-188x.jpg 1000w" />
+                    <figcaption class="status">
+                        <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                    </figcapton>
+                </figure>
+                <div class="candidate-info">
+                    <h3>Jim Gilmore</h3>
+                    <dl>
+                        <dt>Secret Service <span class="code">Code</span><span class="name">name</span>?</dt>
+                        <dd>Who?</dd>
+                    </dl>
+                </div>
+                <div class="expand"><span>Read More</span></div>
+            </a>
+            <div class="overlay">
+                <div class="closer" data-track data-label="Jim Gilmore" data-action="Close" data-category="Candidates">Close</div>
+                <div class="overlay-content">
+                    <figure class="overlay-photo">
+                        <img src="http://cdn.rollingstone.com/feature/election-2016/img/overlay/gilmore-republican-320x.jpg" alt="Jim Gilmore Overlay" srcset="http://cdn.rollingstone.com/feature/election-2016/img/overlay/gilmore-republican-594x.jpg 1000w" />
+                        <figcaption class="status">
+                            <span class="in">In </span><span class="out">Out of </span>the Race <span class="checkmark"></span>
+                        </figcaption>
+                    </figure>
+                    <dl>
+                        <dt class="heading">Jim Gilmore</dt>
+                        <dt>Age</dt>
+                        <dd>66</dd>
+                        <dt>Religion</dt>
+                        <dd>Methodist</dd>
+                        <dt>Resume</dt>
+                        <dd>Former Virginia attorney general (1994-1997) and governor (1998-2002). Military veteran. Former lawyer. RNC chair in 2001. Failed 2008 presidential and U.S. Senate candidate. Current president and CEO of conservative think tank the Free Congress Foundation and NRA board member.</dd>
+                        <dd class="pullquote">"The right to keep and bear arms is a reflection that we as Americans can be trusted to be free."</dd>
+                        <dd class="attribution">&#8212;Gilmore, in 2007</dd>
+                        <dt>Signature gaffe</dt>
+                        <dd>During the lead up to his short-lived 2008 presidential bid, he reportedly failed to disclose ties to a company that was sued by the Feds for "knowingly conspir[ing] to defraud the government."</dd>
+                        <dt>Scariest belief</dt>
+                        <dd>"The right to keep and bear arms is a reflection that we as Americans can be trusted to be free."</dd>
+                        <dt>Home-state clout</dt>
+                        <dd>Virginia, a battleground state, has 13 electoral votes and went blue in 2012.</dd>
+                        <dt>Where the money flows</dt>
+                        <dd>As of July 2015, no super PAC had been established to support Gilmore&#39;s 2016 presidential run.</dd>
+                        <dt>Billionaire(s) in their corner</dt>
+                        <dd>None, it seems.</dd>
+                        <dt>Baggage</dt>
+                        <dd>Virtually unknown. Was forgettable as a governor; his race against Don Beyer was described as "the bland leading the bland," and one of his legacies was to implement an education reform program with the acronym SOL. Officially announced his campaign just days before the first Republican debate, more or less dooming his chances of getting airtime.</dd>
+                        
+                    </dl>
+                </div>
+            </div>
+        </dd>
+        
+        </dl>
+    </div>
+</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="http://cdn.rollingstone.com/feature/election-2016/js/libs/jquery-1.11.3.min.js"><\/script>')</script>
+
+        <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+        <script src="http://cdn.rollingstone.com/feature/election-2016/js/vendor/jquery.gray.min.js"></script>
+        <script src="http://cdn.rollingstone.com/feature/election-2016/js/script.min.js"></script>
+
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-6PGSH"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-6PGSH');</script>
+        <!-- End Google Tag Manager -->
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5ee52db725","applicationID":"4957501","transactionName":"YAFVYhZSXBcDWk0KV1lLdlUQWl0KTV9cPEtDFkJVEEZAAQZmWgxWQwFZQjtXWxcSWE0AUA==","queueTime":0,"applicationTime":472,"atts":"TEZWFF5ITxk=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-768.min.js"}</script></body>
+</html>
