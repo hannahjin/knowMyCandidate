@@ -175,6 +175,10 @@ public class TwitterClient {
         addCandidate("BobbyJindal", "Bobby Jindal");
         addCandidate("gov_gilmore", "Jim Gilmore");
         addCandidate("DrJillStein", "Jill Stein");
+        addCandidate("JimWebbUSA", "Jim Webb");
+        addCandidate("ScottWalker", "Scott Walker");
+        addCandidate("LincolnChafee", "Lincoln Chafee");
+        addCandidate("GovernorPerry", "Rick Perry");
     }
 
     protected void addCandidate(String twitterUsername, String parseId) {
