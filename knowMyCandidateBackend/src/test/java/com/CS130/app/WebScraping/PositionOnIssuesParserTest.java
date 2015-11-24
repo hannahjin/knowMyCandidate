@@ -61,7 +61,7 @@ public class PositionOnIssuesParserTest extends TestCase
     public void testCreatingCandidateList()
     {
         positionOnIssuesParser.addCandidatesToProcess();
-        assertEquals(positionOnIssuesParser.candidateIds.size(), 19);
+        assertEquals(positionOnIssuesParser.candidateIds.size(), 23);
     }
 
     public void testAddingOneCandidate()

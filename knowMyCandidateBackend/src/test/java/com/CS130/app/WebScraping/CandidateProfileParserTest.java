@@ -50,7 +50,7 @@ public class CandidateProfileParserTest extends TestCase
     public void testCreatingCandidateList()
     {
         candidateProfileParser.addCandidatesToProcess();
-        assertEquals(candidateProfileParser.candidateIds.size(), 19);
+        assertEquals(candidateProfileParser.candidateIds.size(), 23);
     }
 
     public void testAddingOneCandidate()
