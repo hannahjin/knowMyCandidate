@@ -119,8 +119,8 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, url, candidateID
     }, function(error) {
         console.error("Failed to set scraped thumbnail for candidate: " + candidateID +
             " and URL: " + url + "\ndue to error: " + error +
-            "\nSetting default thumnbail instead.");
-        saveWithDefaultThumbnail(newsFeed);
+            ". Setting no thumnbail.");
+        saveNewsfeed(newsFeed);
     });
 }
 
