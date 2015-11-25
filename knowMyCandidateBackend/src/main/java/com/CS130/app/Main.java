@@ -11,6 +11,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.CS130.app.TwitterClient.TwitterClient;
+import com.CS130.app.WebScraping.CandidateStatusParser;
 import com.CS130.app.WebScraping.WebParser;
 import com.CS130.app.web.*;
 
@@ -24,6 +25,7 @@ public class Main {
 	private static InputStream config_file;
 	private static boolean scrapeData;
 	private static boolean fetchTweets;
+	private static boolean parseStatus;
 	
     private static final ScheduledExecutorService scheduler =
 	       Executors.newScheduledThreadPool(1);
@@ -61,6 +63,7 @@ public class Main {
         }
         
         scheduleTweetFetcher();
+        scheduleCandidateStatus();
     }
     
     public static boolean getScrapeData() {
@@ -87,6 +90,7 @@ public class Main {
 			
 			scrapeData = Boolean.parseBoolean(prop.getProperty("scrapeData"));
 			fetchTweets = Boolean.parseBoolean(prop.getProperty("fetchTweets"));
+			parseStatus = Boolean.parseBoolean(prop.getProperty("parseStatus"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -115,6 +119,18 @@ public class Main {
     	};
     	// TODO: make twitter refresh period configurable with Web UI
     	scheduler.scheduleAtFixedRate(tweetFetcher, 0, 120, TimeUnit.MINUTES);
+    }
+    
+    private static void scheduleCandidateStatus() {
+    	CandidateStatusParser parser = new CandidateStatusParser();
+    	
+    	final Runnable statusParser = new Runnable() {
+    		public void run() {
+    			if (parseStatus)
+    				parser.parse(false, true);
+    		}
+    	};
+    	scheduler.scheduleAtFixedRate(statusParser, 0, 2, TimeUnit.DAYS);
     }
     
 }
