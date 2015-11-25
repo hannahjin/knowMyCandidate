@@ -132,7 +132,8 @@ function downloadImageandSave(image_url, newsFeed) {
     var promise = new Parse.Promise();
 
     Parse.Cloud.httpRequest({
-        url: image_url
+        url: image_url,
+        followRedirects: true
     }).then(function(response) {
         // image_url download success
         var image = new Image();
