@@ -74,18 +74,18 @@ static const CGFloat kSegmentPadding = 5.f;
     _segmentPicker.frame = frame;
     [view addSubview:_segmentPicker];
 
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 350, 25)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 380, 25)];
     title.numberOfLines = 1;
     title.textAlignment = NSTextAlignmentCenter;
     title.text = _topic;
-    [title setFont:[UIFont boldSystemFontOfSize:16]];
+    [title setFont:[UIFont boldSystemFontOfSize:18]];
     [view addSubview:title];
     
-    UILabel *summary = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 335)];
-    UIScrollView *summaryScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 300, 350, 335)];
+    UILabel *summary = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 350, 335)];
+    UIScrollView *summaryScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 320, 380, 335)];
     summary.numberOfLines = 0;
     summary.lineBreakMode = NSLineBreakByWordWrapping;
-    summary.font = [summary.font fontWithSize:13];
+    summary.font = [summary.font fontWithSize:15];
     summary.text = _summary;
     [summary sizeToFit];
     summaryScroll.contentSize = CGSizeMake(summaryScroll.contentSize.width, summary.frame.size.height + 100);
@@ -168,7 +168,7 @@ static const CGFloat kSegmentPadding = 5.f;
         [_slices addObject:cAgainst];
         [_slices addObject:cNeutral];
     }
-    CGRect pieFrame = CGRectMake(40, 5, 300, 200);
+    CGRect pieFrame = CGRectMake(55, 5, 300, 200);
     
     self.pieChart = [[XYPieChart alloc]initWithFrame:pieFrame];
     
