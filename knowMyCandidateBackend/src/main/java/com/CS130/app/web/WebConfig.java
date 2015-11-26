@@ -64,6 +64,36 @@ public class WebConfig {
             
             return new JSONObject().put("error", "Max URL not obtained");
         });
+        
+        get("/apitest2", "application/json", (req, res) -> {
+            
+            String max_img_url = scraper.thumbnail_scrape("http://www.politico.com/story/2015/11/grassley-emails-hillary-clinton-state-216103");
+            
+            if (max_img_url != null)
+                return new JSONObject().put("success", max_img_url);
+            
+            return new JSONObject().put("error", "Max URL not obtained");
+        });
+        
+        get("/apitest3", "application/json", (req, res) -> {
+            
+            String max_img_url = scraper.thumbnail_scrape("http://www.politico.com/story/2015/11/bernie-sanders-memo-omalley-immigration-216218");
+            
+            if (max_img_url != null)
+                return new JSONObject().put("success", max_img_url);
+            
+            return new JSONObject().put("error", "Max URL not obtained");
+        });
+        
+        get("/apitest4", "application/json", (req, res) -> {
+            
+            String max_img_url = scraper.thumbnail_scrape("http://www.latimes.com/nation/politics/la-na-ben-carson-fundraising-20151125-story.html");
+            
+            if (max_img_url != null)
+                return new JSONObject().put("success", max_img_url);
+            
+            return new JSONObject().put("error", "Max URL not obtained");
+        });
     }
     
 }
