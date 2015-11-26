@@ -2,222 +2,287 @@
 
 #import "KMCAssets.h"
 #import "Parse/Parse.h"
-#import "PieChartView.h"
+#import "XYPieChart.h"
 
-#define PIE_HEIGHT 260
 
-@interface KMCIssueViewController () <PieChartDelegate>
+static const CGFloat kHeaderViewHeight = 205.f;
+static const CGFloat kSegmentHeight = 30.f;
+static const CGFloat kSegmentPadding = 5.f;
 
-@property (nonatomic, strong) NSMutableArray *valueArray;
-@property (nonatomic, strong) NSMutableArray *colorArray;
-@property (nonatomic, strong) NSMutableArray *valueArrayAlt;
-@property (nonatomic, strong) NSMutableArray *colorArrayAlt;
-@property (nonatomic, strong) PieChartView *pieChartView;
+
+@interface KMCIssueViewController () <XYPieChartDelegate, XYPieChartDataSource>
+
+@property (strong, nonatomic) IBOutlet XYPieChart *pieChart;
 @property (nonatomic, strong) UIView *pieContainer;
+@property (strong, nonatomic) IBOutlet UILabel *percentageLabel;
+@property (strong, nonatomic) IBOutlet UILabel *selectedSliceLabel;
+@property (strong, nonatomic) IBOutlet UITextField *numOfSlices;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *indexOfSlices;
+@property (strong, nonatomic) IBOutlet UIButton *downArrow;
+@property(nonatomic, strong) NSMutableArray *slices;
 @property (nonatomic) BOOL inOut;
-@property (nonatomic, strong) UILabel *selLabel;
+@property(nonatomic, strong) NSArray        *sliceColors;
+
 
 @end
 
 @implementation KMCIssueViewController {
-  PFObject *_issueObject;
-  int _candidatesFor;
-  int _candidatesAgainst;
-  int _candidatesNeutral;
-  int _usersFor;
-  int _usersAgainst;
-  int _usersNeutral;
-  int _usersTotal;
-  int _candidatesTotal;
-  int _toggle;
-  NSString *_summary;
-  NSString *_topic;
+
+    PFObject *_issueObject;
+    UIView *_headerView;
+    UISegmentedControl *_segmentPicker;
+    NSString *_summary;
+    NSString *_topic;
+    
 }
 
 - (instancetype)initWithIssueObject:(PFObject *)object {
-  self = [super initWithNibName:nil bundle:nil];
-  if (self) {
-    _issueObject = object;
-
-  }
-  return self;
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _issueObject = object;
+        _headerView = [[UIView alloc] init];
+        _summary = _issueObject [@"summary"];
+        _topic = _issueObject [@"topic"];
+        
+        _segmentPicker = [[UISegmentedControl alloc] initWithItems:@[ @"User Opinion", @"Candidate Opinion" ]];
+        _segmentPicker.selectedSegmentIndex = 0;
+        [_segmentPicker addTarget:self
+                           action:@selector(didTapSegmentPicker)
+                 forControlEvents:UIControlEventValueChanged];
+        
+        
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
+    [super viewDidLoad];
+    
 
-  self.navigationItem.title = _issueObject[@"keywords"];
+    UIView *view = self.view;
+    view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = _issueObject[@"keywords"];
+    self.inOut = YES;
+    [self setUpHeaderView];
+    [view addSubview:_headerView];
+    
+    CGRect frame = _segmentPicker.frame;
+    frame.origin.x = kSegmentPadding;
+    frame.origin.y = kSegmentPadding + CGRectGetMaxY(_headerView.frame) + 20;
+    frame.size.height = kSegmentHeight ;
+    frame.size.width = CGRectGetWidth(view.frame) - 2 * kSegmentPadding;
+    _segmentPicker.frame = frame;
+    [view addSubview:_segmentPicker];
 
-  _candidatesFor = [[_issueObject objectForKey:@"candidatesFor"] intValue];
-  _candidatesAgainst = [[_issueObject objectForKey:@"candidatesAgainst"] intValue];
-  _candidatesNeutral = [[_issueObject objectForKey:@"candidatesNeutral"] intValue];
-  _usersFor = [[_issueObject objectForKey:@"usersFor"] intValue];
-  _usersAgainst = [[_issueObject objectForKey:@"usersAgainst"] intValue];
-  _usersNeutral = [[_issueObject objectForKey:@"usersNeutral"] intValue];
-  _usersTotal = _usersFor + _usersNeutral + _usersAgainst;
-  _candidatesTotal = _candidatesFor + _candidatesAgainst + _candidatesNeutral;
-  _summary = _issueObject [@"summary"];
-  _topic = _issueObject [@"topic"];
-  
-  _toggle = 0;
-  self.inOut = YES;
-  self.valueArrayAlt = [[NSMutableArray alloc] initWithObjects:
-                          [NSNumber numberWithInt:_candidatesAgainst],
-                          [NSNumber numberWithInt:_candidatesFor],
-                          [NSNumber numberWithInt:_candidatesNeutral],
-                          nil];
-  
-  self.valueArray = [[NSMutableArray alloc] initWithObjects:
-                     [NSNumber numberWithInt:_usersAgainst],
-                     [NSNumber numberWithInt:_usersFor],
-                     [NSNumber numberWithInt:_usersNeutral],
-                     nil];
-  
-  self.colorArrayAlt = [NSMutableArray arrayWithObjects:
-                          [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                          [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                          [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                          nil];
-  self.colorArray = [[NSMutableArray alloc] initWithObjects:
-                     [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                     [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                     [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                     nil];
-
-  CGRect pieFrame = CGRectMake((self.view.frame.size.width - PIE_HEIGHT) / 2, 20, PIE_HEIGHT, PIE_HEIGHT);
-  
-  self.pieContainer = [[UIView alloc]initWithFrame:pieFrame];
-  self.pieChartView = [[PieChartView alloc]initWithFrame:self.pieContainer.bounds withValue:self.valueArray withColor:self.colorArray];
-  if (self.inOut) {
-    [self.pieChartView setTitleText:@"Users"];
-  } else {
-    [self.pieChartView setTitleText:@"Candidates"];
-  }
-  self.pieChartView.delegate = self;
-  [self.pieContainer addSubview:self.pieChartView];
-  [self.view addSubview:self.pieContainer];
-  
-  //add selected view
-  UIImageView *selView = [[UIImageView alloc]init];
-  selView.image = [UIImage imageNamed:@"select.png"];
-  selView.frame = CGRectMake((self.view.frame.size.width - selView.image.size.width/2)/2 , self.pieContainer.frame.origin.y + self.pieContainer.frame.size.height+10, selView.image.size.width/2 , selView.image.size.height/2);
-  [self.view addSubview:selView];
-  
-  self.selLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 24, selView.image.size.width/2, 21)];
-  self.selLabel.backgroundColor = [UIColor clearColor];
-  self.selLabel.textAlignment = NSTextAlignmentCenter;
-  self.selLabel.font = [UIFont systemFontOfSize:12];
-  self.selLabel.textColor = [UIColor whiteColor];
-  [selView addSubview:self.selLabel];
-  self.view.backgroundColor = [UIColor whiteColor];
-  [self addTextTitle];
-  [self addTextView];
-}
-
-- (void)addTextTitle {
-  CGRect frame = CGRectMake(10, 360, 355, 25);
-  
-  UILabel *myTitle = [[UILabel alloc]initWithFrame: frame  ];
-  [myTitle setText: _topic];
-  myTitle.font = [UIFont systemFontOfSize:18.f weight:0.4f];
-  myTitle.layer.cornerRadius = 5.0;
-  myTitle.layer.borderColor = [self colorFromHexRGB:@"5856D6"].CGColor;
-  myTitle.layer.borderWidth = 1.f;
-  myTitle.layer.backgroundColor = [UIColor whiteColor].CGColor;
-  myTitle.layer.masksToBounds = YES;
-  [self.view addSubview:myTitle];
-}
-
-- (void)addTextView {
-  CGRect frame = CGRectMake(10, 395, 355, 150);
-  UITextView *myTextView = [[UITextView alloc]initWithFrame: frame  ];
-  [myTextView setText: _summary];
-  myTextView.font = [UIFont systemFontOfSize:14.f];
-  myTextView.layer.cornerRadius = 5.0;
-  myTextView.layer.borderColor = [self colorFromHexRGB:@"5856D6"].CGColor;
-  myTextView.layer.borderWidth = 1.f;
-  myTextView.layer.masksToBounds = YES;
-  [self.view addSubview:myTextView];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 380, 25)];
+    title.numberOfLines = 1;
+    title.textAlignment = NSTextAlignmentCenter;
+    title.text = _topic;
+    [title setFont:[UIFont boldSystemFontOfSize:18]];
+    [view addSubview:title];
+    
+    UILabel *summary = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 350, 335)];
+    UIScrollView *summaryScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 320, 380, 335)];
+    summary.numberOfLines = 0;
+    summary.lineBreakMode = NSLineBreakByWordWrapping;
+    summary.font = [summary.font fontWithSize:15];
+    summary.text = _summary;
+    [summary sizeToFit];
+    summaryScroll.contentSize = CGSizeMake(summaryScroll.contentSize.width, summary.frame.size.height + 100);
+    [summaryScroll addSubview:summary];
+    [view addSubview:summaryScroll];
+    
 }
 
 
-- (UIColor *)colorFromHexRGB:(NSString *)inColorString {
-  UIColor *result = nil;
-  unsigned int colorCode = 0;
-  unsigned char redByte, greenByte, blueByte;
-  
-  if (nil != inColorString) {
-    NSScanner *scanner = [NSScanner scannerWithString:inColorString];
-    (void) [scanner scanHexInt:&colorCode]; // ignore error
-  }
-  redByte = (unsigned char) (colorCode >> 16);
-  greenByte = (unsigned char) (colorCode >> 8);
-  blueByte = (unsigned char) (colorCode); // masks off high bits
-  result = [UIColor
-            colorWithRed:(float)redByte / 0xff
-            green:(float)greenByte/ 0xff
-            blue:(float)blueByte / 0xff
-            alpha:1.0];
-  return result;
+- (void)setUpHeaderView {
+    CGRect frame = CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.frame), kHeaderViewHeight);
+    _headerView.frame = frame;
+    _headerView.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView *agreeView = [[UIImageView alloc]init];
+    agreeView.image = [UIImage imageNamed:@"agree.png"];
+    agreeView.frame = CGRectMake(5,5,15,15);
+    [_headerView addSubview:agreeView];
+    
+    UILabel *agreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 5, 60, 15)];
+    agreeLabel.numberOfLines = 1;
+    agreeLabel.text = @"Agree";
+    [agreeLabel setFont:[UIFont boldSystemFontOfSize:11]];
+    agreeLabel.textColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
+    [_headerView addSubview:agreeLabel];
+    
+    UIImageView *disagreeView = [[UIImageView alloc]init];
+    disagreeView.image = [UIImage imageNamed:@"disagree.png"];
+    disagreeView.frame = CGRectMake(5,20,15,15);
+    [_headerView addSubview:disagreeView];
+    
+    UILabel *disagreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 20, 60, 15)];
+    disagreeLabel.numberOfLines = 1;
+    disagreeLabel.text = @"Disagree";
+    [disagreeLabel setFont:[UIFont boldSystemFontOfSize:11]];
+    disagreeLabel.textColor = [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1];
+    [_headerView addSubview:disagreeLabel];
+    
+    UIImageView *neutralView = [[UIImageView alloc]init];
+    neutralView.image = [UIImage imageNamed:@"neutral.png"];
+    neutralView.frame = CGRectMake(5,35,15,15);
+    [_headerView addSubview:neutralView];
+    
+    UILabel *neutralLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 35, 60, 15)];
+    neutralLabel.numberOfLines = 1;
+    neutralLabel.text = @"Neutral";
+    [neutralLabel setFont:[UIFont boldSystemFontOfSize:11]];
+    neutralLabel.textColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
+    [_headerView addSubview:neutralLabel];
+    
+    
+    
+    self.slices = [NSMutableArray arrayWithCapacity:3];
+    
+    int _usersFor = [[_issueObject objectForKey:@"usersFor"] intValue];
+    int _usersAgainst = [[_issueObject objectForKey:@"usersAgainst"] intValue];
+    int _usersNeutral = [[_issueObject objectForKey:@"usersNeutral"] intValue];
+    
+    NSNumber *uFor = [NSNumber numberWithInt: _usersFor];
+    NSNumber *uAgainst = [NSNumber numberWithInt: _usersAgainst];
+    NSNumber *uNeutral = [NSNumber numberWithInt: _usersNeutral];
+    
+    int _candidatesFor = [[_issueObject objectForKey:@"candidatesFor"] intValue];
+    int _candidatesAgainst = [[_issueObject objectForKey:@"candidatesAgainst"] intValue];
+    int _candidatesNeutral = [[_issueObject objectForKey:@"candidatesNeutral"] intValue];
+    
+    NSNumber *cFor = [NSNumber numberWithInt: _candidatesFor];
+    NSNumber *cAgainst = [NSNumber numberWithInt: _candidatesAgainst];
+    NSNumber *cNeutral = [NSNumber numberWithInt: _candidatesNeutral];
+    
+    if(self.inOut == YES)
+    {
+        [_slices addObject:uFor];
+        [_slices addObject:uAgainst];
+        [_slices addObject:uNeutral];
+    }
+    else
+    {
+        [_slices addObject:cFor];
+        [_slices addObject:cAgainst];
+        [_slices addObject:cNeutral];
+    }
+    CGRect pieFrame = CGRectMake(55, 5, 300, 200);
+    
+    self.pieChart = [[XYPieChart alloc]initWithFrame:pieFrame];
+    
+    // other chart setups
+    
+    [self.pieChart setDataSource:self];
+    [self.pieChart setStartPieAngle:M_PI_2];
+    //[self.pieChart setAnimationSpeed:1.0];
+    [self.pieChart setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:18]];
+    [self.pieChart setLabelRadius:70];
+    [self.pieChart setShowPercentage:YES];
+    //[self.pieChart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
+    [self.pieChart setPieCenter:CGPointMake(150, 120)];
+    //[self.pieChart setUserInteractionEnabled:NO];
+    [self.pieChart setLabelShadowColor:[UIColor blackColor]];
+    
+    UIImageView *centerView = [[UIImageView alloc]init];
+    centerView.image = [UIImage imageNamed:@"center.png"];
+    centerView.frame = CGRectMake(115,85,70,70);
+    
+    UILabel *percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+    percentLabel.numberOfLines = 1;
+    percentLabel.text = @"%";
+    [percentLabel setFont:[UIFont boldSystemFontOfSize:20]];
+    percentLabel.textAlignment = NSTextAlignmentCenter;
+    [centerView addSubview:percentLabel];
+    
+    [_pieChart addSubview:centerView];
+    
+    
+    [self.percentageLabel.layer setCornerRadius:90];
+    
+    self.sliceColors =[NSMutableArray arrayWithObjects:
+                       [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
+                       [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
+                       [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
+                       nil];
+    
+    //rotate up arrow
+    self.downArrow.transform = CGAffineTransformMakeRotation(M_PI);
+    
+    [_headerView addSubview:self.pieChart];
+
+    
+    
+    
 }
 
-- (void)selectedFinish:(RotatedView *)rotatedView index:(NSInteger)index percent:(float)per {
-  int check = (int)(per * _usersTotal);
-  int check2 = (int)(per * _candidatesTotal);
-  int perc = (int)(per * 100);
-  NSString *percentage = [NSString stringWithFormat:@"%d%@", perc, @"%"];
-  NSString *text;
-  per = per * 100;
-
-  if (_toggle == 0) {
-    if (check == _usersNeutral)
-        text = @" of our users are neutral";
-    else if (check == _usersAgainst)
-        text = @" of our users disagree";
-    else if (check == _usersFor)
-        text = @" of our users agree";
-  } else if (_toggle == 1) {
-    if (check2 == _candidatesNeutral)
-        text = @" of our candidates are neutral";
-    else if (check2 == _candidatesAgainst)
-        text = @" of our candidates are disagree";
-    else if (check2 == _candidatesFor)
-        text = @" of our candidates agree";
-  } else {
-    text = @"";
-  }
-  
-  self.selLabel.text = [percentage stringByAppendingString:text];
+- (void)didTapSegmentPicker {
+    self.inOut = !self.inOut;
+    [self.pieChart removeFromSuperview];
+    [self setUpHeaderView];
+    [self.pieChart reloadData];
 }
 
-- (void)onCenterClick:(PieChartView *)pieChartView {
-  if (_toggle == 0) {
-    _toggle = 1;
-  } else {
-    _toggle = 0;
-  }
 
-  self.inOut = !self.inOut;
-  [self.pieChartView removeFromSuperview];
-  self.pieChartView =
-      [[PieChartView alloc] initWithFrame:self.pieContainer.bounds
-                                withValue:self.inOut? self.valueArray : self.valueArrayAlt
-                                withColor:self.inOut? self.colorArray: self.colorArrayAlt];
-  self.pieChartView.delegate = self;
-  [self.pieContainer addSubview:self.pieChartView];
-  [self.pieChartView reloadChart];
-  
-  if (self.inOut) {
-    [self.pieChartView setTitleText:@"Users"];
-  } else {
-    [self.pieChartView setTitleText:@"Candidates"];
-  }
+
+- (void)viewDidUnload
+{
+    [self setPieChart:nil];
+    [self setPercentageLabel:nil];
+    [self setSelectedSliceLabel:nil];
+    [self setIndexOfSlices:nil];
+    [self setNumOfSlices:nil];
+    [self setDownArrow:nil];
+    [super viewDidUnload];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
-  [self.pieChartView reloadChart];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.pieChart reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+#pragma mark - XYPieChart Data Source
+
+- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
+{
+    return self.slices.count;
+}
+
+- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
+{
+    return [[self.slices objectAtIndex:index] intValue];
+}
+
+- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
+{
+    return [self.sliceColors objectAtIndex:(index % self.sliceColors.count)];
+}
+
+
+
+
 
 @end
