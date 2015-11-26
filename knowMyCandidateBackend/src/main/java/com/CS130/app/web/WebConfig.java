@@ -87,7 +87,7 @@ public class WebConfig {
         
         get("/apitest4", "application/json", (req, res) -> {
             
-            String max_img_url = scraper.thumbnail_scrape("http://www.cleveland.com/open/index.ssf/2015/11/lincoln_chafee_and_lawrence_le.html");
+            String max_img_url = scraper.thumbnail_scrape("http://www.sfgate.com/news/politics/article/New-Jersey-s-Chris-Christie-Obama-naive-on-IS-6655225.php");
             
             if (max_img_url != null)
                 return new JSONObject().put("success", max_img_url);

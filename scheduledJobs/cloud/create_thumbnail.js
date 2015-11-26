@@ -123,7 +123,7 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, url, candidateID
     }, function(error) {
         console.error("Failed to set scraped thumbnail for candidate: " + candidateID +
             " and URL: " + url + "\ndue to error: " + error +
-            ". Setting no thumnbail.");
+            ". Setting no thumbnail.");
         saveNewsfeed(newsFeed);
     });
 }
@@ -139,10 +139,6 @@ function downloadImageandSave(image_url, newsFeed) {
         var image = new Image();
         return image.setData(response.buffer);
     
-    }, function(error) {
-        // image_url download fail
-        promise.reject("Image_url download failed: " + image_url);
-
     }).then(function(image) {
         // Crop image to small of width or height
         var size = Math.min(image.width(), image.height());
@@ -211,7 +207,7 @@ function saveWithDefaultThumbnail(newsfeed) {
 }
 
 Parse.Cloud.define("testapi", function(request, response) {
-    Parse.Cloud.run('getMaxImage', { image_url: 'http://anandtech.com/' }, {
+    Parse.Cloud.run('getMaxImage', { image_url: 'http://www.latimes.com/nation/politics/la-na-ben-carson-fundraising-20151125-story.html' }, {
         success: function(max_image) {
             response.success("max_image is: " + max_image);
         },
