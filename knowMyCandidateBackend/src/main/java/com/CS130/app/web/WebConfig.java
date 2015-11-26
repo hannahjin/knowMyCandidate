@@ -77,7 +77,7 @@ public class WebConfig {
         
         get("/apitest3", "application/json", (req, res) -> {
             
-            String max_img_url = scraper.thumbnail_scrape("http://www.politico.com/story/2015/11/bernie-sanders-memo-omalley-immigration-216218");
+            String max_img_url = scraper.thumbnail_scrape("http://www.latimes.com/nation/politics/la-na-ben-carson-fundraising-20151125-story.html");
             
             if (max_img_url != null)
                 return new JSONObject().put("success", max_img_url);
@@ -87,7 +87,7 @@ public class WebConfig {
         
         get("/apitest4", "application/json", (req, res) -> {
             
-            String max_img_url = scraper.thumbnail_scrape("http://www.latimes.com/nation/politics/la-na-ben-carson-fundraising-20151125-story.html");
+            String max_img_url = scraper.thumbnail_scrape("http://www.cleveland.com/open/index.ssf/2015/11/lincoln_chafee_and_lawrence_le.html");
             
             if (max_img_url != null)
                 return new JSONObject().put("success", max_img_url);

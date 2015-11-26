@@ -62,8 +62,8 @@ public class Main {
             webParser.parse(scrapeFromLocalFile, saveToParse);
         }
         
-        //scheduleTweetFetcher();
-        //scheduleCandidateStatus();
+        scheduleTweetFetcher();
+        scheduleCandidateStatus();
     }
     
     public static boolean getScrapeData() {
