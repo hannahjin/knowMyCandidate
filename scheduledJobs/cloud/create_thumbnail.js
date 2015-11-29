@@ -18,7 +18,8 @@ function saveNewsfeed(newsFeed) {
     });
 }
 
-module.exports.setThumbnailandSaveNewsfeed2 = function(newsFeed, title, candidateID) {
+// Old savenewsfeed function that uses Bing API
+module.exports.setThumbnailandSaveNewsfeed_deprecated = function(newsFeed, title, candidateID) {
     var formatted_title = title.replace(/['"’‘]+/g, '');
     formatted_title = encodeURIComponent(formatted_title);
     var formatted_url = 'https://api.datamarket.azure.com/Bing/Search/v1/Image?Query=%27'+ formatted_title +'%27&$top=1&$format=json';
@@ -110,6 +111,9 @@ module.exports.setThumbnailandSaveNewsfeed2 = function(newsFeed, title, candidat
     });
 }
 
+// Calls Heroku Cloud Code function to get URL of max image in article
+// then saves it to the newsfeed item.
+// If no thumbnail image is found, no thumbnail is saved.
 module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, url, candidateID) {
 
     Parse.Cloud.run('getMaxImage', { image_url: url }).then(function(max_image_url) {
@@ -119,8 +123,8 @@ module.exports.setThumbnailandSaveNewsfeed = function(newsFeed, url, candidateID
     }, function(error) {
         console.error("Failed to set scraped thumbnail for candidate: " + candidateID +
             " and URL: " + url + "\ndue to error: " + error +
-            "\nSetting default thumnbail instead.");
-        saveWithDefaultThumbnail(newsFeed);
+            ". Setting no thumbnail.");
+        saveNewsfeed(newsFeed);
     });
 }
 
@@ -128,16 +132,13 @@ function downloadImageandSave(image_url, newsFeed) {
     var promise = new Parse.Promise();
 
     Parse.Cloud.httpRequest({
-        url: image_url
+        url: image_url,
+        followRedirects: true
     }).then(function(response) {
         // image_url download success
         var image = new Image();
         return image.setData(response.buffer);
     
-    }, function(error) {
-        // image_url download fail
-        promise.reject("Image_url download failed: " + image_url);
-
     }).then(function(image) {
         // Crop image to small of width or height
         var size = Math.min(image.width(), image.height());
@@ -206,7 +207,7 @@ function saveWithDefaultThumbnail(newsfeed) {
 }
 
 Parse.Cloud.define("testapi", function(request, response) {
-    Parse.Cloud.run('getMaxImage', { image_url: 'http://anandtech.com/' }, {
+    Parse.Cloud.run('getMaxImage', { image_url: 'http://www.latimes.com/nation/politics/la-na-ben-carson-fundraising-20151125-story.html' }, {
         success: function(max_image) {
             response.success("max_image is: " + max_image);
         },

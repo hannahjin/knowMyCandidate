@@ -3,11 +3,13 @@ package com.CS130.app.ThumbnailScraper;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLConnection;
 
 import javax.imageio.ImageIO;
 
@@ -23,7 +25,7 @@ public class ThumbnailScraper {
     public String thumbnail_scrape(String url) {
         
         try {
-            Document doc = Jsoup.connect(url).get();
+            Document doc = Jsoup.connect(url).userAgent("Mozilla").get();
             Elements images = doc.getElementsByTag("img");
             
             URL max_img_url = getMaxImage(images);
@@ -45,15 +47,36 @@ public class ThumbnailScraper {
         
         for (Element image : images) {
             try {
-                if(image.attr("abs:src").equals(""))
-                    continue;
+                URI img_uri;
+                if(!image.attr("abs:src").equals("")) {
+                	img_uri = new URI(image.attr("abs:src").replace(" ", "%20"));
+                } else if (!image.attr("abs:data-baseurl").equals("")) {
+                	// for LA Times website
+                	img_uri = new URI(image.attr("abs:data-baseurl").replace(" ", "%20"));;
+                } else {
+                	continue;
+                }
                 
-                URI img_uri = new URI(image.attr("abs:src").replace(" ", "%20"));
                 URL img_url = img_uri.toURL();
-                // create file with same filename
                 String img_path = img_url.getPath();
-                File img_file = new java.io.File("/tmp/" + img_path.substring(img_path.lastIndexOf('/') + 1));
-                FileUtils.copyURLToFile(img_url, img_file, 2000, 2000);
+                File img_file;
+                
+                // get file extension
+                int period_index = img_path.lastIndexOf('.');
+                if (img_path.length() - period_index < 6 && period_index > 0)
+                	img_file = new java.io.File("/tmp/picture" + img_path.substring(img_path.lastIndexOf('.')));
+                else
+                	img_file = new java.io.File("/tmp/picture");
+                
+                // FileUtils.copyURLToFile(img_url, img_file, 2000, 2000);
+                HttpURLConnection conn = (HttpURLConnection) img_url.openConnection();
+                HttpURLConnection.setFollowRedirects(true);
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0");
+                conn.setConnectTimeout(2000);
+                conn.setReadTimeout(10000);
+                conn.setRequestMethod("GET");
+                conn.connect();
+                FileUtils.copyInputStreamToFile(conn.getInputStream(), img_file);
                 
                 BufferedImage bimage = ImageIO.read(img_file);
                 if (bimage != null) {
@@ -84,11 +107,9 @@ public class ThumbnailScraper {
             }
         }
         // if biggest image is small, probably only logos were found
-        if (max_area < 400)
+        if (max_area < 30000)
             return null;
         return max_img_url;
     }
-    
-    
     
 }
