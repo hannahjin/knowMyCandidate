@@ -11,11 +11,12 @@ static const CGFloat kCellHeight = 90.f;
 static const CGFloat kCellPadding = 2.f;
 static const CGFloat kInterCellPadding = 2.f;
 
-@interface KMCSurveyResultsViewController ()
+@interface KMCSurveyResultsViewController () <KMCSurveyResultsCollectionViewCellDelegate>
 @end
 
 @implementation KMCSurveyResultsViewController {
   NSArray *_candidateResults;
+  NSMutableArray *_followArray;
 }
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
@@ -33,6 +34,8 @@ static const CGFloat kInterCellPadding = 2.f;
 
     self.collectionView.backgroundColor = [KMCAssets lightGrayBackgroundColor];
     self.navigationItem.title = @"Your Results";
+
+    _followArray = [[NSMutableArray alloc] init];
   }
 
   return self;
@@ -80,9 +83,17 @@ static const CGFloat kInterCellPadding = 2.f;
   NSString *lastName = object[@"lastName"];
   NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
+  NSString *candidateID = object[@"candidate"];
+  cell.delegate = self;
   cell.matchingScore = object[@"score"];
-  cell.candidateID = object[@"candidate"];
+  cell.candidateID = candidateID;
+  cell.rank = indexPath.item + 1;
   cell.name = name;
+  if ([_followArray containsObject:candidateID]) {
+    cell.isFollowing = YES;
+  } else {
+    cell.isFollowing = NO;
+  }
 
   return cell;
 }
@@ -99,6 +110,16 @@ static const CGFloat kInterCellPadding = 2.f;
 
  - (void)didTapDoneButton {
   [self.delegate didFinishSurveyResults];
+}
+
+#pragma mark - KMCSurveyResultsCollectionViewCellDelegate
+
+- (void)didFollowCandidate:(BOOL)didFollow withID:(NSString *)candidateID {
+  if (didFollow) {
+    [_followArray addObject:candidateID];
+  } else {
+    [_followArray removeObject:candidateID];
+  }
 }
 
 

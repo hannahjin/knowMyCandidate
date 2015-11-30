@@ -200,7 +200,7 @@ static const CGFloat kTitlePadding = 30.f;
 
 - (void)setWeight:(CGFloat)sliderValue {
   _weight = sliderValue;
-  _weightSlider.value = _score;
+  _weightSlider.value = _weight;
 }
 
 - (void)didSlideScore {
