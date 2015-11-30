@@ -7,5 +7,6 @@
 @property (nonatomic) NSNumber *matchingScore;
 @property (nonatomic, copy) NSString *candidateID;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic) KMCPartyAffiliation affiliation;
 
 @end

@@ -45,11 +45,11 @@ static const CGFloat kInterCellPadding = 2.f;
   [PFCloud callFunctionInBackground:@"get_survey_candidates"
                      withParameters:@{ @"user" : user.objectId }
                               block:^(id object, NSError *error) {
-   if (!error) {
-    _candidateResults = object;
-    [self.collectionView reloadData];
-  }
-}];
+    if (!error) {
+      _candidateResults = object;
+      [self.collectionView reloadData];
+    }
+  }];
 
   [self.collectionView registerClass:[KMCSurveyResultsCollectionViewCell class]
           forCellWithReuseIdentifier:reuseIdentifier];
@@ -80,9 +80,21 @@ static const CGFloat kInterCellPadding = 2.f;
   NSString *lastName = object[@"lastName"];
   NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
+  NSString *party = object[@"PartyAffiliation"];
+  KMCPartyAffiliation affiliation;
+  if ([party isEqualToString:@"Republican Party"]) {
+    affiliation = KMCPartyAffiliationRepublican;
+  } else if ([party isEqualToString:@"Democratic Party"]) {
+    affiliation = KMCPartyAffiliationDemocratic;
+  } else {
+    affiliation = KMCPartyAffiliationGreen;
+  }
+  NSLog(@"affiliation: %@ %ld", object[@"PartyAffiliation"], (long)affiliation);
+
   cell.matchingScore = object[@"score"];
   cell.candidateID = object[@"candidate"];
   cell.name = name;
+  cell.affiliation = affiliation;
 
   return cell;
 }
