@@ -5,6 +5,7 @@
 static const CGFloat kInterItemPadding = 10.f;
 static const CGFloat kIssueTextMaxWidth = 200.f;
 static const CGFloat kStandTextMaxWidth = 100.f;
+static const CGFloat kRightPadding = 15.f;
 static const CGFloat kSidePadding = 20.f;
 
 @implementation KMCStandpointsCollectionViewCell {
@@ -69,7 +70,9 @@ static const CGFloat kSidePadding = 20.f;
     _importanceLabel.text = @"!!";
     [_importanceLabel sizeToFit];
     CGRect frame = _importanceLabel.frame;
-    frame.origin.x = CGRectGetMaxX(_standLabel.frame) + kInterItemPadding;
+    frame.origin.x = CGRectGetWidth(self.contentView.frame) -
+                     kRightPadding -
+                     CGRectGetWidth(_importanceLabel.frame);
     frame.origin.y = CGRectGetMidY(self.contentView.frame) - CGRectGetHeight(frame) / 2.f;
     _importanceLabel.frame = frame;
   }
