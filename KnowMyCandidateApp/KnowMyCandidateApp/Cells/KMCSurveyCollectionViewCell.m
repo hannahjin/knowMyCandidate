@@ -193,12 +193,14 @@ static const CGFloat kTitlePadding = 30.f;
   _questionLabel.frame = CGRectMake(originX, 10.f, size.width, size.height);
 }
 
-- (void)setScoreValue:(CGFloat)sliderValue {
-  _scoreSlider.value = sliderValue;
+- (void)setScore:(CGFloat)sliderValue {
+  _score = sliderValue;
+  _scoreSlider.value = _score;
 }
 
-- (void)setWeightValue:(CGFloat)sliderValue {
-  _weightSlider.value = sliderValue;
+- (void)setWeight:(CGFloat)sliderValue {
+  _weight = sliderValue;
+  _weightSlider.value = _score;
 }
 
 - (void)didSlideScore {

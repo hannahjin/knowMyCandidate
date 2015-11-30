@@ -160,7 +160,8 @@ static NSString *const reuseIdentifier = @"kSurveyCollectionViewCell";
 
   NSArray *keys = [_surveyDictionary allKeys];
   NSString *issueID = keys[indexPath.item];
-  NSString *prompt = [NSString stringWithFormat:@"%lu. %@", indexPath.item + 1, _surveyDictionary[issueID]];
+  NSString *prompt =
+      [NSString stringWithFormat:@"%lu. %@", indexPath.item + 1, _surveyDictionary[issueID]];
   cell.text = prompt;
   cell.cellID = issueID;
   NSNumber *score = _scoreValues[issueID];
