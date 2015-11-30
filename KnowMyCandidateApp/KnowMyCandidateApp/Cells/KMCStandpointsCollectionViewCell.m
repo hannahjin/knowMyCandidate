@@ -2,6 +2,7 @@
 
 #import "KMCAssets.h"
 
+static const CGFloat kInterItemPadding = 10.f;
 static const CGFloat kIssueTextMaxWidth = 200.f;
 static const CGFloat kStandTextMaxWidth = 100.f;
 static const CGFloat kSidePadding = 20.f;
@@ -9,6 +10,7 @@ static const CGFloat kSidePadding = 20.f;
 @implementation KMCStandpointsCollectionViewCell {
   UILabel *_issueLabel;
   UILabel *_standLabel;
+  UILabel *_importanceLabel;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -26,6 +28,9 @@ static const CGFloat kSidePadding = 20.f;
     _standLabel.numberOfLines = 2;
     _standLabel.font = [UIFont systemFontOfSize:15.f weight:0.9f];
     [self.contentView addSubview:_standLabel];
+
+    _importanceLabel = [[UILabel alloc] init];
+    [self.contentView addSubview:_importanceLabel];
   }
   return self;
 }
@@ -55,6 +60,19 @@ static const CGFloat kSidePadding = 20.f;
   frame.size = size;
   _standLabel.frame = frame;
   _standLabel.textColor = [KMCAssets colorForStand:_stand];
+}
+
+- (void)setIsImportant:(BOOL)isImportant {
+  _isImportant = isImportant;
+
+  if (_isImportant) {
+    _importanceLabel.text = @"!!";
+    [_importanceLabel sizeToFit];
+    CGRect frame = _importanceLabel.frame;
+    frame.origin.x = CGRectGetMaxX(_standLabel.frame) + kInterItemPadding;
+    frame.origin.y = CGRectGetMidY(self.contentView.frame) - CGRectGetHeight(frame) / 2.f;
+    _importanceLabel.frame = frame;
+  }
 }
 
 @end

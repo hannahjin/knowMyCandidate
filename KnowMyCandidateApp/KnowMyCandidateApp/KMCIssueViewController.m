@@ -33,6 +33,8 @@ static const CGFloat kSegmentPadding = 5.f;
     UISegmentedControl *_segmentPicker;
     NSString *_summary;
     NSString *_topic;
+  UIScrollView *_summaryScroll;
+  UILabel *_title;
     
 }
 
@@ -74,24 +76,38 @@ static const CGFloat kSegmentPadding = 5.f;
     _segmentPicker.frame = frame;
     [view addSubview:_segmentPicker];
 
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 380, 25)];
-    title.numberOfLines = 1;
-    title.textAlignment = NSTextAlignmentCenter;
-    title.text = _topic;
-    [title setFont:[UIFont boldSystemFontOfSize:18]];
-    [view addSubview:title];
+    _title = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 380, 25)];
+    _title.numberOfLines = 1;
+    _title.textAlignment = NSTextAlignmentCenter;
+    _title.text = _topic;
+    [_title setFont:[UIFont boldSystemFontOfSize:18]];
+  [_title sizeToFit];
+  frame = _title.frame;
+  frame.origin.x = CGRectGetMidX(self.view.frame) - CGRectGetWidth(frame) / 2.f;
+  frame.origin.y = 280.f;
+  _title.frame = frame;
+    [view addSubview:_title];
     
-    UILabel *summary = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 350, 335)];
-    UIScrollView *summaryScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 320, 380, 335)];
+    UILabel *summary = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 345, 335)];
+    _summaryScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(15, 320, 345, 335)];
+  frame = _summaryScroll.frame;
+  frame.size.height = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(_title.frame);
+  _summaryScroll.frame = frame;
     summary.numberOfLines = 0;
     summary.lineBreakMode = NSLineBreakByWordWrapping;
     summary.font = [summary.font fontWithSize:15];
     summary.text = _summary;
     [summary sizeToFit];
-    summaryScroll.contentSize = CGSizeMake(summaryScroll.contentSize.width, summary.frame.size.height + 100);
-    [summaryScroll addSubview:summary];
-    [view addSubview:summaryScroll];
+    _summaryScroll.contentSize = CGSizeMake(_summaryScroll.contentSize.width, summary.frame.size.height);
+    [_summaryScroll addSubview:summary];
+    [view addSubview:_summaryScroll];
     
+}
+
+- (void)viewDidLayoutSubviews {
+  CGRect frame = _summaryScroll.frame;
+  frame.size.height = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(_title.frame) - 70;
+  _summaryScroll.frame = frame;
 }
 
 
@@ -102,10 +118,10 @@ static const CGFloat kSegmentPadding = 5.f;
     
     UIImageView *agreeView = [[UIImageView alloc]init];
     agreeView.image = [UIImage imageNamed:@"agree.png"];
-    agreeView.frame = CGRectMake(5,5,15,15);
+    agreeView.frame = CGRectMake(10,10,15,15);
     [_headerView addSubview:agreeView];
     
-    UILabel *agreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 5, 60, 15)];
+    UILabel *agreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(28, 10, 60, 15)];
     agreeLabel.numberOfLines = 1;
     agreeLabel.text = @"Agree";
     [agreeLabel setFont:[UIFont boldSystemFontOfSize:11]];
@@ -114,10 +130,10 @@ static const CGFloat kSegmentPadding = 5.f;
     
     UIImageView *disagreeView = [[UIImageView alloc]init];
     disagreeView.image = [UIImage imageNamed:@"disagree.png"];
-    disagreeView.frame = CGRectMake(5,20,15,15);
+    disagreeView.frame = CGRectMake(10,25,15,15);
     [_headerView addSubview:disagreeView];
     
-    UILabel *disagreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 20, 60, 15)];
+    UILabel *disagreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(28, 25, 60, 15)];
     disagreeLabel.numberOfLines = 1;
     disagreeLabel.text = @"Disagree";
     [disagreeLabel setFont:[UIFont boldSystemFontOfSize:11]];
@@ -126,10 +142,10 @@ static const CGFloat kSegmentPadding = 5.f;
     
     UIImageView *neutralView = [[UIImageView alloc]init];
     neutralView.image = [UIImage imageNamed:@"neutral.png"];
-    neutralView.frame = CGRectMake(5,35,15,15);
+    neutralView.frame = CGRectMake(10,40,15,15);
     [_headerView addSubview:neutralView];
     
-    UILabel *neutralLabel = [[UILabel alloc] initWithFrame:CGRectMake(23, 35, 60, 15)];
+    UILabel *neutralLabel = [[UILabel alloc] initWithFrame:CGRectMake(28, 40, 60, 15)];
     neutralLabel.numberOfLines = 1;
     neutralLabel.text = @"Neutral";
     [neutralLabel setFont:[UIFont boldSystemFontOfSize:11]];
@@ -181,15 +197,15 @@ static const CGFloat kSegmentPadding = 5.f;
     [self.pieChart setLabelRadius:70];
     [self.pieChart setShowPercentage:YES];
     //[self.pieChart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
-    [self.pieChart setPieCenter:CGPointMake(150, 120)];
+    [self.pieChart setPieCenter:CGPointMake(135, 110)];
     //[self.pieChart setUserInteractionEnabled:NO];
     [self.pieChart setLabelShadowColor:[UIColor blackColor]];
     
     UIImageView *centerView = [[UIImageView alloc]init];
     centerView.image = [UIImage imageNamed:@"center.png"];
-    centerView.frame = CGRectMake(115,85,70,70);
+    centerView.frame = CGRectMake(115,90,40,40);
     
-    UILabel *percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+    UILabel *percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     percentLabel.numberOfLines = 1;
     percentLabel.text = @"%";
     [percentLabel setFont:[UIFont boldSystemFontOfSize:20]];
