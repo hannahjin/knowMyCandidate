@@ -85,7 +85,7 @@ Parse.Cloud.define("get_newsfeed", function(request, response) {
                                     var titles = {};
                                     for (var i = 0; i < results.length; i++) {
                                         var object = results[i];
-                                        if (!(object.get('title') in titles)) {
+                                        if (object.get('source') == "Twitter" || !(object.get('title') in titles)) {
                                            var summary = object.get('summary').replace(/\n/g, '');
                                             var item = {
                                                 "source": object.get('source'),
