@@ -274,6 +274,9 @@ static NSString *const standpointReuseIdentifier = @"kStandpointsCollectionViewC
         [self setUpHeaderView];
       }
     }];
+  } else {
+    _nameLabel.text = [[PFUser currentUser] objectForKey:@"name"];
+    [self setUpHeaderView];
   }
 }
 
